@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>888Starz - Premium Kazino va Sport Stafkalari</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #000;
+            color: #fff;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.9)), url('https://images.unsplash.com/photo-1533105079780-92b9be482077?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80') no-repeat center center/cover;
+            opacity: 0.3;
+            z-index: -1;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: rgba(0, 0, 0, 0.8);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 2px solid #ffcc00;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo h1 {
+            font-size: 32px;
+            font-weight: 800;
+            background: linear-gradient(45deg, #ffcc00, #ff6600);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 10px rgba(255, 204, 0, 0.5);
+            letter-spacing: 2px;
+        }
+
+        .logo span {
+            color: #ffcc00;
+        }
+
+        .logo-icon {
+            font-size: 28px;
+            margin-right: 10px;
+            color: #ffcc00;
+            animation: spin 10s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 25px;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 16px;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        nav ul li a:hover {
+            color: #ffcc00;
+        }
+
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: #ffcc00;
+            transition: width 0.3s;
+        }
+
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 100px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h2 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            background: linear-gradient(45deg, #ffcc00, #ff9900);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 15px rgba(255, 204, 0, 0.5);
+            animation: glow 2s infinite alternate;
+        }
+
+        @keyframes glow {
+            from { text-shadow: 0 0 10px rgba(255, 204, 0, 0.5); }
+            to { text-shadow: 0 0 20px rgba(255, 204, 0, 0.8), 0 0 30px rgba(255, 204, 0, 0.6); }
+        }
+
+        .hero p {
+            font-size: 20px;
+            margin-bottom: 30px;
+            color: #e0e0e0;
+            line-height: 1.6;
+        }
+
+        .highlight {
+            color: #ffcc00;
+            font-weight: bold;
+            text-shadow: 0 0 5px rgba(255, 204, 0, 0.5);
+        }
+
+        .promo-badge {
+            display: inline-block;
+            background: linear-gradient(45deg, #ff3300, #ff9900);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-weight: bold;
+            font-size: 22px;
+            margin: 20px 0;
+            box-shadow: 0 0 15px rgba(255, 153, 0, 0.7);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); box-shadow: 0 0 15px rgba(255, 153, 0, 0.7); }
+            50% { transform: scale(1.05); box-shadow: 0 0 25px rgba(255, 153, 0, 0.9); }
+            100% { transform: scale(1); box-shadow: 0 0 15px rgba(255, 153, 0, 0.7); }
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(45deg, #ffcc00, #ff6600);
+            color: #000;
+            padding: 15px 40px;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 18px;
+            text-decoration: none;
+            margin-top: 20px;
+            box-shadow: 0 5px 15px rgba(255, 204, 0, 0.4);
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(255, 204, 0, 0.6);
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: 0.5s;
+        }
+
+        .cta-button:hover::before {
+            left: 100%;
+        }
+
+        .apk-button {
+            display: inline-block;
+            background: linear-gradient(45deg, #0088cc, #00cc88);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 16px;
+            text-decoration: none;
+            margin-top: 15px;
+            margin-left: 15px;
+            box-shadow: 0 5px 15px rgba(0, 136, 204, 0.4);
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .apk-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 136, 204, 0.6);
+        }
+
+        .button-group {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        /* Features Section */
+        .features {
+            padding: 80px 0;
+            background-color: rgba(20, 20, 20, 0.7);
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            font-size: 36px;
+            color: #ffcc00;
+            text-shadow: 0 0 10px rgba(255, 204, 0, 0.5);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-card {
+            background: rgba(30, 30, 30, 0.8);
+            border-radius: 10px;
+            padding: 30px;
+            text-align: center;
+            transition: transform 0.3s;
+            border: 1px solid rgba(255, 204, 0, 0.3);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            border-color: #ffcc00;
+            box-shadow: 0 10px 20px rgba(255, 204, 0, 0.2);
+        }
+
+        .feature-icon {
+            font-size: 40px;
+            color: #ffcc00;
+            margin-bottom: 20px;
+        }
+
+        .feature-card h3 {
+            font-size: 22px;
+            margin-bottom: 15px;
+            color: #ffcc00;
+        }
+
+        .feature-card p {
+            color: #cccccc;
+            line-height: 1.6;
+        }
+
+        /* Games Section */
+        .games {
+            padding: 80px 0;
+        }
+
+        .games-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+        }
+
+        .game-card {
+            background: rgba(30, 30, 30, 0.8);
+            border-radius: 10px;
+            overflow: hidden;
+            transition: transform 0.3s;
+            border: 1px solid rgba(255, 204, 0, 0.3);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+        }
+
+        .game-card:hover {
+            transform: scale(1.05);
+            border-color: #ffcc00;
+            box-shadow: 0 10px 20px rgba(255, 204, 0, 0.2);
+        }
+
+        .game-image {
+            height: 180px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .game-content {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .game-content h3 {
+            font-size: 20px;
+            margin-bottom: 10px;
+            color: #ffcc00;
+        }
+
+        .game-content p {
+            color: #cccccc;
+            font-size: 14px;
+        }
+
+        /* Bonus Section */
+        .bonus {
+            padding: 80px 0;
+            background-color: rgba(20, 20, 20, 0.7);
+            text-align: center;
+        }
+
+        .bonus-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .bonus h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+            color: #ffcc00;
+        }
+
+        .bonus p {
+            font-size: 18px;
+            margin-bottom: 30px;
+            color: #e0e0e0;
+            line-height: 1.6;
+        }
+
+        .bonus-steps {
+            display: flex;
+            justify-content: space-between;
+            margin: 40px 0;
+        }
+
+        .bonus-step {
+            flex: 1;
+            padding: 20px;
+            position: relative;
+        }
+
+        .bonus-step:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            right: 0;
+            transform: translateY(-50%);
+            width: 50px;
+            height: 2px;
+            background-color: #ffcc00;
+        }
+
+        .step-number {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background-color: #ffcc00;
+            color: #000;
+            border-radius: 50%;
+            line-height: 40px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .bonus-step h3 {
+            font-size: 18px;
+            margin-bottom: 10px;
+            color: #ffcc00;
+        }
+
+        .bonus-step p {
+            font-size: 14px;
+            color: #cccccc;
+        }
+
+        /* Footer */
+        footer {
+            background-color: rgba(10, 10, 10, 0.9);
+            padding: 40px 0 20px;
+            border-top: 2px solid #ffcc00;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
+        }
+
+        .footer-column {
+            flex: 1;
+            min-width: 200px;
+            margin-bottom: 20px;
+        }
+
+        .footer-column h3 {
+            font-size: 18px;
+            margin-bottom: 20px;
+            color: #ffcc00;
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-column ul li a {
+            color: #cccccc;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-column ul li a:hover {
+            color: #ffcc00;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-icons a {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background-color: #333;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 40px;
+            color: #ffcc00;
+            transition: all 0.3s;
+        }
+
+        .social-icons a:hover {
+            background-color: #ffcc00;
+            color: #000;
+            transform: translateY(-5px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #333;
+            color: #999;
+            font-size: 14px;
+        }
+
+        /* Floating Gift */
+        .floating-gift {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(45deg, #ff3300, #ff9900);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 24px;
+            box-shadow: 0 5px 15px rgba(255, 153, 0, 0.7);
+            animation: bounce 2s infinite;
+            z-index: 1000;
+            cursor: pointer;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+            }
+            
+            nav ul {
+                margin-top: 20px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            nav ul li {
+                margin: 5px 10px;
+            }
+            
+            .hero h2 {
+                font-size: 36px;
+            }
+            
+            .bonus-steps {
+                flex-direction: column;
+            }
+            
+            .bonus-step:not(:last-child)::after {
+                display: none;
+            }
+            
+            .button-group {
+                flex-direction: column;
+            }
+            
+            .apk-button {
+                margin-left: 0;
+                margin-top: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-dice logo-icon"></i>
+                    <h1>888<span>Starz</span></h1>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="#">Bosh sahifa</a></li>
+                        <li><a href="#">Kazino</a></li>
+                        <li><a href="#">Sport stavkalari</a></li>
+                        <li><a href="#">Aksiyalar</a></li>
+                        <li><a href="#">Yordam</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h2>888STARZ KAZINO ORQALI KATTA YUTING</h2>
+                <p><span class="highlight">Yuqori koeffitsientli stavkalar</span> va eng yangi kazino slot o'yinlari, jumladan <span class="highlight">Apple of Fortune, Aviator va Chicken Road</span> ning hayajonini bosing!</p>
+                <div class="promo-badge">AIFUT Promokodi</div>
+                <p>AIFUT promokodi bilan ro'yxatdan o'ting va <span class="highlight">$300 bonus</span> oling! 888Starz da tez va ishonchli hisob to'ldirish va pul yechish.</p>
+                <div class="button-group">
+                    <a href="https://magucuy8.com/uz/registration?tag=d_4757561m_37513c_" class="cta-button" target="_blank">HOZIR RO'YXATDAN O'TING VA $300 BONUS OLING</a>
+                    <a href="https://t.me/BonusAPKxbetbot" class="apk-button" target="_blank"><i class="fab fa-android"></i> APK FAYL YUKLAB OLISH</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <h2 class="section-title">NIMA UCHUN 888STARZ NI TANLAYMIZ?</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <i class="fas fa-bolt feature-icon"></i>
+                    <h3>Tez To'lovlar</h3>
+                    <p>Ishonchli to'lov tizimimiz bilan yutuqlaringizni tez va xavfsiz oling.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-star feature-icon"></i>
+                    <h3>Yuqori Koeffitsientlar</h3>
+                    <p>Sevimli o'yinlaringizda eng yaxshi koeffitsientlar va eng yuqori nisbatlardan bahramand bo'ling.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-gamepad feature-icon"></i>
+                    <h3>Eng Yangi O'yinlar</h3>
+                    <p>Apple of Fortune, Aviator va boshqalar kabi doim yangi va hayajonli o'yinlar!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Games Section -->
+    <section class="games">
+        <div class="container">
+            <h2 class="section-title">MASHHUR O'YINLAR</h2>
+            <div class="games-grid">
+                <div class="game-card">
+                    <div class="game-image" style="background-image: url('https://images.unsplash.com/photo-1542751371-adc38448a05e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80');"></div>
+                    <div class="game-content">
+                        <h3>Apple of Fortune</h3>
+                        <p>G'ildirakni aylantiring va ushbu hayajonli mevali mavzuli slot orqali katta yuting!</p>
+                    </div>
+                </div>
+                <div class="game-card">
+                    <div class="game-image" style="background-image: url('https://images.unsplash.com/photo-1531058020387-3be344556be6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80');"></div>
+                    <div class="game-content">
+                        <h3>Aviator</h3>
+                        <p>Samolyot qanchalik baland parvoz qilishini kuzating va to'g'ri paytda pulingizni oling!</p>
+                    </div>
+                </div>
+                <div class="game-card">
+                    <div class="game-image" style="background-image: url('https://images.unsplash.com/photo-1515992854631-13de43ba2341?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=688&q=80');"></div>
+                    <div class="game-content">
+                        <h3>Chicken Road</h3>
+                        <p>Tovuqni sarguzashtga ergashing va ajoyib sovg'alarni yig'ing!</p>
+                    </div>
+                </div>
+                <div class="game-card">
+                    <div class="game-image" style="background-image: url('https://images.unsplash.com/photo-1551698618-1dfe5d97d256?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80');"></div>
+                    <div class="game-content">
+                        <h3>Mega Wheel</h3>
+                        <p>Katta g'ildirakni aylantiring va ajoyib jackpotlarni yutish imkoniyatiga ega bo'ling!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bonus Section -->
+    <section class="bonus">
+        <div class="container">
+            <div class="bonus-content">
+                <h2>HOZIR $300 BONUSINGIZNI OLING!</h2>
+                <p><span class="highlight">AIFUT promokodi</span> bilan ro'yxatdan o'ting va 888Starz da o'z g'alabalar safaringizni boshlash uchun $300 bonus oling!</p>
+                
+                <div class="bonus-steps">
+                    <div class="bonus-step">
+                        <div class="step-number">1</div>
+                        <h3>Ro'yxatdan o'ting</h3>
+                        <p>AIFUT promokodi bilan hisobingizni yarating</p>
+                    </div>
+                    <div class="bonus-step">
+                        <div class="step-number">2</div>
+                        <h3>Hisob to'ldiring</h3>
+                        <p>Bonusni faollashtirish uchun birinchi marta hisobingizni to'ldiring</p>
+                    </div>
+                    <div class="bonus-step">
+                        <div class="step-number">3</div>
+                        <h3>O'ynang va Yuting</h3>
+                        <p>Katta yutish uchun bonusingizdan foydalaning!</p>
+                    </div>
+                </div>
+                
+                <p class="highlight">To'liq bonus miqdorini olish uchun profilingizni to'liq to'ldiring!</p>
+                <div class="button-group">
+                    <a href="https://magucuy8.com/uz/registration?tag=d_4757561m_37513c_" class="cta-button" target="_blank">$300 BONUSINGIZNI OLING</a>
+                    <a href="https://t.me/BonusAPKxbetbot" class="apk-button" target="_blank"><i class="fab fa-android"></i> APK FAYL YUKLAB OLISH</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>888Starz</h3>
+                    <p>Yuqori koeffitsientlar va tez to'lovlar bilan kazino o'yinlari va sport stavkalari uchun sizning eng yaxshi manzilingiz.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Tez Havolalar</h3>
+                    <ul>
+                        <li><a href="#">Bosh sahifa</a></li>
+                        <li><a href="#">Kazino O'yinlari</a></li>
+                        <li><a href="#">Sport Stavkalari</a></li>
+                        <li><a href="#">Aksiyalar</a></li>
+                        <li><a href="#">Biz Haqimizda</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Yordam</h3>
+                    <ul>
+                        <li><a href="#">Yordam Markazi</a></li>
+                        <li><a href="#">Biz bilan Bog'laning</a></li>
+                        <li><a href="#">To'lov Usullari</a></li>
+                        <li><a href="#">Mas'uliyatli O'yin</a></li>
+                        <li><a href="#">Shartlar va Qoidalar</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 888Starz. Barcha huquqlar himoyalangan. | Qimor o'yini qaramlikka olib kelishi mumkin. Iltimos, mas'uliyat bilan o'ynang.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating Gift -->
+    <div class="floating-gift">
+        <i class="fas fa-gift"></i>
+    </div>
+
+    <script>
+        // Soddalashtirilgan animatsiya CTA tugmasi uchun
+        document.querySelectorAll('.cta-button').forEach(button => {
+            button.addEventListener('mouseover', function() {
+                this.style.transform = 'translateY(-5px)';
+            });
+            
+            button.addEventListener('mouseout', function() {
+                this.style.transform = 'translateY(0)';
+            });
+        });
+        
+        // APK tugmasi uchun animatsiya
+        document.querySelectorAll('.apk-button').forEach(button => {
+            button.addEventListener('mouseover', function() {
+                this.style.transform = 'translateY(-5px)';
+            });
+            
+            button.addEventListener('mouseout', function() {
+                this.style.transform = 'translateY(0)';
+            });
+        });
+        
+        // Suzuvchi sovg'a animatsiyasi
+        const gift = document.querySelector('.floating-gift');
+        gift.addEventListener('click', function() {
+            alert('Maxsus sovg\'angizni oling! Hozirroq AIFUT promokodi bilan ro\'yxatdan o\'ting va $300 bonusingizni oling!');
+        });
+    </script>
+</body>
+</html>
