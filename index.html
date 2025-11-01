@@ -18,6 +18,7 @@
             min-height: 100vh;
             overflow-x: hidden;
             padding: 15px;
+            padding-bottom: 70px; /* ID almashtirish tugmasi uchun joy */
         }
         
         .container {
@@ -334,10 +335,97 @@
             border-left: 4px solid #FFD700;
         }
         
+        .share-section {
+            text-align: center;
+            margin: 20px 0;
+        }
+        
+        .telegram-auto-section {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .telegram-auto-btn {
+            background: linear-gradient(135deg, #25D366, #128C7E);
+            color: white;
+            border: none;
+            padding: 15px 25px;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(37, 211, 102, 0.4);
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            width: 100%;
+            justify-content: center;
+        }
+
+        .telegram-auto-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(37, 211, 102, 0.6);
+        }
+
+        .share-instruction {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            text-align: center;
+        }
+
+        .share-instruction p {
+            font-size: 0.8rem;
+            margin-bottom: 8px;
+            color: #FFD700;
+        }
+        
+        .game-over-section {
+            text-align: center;
+            margin: 20px 0;
+            padding: 15px;
+            background: rgba(244, 67, 54, 0.2);
+            border-radius: 8px;
+            border-left: 4px solid #F44336;
+        }
+        
+        /* ID almashtirish tugmasi */
+        .change-id-btn {
+            position: fixed;
+            bottom: 15px;
+            right: 15px;
+            background: linear-gradient(135deg, #FF5722, #E64A19);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(255, 87, 34, 0.4);
+            z-index: 999;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .change-id-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(255, 87, 34, 0.6);
+        }
+        
+        .change-id-btn:active {
+            transform: translateY(1px);
+        }
+        
         /* Kichik ekranlar uchun maxsus sozlamalar */
         @media (max-width: 480px) {
             body {
                 padding: 10px;
+                padding-bottom: 70px;
             }
             
             header {
@@ -390,6 +478,18 @@
                 font-size: 0.85rem;
                 padding: 6px 10px;
             }
+
+            .telegram-auto-btn {
+                padding: 12px 20px;
+                font-size: 0.9rem;
+            }
+            
+            .change-id-btn {
+                padding: 10px 16px;
+                font-size: 0.8rem;
+                bottom: 10px;
+                right: 10px;
+            }
         }
         
         @media (max-width: 360px) {
@@ -407,6 +507,11 @@
             }
             
             .subtitle {
+                font-size: 0.75rem;
+            }
+            
+            .change-id-btn {
+                padding: 8px 14px;
                 font-size: 0.75rem;
             }
         }
@@ -467,7 +572,7 @@
                 <strong>ID Raqamingiz:</strong> <span id="gameUserId"></span>
             </div>
             
-            <div class="round-indicator" id="roundIndicator">Qator: 1 / 6</div>
+            <div class="round-indicator" id="roundIndicator">signal: 1</div>
             
             <p><span class="money-highlight">ID raqamingiz ko'rsatilgan profildan o'yinga kiring va togri olmali qatorni tanlang✅</span> Butun olmani tanlang va kegingi qatorni korish tugmasini bosing! 🎯</p>
             
@@ -483,6 +588,35 @@
             <button class="btn hidden" id="restartBtn">Qayta Boshlash 🔄</button>
         </div>
         
+        <div id="shareSection" class="card hidden">
+            <h2>Do'stlaringizni taklif qiling 📢</h2>
+            
+            <div class="user-id-display">
+                <strong>signal uchun ID Raqamingiz:</strong> <span id="shareUserId"></span>
+            </div>
+            
+            <div class="round-indicator" id="shareRoundIndicator">signal: 2</div>
+            
+            <p><span class="money-highlight">Kegingi qator  signal olish uchun 5 ta dostingizga bot silkasini yuboring yuborganingizdan song kegingi qatorni korish < tugmasi paydo boladi 💸</span></p>
+
+            <div class="share-instruction">
+                <p>📱 <strong>Telegram'da "Share" ko'rinishida yuborilsin!</strong></p>
+                <p>Bir nechta do'stlaringizni tanlang va xabarni ulashing</p>
+            </div>
+
+            <div class="telegram-auto-section">
+                <button class="telegram-auto-btn" id="telegramAutoBtn">
+                    <span>📲 dostlarga ulashish</span>
+                </button>
+            </div>
+            
+            <div class="info-box">
+                <p><strong>Eslatma:</strong> Dostlatga ulashish tugmasini vbosib 5 ta dostingizga xabarni yuborsangiz kegingi qator uchun signal olishingiz mumkin .</p>
+            </div>
+            
+            <button class="btn hidden" id="continueAfterShareBtn">Kegingi qatorni korish ➡️</button>
+        </div>
+        
         <div id="prizeSection" class="card hidden">
             <h2>Tabriklaymiz! 🎉</h2>
             
@@ -491,14 +625,36 @@
             </div>
             
             <div class="prize-section">
-                <h3> oyinni shu yerda tugating !</h3>
+                <h3>xavf kopayib ketdi yutuqni shu yerda oling va qayta oyinni 2 soatdan song oynang!</h3>
                 <p><span class="money-highlight">Yutuqni oling va qayta o'yin boshlang!</span></p>
-                <p> 6.71 KF yutuqni oling va qayta oyinni 15 daqiqa otqazib boshlang</p>
+                <p>Qayta oyin 2 soatdan song oynalsa ishonchli signallar olasin tezda qayta oyin boshlash maglubiyatga sababchi boladi!</p>
             </div>
             
             <button class="btn" id="playAgainBtn">Yutuqni Oling va Qayta O'ynash 🔄</button>
         </div>
+        
+        <div id="gameOverSection" class="card hidden">
+            <h2>O'yin Tugadi 🎯</h2>
+            
+            <div class="user-id-display">
+                <strong>ID Raqamingiz:</strong> <span id="gameOverUserId"></span>
+            </div>
+            
+            <div class="game-over-section">
+                <h3>O'yin yakunlandi!</h3>
+                <p><span class="money-highlight">BERILGAN <span id="finalRound">3</span> SIGNALNI muvaffaqiyatli yakunladingiz KEGINGI QATORLARDA XAVF YUQORI!</span></p>
+                <p>Oyinni yakunlang yutugni olib 30 daqiqadan song qayta oynang va katta yutuqlarga erishing!</p>
+            </div>
+            
+            <button class="btn" id="restartAfterGameOverBtn">Qayta Signal olish 🔄</button>
+        </div>
     </div>
+    
+    <!-- ID raqamni almashtirish tugmasi -->
+    <button class="change-id-btn" id="changeIdBtn">
+        <span>🔄</span>
+        <span>ID almashtirish</span>
+    </button>
     
     <div id="hackerAnimation" class="hacker-animation hidden">
         <div class="matrix-code" id="matrixCode">HACKING APPLE OF FORTUNE...</div>
@@ -520,24 +676,46 @@
             const resultMessage = document.getElementById('resultMessage');
             const continueBtn = document.getElementById('continueBtn');
             const restartBtn = document.getElementById('restartBtn');
+            const shareSection = document.getElementById('shareSection');
+            const telegramAutoBtn = document.getElementById('telegramAutoBtn');
+            const continueAfterShareBtn = document.getElementById('continueAfterShareBtn');
             const prizeSection = document.getElementById('prizeSection');
             const playAgainBtn = document.getElementById('playAgainBtn');
+            const gameOverSection = document.getElementById('gameOverSection');
+            const restartAfterGameOverBtn = document.getElementById('restartAfterGameOverBtn');
+            const finalRound = document.getElementById('finalRound');
             const hackerAnimation = document.getElementById('hackerAnimation');
             const matrixCode = document.getElementById('matrixCode');
             const hackerProgress = document.getElementById('hackerProgress');
             const idError = document.getElementById('idError');
             const userIdInput = document.getElementById('userId');
             const roundIndicator = document.getElementById('roundIndicator');
+            const shareRoundIndicator = document.getElementById('shareRoundIndicator');
+            const gameOverUserId = document.getElementById('gameOverUserId');
+            const changeIdBtn = document.getElementById('changeIdBtn');
             
             // ID ko'rsatish elementlari
             const displayUserId = document.getElementById('displayUserId');
             const gameUserId = document.getElementById('gameUserId');
+            const shareUserId = document.getElementById('shareUserId');
             const prizeUserId = document.getElementById('prizeUserId');
             
             let currentRound = 1;
             let gameActive = false;
             let currentUserId = '';
             let applesRevealed = false;
+            let maxRounds = 0; // Tasodifiy maksimal qatorlar soni
+            
+            // Telegram xabari
+            const telegramMessage = `Salom dostim! 🚀
+
+100% signal beruvchi va daromad qilish mumkin bo'lgan bot topdim!
+
+👉 t.me/Strategioyinlar_bot
+
+🎯 AIFUT promokodi bilan ro'yxatdan o'ting va 200% bonus oling!
+
+💰 Katta yutuqlar sizni kutmoqda!`;
             
             // Sahifa yuklanganda saqlangan ID ni o'qish
             function loadSavedUserId() {
@@ -597,9 +775,30 @@
                 warningSection.classList.remove('hidden');
             });
             
+            // ID raqamni almashtirish tugmasi
+            changeIdBtn.addEventListener('click', function() {
+                // Barcha bo'limlarni yashirish
+                warningSection.classList.add('hidden');
+                gameSection.classList.add('hidden');
+                shareSection.classList.add('hidden');
+                prizeSection.classList.add('hidden');
+                gameOverSection.classList.add('hidden');
+                
+                // Login bo'limini ko'rsatish
+                loginSection.classList.remove('hidden');
+                
+                // O'yinni qayta boshlash
+                currentRound = 1;
+                currentUserId = '';
+                userIdInput.value = '';
+                localStorage.removeItem('appleFortuneUserId');
+            });
+            
             // Tasdiqlash tugmasi
             confirmStartBtn.addEventListener('click', function() {
                 warningSection.classList.add('hidden');
+                // Tasodifiy maksimal qatorlar sonini belgilash (3-6 oralig'ida)
+                maxRounds = Math.floor(Math.random() * 4) + 3; // 3, 4, 5 yoki 6
                 startHackerAnimation();
             });
             
@@ -645,7 +844,7 @@
             
             // Qator ko'rsatkichini yangilash
             function updateRoundIndicator() {
-                roundIndicator.textContent = `Signal: ${currentRound} `;
+                roundIndicator.textContent = `Signal: ${currentRound}`;
             }
             
             // Sirli olmalarni yaratish
@@ -732,8 +931,24 @@
                     resultMessage.className = 'result-message success';
                     resultMessage.classList.remove('hidden');
                     
-                    if (currentRound < 6) {
-                        continueBtn.classList.remove('hidden');
+                    // Agar maksimal qatorga yetgan bo'lsa, o'yinni tugatish
+                    if (currentRound >= maxRounds) {
+                        setTimeout(() => {
+                            gameSection.classList.add('hidden');
+                            showGameOverSection();
+                        }, 2000);
+                    } else if (currentRound === 1) {
+                        // 1-qatordan 2-qatorga o'tishda taklif qilish talab qilinmaydi
+                        setTimeout(() => {
+                            currentRound++;
+                            startHackerAnimation();
+                        }, 2000);
+                    } else if (currentRound < 6) {
+                        // 2-qatordan keyin taklif qilish bo'limiga o'tish
+                        setTimeout(() => {
+                            gameSection.classList.add('hidden');
+                            startShareSection();
+                        }, 2000);
                     } else {
                         // Oltinchi bosqichdan keyin yutuq bo'limiga o'tish
                         setTimeout(() => {
@@ -744,15 +959,67 @@
                 }
             }
             
-            // Davom etish tugmasi
-            continueBtn.addEventListener('click', function() {
+            // Taklif qilish bo'limini boshlash
+            function startShareSection() {
+                shareSection.classList.remove('hidden');
+                shareUserId.textContent = currentUserId;
+                shareRoundIndicator.textContent = `Signal: ${currentRound}`;
+                
+                // "Davom Etish" tugmasini yashirish
+                continueAfterShareBtn.classList.add('hidden');
+            }
+            
+            // Telegram avtomatik tarqatish tugmasi
+            telegramAutoBtn.addEventListener('click', function() {
+                // Telegram Share API orqali to'g'ridan-to'g'ri share qilish
+                const shareUrl = `https://t.me/share/url?url=https://t.me/Strategioyinlar_bot&text=${encodeURIComponent(telegramMessage)}`;
+                
+                // Yangi oyna ochish
+                const newWindow = window.open(shareUrl, '_blank', 'width=600,height=700');
+                
+                // "Davom Etish" tugmasini ko'rsatish
+                continueAfterShareBtn.classList.remove('hidden');
+                
+                // Agar brauzer yangi oynani bloklasa
+                if (!newWindow || newWindow.closed || typeof newWindow.closed == 'undefined') {
+                    // Alternative usul - to'g'ridan-to'g'ri Telegram'ga yo'naltirish
+                    window.location.href = `tg://msg?text=${encodeURIComponent(telegramMessage)}`;
+                    
+                    // Agar tg:// ishlamasa, oddiy havola
+                    setTimeout(() => {
+                        window.open(shareUrl, '_blank');
+                    }, 1000);
+                }
+            });
+            
+            // Taklif qilgandan keyin davom etish
+            continueAfterShareBtn.addEventListener('click', function() {
                 currentRound++;
+                shareSection.classList.add('hidden');
                 startHackerAnimation();
             });
             
             // Qayta boshlash tugmasi
             restartBtn.addEventListener('click', function() {
                 currentRound = 1;
+                // Yangi tasodifiy maksimal qatorlar soni
+                maxRounds = Math.floor(Math.random() * 4) + 3;
+                startHackerAnimation();
+            });
+            
+            // O'yin tugadi bo'limini ko'rsatish
+            function showGameOverSection() {
+                gameOverSection.classList.remove('hidden');
+                gameOverUserId.textContent = currentUserId;
+                finalRound.textContent = currentRound;
+            }
+            
+            // O'yin tugagandan keyin qayta boshlash
+            restartAfterGameOverBtn.addEventListener('click', function() {
+                currentRound = 1;
+                // Yangi tasodifiy maksimal qatorlar soni
+                maxRounds = Math.floor(Math.random() * 4) + 3;
+                gameOverSection.classList.add('hidden');
                 startHackerAnimation();
             });
             
@@ -765,6 +1032,8 @@
             // Qayta o'ynash tugmasi
             playAgainBtn.addEventListener('click', function() {
                 currentRound = 1;
+                // Yangi tasodifiy maksimal qatorlar soni
+                maxRounds = Math.floor(Math.random() * 4) + 3;
                 prizeSection.classList.add('hidden');
                 startHackerAnimation();
             });
