@@ -22,7 +22,7 @@
             line-height: 1.5;
         }
 
-        /* Background effects - Qora fonda oqish matnlar */
+        /* Background effects */
         .nebula-bg {
             position: fixed;
             top: 0;
@@ -209,7 +209,7 @@
             transform: translateY(-2px);
         }
 
-        /* Header - ASOSIY MENYU UCHUN */
+        /* Header */
         header {
             text-align: center;
             padding: 25px 20px;
@@ -450,7 +450,11 @@
             border: 1px solid rgba(0, 136, 204, 0.3);
         }
 
-        /* YANGI: OLMA KORISH TUGMASI YASHIL RANG */
+        .telegram-invite-btn {
+            background: linear-gradient(135deg, #ff3366, #cc0044);
+            border: 1px solid rgba(255, 51, 102, 0.3);
+        }
+
         .reveal-btn {
             background: linear-gradient(135deg, #00cc66, #009944) !important;
             border: 1px solid rgba(0, 255, 128, 0.3) !important;
@@ -469,7 +473,7 @@
             border-radius: 50px;
         }
         
-        /* Action buttons container - YANGILANDI */
+        /* Action buttons container */
         .action-buttons {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
@@ -487,12 +491,43 @@
             border-radius: 12px;
         }
 
-        /* YANGI: ONLINE STATISTIKA KARTASI - PASTDA */
+        /* YANGI: Tugmalar qismi (asosiy menyudan keyin) */
+        .buttons-section {
+            margin: 20px 0 40px 0;
+        }
+
+        .buttons-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .buttons-grid .btn {
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 16px 12px;
+            border-radius: 15px;
+            font-size: 0.9rem;
+        }
+
+        .buttons-description {
+            text-align: center;
+            font-size: 0.9rem;
+            color: rgba(200, 220, 255, 0.8);
+            margin-top: 15px;
+            line-height: 1.5;
+        }
+
+        /* YANGI: Online statistika kartasi (tugmalardan keyin pastda) */
         .online-stats-card {
             background: rgba(0, 200, 255, 0.15);
             border-radius: 25px;
             padding: 25px;
-            margin: 30px 0;
+            margin: 40px 0 25px 0;
             backdrop-filter: blur(20px);
             border: 2px solid rgba(0, 200, 255, 0.3);
             position: relative;
@@ -802,12 +837,12 @@
             }
         }
 
-        /* YANGI: VIP INVITE SECTION */
+        /* YANGI: VIP Invite Section (pastda) */
         .vip-invite-section {
             background: linear-gradient(135deg, rgba(255, 204, 0, 0.15), rgba(255, 153, 0, 0.1));
             border-radius: 25px;
             padding: 25px;
-            margin: 25px 0;
+            margin: 40px 0 25px 0;
             border: 2px solid rgba(255, 204, 0, 0.3);
             position: relative;
             overflow: hidden;
@@ -1041,14 +1076,14 @@
             border: 1px solid rgba(0, 200, 255, 0.2);
         }
         
-        /* Apples container - MARKAZDA JOYLASHISH */
+        /* Apples container */
         .apples-container {
             display: flex;
-            justify-content: center; /* MARKAZGA JOYLASHTIRISH */
+            justify-content: center;
             align-items: center;
             margin: 20px 0;
             flex-wrap: nowrap;
-            gap: 8px; /* GAP KAMAYTIRILDI */
+            gap: 8px;
             padding: 15px;
             background: rgba(0, 50, 100, 0.1);
             border-radius: 20px;
@@ -1061,9 +1096,9 @@
             scrollbar-color: rgba(0, 150, 255, 0.3) rgba(0, 100, 255, 0.1);
         }
         
-        /* Apple styles - MARKAZDA JOYLASHISH */
+        /* Apple styles */
         .mystery-apple, .apple {
-            width: 55px !important; /* KATTAROQ */
+            width: 55px !important;
             height: 55px !important;
             min-width: 55px !important;
             border-radius: 50%;
@@ -1075,7 +1110,7 @@
             border: 2px solid transparent;
             transition: all 0.3s ease;
             cursor: pointer;
-            margin: 0; /* MARGIN OLIB TASHLANDI */
+            margin: 0;
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -1128,11 +1163,6 @@
         .apple.bitten {
             background-image: url('https://i.ibb.co/m5sNvNPK/62cd09ea-de08-49b9-9fea-d0100c747423-2.jpg');
             border: 2px solid #00ff00;
-        }
-
-        /* Apple legend - YOZUVLAR OLIB TASHLANDI */
-        .apple-legend {
-            display: none !important;
         }
 
         /* Hidden class */
@@ -1239,10 +1269,10 @@
         /* Round counter */
         .round-counter {
             text-align: center;
-            margin: 15px 0; /* MARGIN KAMAYTIRILDI */
-            font-size: 1.1rem; /* KICHIKROQ */
+            margin: 15px 0;
+            font-size: 1.1rem;
             background: rgba(255, 204, 0, 0.1);
-            padding: 15px; /* PADDING KAMAYTIRILDI */
+            padding: 15px;
             border-radius: 15px;
             backdrop-filter: blur(5px);
             border: 1px solid rgba(255, 204, 0, 0.2);
@@ -1287,10 +1317,10 @@
         /* Selection instruction */
         .selection-instruction {
             text-align: center;
-            margin: 15px 0; /* MARGIN KAMAYTIRILDI */
+            margin: 15px 0;
             font-size: 0.9rem;
             color: #ffcc00;
-            padding: 12px; /* PADDING KAMAYTIRILDI */
+            padding: 12px;
             background: rgba(255, 204, 0, 0.1);
             border-radius: 12px;
             backdrop-filter: blur(5px);
@@ -1351,7 +1381,7 @@
             font-size: 0.9rem;
         }
 
-        /* Game section header - LOGOTIP OLIB TASHLANDI */
+        /* Game section header */
         #gameSection > h2 {
             text-align: center;
             margin-bottom: 15px;
@@ -1365,11 +1395,14 @@
 
         /* Responsive design */
         @media (min-width: 768px) {
-            /* Desktop uchun olmalar kattaroq */
             .mystery-apple, .apple {
                 width: 65px !important;
                 height: 65px !important;
                 min-width: 65px !important;
+            }
+
+            .buttons-grid {
+                grid-template-columns: repeat(4, 1fr);
             }
         }
 
@@ -1386,14 +1419,12 @@
                 font-size: 2.8rem;
             }
             
-            /* Mobile uchun olmalar konteyneri */
             .apples-container {
-                gap: 6px; /* GAP KAMAYTIRILDI */
+                gap: 6px;
                 padding: 12px;
-                justify-content: center; /* MARKAZGA */
+                justify-content: center;
             }
             
-            /* Mobile uchun olmalar o'lchami */
             .mystery-apple, .apple {
                 width: 50px !important;
                 height: 50px !important;
@@ -1429,7 +1460,6 @@
                 font-size: 0.9rem;
             }
 
-            /* Game section uchun responsive */
             #gameSection .card {
                 padding: 20px 15px;
             }
@@ -1480,10 +1510,13 @@
                 align-self: flex-end;
                 font-size: 1rem;
             }
+
+            .buttons-grid {
+                grid-template-columns: 1fr;
+            }
         }
 
         @media (max-width: 360px) {
-            /* Kichik telefonlar uchun */
             .mystery-apple, .apple {
                 width: 45px !important;
                 height: 45px !important;
@@ -1624,7 +1657,7 @@
     </div>
 
     <div class="container">
-        <!-- Header - FAKAT ASOSIY MENYUDA KORINADI -->
+        <!-- Header -->
         <header>
             <div class="apple-icon" id="appleIcon">🍎</div>
             <h1 id="mainTitle">Apple of Fortune</h1>
@@ -1640,26 +1673,63 @@
                 <p><strong>💡 Ogohlantirish:</strong> Signal olish uchun avval ro'yxatdan o'tish tavsiya etiladi. Agar ro'yxatdan o'tmagan bo'lsangiz, pastdagi "Ro'yxatdan O'tish" tugmasini bosing. AIFUT promokodi orqali korsatilgan bukmekerlardan ro'yhatdan o'tgan bolsangiz signal olish tugmasini bosib signal olishingiz mumkin</p>
             </div>
             
-            <div class="action-buttons">
-                <button class="btn register-btn" id="registerBtn">
-                    <span>📋</span> <span id="registerBtnText">RO'YXATDAN O'TISH</span>
-                </button>
-                <button class="btn start-game-btn" id="signalBtn">
-                    <span>📡</span> <span id="signalBtnText">SIGNAL OLISH</span>
-                </button>
-                <button class="btn vip-signal-btn" id="vipDirectMenuBtn">
-                    <span>👑</span> <span id="vipDirectMenuText">VIP SIGNAL TO'GRIDAN</span>
-                </button>
-                <button class="btn download-btn" id="downloadBtn">
-                    <span>📥</span> <span id="downloadBtnText">APK YUKLASH</span>
-                </button>
+            <!-- YANGI: Tugmalar qismi -->
+            <div class="buttons-section">
+                <div class="buttons-grid">
+                    <button class="btn register-btn" id="registerBtn">
+                        <span>📋</span> <span id="registerBtnText">RO'YXATDAN O'TISH</span>
+                    </button>
+                    <button class="btn start-game-btn" id="signalBtn">
+                        <span>📡</span> <span id="signalBtnText">SIGNAL OLISH</span>
+                    </button>
+                    <button class="btn vip-signal-btn" id="vipDirectMenuBtn">
+                        <span>👑</span> <span id="vipDirectMenuText">VIP SIGNAL</span>
+                    </button>
+                    <button class="btn telegram-invite-btn" id="telegramInviteBtn">
+                        <span>📲</span> <span id="telegramInviteText">TELEGRAM ORQALI ULASHISH</span>
+                    </button>
+                </div>
+                <div class="buttons-description">
+                    <p><strong>💡 Tavsiya:</strong> VIP signal olish uchun 20 ta do'stingizni Telegram orqali taklif qilishingiz kerak. Har bir taklif qilingan do'st uchun progress bar to'ldiriladi.</p>
+                </div>
             </div>
         </div>
         
-        <!-- YANGI: VIP Invite Section -->
-        <div class="vip-invite-section hidden" id="vipInviteSection">
+        <!-- YANGI: Online statistika kartasi (tugmalardan keyin pastda) -->
+        <div class="online-stats-card" id="onlineStats">
+            <div class="stats-title">
+                <span id="liveStatsTitle">ONLAYN STATISTIKA</span>
+                <span class="live-badge" id="liveBadge">LIVE</span>
+            </div>
+            
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-value" id="activeUsers">1,247</div>
+                    <div class="stat-label" id="activeUsersLabel">FAOL FOYDALANUVCHILAR</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value" id="totalProfit">$58,924</div>
+                    <div class="stat-label" id="totalProfitLabel">BUGUNGI FOYDA</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value" id="signalsToday">892</div>
+                    <div class="stat-label" id="signalsTodayLabel">BUGUNGI SIGNALLAR</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value" id="successRate">94.7%</div>
+                    <div class="stat-label" id="successRateLabel">MUVAFFAQIYAT DARAJASI</div>
+                </div>
+            </div>
+            
+            <div class="stats-list" id="recentWins">
+                <!-- Recent wins will be added dynamically -->
+            </div>
+        </div>
+        
+        <!-- YANGI: VIP Invite Section (statistikadan keyin pastda) -->
+        <div class="vip-invite-section" id="vipInviteSection">
             <h2 style="color: #ffcc00; text-align: center; margin-bottom: 20px;">👑 VIP SIGNAL OLISH UCHUN</h2>
-            <p style="text-align: center; margin-bottom: 20px; font-size: 1rem;">VIP signal olish uchun <strong>20 ta do'stingizni taklif qilishingiz</strong> kerak. Har bir taklif qilingan do'st uchun progress bar to'ldiriladi.</p>
+            <p style="text-align: center; margin-bottom: 20px; font-size: 1rem;">VIP signal olish uchun <strong>20 ta do'stingizni Telegram orqali taklif qilishingiz</strong> kerak. Har bir taklif qilingan do'st uchun progress bar to'ldiriladi.</p>
             
             <div class="invite-progress">
                 <div class="progress-info">
@@ -1674,7 +1744,7 @@
             <div class="invite-count" id="inviteCountDisplay">0</div>
             
             <div class="invite-buttons">
-                <button class="btn telegram-share-btn" id="inviteTelegramBtn">
+                <button class="btn telegram-invite-btn" id="inviteTelegramBtn">
                     <span>📲</span> <span id="inviteTelegramText">TELEGRAM ORQALI TAKLIF QILISH</span>
                 </button>
                 <button class="btn vip-signal-btn" id="getVipDirectBtn" style="opacity: 0.5;" disabled>
@@ -1738,11 +1808,8 @@
             </button>
         </div>
         
-        <!-- Game Section - LOGOTIP OLIB TASHLANDI -->
+        <!-- Game Section -->
         <div id="gameSection" class="card hidden">
-            <!-- Logotip olib tashlandi -->
-            <!-- <h2 id="gameTitle">🍎 Apple of Fortune</h2> -->
-            
             <div class="round-counter">
                 <span id="signalLabel">SIGNAL RAUNDI:</span> <span id="roundCounter">1</span>
             </div>
@@ -1753,7 +1820,7 @@
             
             <p id="gameInstruction">Keyingi bosqichga o'tish uchun butun olmalarni tanlang. Tishlangan olmalar o'yinni yakunlaydi!</p>
             
-            <!-- APPLES CONTAINER - MARKAZDA -->
+            <!-- APPLES CONTAINER -->
             <div class="apples-container" id="applesContainer">
                 <!-- Apples will be generated here -->
             </div>
@@ -1795,7 +1862,7 @@
             <div class="vip-section">
                 <h3 id="premiumSignalText">⭐ HOZIR VIP SIGNAL OLING!</h3>
                 <p><strong id="inviteText">Kutishni o'tkazib yuboring! Darhol 100% aniq VIP signal oling!</strong></p>
-                <p id="vipSignalText">20 ta do'stingizni taklif qiling va darhol VIP signal oling!</p>
+                <p id="vipSignalText">20 ta do'stingizni Telegram orqali taklif qiling va darhol VIP signal oling!</p>
                 <button class="btn vip-signal-btn" id="vipSignalBtn">
                     <span id="getVipText">🚀 HOZIR VIP SIGNAL OLING</span>
                 </button>
@@ -1803,49 +1870,18 @@
 
             <!-- Share Section -->
             <div class="share-info">
-                <p><strong>💰 DO'STLARINGIZNI TAKLIF QILIB YANA KO'PROQ FOYDA OLING!</strong></p>
-                <p>Do'stlaringiz bilan ulashing va premium imtiyozlarga ega bo'ling. 20 kishini taklif qilib darhol VIP kirish oling!</p>
+                <p><strong>💰 DO'STLARINGIZNI TELEGRAM ORQALI TAKLIF QILIB YANA KO'PROQ FOYDA OLING!</strong></p>
+                <p>Do'stlaringiz bilan Telegram orqali ulashing va premium imtiyozlarga ega bo'ling. 20 kishini taklif qilib darhol VIP kirish oling!</p>
             </div>
             
             <div class="share-section">
-                <button class="btn share-btn" id="shareDuringWaitBtn">
-                    📲 <span id="shareBtnText">DO'STLARNI TAKLIF QILISH</span>
+                <button class="btn telegram-invite-btn" id="shareDuringWaitBtn">
+                    📲 <span id="shareBtnText">TELEGRAM ORQALI TAKLIF QILISH</span>
                 </button>
             </div>
             
             <div class="user-id-display">
                 <strong id="yourIdText3">ID RAQAMINGIZ:</strong> <span id="waitUserId"></span>
-            </div>
-        </div>
-
-        <!-- YANGI: ONLINE STATISTIKA KARTASI - PASTDA -->
-        <div class="online-stats-card" id="onlineStats">
-            <div class="stats-title">
-                <span id="liveStatsTitle">ONLAYN STATISTIKA</span>
-                <span class="live-badge" id="liveBadge">LIVE</span>
-            </div>
-            
-            <div class="stats-grid">
-                <div class="stat-item">
-                    <div class="stat-value" id="activeUsers">1,247</div>
-                    <div class="stat-label" id="activeUsersLabel">FAOL FOYDALANUVCHILAR</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-value" id="totalProfit">$58,924</div>
-                    <div class="stat-label" id="totalProfitLabel">BUGUNGI FOYDA</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-value" id="signalsToday">892</div>
-                    <div class="stat-label" id="signalsTodayLabel">BUGUNGI SIGNALLAR</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-value" id="successRate">94.7%</div>
-                    <div class="stat-label" id="successRateLabel">MUVAFFAQIYAT DARAJASI</div>
-                </div>
-            </div>
-            
-            <div class="stats-list" id="recentWins">
-                <!-- Recent wins will be added dynamically -->
             </div>
         </div>
     </div>
@@ -1873,10 +1909,10 @@
                 tagline: "Professional AI Trading Signals Platformasi",
                 welcomeTitle: "🚀 Signal Tizimiga Xush Kelibsiz",
                 welcomeText: "Premium AI savdo signallariga kirish. Maksimal foyda olish uchun <span class='money-highlight'>AIFUT</span> promokodi bilan ro'yxatdan o'ting!",
-                signalBtnText: "SIGNAL OLISH",
                 registerBtnText: "RO'YXATDAN O'TISH",
-                vipDirectMenuText: "VIP SIGNAL TO'GRIDAN",
-                downloadBtnText: "APK YUKLASH",
+                signalBtnText: "SIGNAL OLISH",
+                vipDirectMenuText: "VIP SIGNAL",
+                telegramInviteText: "TELEGRAM ORQALI ULASHISH",
                 gameStartTitle: "🔑 ID Raqamingizni Kiriting",
                 earnStartText: "Premium savdo signallariga kirish uchun ID raqamingizni kiriting. <span class='money-highlight'>AIFUT promokodi orqali royhatdan otishni unutmang </span>",
                 userIdLabel: "ID RAQAMINGIZ",
@@ -1892,7 +1928,6 @@
                 changeIdText: "🔄 ID O'ZGARTIRISH",
                 readyText: "Daromad olishni boshlashga tayyormisiz? Keling, boshlaymiz!",
                 confirmStartText: "🚀 SIGNAL OLISHNI BOSHLANG",
-                gameTitle: "🍎 Apple of Fortune",
                 signalLabel: "SIGNAL RAUNDI:",
                 yourIdText2: "ID RAQAMINGIZ:",
                 gameInstruction: "Keyingi bosqichga o'tish uchun butun olmalarni tanlang. Tishlangan olmalar o'yinni yakunlaydi!",
@@ -1907,9 +1942,9 @@
                 nextSignalText: "KEYINGI SIGNALGACHA:",
                 premiumSignalText: "⭐ HOZIR VIP SIGNAL OLING!",
                 inviteText: "Kutishni o'tkazib yuboring! Darhol 100% aniq VIP signal oling!",
-                vipSignalText: "20 ta do'stingizni taklif qiling va darhol VIP signal oling!",
+                vipSignalText: "20 ta do'stingizni Telegram orqali taklif qiling va darhol VIP signal oling!",
                 getVipText: "🚀 HOZIR VIP SIGNAL OLING",
-                shareBtnText: "DO'STLARNI TAKLIF QILISH",
+                shareBtnText: "TELEGRAM ORQALI TAKLIF QILISH",
                 yourIdText3: "ID RAQAMINGIZ:",
                 globalChangeIdText: "ID O'ZGARTIRISH",
                 hackingText: "SIGNAL TAHLILI AMALGA OSHIRILMOQDA...",
@@ -1928,14 +1963,14 @@ Premium AI savdo signallarini olish uchun qo'shiling:
 Mening ID raqamim: {userId}
 
 #AppleFortune #AIFUT #SavdoSignallari`,
-                // YANGI: Online statistika tarjimalari
+                // Online statistika tarjimalari
                 liveStatsTitle: "ONLAYN STATISTIKA",
                 liveBadge: "LIVE",
                 activeUsersLabel: "FAOL FOYDALANUVCHILAR",
                 totalProfitLabel: "BUGUNGI FOYDA",
                 signalsTodayLabel: "BUGUNGI SIGNALLAR",
                 successRateLabel: "MUVAFFAQIYAT DARAJASI",
-                // YANGI: VIP Modal tarjimalari
+                // VIP Modal tarjimalari
                 vipModalTitle: "VIP SIGNAL TO'GRIDAN-TO'G'RI",
                 vipModalSubtitle: "Premium trading signals directly to your account!",
                 vipModalText: "VIP signal olish uchun quyidagi telegram kanalga obuna bo'ling va AIFUT promokodi bilan ro'yxatdan o'ting:",
@@ -1943,7 +1978,7 @@ Mening ID raqamim: {userId}
                 copyTelegramText: "LINKNI NUSXALASH",
                 vipWarning: "Eslatma:",
                 vipDirectBtnText: "HOZIR RO'YXATDAN O'TISH",
-                // YANGI: VIP Invite tarjimalari
+                // VIP Invite tarjimalari
                 inviteTelegramText: "TELEGRAM ORQALI TAKLIF QILISH",
                 getVipDirectText: "VIP SIGNAL OLISH",
                 inviteProgressText: "Taklif qilinganlar:",
@@ -1957,10 +1992,10 @@ Mening ID raqamim: {userId}
                 tagline: "Профессиональная платформа AI торговых сигналов",
                 welcomeTitle: "🚀 Добро пожаловать в систему сигналов",
                 welcomeText: "Получите доступ к премиум AI торговым сигналам. Зарегистрируйтесь с промокодом <span class='money-highlight'>AIFUT</span> для максимальной прибыли!",
-                signalBtnText: "ПОЛУЧИТЬ СИГНАЛЫ",
                 registerBtnText: "РЕГИСТРАЦИЯ",
-                vipDirectMenuText: "VIP СИГНАЛ ПРЯМО",
-                downloadBtnText: "СКАЧАТЬ APK",
+                signalBtnText: "ПОЛУЧИТЬ СИГНАЛЫ",
+                vipDirectMenuText: "VIP СИГНАЛ",
+                telegramInviteText: "ПОДЕЛИТЬСЯ ЧЕРЕЗ TELEGRAM",
                 gameStartTitle: "🔑 Введите ваш ID",
                 earnStartText: "Введите ваш ID номер для доступа к премиум торговым сигналам. <span class='money-highlight'>Вы можете начать получать сигналы даже если не зарегистрированы.</span>",
                 userIdLabel: "ВАШ ID НОМЕР",
@@ -1976,7 +2011,6 @@ Mening ID raqamim: {userId}
                 changeIdText: "🔄 СМЕНИТЬ ID",
                 readyText: "Готовы начать зарабатывать? Давайте начнем!",
                 confirmStartText: "🚀 НАЧАТЬ ПОЛУЧЕНИЕ СИГНАЛОВ",
-                gameTitle: "🍎 Apple of Fortune",
                 signalLabel: "РАУНД СИГНАЛА:",
                 yourIdText2: "ВАШ ID:",
                 gameInstruction: "Выбирайте целые яблоки для перехода на следующий уровень. Надкушенные яблоки завершат игру!",
@@ -1991,9 +2025,9 @@ Mening ID raqamim: {userId}
                 nextSignalText: "ДО СЛЕДУЮЩЕГО СИГНАЛА:",
                 premiumSignalText: "⭐ ПОЛУЧИТЕ VIP СИГНАЛ СЕЙЧАС!",
                 inviteText: "Пропустите ожидание! Получите мгновенный 100% точный VIP сигнал!",
-                vipSignalText: "Пригласите 20 друзей и получите VIP сигнал мгновенно!",
+                vipSignalText: "Пригласите 20 друзей через Telegram и получите VIP сигнал мгновенно!",
                 getVipText: "🚀 ПОЛУЧИТЬ VIP СИГНАЛ СЕЙЧАС",
-                shareBtnText: "ПРИГЛАСИТЬ ДРУЗЕЙ",
+                shareBtnText: "ПРИГЛАСИТЬ ЧЕРЕЗ TELEGRAM",
                 yourIdText3: "ВАШ ID:",
                 globalChangeIdText: "СМЕНИТЬ ID",
                 hackingText: "ВЫПОЛНЯЕТСЯ АНАЛИЗ СИГНАЛОВ...",
@@ -2012,14 +2046,14 @@ Mening ID raqamim: {userId}
 Мой ID номер: {userId}
 
 #AppleFortune #AIFUT #ТорговыеСигналы`,
-                // YANGI: Online statistika tarjimalari
+                // Online statistika tarjimalari
                 liveStatsTitle: "ОНЛАЙН СТАТИСТИКА",
                 liveBadge: "LIVE",
                 activeUsersLabel: "АКТИВНЫЕ ПОЛЬЗОВАТЕЛИ",
                 totalProfitLabel: "ПРИБЫЛЬ СЕГОДНЯ",
                 signalsTodayLabel: "СИГНАЛЫ СЕГОДНЯ",
                 successRateLabel: "УСПЕШНОСТЬ",
-                // YANGI: VIP Modal tarjimalari
+                // VIP Modal tarjimalari
                 vipModalTitle: "VIP СИГНАЛ НАПРЯМУЮ",
                 vipModalSubtitle: "Премиальные торговые сигналы прямо на ваш аккаунт!",
                 vipModalText: "Чтобы получить VIP сигнал, подпишитесь на телеграм канал и зарегистрируйтесь с промокодом AIFUT:",
@@ -2027,7 +2061,7 @@ Mening ID raqamim: {userId}
                 copyTelegramText: "КОПИРОВАТЬ ССЫЛКУ",
                 vipWarning: "Примечание:",
                 vipDirectBtnText: "ЗАРЕГИСТРИРОВАТЬСЯ СЕЙЧАС",
-                // YANGI: VIP Invite tarjimalari
+                // VIP Invite tarjimalari
                 inviteTelegramText: "ПРИГЛАСИТЬ ЧЕРЕЗ TELEGRAM",
                 getVipDirectText: "ПОЛУЧИТЬ VIP СИГНАЛ",
                 inviteProgressText: "Приглашено:",
@@ -2041,10 +2075,10 @@ Mening ID raqamim: {userId}
                 tagline: "Professional AI Trading Signals Platform",
                 welcomeTitle: "🚀 Welcome to Signal System",
                 welcomeText: "Get access to premium AI trading signals. Register with <span class='money-highlight'>AIFUT</span> promo code for maximum profits!",
-                signalBtnText: "GET SIGNALS",
                 registerBtnText: "REGISTER",
-                vipDirectMenuText: "VIP SIGNAL DIRECT",
-                downloadBtnText: "DOWNLOAD APK",
+                signalBtnText: "GET SIGNALS",
+                vipDirectMenuText: "VIP SIGNAL",
+                telegramInviteText: "SHARE VIA TELEGRAM",
                 gameStartTitle: "🔑 Enter Your ID",
                 earnStartText: "Enter your ID number to access premium trading signals. <span class='money-highlight'>You can start getting signals even if not registered.</span>",
                 userIdLabel: "YOUR ID NUMBER",
@@ -2060,7 +2094,6 @@ Mening ID raqamim: {userId}
                 changeIdText: "🔄 CHANGE ID",
                 readyText: "Ready to start earning? Let's begin!",
                 confirmStartText: "🚀 START GETTING SIGNALS",
-                gameTitle: "🍎 Apple of Fortune",
                 signalLabel: "SIGNAL ROUND:",
                 yourIdText2: "YOUR ID:",
                 gameInstruction: "Select whole apples to proceed to next level. Bitten apples will end the game!",
@@ -2075,9 +2108,9 @@ Mening ID raqamim: {userId}
                 nextSignalText: "NEXT SIGNAL IN:",
                 premiumSignalText: "⭐ GET VIP SIGNAL NOW!",
                 inviteText: "Skip the wait! Get immediate 100% accurate VIP signal!",
-                vipSignalText: "Invite 20 friends and receive VIP signal instantly!",
+                vipSignalText: "Invite 20 friends via Telegram and receive VIP signal instantly!",
                 getVipText: "🚀 GET VIP SIGNAL NOW",
-                shareBtnText: "INVITE FRIENDS",
+                shareBtnText: "INVITE VIA TELEGRAM",
                 yourIdText3: "YOUR ID:",
                 globalChangeIdText: "CHANGE ID",
                 hackingText: "PERFORMING SIGNAL ANALYSIS...",
@@ -2096,14 +2129,14 @@ Join for premium AI trading signals:
 My ID number: {userId}
 
 #AppleFortune #AIFUT #TradingSignals`,
-                // YANGI: Online statistika tarjimalari
+                // Online statistika tarjimalari
                 liveStatsTitle: "ONLINE STATISTICS",
                 liveBadge: "LIVE",
                 activeUsersLabel: "ACTIVE USERS",
                 totalProfitLabel: "TODAY'S PROFIT",
                 signalsTodayLabel: "TODAY'S SIGNALS",
                 successRateLabel: "SUCCESS RATE",
-                // YANGI: VIP Modal tarjimalari
+                // VIP Modal tarjimalari
                 vipModalTitle: "VIP SIGNAL DIRECTLY",
                 vipModalSubtitle: "Premium trading signals directly to your account!",
                 vipModalText: "To get VIP signal, subscribe to the telegram channel and register with AIFUT promo code:",
@@ -2111,7 +2144,7 @@ My ID number: {userId}
                 copyTelegramText: "COPY LINK",
                 vipWarning: "Note:",
                 vipDirectBtnText: "REGISTER NOW",
-                // YANGI: VIP Invite tarjimalari
+                // VIP Invite tarjimalari
                 inviteTelegramText: "INVITE VIA TELEGRAM",
                 getVipDirectText: "GET VIP SIGNAL",
                 inviteProgressText: "Invited:",
@@ -2125,10 +2158,10 @@ My ID number: {userId}
                 tagline: "পেশাদার এআই ট্রেডিং সিগন্যাল প্ল্যাটফর্ম",
                 welcomeTitle: "🚀 সিগন্যাল সিস্টেমে স্বাগতম",
                 welcomeText: "প্রিমিয়াম এআই ট্রেডিং সিগন্যাল অ্যাক্সেস করুন। সর্বোচ্চ মুনাফার জন্য <span class='money-highlight'>AIFUT</span> প্রোমো কোড দিয়ে নিবন্ধন করুন!",
-                signalBtnText: "সিগন্যাল পান",
                 registerBtnText: "নিবন্ধন",
-                vipDirectMenuText: "ভিআইপি সিগন্যাল সরাসরি",
-                downloadBtnText: "এপিকে ডাউনলোড",
+                signalBtnText: "সিগন্যাল পান",
+                vipDirectMenuText: "ভিআইপি সিগন্যাল",
+                telegramInviteText: "টেলিগ্রামের মাধ্যমে শেয়ার করুন",
                 gameStartTitle: "🔑 আপনার আইডি লিখুন",
                 earnStartText: "প্রিমিয়াম ট্রেডিং সিগন্যাল অ্যাক্সেস করতে আপনার আইডি নম্বর লিখুন। <span class='money-highlight'>নিবন্ধন না করেও আপনি সিগন্যাল পেতে শুরু করতে পারেন।</span>",
                 userIdLabel: "আপনার আইডি নম্বর",
@@ -2144,7 +2177,6 @@ My ID number: {userId}
                 changeIdText: "🔄 আইডি পরিবর্তন",
                 readyText: "আয় শুরু করতে প্রস্তুত? চলুন শুরু করা যাক!",
                 confirmStartText: "🚀 সিগন্যাল পাওয়া শুরু করুন",
-                gameTitle: "🍎 Apple of Fortune",
                 signalLabel: "সিগন্যাল রাউন্ড:",
                 yourIdText2: "আপনার আইডি:",
                 gameInstruction: "পরবর্তী স্তরে যেতে সম্পূর্ণ আপেল নির্বাচন করুন। কাটা আপেল গেম শেষ করবে!",
@@ -2159,9 +2191,9 @@ My ID number: {userId}
                 nextSignalText: "পরবর্তী সিগন্যাল:",
                 premiumSignalText: "⭐ এখনই ভিআইপি সিগন্যাল পান!",
                 inviteText: "অপেক্ষা এড়িয়ে যান! তাৎক্ষণিক 100% সঠিক ভিআইপি সিগন্যাল পান!",
-                vipSignalText: "২০ জন বন্ধুকে আমন্ত্রণ করুন এবং তাৎক্ষণিক ভিআইপি সিগন্যাল পান!",
-                getVipText: "🚀 এখনই ভিআইপি সিগন্যাল পান",
-                shareBtnText: "বন্ধুদের আমন্ত্রণ",
+                vipSignalText: "২০ জন বন্ধুকে টেলিগ্রামের মাধ্যমে আমন্ত্রণ করুন এবং তাৎক্ষণিক ভিআইপি সিগন্যাল পান!",
+                getVibText: "🚀 এখনই ভিআইপি সিগন্যাল পান",
+                shareBtnText: "টেলিগ্রামের মাধ্যমে আমন্ত্রণ",
                 yourIdText3: "আপনার আইডি:",
                 globalChangeIdText: "আইডি পরিবর্তন",
                 hackingText: "সিগন্যাল বিশ্লেষণ চলছে...",
@@ -2180,14 +2212,14 @@ My ID number: {userId}
 আমার আইডি নম্বর: {userId}
 
 #AppleFortune #AIFUT #ট্রেডিংসিগন্যাল`,
-                // YANGI: Online statistika tarjimalari
+                // Online statistika tarjimalari
                 liveStatsTitle: "অনলাইন পরিসংখ্যান",
                 liveBadge: "লাইভ",
                 activeUsersLabel: "সক্রিয় ব্যবহারকারী",
                 totalProfitLabel: "আজকের মুনাফা",
                 signalsTodayLabel: "আজকের সিগন্যাল",
                 successRateLabel: "সাফল্যের হার",
-                // YANGI: VIP Modal tarjimalari
+                // VIP Modal tarjimalari
                 vipModalTitle: "ভিআইপি সিগন্যাল সরাসরি",
                 vipModalSubtitle: "প্রিমিয়াম ট্রেডিং সিগন্যাল সরাসরি আপনার অ্যাকাউন্টে!",
                 vipModalText: "ভিআইপি সিগন্যাল পেতে, টেলিগ্রাম চ্যানেলে সাবস্ক্রাইব করুন এবং AIFUT প্রোমো কোড দিয়ে নিবন্ধন করুন:",
@@ -2195,7 +2227,7 @@ My ID number: {userId}
                 copyTelegramText: "লিংক কপি করুন",
                 vipWarning: "নোট:",
                 vipDirectBtnText: "এখনই নিবন্ধন করুন",
-                // YANGI: VIP Invite tarjimalari
+                // VIP Invite tarjimalari
                 inviteTelegramText: "টেলিগ্রামের মাধ্যমে আমন্ত্রণ করুন",
                 getVipDirectText: "ভিআইপি সিগন্যাল পান",
                 inviteProgressText: "আমন্ত্রিত:",
@@ -2209,10 +2241,10 @@ My ID number: {userId}
                 tagline: "منصة إشارات التداول بالذكاء الاصطناعي المحترفة",
                 welcomeTitle: "🚀 مرحبًا بك في نظام الإشارات",
                 welcomeText: "احصل على إشارات التداول المميزة بالذكاء الاصطناعي. سجل باستخدام الرمز الترويجي <span class='money-highlight'>AIFUT</span> لأقصى ربح!",
-                signalBtnText: "الحصول على الإشارات",
                 registerBtnText: "التسجيل",
-                vipDirectMenuText: "إشارة VIP مباشرة",
-                downloadBtnText: "تحميل APK",
+                signalBtnText: "الحصول على الإشارات",
+                vipDirectMenuText: "إشارة VIP",
+                telegramInviteText: "المشاركة عبر تلغرام",
                 gameStartTitle: "🔑 أدخل معرفك",
                 earnStartText: "أدخل رقم المعرف الخاص بك للوصول إلى إشارات التداول المميزة. <span class='money-highlight'>يمكنك البدء في الحصول على الإشارات حتى إذا لم تكن مسجلاً.</span>",
                 userIdLabel: "رقم المعرف الخاص بك",
@@ -2228,7 +2260,6 @@ My ID number: {userId}
                 changeIdText: "🔄 تغيير المعرف",
                 readyText: "مستعد للبدء في الربح؟ لنبدأ!",
                 confirmStartText: "🚀 بدء الحصول على الإشارات",
-                gameTitle: "🍎 Apple of Fortune",
                 signalLabel: "جولة الإشارة:",
                 yourIdText2: "معرفك:",
                 gameInstruction: "اختر التفاح الكامل للانتقال إلى المستوى التالي. التفاح المأكول سينهي اللعبة!",
@@ -2243,9 +2274,9 @@ My ID number: {userId}
                 nextSignalText: "الإشارة التالية خلال:",
                 premiumSignalText: "⭐ احصل على إشارة VIP الآن!",
                 inviteText: "تجاوز الانتظار! احصل على إشارة VIP فورية ودقيقة بنسبة 100%!",
-                vipSignalText: "ادعُ 20 صديقًا واحصل على إشارة VIP على الفور!",
+                vipSignalText: "ادعُ 20 صديقًا عبر تلغرام واحصل على إشارة VIP على الفور!",
                 getVipText: "🚀 احصل على إشارة VIP الآن",
-                shareBtnText: "دعوة الأصدقاء",
+                shareBtnText: "الدعوة عبر تلغرام",
                 yourIdText3: "معرفك:",
                 globalChangeIdText: "تغيير المعرف",
                 hackingText: "جارٍ تحليل الإشارات...",
@@ -2264,14 +2295,14 @@ My ID number: {userId}
 رقم معرفي: {userId}
 
 #AppleFortune #AIFUT #إشارات_التداول`,
-                // YANGI: Online statistika tarjimalari
+                // Online statistika tarjimalari
                 liveStatsTitle: "الإحصائيات المباشرة",
                 liveBadge: "مباشر",
                 activeUsersLabel: "المستخدمون النشطون",
                 totalProfitLabel: "الربح اليوم",
                 signalsTodayLabel: "الإشارات اليوم",
                 successRateLabel: "معدل النجاح",
-                // YANGI: VIP Modal tarjimalari
+                // VIP Modal tarjimalari
                 vipModalTitle: "إشارة VIP مباشرة",
                 vipModalSubtitle: "إشارات التداول المميزة مباشرة إلى حسابك!",
                 vipModalText: "للحصول على إشارة VIP، اشترك في قناة التليجرام وسجل باستخدام الرمز الترويجي AIFUT:",
@@ -2279,7 +2310,7 @@ My ID number: {userId}
                 copyTelegramText: "نسخ الرابط",
                 vipWarning: "ملاحظة:",
                 vipDirectBtnText: "سجل الآن",
-                // YANGI: VIP Invite tarjimalari
+                // VIP Invite tarjimalari
                 inviteTelegramText: "دعوة عبر التليجرام",
                 getVipDirectText: "الحصول على إشارة VIP",
                 inviteProgressText: "تمت الدعوة:",
@@ -2304,7 +2335,7 @@ My ID number: {userId}
             const loginSection = document.getElementById('loginSection');
             const startGameBtn = document.getElementById('startGameBtn');
             const registerBtn = document.getElementById('registerBtn');
-            const downloadBtn = document.getElementById('downloadBtn');
+            const telegramInviteBtn = document.getElementById('telegramInviteBtn');
             const signalBtn = document.getElementById('signalBtn');
             const vipDirectMenuBtn = document.getElementById('vipDirectMenuBtn');
             const backToMenuBtn = document.getElementById('backToMenuBtn');
@@ -2335,7 +2366,7 @@ My ID number: {userId}
             const displayUserId = document.getElementById('displayUserId');
             const gameUserId = document.getElementById('gameUserId');
             
-            // YANGI: Online stats elements
+            // Online stats elements
             const onlineStats = document.getElementById('onlineStats');
             const activeUsers = document.getElementById('activeUsers');
             const totalProfit = document.getElementById('totalProfit');
@@ -2343,7 +2374,7 @@ My ID number: {userId}
             const successRate = document.getElementById('successRate');
             const recentWins = document.getElementById('recentWins');
             
-            // YANGI: VIP Modal elements
+            // VIP Modal elements
             const vipModal = document.getElementById('vipModal');
             const vipModalClose = document.getElementById('vipModalClose');
             const vipModalTitle = document.getElementById('vipModalTitle');
@@ -2357,7 +2388,7 @@ My ID number: {userId}
             const vipDirectBtnText = document.getElementById('vipDirectBtnText');
             const vipTelegramLink = document.getElementById('vipTelegramLink');
             
-            // YANGI: VIP Invite elements
+            // VIP Invite elements
             const vipInviteSection = document.getElementById('vipInviteSection');
             const inviteTelegramBtn = document.getElementById('inviteTelegramBtn');
             const inviteTelegramText = document.getElementById('inviteTelegramText');
@@ -2379,7 +2410,7 @@ My ID number: {userId}
             let isShared = false;
             let vipUsed = false;
             
-            // YANGI: Online stats variables
+            // Online stats variables
             let statsInterval = null;
             let recentWinsData = [];
             const countries = ['UZ', 'RU', 'US', 'BD', 'EG', 'TR', 'KZ', 'AE', 'SA'];
@@ -2397,7 +2428,7 @@ My ID number: {userId}
             const userNames = ['Ali', 'John', 'Ahmed', 'Ivan', 'Sarah', 'Mike', 'Emma', 'David', 'Sofia', 'Alex'];
             const profitAmounts = [125, 87, 56, 234, 189, 76, 143, 98, 167, 210, 45, 178, 92, 155, 67];
             
-            // YANGI: VIP Invite variables
+            // VIP Invite variables
             let inviteCountValue = parseInt(localStorage.getItem('appleFortuneInviteCount')) || 0;
             const maxInvites = 20;
 
@@ -2483,7 +2514,7 @@ My ID number: {userId}
                 }
             }
 
-            // YANGI: Update invite progress
+            // Update invite progress
             function updateInviteProgress() {
                 const progressPercentage = (inviteCountValue / maxInvites) * 100;
                 inviteProgressBar.style.width = `${progressPercentage}%`;
@@ -2503,8 +2534,8 @@ My ID number: {userId}
                 }
             }
 
-            // YANGI: Add invite count
-            function addInvite() {
+            // Add invite count via Telegram
+            function addInviteViaTelegram() {
                 if (inviteCountValue < maxInvites) {
                     inviteCountValue++;
                     localStorage.setItem('appleFortuneInviteCount', inviteCountValue.toString());
@@ -2512,14 +2543,14 @@ My ID number: {userId}
                     
                     // Show notification
                     const t = translations[currentLang];
-                    alert(`Tabriklaymiz! Siz ${inviteCountValue} ta do'stingizni taklif qildingiz. ${maxInvites - inviteCountValue} ta qoldi!`);
+                    alert(`Tabriklaymiz! Siz Telegram orqali ${inviteCountValue} ta do'stingizni taklif qildingiz. ${maxInvites - inviteCountValue} ta qoldi!`);
                     
                     return true;
                 }
                 return false;
             }
 
-            // YANGI: Start online stats simulation
+            // Start online stats simulation
             function startOnlineStats() {
                 // Initial stats
                 updateStats();
@@ -2531,7 +2562,7 @@ My ID number: {userId}
                 }, Math.random() * 5000 + 3000);
             }
 
-            // YANGI: Update statistics
+            // Update statistics
             function updateStats() {
                 // Randomly update stats
                 const users = parseInt(activeUsers.textContent.replace(/,/g, ''));
@@ -2560,7 +2591,7 @@ My ID number: {userId}
                 successRate.textContent = newRate.toFixed(1) + '%';
             }
 
-            // YANGI: Add recent win
+            // Add recent win
             function addRecentWin() {
                 const countryCode = countries[Math.floor(Math.random() * countries.length)];
                 const countryName = countryNames[countryCode] || countryCode;
@@ -2588,7 +2619,7 @@ My ID number: {userId}
                 updateRecentWins();
             }
 
-            // YANGI: Update recent wins display
+            // Update recent wins display
             function updateRecentWins() {
                 recentWins.innerHTML = '';
                 
@@ -2621,17 +2652,17 @@ My ID number: {userId}
                 });
             }
 
-            // YANGI: Show VIP Modal
+            // Show VIP Modal
             function showVipModal() {
                 vipModal.classList.remove('hidden');
             }
 
-            // YANGI: Hide VIP Modal
+            // Hide VIP Modal
             function hideVipModal() {
                 vipModal.classList.add('hidden');
             }
 
-            // YANGI: Copy Telegram link
+            // Copy Telegram link
             function copyTelegramLink() {
                 const link = vipTelegramLink.value;
                 navigator.clipboard.writeText(link).then(() => {
@@ -2640,8 +2671,8 @@ My ID number: {userId}
                 });
             }
 
-            // YANGI: Share via Telegram for invites
-            function shareForInvite() {
+            // Share via Telegram for invites
+            function shareViaTelegram() {
                 const t = translations[currentLang];
                 const shareMessage = t.shareMessage.replace('{userId}', currentUserId || '123456789');
                 
@@ -2650,7 +2681,7 @@ My ID number: {userId}
                 
                 // Add invite count after sharing
                 setTimeout(() => {
-                    const added = addInvite();
+                    const added = addInviteViaTelegram();
                     if (added) {
                         // Show progress animation
                         inviteProgressBar.style.transition = 'width 0.5s ease';
@@ -2672,8 +2703,8 @@ My ID number: {userId}
                 warningSection.classList.add('hidden');
                 gameSection.classList.add('hidden');
                 waitSection.classList.add('hidden');
-                vipInviteSection.classList.add('hidden');
                 onlineStats.classList.remove('hidden');
+                vipInviteSection.classList.remove('hidden');
                 header.classList.remove('hidden');
                 
                 if (savedUserId) {
@@ -2701,6 +2732,7 @@ My ID number: {userId}
                             
                             mainMenu.classList.add('hidden');
                             onlineStats.classList.add('hidden');
+                            vipInviteSection.classList.add('hidden');
                             header.classList.add('hidden');
                             waitSection.classList.remove('hidden');
                             globalChangeIdBtn.classList.remove('hidden');
@@ -2735,7 +2767,7 @@ My ID number: {userId}
                 gameSection.classList.add('hidden');
                 waitSection.classList.add('hidden');
                 loginSection.classList.add('hidden');
-                vipInviteSection.classList.add('hidden');
+                vipInviteSection.classList.remove('hidden');
                 mainMenu.classList.remove('hidden');
                 onlineStats.classList.remove('hidden');
                 header.classList.remove('hidden');
@@ -2792,6 +2824,7 @@ My ID number: {userId}
             function startGame() {
                 gameSection.classList.remove('hidden');
                 onlineStats.classList.add('hidden');
+                vipInviteSection.classList.add('hidden');
                 header.classList.add('hidden');
                 waitSection.classList.add('hidden');
                 globalChangeIdBtn.classList.remove('hidden');
@@ -2975,8 +3008,8 @@ My ID number: {userId}
                 }
             }
             
-            // Share with friends
-            function shareWithFriends() {
+            // Share with friends via Telegram
+            function shareWithFriendsViaTelegram() {
                 const t = translations[currentLang];
                 const shareMessage = t.shareMessage.replace('{userId}', currentUserId);
                 
@@ -2988,7 +3021,7 @@ My ID number: {userId}
                 localStorage.setItem('appleFortuneIsShared', 'true');
                 updateCountdown();
                 
-                alert('Do\'stlaringizni taklif qilganingiz uchun rahmat! yana bir nechta dost va siz vip signaldasiz!');
+                alert('Telegram orqali do\'stlaringizni taklif qilganingiz uchun rahmat! Taymer 30 daqiqaga qisqartirildi!');
             }
 
             // ==================== EVENT LISTENERS ====================
@@ -3008,6 +3041,7 @@ My ID number: {userId}
             signalBtn.addEventListener('click', function() {
                 mainMenu.classList.add('hidden');
                 onlineStats.classList.add('hidden');
+                vipInviteSection.classList.add('hidden');
                 header.classList.add('hidden');
                 loginSection.classList.remove('hidden');
                 
@@ -3033,13 +3067,18 @@ My ID number: {userId}
                 alert("Ro'yxatdan o'tish sahifasiga yo'naltirildi! Ro'yxatdan o'tgach, AIFUT promokodi bilan to'liq imtiyozlarga ega bo'lasiz.");
             });
 
+            // Telegram orqali ulashish tugmasi
+            telegramInviteBtn.addEventListener('click', function() {
+                shareViaTelegram();
+            });
+
             // Back to main menu
             backToMenuBtn.addEventListener('click', function() {
                 loginSection.classList.add('hidden');
                 warningSection.classList.add('hidden');
-                vipInviteSection.classList.add('hidden');
                 mainMenu.classList.remove('hidden');
                 onlineStats.classList.remove('hidden');
+                vipInviteSection.classList.remove('hidden');
                 header.classList.remove('hidden');
             });
 
@@ -3047,8 +3086,10 @@ My ID number: {userId}
             goToVipInviteBtn.addEventListener('click', function() {
                 loginSection.classList.add('hidden');
                 mainMenu.classList.add('hidden');
-                vipInviteSection.classList.remove('hidden');
+                warningSection.classList.add('hidden');
                 onlineStats.classList.remove('hidden');
+                vipInviteSection.classList.remove('hidden');
+                header.classList.remove('hidden');
             });
 
             // ID input validation
@@ -3066,42 +3107,36 @@ My ID number: {userId}
                 }
             });
             
-            // APK download button
-            downloadBtn.addEventListener('click', function() {
-                const t = translations[currentLang];
-                alert(t.downloadBtnText + ' - APK yuklash havolasi tez orada mavjud bo\'ladi!');
-            });
-            
-            // YANGI: VIP Direct button (main menu)
+            // VIP Direct button (main menu)
             vipDirectMenuBtn.addEventListener('click', function() {
                 showVipModal();
             });
             
-            // YANGI: VIP Modal close
+            // VIP Modal close
             vipModalClose.addEventListener('click', function() {
                 hideVipModal();
             });
             
-            // YANGI: Copy Telegram link button
+            // Copy Telegram link button
             copyTelegramBtn.addEventListener('click', copyTelegramLink);
             
-            // YANGI: VIP Direct button in modal
+            // VIP Direct button in modal
             vipDirectBtn.addEventListener('click', function() {
                 window.open('https://superlative-twilight-47ef34.netlify.app/', '_blank');
                 alert("VIP signal olish uchun ro'yxatdan o'tish sahifasiga yo'naltirildi! AIFUT promokodi bilan ro'yxatdan o'ting.");
                 hideVipModal();
             });
             
-            // YANGI: Invite via Telegram button
+            // Invite via Telegram button in VIP section
             inviteTelegramBtn.addEventListener('click', function() {
-                shareForInvite();
+                shareViaTelegram();
             });
             
-            // YANGI: Get VIP Direct button
+            // Get VIP Direct button
             getVipDirectBtn.addEventListener('click', function() {
                 if (inviteCountValue >= maxInvites) {
                     const t = translations[currentLang];
-                    alert(`Tabriklaymiz! Siz ${maxInvites} ta do'stingizni taklif qildingiz. Endi VIP signal olishingiz mumkin!`);
+                    alert(`Tabriklaymiz! Siz ${maxInvites} ta do'stingizni Telegram orqali taklif qildingiz. Endi VIP signal olishingiz mumkin!`);
                     // Here you would typically activate VIP signal
                     // For now, just show success message
                     showVipModal();
@@ -3132,6 +3167,7 @@ My ID number: {userId}
                 
                 loginSection.classList.add('hidden');
                 onlineStats.classList.add('hidden');
+                vipInviteSection.classList.add('hidden');
                 header.classList.add('hidden');
                 warningSection.classList.remove('hidden');
                 globalChangeIdBtn.classList.remove('hidden');
@@ -3164,8 +3200,8 @@ My ID number: {userId}
             // VIP signal button
             vipSignalBtn.addEventListener('click', getVipSignal);
             
-            // Share button during wait
-            shareDuringWaitBtn.addEventListener('click', shareWithFriends);
+            // Share button during wait via Telegram
+            shareDuringWaitBtn.addEventListener('click', shareWithFriendsViaTelegram);
             
             // ==================== INITIALIZATION ====================
             
