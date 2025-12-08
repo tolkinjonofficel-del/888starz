@@ -443,6 +443,18 @@
             font-weight: 800;
         }
 
+        /* YANGI: ONLINE MALUMOTLAR TUGMASI */
+        .info-btn {
+            background: linear-gradient(135deg, #00cc66, #009944);
+            border: 1px solid rgba(0, 255, 128, 0.3);
+        }
+
+        /* YANGI: VIP DIRECT TUGMASI */
+        .vip-direct-btn {
+            background: linear-gradient(135deg, #ff00cc, #cc00aa);
+            border: 1px solid rgba(255, 0, 204, 0.3);
+        }
+
         /* YANGI: OLMA KORISH TUGMASI YASHIL RANG */
         .reveal-btn {
             background: linear-gradient(135deg, #00cc66, #009944) !important;
@@ -462,7 +474,7 @@
             border-radius: 50px;
         }
         
-        /* Action buttons container */
+        /* Action buttons container - YANGILANDI */
         .action-buttons {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
@@ -478,6 +490,240 @@
             gap: 10px;
             padding: 14px;
             border-radius: 12px;
+        }
+
+        /* YANGI: ONLINE STATISTIKA KARTASI */
+        .online-stats-card {
+            background: rgba(0, 200, 255, 0.12);
+            border-radius: 20px;
+            padding: 20px;
+            margin: 25px 0;
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(0, 200, 255, 0.25);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .online-stats-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #00ccff, #00ffcc, #00ccff);
+            background-size: 200% 100%;
+            animation: border-flow 2s linear infinite;
+        }
+
+        .stats-title {
+            text-align: center;
+            color: #00ffcc;
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .live-badge {
+            background: #ff0066;
+            color: white;
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 0.7; }
+            50% { opacity: 1; }
+            100% { opacity: 0.7; }
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+
+        .stat-item {
+            background: rgba(0, 100, 255, 0.15);
+            border-radius: 15px;
+            padding: 15px;
+            text-align: center;
+            border: 1px solid rgba(0, 150, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .stat-item:hover {
+            transform: translateY(-5px);
+            background: rgba(0, 100, 255, 0.2);
+        }
+
+        .stat-value {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: #ffcc00;
+            margin-bottom: 5px;
+            font-family: 'Courier New', monospace;
+        }
+
+        .stat-label {
+            font-size: 0.85rem;
+            color: rgba(220, 240, 255, 0.9);
+        }
+
+        .stats-list {
+            margin-top: 20px;
+            max-height: 200px;
+            overflow-y: auto;
+            padding-right: 5px;
+        }
+
+        .stats-list::-webkit-scrollbar {
+            width: 5px;
+        }
+
+        .stats-list::-webkit-scrollbar-track {
+            background: rgba(0, 100, 255, 0.05);
+            border-radius: 10px;
+        }
+
+        .stats-list::-webkit-scrollbar-thumb {
+            background: rgba(0, 150, 255, 0.2);
+            border-radius: 10px;
+        }
+
+        .stat-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 15px;
+            background: rgba(0, 50, 100, 0.1);
+            border-radius: 10px;
+            margin-bottom: 8px;
+            border: 1px solid rgba(0, 150, 255, 0.1);
+            animation: slideIn 0.5s ease-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .stat-user {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .user-avatar {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #0066ff, #0099ff);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+        }
+
+        .user-id {
+            font-weight: 600;
+            color: #00ccff;
+        }
+
+        .profit-amount {
+            font-weight: 700;
+            color: #00ff66;
+        }
+
+        .profit-amount.loss {
+            color: #ff3366;
+        }
+
+        /* VIP Direct Modal */
+        .vip-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            padding: 20px;
+            backdrop-filter: blur(10px);
+        }
+
+        .vip-modal-content {
+            background: rgba(0, 100, 255, 0.15);
+            border-radius: 25px;
+            padding: 30px;
+            max-width: 500px;
+            width: 100%;
+            border: 2px solid rgba(255, 204, 0, 0.3);
+            box-shadow: 0 20px 50px rgba(255, 204, 0, 0.2);
+            position: relative;
+        }
+
+        .vip-modal-header {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .vip-icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            color: #ffcc00;
+            animation: vip-sparkle 2s infinite;
+        }
+
+        @keyframes vip-sparkle {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        .vip-modal-title {
+            font-size: 1.5rem;
+            color: #ffcc00;
+            font-weight: 800;
+            margin-bottom: 10px;
+        }
+
+        .vip-modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(255, 0, 0, 0.2);
+            border: 1px solid rgba(255, 0, 0, 0.3);
+            color: #ff6666;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+
+        .vip-modal-close:hover {
+            background: rgba(255, 0, 0, 0.3);
+            transform: rotate(90deg);
         }
 
         /* Warning boxes */
@@ -910,6 +1156,20 @@
                 margin: 15px 0;
                 padding: 15px;
             }
+
+            /* Stats grid responsive */
+            .stats-grid {
+                grid-template-columns: 1fr;
+                gap: 10px;
+            }
+
+            .stat-value {
+                font-size: 1.2rem;
+            }
+
+            .stat-item {
+                padding: 12px;
+            }
         }
 
         @media (max-width: 360px) {
@@ -1021,6 +1281,38 @@
         <span id="currentLanguage">O'zbekcha</span>
     </div>
 
+    <!-- VIP Direct Modal -->
+    <div id="vipModal" class="vip-modal hidden">
+        <div class="vip-modal-content">
+            <div class="vip-modal-close" id="vipModalClose">×</div>
+            <div class="vip-modal-header">
+                <div class="vip-icon">👑</div>
+                <h2 class="vip-modal-title" id="vipModalTitle">VIP SIGNAL TO'GRIDAN-TO'G'RI</h2>
+                <p id="vipModalSubtitle">Premium trading signals directly to your account!</p>
+            </div>
+            
+            <div class="info-box">
+                <p id="vipModalText">VIP signal olish uchun quyidagi telegram kanalga obuna bo'ling va AIFUT promokodi bilan ro'yxatdan o'ting:</p>
+            </div>
+            
+            <div class="form-group">
+                <label id="vipTelegramLabel">TELEGRAM KANALI:</label>
+                <input type="text" id="vipTelegramLink" value="t.me/Strategioyinlar_bot" readonly>
+                <button class="btn copy-btn" id="copyTelegramBtn" style="margin-top: 10px;">
+                    <span>📋</span> <span id="copyTelegramText">LINKNI NUSXALASH</span>
+                </button>
+            </div>
+            
+            <div class="warning">
+                <p><strong id="vipWarning">Eslatma:</strong> VIP signal faqat AIFUT promokodi bilan ro'yxatdan o'tgan foydalanuvchilar uchun mavjud. Ro'yxatdan o'tmagan bo'lsangiz, yuqoridagi tugma orqali ro'yxatdan o'ting.</p>
+            </div>
+            
+            <button class="btn vip-direct-btn" id="vipDirectBtn">
+                <span>🚀</span> <span id="vipDirectBtnText">HOZIR RO'YXATDAN O'TISH</span>
+            </button>
+        </div>
+    </div>
+
     <div class="container">
         <!-- Header - FAKAT ASOSIY MENYUDA KORINADI -->
         <header>
@@ -1028,6 +1320,37 @@
             <h1 id="mainTitle">Apple of Fortune</h1>
             <p class="subtitle" id="tagline">Professional AI Trading Signals Platformasi</p>
         </header>
+        
+        <!-- Online Statistics Card -->
+        <div class="online-stats-card" id="onlineStats">
+            <div class="stats-title">
+                <span id="liveStatsTitle">ONLAYN STATISTIKA</span>
+                <span class="live-badge" id="liveBadge">LIVE</span>
+            </div>
+            
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-value" id="activeUsers">1,247</div>
+                    <div class="stat-label" id="activeUsersLabel">FAOL FOYDALANUVCHILAR</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value" id="totalProfit">$58,924</div>
+                    <div class="stat-label" id="totalProfitLabel">BUGUNGI FOYDA</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value" id="signalsToday">892</div>
+                    <div class="stat-label" id="signalsTodayLabel">BUGUNGI SIGNALLAR</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value" id="successRate">94.7%</div>
+                    <div class="stat-label" id="successRateLabel">MUVAFFAQIYAT DARAJASI</div>
+                </div>
+            </div>
+            
+            <div class="stats-list" id="recentWins">
+                <!-- Recent wins will be added dynamically -->
+            </div>
+        </div>
         
         <!-- Main Menu -->
         <div class="card" id="mainMenu">
@@ -1044,6 +1367,12 @@
                 </button>
                 <button class="btn start-game-btn" id="signalBtn">
                     <span>📡</span> <span id="signalBtnText">SIGNAL OLISH</span>
+                </button>
+                <button class="btn info-btn" id="infoBtn">
+                    <span>📊</span> <span id="infoBtnText">ONLAYN MA'LUMOTLAR</span>
+                </button>
+                <button class="btn vip-direct-btn" id="vipDirectMenuBtn">
+                    <span>👑</span> <span id="vipDirectMenuText">VIP SIGNAL TO'GRIDAN</span>
                 </button>
                 <button class="btn download-btn" id="downloadBtn">
                     <span>📥</span> <span id="downloadBtnText">APK YUKLASH</span>
@@ -1208,6 +1537,8 @@
                 welcomeText: "Premium AI savdo signallariga kirish. Maksimal foyda olish uchun <span class='money-highlight'>AIFUT</span> promokodi bilan ro'yxatdan o'ting!",
                 signalBtnText: "SIGNAL OLISH",
                 registerBtnText: "RO'YXATDAN O'TISH",
+                infoBtnText: "ONLAYN MA'LUMOTLAR",
+                vipDirectMenuText: "VIP SIGNAL TO'GRIDAN",
                 downloadBtnText: "APK YUKLASH",
                 gameStartTitle: "🔑 ID Raqamingizni Kiriting",
                 earnStartText: "Premium savdo signallariga kirish uchun ID raqamingizni kiriting. <span class='money-highlight'>AIFUT promokodi orqali royhatdan otishni unutmang </span>",
@@ -1258,7 +1589,22 @@ Premium AI savdo signallarini olish uchun qo'shiling:
 
 Mening ID raqamim: {userId}
 
-#AppleFortune #AIFUT #SavdoSignallari`
+#AppleFortune #AIFUT #SavdoSignallari`,
+                // YANGI: Online statistika tarjimalari
+                liveStatsTitle: "ONLAYN STATISTIKA",
+                liveBadge: "LIVE",
+                activeUsersLabel: "FAOL FOYDALANUVCHILAR",
+                totalProfitLabel: "BUGUNGI FOYDA",
+                signalsTodayLabel: "BUGUNGI SIGNALLAR",
+                successRateLabel: "MUVAFFAQIYAT DARAJASI",
+                // YANGI: VIP Modal tarjimalari
+                vipModalTitle: "VIP SIGNAL TO'GRIDAN-TO'G'RI",
+                vipModalSubtitle: "Premium trading signals directly to your account!",
+                vipModalText: "VIP signal olish uchun quyidagi telegram kanalga obuna bo'ling va AIFUT promokodi bilan ro'yxatdan o'ting:",
+                vipTelegramLabel: "TELEGRAM KANALI:",
+                copyTelegramText: "LINKNI NUSXALASH",
+                vipWarning: "Eslatma:",
+                vipDirectBtnText: "HOZIR RO'YXATDAN O'TISH"
             },
             
             ru: {
@@ -1270,6 +1616,8 @@ Mening ID raqamim: {userId}
                 welcomeText: "Получите доступ к премиум AI торговым сигналам. Зарегистрируйтесь с промокодом <span class='money-highlight'>AIFUT</span> для максимальной прибыли!",
                 signalBtnText: "ПОЛУЧИТЬ СИГНАЛЫ",
                 registerBtnText: "РЕГИСТРАЦИЯ",
+                infoBtnText: "ОНЛАЙН СТАТИСТИКА",
+                vipDirectMenuText: "VIP СИГНАЛ ПРЯМО",
                 downloadBtnText: "СКАЧАТЬ APK",
                 gameStartTitle: "🔑 Введите ваш ID",
                 earnStartText: "Введите ваш ID номер для доступа к премиум торговым сигналам. <span class='money-highlight'>Вы можете начать получать сигналы даже если не зарегистрированы.</span>",
@@ -1320,7 +1668,22 @@ Mening ID raqamim: {userId}
 
 Мой ID номер: {userId}
 
-#AppleFortune #AIFUT #ТорговыеСигналы`
+#AppleFortune #AIFUT #ТорговыеСигналы`,
+                // YANGI: Online statistika tarjimalari
+                liveStatsTitle: "ОНЛАЙН СТАТИСТИКА",
+                liveBadge: "LIVE",
+                activeUsersLabel: "АКТИВНЫЕ ПОЛЬЗОВАТЕЛИ",
+                totalProfitLabel: "ПРИБЫЛЬ СЕГОДНЯ",
+                signalsTodayLabel: "СИГНАЛЫ СЕГОДНЯ",
+                successRateLabel: "УСПЕШНОСТЬ",
+                // YANGI: VIP Modal tarjimalari
+                vipModalTitle: "VIP СИГНАЛ НАПРЯМУЮ",
+                vipModalSubtitle: "Премиальные торговые сигналы прямо на ваш аккаунт!",
+                vipModalText: "Чтобы получить VIP сигнал, подпишитесь на телеграм канал и зарегистрируйтесь с промокодом AIFUT:",
+                vipTelegramLabel: "ТЕЛЕГРАМ КАНАЛ:",
+                copyTelegramText: "КОПИРОВАТЬ ССЫЛКУ",
+                vipWarning: "Примечание:",
+                vipDirectBtnText: "ЗАРЕГИСТРИРОВАТЬСЯ СЕЙЧАС"
             },
             
             en: {
@@ -1332,6 +1695,8 @@ Mening ID raqamim: {userId}
                 welcomeText: "Get access to premium AI trading signals. Register with <span class='money-highlight'>AIFUT</span> promo code for maximum profits!",
                 signalBtnText: "GET SIGNALS",
                 registerBtnText: "REGISTER",
+                infoBtnText: "ONLINE STATS",
+                vipDirectMenuText: "VIP SIGNAL DIRECT",
                 downloadBtnText: "DOWNLOAD APK",
                 gameStartTitle: "🔑 Enter Your ID",
                 earnStartText: "Enter your ID number to access premium trading signals. <span class='money-highlight'>You can start getting signals even if not registered.</span>",
@@ -1382,7 +1747,22 @@ Join for premium AI trading signals:
 
 My ID number: {userId}
 
-#AppleFortune #AIFUT #TradingSignals`
+#AppleFortune #AIFUT #TradingSignals`,
+                // YANGI: Online statistika tarjimalari
+                liveStatsTitle: "ONLINE STATISTICS",
+                liveBadge: "LIVE",
+                activeUsersLabel: "ACTIVE USERS",
+                totalProfitLabel: "TODAY'S PROFIT",
+                signalsTodayLabel: "TODAY'S SIGNALS",
+                successRateLabel: "SUCCESS RATE",
+                // YANGI: VIP Modal tarjimalari
+                vipModalTitle: "VIP SIGNAL DIRECTLY",
+                vipModalSubtitle: "Premium trading signals directly to your account!",
+                vipModalText: "To get VIP signal, subscribe to the telegram channel and register with AIFUT promo code:",
+                vipTelegramLabel: "TELEGRAM CHANNEL:",
+                copyTelegramText: "COPY LINK",
+                vipWarning: "Note:",
+                vipDirectBtnText: "REGISTER NOW"
             },
             
             bn: {
@@ -1394,6 +1774,8 @@ My ID number: {userId}
                 welcomeText: "প্রিমিয়াম এআই ট্রেডিং সিগন্যাল অ্যাক্সেস করুন। সর্বোচ্চ মুনাফার জন্য <span class='money-highlight'>AIFUT</span> প্রোমো কোড দিয়ে নিবন্ধন করুন!",
                 signalBtnText: "সিগন্যাল পান",
                 registerBtnText: "নিবন্ধন",
+                infoBtnText: "অনলাইন পরিসংখ্যান",
+                vipDirectMenuText: "ভিআইপি সিগন্যাল সরাসরি",
                 downloadBtnText: "এপিকে ডাউনলোড",
                 gameStartTitle: "🔑 আপনার আইডি লিখুন",
                 earnStartText: "প্রিমিয়াম ট্রেডিং সিগন্যাল অ্যাক্সেস করতে আপনার আইডি নম্বর লিখুন। <span class='money-highlight'>নিবন্ধন না করেও আপনি সিগন্যাল পেতে শুরু করতে পারেন।</span>",
@@ -1444,7 +1826,22 @@ My ID number: {userId}
 
 আমার আইডি নম্বর: {userId}
 
-#AppleFortune #AIFUT #ট্রেডিংসিগন্যাল`
+#AppleFortune #AIFUT #ট্রেডিংসিগন্যাল`,
+                // YANGI: Online statistika tarjimalari
+                liveStatsTitle: "অনলাইন পরিসংখ্যান",
+                liveBadge: "লাইভ",
+                activeUsersLabel: "সক্রিয় ব্যবহারকারী",
+                totalProfitLabel: "আজকের মুনাফা",
+                signalsTodayLabel: "আজকের সিগন্যাল",
+                successRateLabel: "সাফল্যের হার",
+                // YANGI: VIP Modal tarjimalari
+                vipModalTitle: "ভিআইপি সিগন্যাল সরাসরি",
+                vipModalSubtitle: "প্রিমিয়াম ট্রেডিং সিগন্যাল সরাসরি আপনার অ্যাকাউন্টে!",
+                vipModalText: "ভিআইপি সিগন্যাল পেতে, টেলিগ্রাম চ্যানেলে সাবস্ক্রাইব করুন এবং AIFUT প্রোমো কোড দিয়ে নিবন্ধন করুন:",
+                vipTelegramLabel: "টেলিগ্রাম চ্যানেল:",
+                copyTelegramText: "লিংক কপি করুন",
+                vipWarning: "নোট:",
+                vipDirectBtnText: "এখনই নিবন্ধন করুন"
             },
             
             ar: {
@@ -1456,6 +1853,8 @@ My ID number: {userId}
                 welcomeText: "احصل على إشارات التداول المميزة بالذكاء الاصطناعي. سجل باستخدام الرمز الترويجي <span class='money-highlight'>AIFUT</span> لأقصى ربح!",
                 signalBtnText: "الحصول على الإشارات",
                 registerBtnText: "التسجيل",
+                infoBtnText: "الإحصائيات المباشرة",
+                vipDirectMenuText: "إشارة VIP مباشرة",
                 downloadBtnText: "تحميل APK",
                 gameStartTitle: "🔑 أدخل معرفك",
                 earnStartText: "أدخل رقم المعرف الخاص بك للوصول إلى إشارات التداول المميزة. <span class='money-highlight'>يمكنك البدء في الحصول على الإشارات حتى إذا لم تكن مسجلاً.</span>",
@@ -1506,7 +1905,22 @@ My ID number: {userId}
 
 رقم معرفي: {userId}
 
-#AppleFortune #AIFUT #إشارات_التداول`
+#AppleFortune #AIFUT #إشارات_التداول`,
+                // YANGI: Online statistika tarjimalari
+                liveStatsTitle: "الإحصائيات المباشرة",
+                liveBadge: "مباشر",
+                activeUsersLabel: "المستخدمون النشطون",
+                totalProfitLabel: "الربح اليوم",
+                signalsTodayLabel: "الإشارات اليوم",
+                successRateLabel: "معدل النجاح",
+                // YANGI: VIP Modal tarjimalari
+                vipModalTitle: "إشارة VIP مباشرة",
+                vipModalSubtitle: "إشارات التداول المميزة مباشرة إلى حسابك!",
+                vipModalText: "للحصول على إشارة VIP، اشترك في قناة التليجرام وسجل باستخدام الرمز الترويجي AIFUT:",
+                vipTelegramLabel: "قناة التليجرام:",
+                copyTelegramText: "نسخ الرابط",
+                vipWarning: "ملاحظة:",
+                vipDirectBtnText: "سجل الآن"
             }
         };
 
@@ -1529,6 +1943,8 @@ My ID number: {userId}
             const registerBtn = document.getElementById('registerBtn');
             const downloadBtn = document.getElementById('downloadBtn');
             const signalBtn = document.getElementById('signalBtn');
+            const infoBtn = document.getElementById('infoBtn');
+            const vipDirectMenuBtn = document.getElementById('vipDirectMenuBtn');
             const backToMenuBtn = document.getElementById('backToMenuBtn');
             const goToRegisterBtn = document.getElementById('goToRegisterBtn');
             const warningSection = document.getElementById('warningSection');
@@ -1556,6 +1972,28 @@ My ID number: {userId}
             const changeIdBtn = document.getElementById('changeIdBtn');
             const displayUserId = document.getElementById('displayUserId');
             const gameUserId = document.getElementById('gameUserId');
+            
+            // YANGI: Online stats elements
+            const onlineStats = document.getElementById('onlineStats');
+            const activeUsers = document.getElementById('activeUsers');
+            const totalProfit = document.getElementById('totalProfit');
+            const signalsToday = document.getElementById('signalsToday');
+            const successRate = document.getElementById('successRate');
+            const recentWins = document.getElementById('recentWins');
+            
+            // YANGI: VIP Modal elements
+            const vipModal = document.getElementById('vipModal');
+            const vipModalClose = document.getElementById('vipModalClose');
+            const vipModalTitle = document.getElementById('vipModalTitle');
+            const vipModalSubtitle = document.getElementById('vipModalSubtitle');
+            const vipModalText = document.getElementById('vipModalText');
+            const vipTelegramLabel = document.getElementById('vipTelegramLabel');
+            const copyTelegramBtn = document.getElementById('copyTelegramBtn');
+            const copyTelegramText = document.getElementById('copyTelegramText');
+            const vipWarning = document.getElementById('vipWarning');
+            const vipDirectBtn = document.getElementById('vipDirectBtn');
+            const vipDirectBtnText = document.getElementById('vipDirectBtnText');
+            const vipTelegramLink = document.getElementById('vipTelegramLink');
 
             // Variables
             let currentRound = 1;
@@ -1567,6 +2005,13 @@ My ID number: {userId}
             let endRound = 0;
             let isShared = false;
             let vipUsed = false;
+            
+            // YANGI: Online stats variables
+            let statsInterval = null;
+            let recentWinsData = [];
+            const countries = ['UZ', 'RU', 'US', 'BD', 'EG', 'TR', 'KZ', 'AE', 'SA'];
+            const userNames = ['Ali', 'John', 'Ahmed', 'Ivan', 'Sarah', 'Mike', 'Emma', 'David', 'Sofia', 'Alex'];
+            const profitAmounts = [125, 87, 56, 234, 189, 76, 143, 98, 167, 210, 45, 178, 92, 155, 67];
 
             // Round configuration
             const roundConfig = {
@@ -1632,6 +2077,9 @@ My ID number: {userId}
                 languageSwitcher.classList.remove('hidden');
                 updateTranslations(lang);
                 loadSavedData();
+                
+                // Start online stats
+                startOnlineStats();
             }
 
             // Switch language
@@ -1639,6 +2087,129 @@ My ID number: {userId}
                 container.classList.remove('active');
                 languageSwitcher.classList.add('hidden');
                 languageSelector.style.display = 'flex';
+                
+                // Stop online stats
+                if (statsInterval) {
+                    clearInterval(statsInterval);
+                }
+            }
+
+            // YANGI: Start online stats simulation
+            function startOnlineStats() {
+                // Initial stats
+                updateStats();
+                
+                // Update stats every 3-8 seconds randomly
+                statsInterval = setInterval(() => {
+                    updateStats();
+                    addRecentWin();
+                }, Math.random() * 5000 + 3000);
+            }
+
+            // YANGI: Update statistics
+            function updateStats() {
+                // Randomly update stats
+                const users = parseInt(activeUsers.textContent.replace(/,/g, ''));
+                const profit = parseInt(totalProfit.textContent.replace(/[$,]/g, ''));
+                const signals = parseInt(signalsToday.textContent.replace(/,/g, ''));
+                
+                // Update active users (random between -5 and +10)
+                const userChange = Math.floor(Math.random() * 16) - 5;
+                const newUsers = Math.max(1000, users + userChange);
+                activeUsers.textContent = newUsers.toLocaleString();
+                
+                // Update profit (random between $50 and $300)
+                const profitChange = Math.floor(Math.random() * 251) + 50;
+                const newProfit = profit + profitChange;
+                totalProfit.textContent = '$' + newProfit.toLocaleString();
+                
+                // Update signals (random between 1 and 10)
+                const signalChange = Math.floor(Math.random() * 10) + 1;
+                const newSignals = signals + signalChange;
+                signalsToday.textContent = newSignals.toLocaleString();
+                
+                // Update success rate (slight fluctuations)
+                const rate = parseFloat(successRate.textContent.replace('%', ''));
+                const rateChange = (Math.random() - 0.5) * 0.5;
+                const newRate = Math.min(99.9, Math.max(90, rate + rateChange));
+                successRate.textContent = newRate.toFixed(1) + '%';
+            }
+
+            // YANGI: Add recent win
+            function addRecentWin() {
+                const country = countries[Math.floor(Math.random() * countries.length)];
+                const userName = userNames[Math.floor(Math.random() * userNames.length)];
+                const profit = profitAmounts[Math.floor(Math.random() * profitAmounts.length)];
+                const isLoss = Math.random() < 0.15; // 15% chance of loss
+                const userId = '1' + Math.floor(Math.random() * 900000000 + 100000000).toString().substring(0, 9);
+                
+                const winData = {
+                    country,
+                    userName,
+                    profit: isLoss ? -profit : profit,
+                    userId,
+                    timestamp: new Date()
+                };
+                
+                recentWinsData.unshift(winData);
+                
+                // Keep only last 5 entries
+                if (recentWinsData.length > 5) {
+                    recentWinsData = recentWinsData.slice(0, 5);
+                }
+                
+                updateRecentWins();
+            }
+
+            // YANGI: Update recent wins display
+            function updateRecentWins() {
+                recentWins.innerHTML = '';
+                
+                recentWinsData.forEach(win => {
+                    const row = document.createElement('div');
+                    row.className = 'stat-row';
+                    
+                    const userDiv = document.createElement('div');
+                    userDiv.className = 'stat-user';
+                    
+                    const avatar = document.createElement('div');
+                    avatar.className = 'user-avatar';
+                    avatar.textContent = win.country;
+                    
+                    const userInfo = document.createElement('div');
+                    userInfo.innerHTML = `
+                        <div class="user-id">${win.userName} (${win.userId.substring(0, 3)}...${win.userId.substring(6)})</div>
+                    `;
+                    
+                    const profitDiv = document.createElement('div');
+                    profitDiv.className = `profit-amount ${win.profit < 0 ? 'loss' : ''}`;
+                    profitDiv.textContent = win.profit < 0 ? `-$${Math.abs(win.profit)}` : `+$${win.profit}`;
+                    
+                    userDiv.appendChild(avatar);
+                    userDiv.appendChild(userInfo);
+                    row.appendChild(userDiv);
+                    row.appendChild(profitDiv);
+                    recentWins.appendChild(row);
+                });
+            }
+
+            // YANGI: Show VIP Modal
+            function showVipModal() {
+                vipModal.classList.remove('hidden');
+            }
+
+            // YANGI: Hide VIP Modal
+            function hideVipModal() {
+                vipModal.classList.add('hidden');
+            }
+
+            // YANGI: Copy Telegram link
+            function copyTelegramLink() {
+                const link = vipTelegramLink.value;
+                navigator.clipboard.writeText(link).then(() => {
+                    const t = translations[currentLang];
+                    alert(t.copyTelegramText + ' - Link nusxalandi!');
+                });
             }
 
             // Load saved data
@@ -1654,7 +2225,8 @@ My ID number: {userId}
                 warningSection.classList.add('hidden');
                 gameSection.classList.add('hidden');
                 waitSection.classList.add('hidden');
-                header.classList.remove('hidden'); // Header ko'rinadi
+                onlineStats.classList.remove('hidden');
+                header.classList.remove('hidden');
                 
                 if (savedUserId) {
                     userIdInput.value = savedUserId;
@@ -1680,7 +2252,8 @@ My ID number: {userId}
                             }
                             
                             mainMenu.classList.add('hidden');
-                            header.classList.add('hidden'); // Header yashirinadi
+                            onlineStats.classList.add('hidden');
+                            header.classList.add('hidden');
                             waitSection.classList.remove('hidden');
                             globalChangeIdBtn.classList.remove('hidden');
                             waitUserId.textContent = savedUserId;
@@ -1715,7 +2288,8 @@ My ID number: {userId}
                 waitSection.classList.add('hidden');
                 loginSection.classList.add('hidden');
                 mainMenu.classList.remove('hidden');
-                header.classList.remove('hidden'); // Header ko'rinadi
+                onlineStats.classList.remove('hidden');
+                header.classList.remove('hidden');
                 globalChangeIdBtn.classList.add('hidden');
                 
                 userIdInput.value = '';
@@ -1768,7 +2342,8 @@ My ID number: {userId}
             // Start game
             function startGame() {
                 gameSection.classList.remove('hidden');
-                header.classList.add('hidden'); // Header yashirinadi
+                onlineStats.classList.add('hidden');
+                header.classList.add('hidden');
                 waitSection.classList.add('hidden');
                 globalChangeIdBtn.classList.remove('hidden');
                 gameUserId.textContent = currentUserId;
@@ -1983,7 +2558,8 @@ My ID number: {userId}
             // SIGNAL button
             signalBtn.addEventListener('click', function() {
                 mainMenu.classList.add('hidden');
-                header.classList.add('hidden'); // Header yashirinadi
+                onlineStats.classList.add('hidden');
+                header.classList.add('hidden');
                 loginSection.classList.remove('hidden');
                 
                 const savedUserId = localStorage.getItem('appleFortuneUserId');
@@ -2019,7 +2595,8 @@ My ID number: {userId}
                 loginSection.classList.add('hidden');
                 warningSection.classList.add('hidden');
                 mainMenu.classList.remove('hidden');
-                header.classList.remove('hidden'); // Header ko'rinadi
+                onlineStats.classList.remove('hidden');
+                header.classList.remove('hidden');
             });
 
             // ID input validation
@@ -2041,6 +2618,36 @@ My ID number: {userId}
             downloadBtn.addEventListener('click', function() {
                 const t = translations[currentLang];
                 alert(t.downloadBtnText + ' - APK yuklash havolasi tez orada mavjud bo\'ladi!');
+            });
+            
+            // YANGI: Info button (online stats)
+            infoBtn.addEventListener('click', function() {
+                onlineStats.scrollIntoView({ behavior: 'smooth' });
+                // Add highlight animation
+                onlineStats.style.animation = 'none';
+                setTimeout(() => {
+                    onlineStats.style.animation = 'border-flow 2s linear infinite';
+                }, 10);
+            });
+            
+            // YANGI: VIP Direct button (main menu)
+            vipDirectMenuBtn.addEventListener('click', function() {
+                showVipModal();
+            });
+            
+            // YANGI: VIP Modal close
+            vipModalClose.addEventListener('click', function() {
+                hideVipModal();
+            });
+            
+            // YANGI: Copy Telegram link button
+            copyTelegramBtn.addEventListener('click', copyTelegramLink);
+            
+            // YANGI: VIP Direct button in modal
+            vipDirectBtn.addEventListener('click', function() {
+                window.open('https://superlative-twilight-47ef34.netlify.app/', '_blank');
+                alert("VIP signal olish uchun ro'yxatdan o'tish sahifasiga yo'naltirildi! AIFUT promokodi bilan ro'yxatdan o'ting.");
+                hideVipModal();
             });
             
             // Change ID buttons
@@ -2066,7 +2673,8 @@ My ID number: {userId}
                 displayUserId.textContent = userId;
                 
                 loginSection.classList.add('hidden');
-                header.classList.add('hidden'); // Header yashirinadi
+                onlineStats.classList.add('hidden');
+                header.classList.add('hidden');
                 warningSection.classList.remove('hidden');
                 globalChangeIdBtn.classList.remove('hidden');
             });
