@@ -209,7 +209,7 @@
             transform: translateY(-2px);
         }
 
-        /* Header */
+        /* Header - ASOSIY MENYU UCHUN */
         header {
             text-align: center;
             padding: 25px 20px;
@@ -443,6 +443,12 @@
             font-weight: 800;
         }
 
+        /* YANGI: OLMA KORISH TUGMASI YASHIL RANG */
+        .reveal-btn {
+            background: linear-gradient(135deg, #00cc66, #009944) !important;
+            border: 1px solid rgba(0, 255, 128, 0.3) !important;
+        }
+
         .change-id-btn {
             background: linear-gradient(135deg, #ff3366, #cc0044);
             border: 1px solid rgba(255, 51, 102, 0.3);
@@ -501,19 +507,19 @@
             border: 1px solid rgba(0, 200, 255, 0.2);
         }
         
-        /* Apples container - YANGILANDI: TELEFONDA BIR QATORDA */
+        /* Apples container - MARKAZDA JOYLASHISH */
         .apples-container {
             display: flex;
-            justify-content: center;
+            justify-content: center; /* MARKAZGA JOYLASHTIRISH */
             align-items: center;
             margin: 20px 0;
-            flex-wrap: nowrap; /* TELEFONDA HAM BIR QATORDA */
-            gap: 10px;
+            flex-wrap: nowrap;
+            gap: 8px; /* GAP KAMAYTIRILDI */
             padding: 15px;
             background: rgba(0, 50, 100, 0.1);
             border-radius: 20px;
             backdrop-filter: blur(5px);
-            overflow-x: auto; /* Agar juda tor ekran bo'lsa, gorizontal scroll */
+            overflow-x: auto;
             -webkit-overflow-scrolling: touch;
             width: 100%;
             border: 1px solid rgba(0, 150, 255, 0.15);
@@ -521,21 +527,21 @@
             scrollbar-color: rgba(0, 150, 255, 0.3) rgba(0, 100, 255, 0.1);
         }
         
-        /* Apple styles - YANGILANDI: KICHIKROQ */
+        /* Apple styles - MARKAZDA JOYLASHISH */
         .mystery-apple, .apple {
-            width: 50px !important; /* TELEFON UCHUN KICHIKROQ */
-            height: 50px !important;
-            min-width: 50px !important; /* MIN WIDTH QO'SHILDI */
+            width: 55px !important; /* KATTAROQ */
+            height: 55px !important;
+            min-width: 55px !important;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             position: relative;
-            flex-shrink: 0; /* BU MUHIM: OLMA SHRINK BO'LMAYDI */
+            flex-shrink: 0;
             border: 2px solid transparent;
             transition: all 0.3s ease;
             cursor: pointer;
-            margin: 0 3px; /* MARGIN KAMAYTIRILDI */
+            margin: 0; /* MARGIN OLIB TASHLANDI */
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -592,7 +598,7 @@
 
         /* Apple legend - YOZUVLAR OLIB TASHLANDI */
         .apple-legend {
-            display: none !important; /* Legendni yashirish */
+            display: none !important;
         }
 
         /* Hidden class */
@@ -699,11 +705,11 @@
         /* Round counter */
         .round-counter {
             text-align: center;
-            margin: 25px 0;
-            font-size: 1.2rem;
+            margin: 15px 0; /* MARGIN KAMAYTIRILDI */
+            font-size: 1.1rem; /* KICHIKROQ */
             background: rgba(255, 204, 0, 0.1);
-            padding: 20px;
-            border-radius: 20px;
+            padding: 15px; /* PADDING KAMAYTIRILDI */
+            border-radius: 15px;
             backdrop-filter: blur(5px);
             border: 1px solid rgba(255, 204, 0, 0.2);
         }
@@ -747,12 +753,12 @@
         /* Selection instruction */
         .selection-instruction {
             text-align: center;
-            margin: 20px 0;
+            margin: 15px 0; /* MARGIN KAMAYTIRILDI */
             font-size: 0.9rem;
             color: #ffcc00;
-            padding: 15px;
+            padding: 12px; /* PADDING KAMAYTIRILDI */
             background: rgba(255, 204, 0, 0.1);
-            border-radius: 15px;
+            border-radius: 12px;
             backdrop-filter: blur(5px);
             border: 1px solid rgba(255, 204, 0, 0.2);
         }
@@ -811,13 +817,25 @@
             font-size: 0.9rem;
         }
 
-        /* Responsive design - YANGILANDI */
+        /* Game section header - LOGOTIP OLIB TASHLANDI */
+        #gameSection > h2 {
+            text-align: center;
+            margin-bottom: 15px;
+            color: #00ccff;
+        }
+
+        #gameSection > p {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        /* Responsive design */
         @media (min-width: 768px) {
             /* Desktop uchun olmalar kattaroq */
             .mystery-apple, .apple {
-                width: 60px !important;
-                height: 60px !important;
-                min-width: 60px !important;
+                width: 65px !important;
+                height: 65px !important;
+                min-width: 65px !important;
             }
         }
 
@@ -836,17 +854,16 @@
             
             /* Mobile uchun olmalar konteyneri */
             .apples-container {
-                gap: 8px; /* GAP KAMAYTIRILDI */
+                gap: 6px; /* GAP KAMAYTIRILDI */
                 padding: 12px;
-                justify-content: flex-start; /* CHAP TOMONDAN BOSHLANADI */
+                justify-content: center; /* MARKAZGA */
             }
             
             /* Mobile uchun olmalar o'lchami */
             .mystery-apple, .apple {
-                width: 45px !important; /* KICHIKROQ */
-                height: 45px !important;
-                min-width: 45px !important;
-                margin: 0 2px; /* MARGIN KAMAYTIRILDI */
+                width: 50px !important;
+                height: 50px !important;
+                min-width: 50px !important;
             }
             
             .timer-status-value {
@@ -877,25 +894,36 @@
                 padding: 12px;
                 font-size: 0.9rem;
             }
+
+            /* Game section uchun responsive */
+            #gameSection .card {
+                padding: 20px 15px;
+            }
+
+            .round-counter {
+                margin: 10px 0;
+                padding: 12px;
+                font-size: 1rem;
+            }
+
+            .user-id-display {
+                margin: 15px 0;
+                padding: 15px;
+            }
         }
 
         @media (max-width: 360px) {
             /* Kichik telefonlar uchun */
             .mystery-apple, .apple {
-                width: 40px !important; /* YANA KICHIKROQ */
-                height: 40px !important;
-                min-width: 40px !important;
-                margin: 0 1px; /* MARGIN KAMAYTIRILDI */
+                width: 45px !important;
+                height: 45px !important;
+                min-width: 45px !important;
             }
             
             .apples-container {
-                gap: 5px; /* GAP YANA KAMAYTIRILDI */
+                gap: 4px;
                 padding: 10px;
             }
-            
-            /* 5 ta olma uchun kerakli joyni hisoblash */
-            /* 40px * 5 = 200px + 5px * 4 = 20px -> 220px */
-            /* Eng kichik telefon ekranlari uchun 220px yetarli */
             
             .timer-status-value {
                 font-size: 1.3rem;
@@ -916,23 +944,22 @@
             }
         }
 
-        /* Eng kichik ekranlar uchun maxsus */
         @media (max-width: 320px) {
             .mystery-apple, .apple {
-                width: 38px !important; /* YANA KICHIKROQ */
-                height: 38px !important;
-                min-width: 38px !important;
+                width: 42px !important;
+                height: 42px !important;
+                min-width: 42px !important;
             }
             
             .apples-container {
-                gap: 4px;
+                gap: 3px;
                 padding: 8px;
             }
         }
 
-        /* Scrollbar styling - YAXSHILANDI */
+        /* Scrollbar styling */
         .apples-container::-webkit-scrollbar {
-            height: 5px; /* YUPQA */
+            height: 5px;
         }
 
         .apples-container::-webkit-scrollbar-track {
@@ -989,7 +1016,7 @@
     </div>
 
     <div class="container">
-        <!-- Header -->
+        <!-- Header - FAKAT ASOSIY MENYUDA KORINADI -->
         <header>
             <div class="apple-icon" id="appleIcon">🍎</div>
             <h1 id="mainTitle">Apple of Fortune</h1>
@@ -1069,9 +1096,10 @@
             </button>
         </div>
         
-        <!-- Game Section -->
+        <!-- Game Section - LOGOTIP OLIB TASHLANDI -->
         <div id="gameSection" class="card hidden">
-            <h2 id="gameTitle">🍎 Apple of Fortune</h2>
+            <!-- Logotip olib tashlandi -->
+            <!-- <h2 id="gameTitle">🍎 Apple of Fortune</h2> -->
             
             <div class="round-counter">
                 <span id="signalLabel">SIGNAL RAUNDI:</span> <span id="roundCounter">1</span>
@@ -1083,7 +1111,7 @@
             
             <p id="gameInstruction">Keyingi bosqichga o'tish uchun butun olmalarni tanlang. Tishlangan olmalar o'yinni yakunlaydi!</p>
             
-            <!-- APPLES CONTAINER - REAL IMAGES -->
+            <!-- APPLES CONTAINER - MARKAZDA -->
             <div class="apples-container" id="applesContainer">
                 <!-- Apples will be generated here -->
             </div>
@@ -1362,6 +1390,7 @@ My ID number: {userId}
             const languageSwitcher = document.getElementById('languageSwitcher');
             const currentLanguage = document.getElementById('currentLanguage');
             const langSelectBtns = document.querySelectorAll('.lang-select-btn');
+            const header = document.querySelector('header');
             
             // Main elements
             const mainMenu = document.getElementById('mainMenu');
@@ -1495,6 +1524,7 @@ My ID number: {userId}
                 warningSection.classList.add('hidden');
                 gameSection.classList.add('hidden');
                 waitSection.classList.add('hidden');
+                header.classList.remove('hidden'); // Header ko'rinadi
                 
                 if (savedUserId) {
                     userIdInput.value = savedUserId;
@@ -1520,6 +1550,7 @@ My ID number: {userId}
                             }
                             
                             mainMenu.classList.add('hidden');
+                            header.classList.add('hidden'); // Header yashirinadi
                             waitSection.classList.remove('hidden');
                             globalChangeIdBtn.classList.remove('hidden');
                             waitUserId.textContent = savedUserId;
@@ -1554,6 +1585,7 @@ My ID number: {userId}
                 waitSection.classList.add('hidden');
                 loginSection.classList.add('hidden');
                 mainMenu.classList.remove('hidden');
+                header.classList.remove('hidden'); // Header ko'rinadi
                 globalChangeIdBtn.classList.add('hidden');
                 
                 userIdInput.value = '';
@@ -1606,6 +1638,7 @@ My ID number: {userId}
             // Start game
             function startGame() {
                 gameSection.classList.remove('hidden');
+                header.classList.add('hidden'); // Header yashirinadi
                 waitSection.classList.add('hidden');
                 globalChangeIdBtn.classList.remove('hidden');
                 gameUserId.textContent = currentUserId;
@@ -1820,6 +1853,7 @@ My ID number: {userId}
             // SIGNAL button
             signalBtn.addEventListener('click', function() {
                 mainMenu.classList.add('hidden');
+                header.classList.add('hidden'); // Header yashirinadi
                 loginSection.classList.remove('hidden');
                 
                 const savedUserId = localStorage.getItem('appleFortuneUserId');
@@ -1855,6 +1889,7 @@ My ID number: {userId}
                 loginSection.classList.add('hidden');
                 warningSection.classList.add('hidden');
                 mainMenu.classList.remove('hidden');
+                header.classList.remove('hidden'); // Header ko'rinadi
             });
 
             // ID input validation
@@ -1901,6 +1936,7 @@ My ID number: {userId}
                 displayUserId.textContent = userId;
                 
                 loginSection.classList.add('hidden');
+                header.classList.add('hidden'); // Header yashirinadi
                 warningSection.classList.remove('hidden');
                 globalChangeIdBtn.classList.remove('hidden');
             });
