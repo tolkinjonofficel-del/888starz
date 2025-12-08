@@ -501,39 +501,41 @@
             border: 1px solid rgba(0, 200, 255, 0.2);
         }
         
-        /* Apples container - KICHAYTRILDI */
+        /* Apples container - YANGILANDI: TELEFONDA BIR QATORDA */
         .apples-container {
             display: flex;
             justify-content: center;
             align-items: center;
             margin: 20px 0;
-            flex-wrap: wrap;
+            flex-wrap: nowrap; /* TELEFONDA HAM BIR QATORDA */
             gap: 10px;
             padding: 15px;
             background: rgba(0, 50, 100, 0.1);
             border-radius: 20px;
             backdrop-filter: blur(5px);
-            overflow-x: auto;
+            overflow-x: auto; /* Agar juda tor ekran bo'lsa, gorizontal scroll */
             -webkit-overflow-scrolling: touch;
             width: 100%;
             border: 1px solid rgba(0, 150, 255, 0.15);
+            scrollbar-width: thin;
+            scrollbar-color: rgba(0, 150, 255, 0.3) rgba(0, 100, 255, 0.1);
         }
         
-        /* Apple styles - KICHAYTRILDI */
+        /* Apple styles - YANGILANDI: KICHIKROQ */
         .mystery-apple, .apple {
-            width: 60px !important;
-            height: 60px !important;
-            min-width: 60px !important;
+            width: 50px !important; /* TELEFON UCHUN KICHIKROQ */
+            height: 50px !important;
+            min-width: 50px !important; /* MIN WIDTH QO'SHILDI */
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             position: relative;
-            flex-shrink: 0;
+            flex-shrink: 0; /* BU MUHIM: OLMA SHRINK BO'LMAYDI */
             border: 2px solid transparent;
             transition: all 0.3s ease;
             cursor: pointer;
-            margin: 5px;
+            margin: 0 3px; /* MARGIN KAMAYTIRILDI */
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -809,92 +811,13 @@
             font-size: 0.9rem;
         }
 
-        /* Responsive design */
-        @media (max-width: 768px) {
-            .container {
-                padding: 10px;
-            }
-            
-            h1 {
-                font-size: 1.8rem;
-            }
-            
-            .subtitle {
-                font-size: 0.95rem;
-            }
-            
-            .apple-icon {
-                font-size: 3rem;
-            }
-            
-            .card {
-                padding: 20px;
-                margin-bottom: 20px;
-                border-radius: 18px;
-            }
-            
-            .card h2 {
-                font-size: 1.2rem;
-            }
-            
-            .card p {
-                font-size: 0.9rem;
-            }
-            
-            /* Mobile apples - KICHIKROQ */
+        /* Responsive design - YANGILANDI */
+        @media (min-width: 768px) {
+            /* Desktop uchun olmalar kattaroq */
             .mystery-apple, .apple {
-                width: 55px !important;
-                height: 55px !important;
-                min-width: 55px !important;
-            }
-            
-            .apples-container {
-                gap: 8px;
-                padding: 12px;
-                margin: 18px 0;
-            }
-            
-            .btn {
-                padding: 14px;
-                font-size: 0.95rem;
-            }
-            
-            .action-buttons {
-                grid-template-columns: 1fr;
-                gap: 12px;
-            }
-            
-            .timer-status-item {
-                padding: 20px;
-                min-width: 160px;
-            }
-            
-            .timer-status-value {
-                font-size: 1.6rem;
-            }
-            
-            #globalChangeIdBtn {
-                bottom: 20px;
-                right: 20px;
-                padding: 12px 20px;
-                font-size: 0.85rem;
-            }
-            
-            .language-logo {
-                width: 90px;
-                height: 90px;
-            }
-            
-            .language-logo span {
-                font-size: 45px;
-            }
-            
-            #languageSelector h1 {
-                font-size: 2rem;
-            }
-            
-            .action-buttons .btn {
-                padding: 14px;
+                width: 60px !important;
+                height: 60px !important;
+                min-width: 60px !important;
             }
         }
 
@@ -911,17 +834,19 @@
                 font-size: 2.8rem;
             }
             
-            /* Small screen apples - KICHIKROQ */
-            .mystery-apple, .apple {
-                width: 50px !important;
-                height: 50px !important;
-                min-width: 50px !important;
+            /* Mobile uchun olmalar konteyneri */
+            .apples-container {
+                gap: 8px; /* GAP KAMAYTIRILDI */
+                padding: 12px;
+                justify-content: flex-start; /* CHAP TOMONDAN BOSHLANADI */
             }
             
-            .apples-container {
-                gap: 6px;
-                padding: 10px;
-                justify-content: center;
+            /* Mobile uchun olmalar o'lchami */
+            .mystery-apple, .apple {
+                width: 45px !important; /* KICHIKROQ */
+                height: 45px !important;
+                min-width: 45px !important;
+                margin: 0 2px; /* MARGIN KAMAYTIRILDI */
             }
             
             .timer-status-value {
@@ -955,16 +880,22 @@
         }
 
         @media (max-width: 360px) {
+            /* Kichik telefonlar uchun */
             .mystery-apple, .apple {
-                width: 45px !important;
-                height: 45px !important;
-                min-width: 45px !important;
+                width: 40px !important; /* YANA KICHIKROQ */
+                height: 40px !important;
+                min-width: 40px !important;
+                margin: 0 1px; /* MARGIN KAMAYTIRILDI */
             }
             
             .apples-container {
-                gap: 5px;
-                padding: 8px;
+                gap: 5px; /* GAP YANA KAMAYTIRILDI */
+                padding: 10px;
             }
+            
+            /* 5 ta olma uchun kerakli joyni hisoblash */
+            /* 40px * 5 = 200px + 5px * 4 = 20px -> 220px */
+            /* Eng kichik telefon ekranlari uchun 220px yetarli */
             
             .timer-status-value {
                 font-size: 1.3rem;
@@ -985,23 +916,43 @@
             }
         }
 
-        /* Scrollbar styling */
+        /* Eng kichik ekranlar uchun maxsus */
+        @media (max-width: 320px) {
+            .mystery-apple, .apple {
+                width: 38px !important; /* YANA KICHIKROQ */
+                height: 38px !important;
+                min-width: 38px !important;
+            }
+            
+            .apples-container {
+                gap: 4px;
+                padding: 8px;
+            }
+        }
+
+        /* Scrollbar styling - YAXSHILANDI */
         .apples-container::-webkit-scrollbar {
-            height: 6px;
+            height: 5px; /* YUPQA */
         }
 
         .apples-container::-webkit-scrollbar-track {
-            background: rgba(0, 100, 255, 0.1);
+            background: rgba(0, 100, 255, 0.05);
             border-radius: 10px;
         }
 
         .apples-container::-webkit-scrollbar-thumb {
-            background: rgba(0, 150, 255, 0.3);
+            background: rgba(0, 150, 255, 0.2);
             border-radius: 10px;
         }
 
         .apples-container::-webkit-scrollbar-thumb:hover {
-            background: rgba(0, 150, 255, 0.5);
+            background: rgba(0, 150, 255, 0.3);
+        }
+
+        /* For Firefox */
+        .apples-container {
+            scrollbar-width: thin;
+            scrollbar-color: rgba(0, 150, 255, 0.2) rgba(0, 100, 255, 0.05);
         }
     </style>
 </head>
