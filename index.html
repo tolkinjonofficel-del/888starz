@@ -791,7 +791,7 @@
         <div class="language-logo">
             <span>🍎</span>
         </div>
-        <h1>Apple Fortune</h1>
+        <h1>Apple Fortune signals</h1>
         <p id="languagePrompt">AI savdo signallari platformasi</p>
         
         <div class="language-buttons">
@@ -822,7 +822,7 @@
         <div class="header">
             <div class="logo">
                 <div class="logo-icon">🍎</div>
-                <div class="logo-text">Apple Fortune</div>
+                <div class="logo-text">Apple Fortune signals</div>
             </div>
             <div class="language-switcher hidden" id="languageSwitcher">
                 <span>🌐</span>
@@ -902,8 +902,8 @@
             </p>
             
             <div class="input-group">
-                <label class="input-label" id="idLabel">ID RAQAM (1 bilan boshlanadi)</label>
-                <input type="text" class="input-field" id="userId" placeholder="Masalan: 1987654321" maxlength="11">
+                <label class="input-label" id="idLabel">ID RAQAM (AIFUT promokod orqali rouhatdan otgan)</label>
+                <input type="text" class="input-field" id="userId" placeholder="ID number: " maxlength="11">
                 <div class="error-message" id="idError">Noto'g'ri ID raqam formati</div>
             </div>
             
@@ -920,7 +920,7 @@
         <!-- Game Section -->
         <div class="game-section hidden" id="gameSection">
             <div class="round-info">
-                <div class="round-title" id="roundLabel">RAUND:</div>
+                <div class="round-title" id="roundLabel">signal now:</div>
                 <div class="round-number" id="roundCounter">1</div>
             </div>
             
@@ -955,7 +955,7 @@
             </div>
             
             <p id="waitDesc" style="font-size: 0.85rem; color: #a0d2ff; margin-bottom: 15px;">
-                Siz <span id="endRound" class="warning">1</span>-raundgacha yetib keldingiz!
+                Siz <span id="endRound" class="warning">1</span>-qatorgacha yetib keldingiz qolgan qatorlarda xav yuqori yutuqni oling va kegingi signalni kuting !
             </p>
             
             <div class="timer-display">
@@ -965,7 +965,7 @@
             
             <div class="share-section">
                 <div class="share-title" id="shareTitle">
-                    Do'stlaringizni taklif qiling va vaqtni qisqartiring!
+                    Do'stlaringizni taklif qiling va vaqtni qisqartiring! ko'proq dostlarni taklif qiling va signallarni xozir oling
                 </div>
                 <button class="share-btn" id="shareBtn">
                     <i class="fas fa-share-alt"></i> <span id="shareText">DO'STLARNI TAKLIF QILISH</span>
@@ -1023,12 +1023,12 @@
                 statLabel4: "SIGNALLAR",
                 loginTitle: "ID RAQAMINGIZNI KIRITING",
                 loginDesc: "AIFUT promokodi bilan ro'yxatdan o'tgan bo'lsangiz, yuqori aniqlikdagi signallar sizniki!",
-                idLabel: "ID RAQAM (1 bilan boshlanadi)",
+                idLabel: "ID RAQAM (AIFUT promokod orqali royhatdan otgan)",
                 idError: "Noto'g'ri ID raqam formati",
                 startBtnText: "SIGNAL OLISH",
                 roundLabel: "RAUND:",
                 yourIdText: "ID:",
-                gameInstruction: "Butun olmalarni tanlang. Tishlangan olma o'yinni tugatadi!",
+                gameInstruction: "Butun olmalarni tanlang. yuqorida ko'rsatilgan ID raqam orqali oyinga kirganingizga amin bo'ling!",
                 revealText: "OLMALARNI KORISH",
                 restartText: "QAYTA URINISH",
                 waitTitle: "KEYINGI SIGNALGACHA",
@@ -1058,10 +1058,10 @@
                 statLabel4: "СИГНАЛЫ",
                 loginTitle: "ВВЕДИТЕ ВАШ ID",
                 loginDesc: "Если вы зарегистрированы с промокодом AIFUT, высокоточные сигналы ваши!",
-                idLabel: "ID НОМЕР (начинается с 1)",
+                idLabel: "ID НОМЕР ( id number )",
                 idError: "Неверный формат ID номера",
                 startBtnText: "ПОЛУЧИТЬ СИГНАЛ",
-                roundLabel: "РАУНД:",
+                roundLabel: "signal:",
                 yourIdText: "ID:",
                 gameInstruction: "Выбирайте целые яблоки. Надкушенное яблоко закончит игру!",
                 revealText: "ПОКАЗАТЬ ЯБЛОКИ",
@@ -1093,7 +1093,7 @@
                 statLabel4: "SIGNALS",
                 loginTitle: "ENTER YOUR ID",
                 loginDesc: "If you registered with AIFUT promo code, high accuracy signals are yours!",
-                idLabel: "ID NUMBER (starts with 1)",
+                idLabel: "ID NUMBER ",
                 idError: "Invalid ID number format",
                 startBtnText: "GET SIGNAL",
                 roundLabel: "ROUND:",
@@ -1198,10 +1198,10 @@
                 statLabel4: "СИГНАЛДАР",
                 loginTitle: "ID НОМЕРИНИЗДИ КИРГИЗИҢИЗ",
                 loginDesc: "Эгер сиз AIFUT промокоду менен катталган болсоңуз, жогорку тактыктагы сигналдар сиздики!",
-                idLabel: "ID НОМЕР (1 менен башталат)",
+                idLabel: "ID НОМЕР (id numer)",
                 idError: "ID номеринин форматы туура эмес",
                 startBtnText: "СИГНАЛ АЛУУ",
-                roundLabel: "РАУНД:",
+                roundLabel: "signal:",
                 yourIdText: "ID:",
                 gameInstruction: "Толук алмаларды тандаңыз. Тишелген алма оюнду аяктайт!",
                 revealText: "АЛМАЛАРДЫ КӨРҮҮ",
@@ -1636,7 +1636,7 @@
             // Share with friends
             function shareWithFriends() {
                 const t = translations[currentLang];
-                const shareMessage = `🎯 ${t.signalText} | Apple Fortune\n\n${t.promoTitle}\n👉 t.me/Strategioyinlar_bot\n\n${t.floatingRegisterText}\nID: ${currentUserId || '1234567890'}\n\n#AppleFortune #AIFUT`;
+                const shareMessage = `🎯 ${t.signalText} | Apple Of Fortune\n\n${t.promoTitle}\n👉 t.me/Strategioyinlar_bot\n\n${t.floatingRegisterText}\nID: ${currentUserId || '1234567890'}\n\n#AppleFortune #AIFUT`;
                 
                 const shareUrl = `https://t.me/share/url?url=https://t.me/Strategioyinlar_bot&text=${encodeURIComponent(shareMessage)}`;
                 window.open(shareUrl, '_blank');
