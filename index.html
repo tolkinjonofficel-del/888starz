@@ -120,6 +120,80 @@
             background: rgba(0, 150, 255, 0.25);
         }
 
+        /* ============ HACKER ANIMATION ============ */
+        .hacker-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #000000;
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+        }
+
+        .matrix-code {
+            color: #00ff00;
+            font-family: 'Courier New', monospace;
+            font-size: 1.3rem;
+            text-align: center;
+            margin-bottom: 30px;
+            text-shadow: 0 0 10px #00ff00;
+            animation: text-flicker 0.5s infinite;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        @keyframes text-flicker {
+            0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+                opacity: 1;
+            }
+            20%, 24%, 55% {
+                opacity: 0.3;
+            }
+        }
+
+        .progress-container {
+            width: 80%;
+            max-width: 300px;
+            margin: 20px 0;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 10px;
+            background: #003300;
+            border-radius: 5px;
+            overflow: hidden;
+            border: 1px solid #00ff00;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #00ff00, #00cc00);
+            width: 0%;
+            transition: width 2s ease;
+        }
+
+        .hacker-text {
+            color: #00ff00;
+            font-family: 'Courier New', monospace;
+            font-size: 1.1rem;
+            margin-top: 20px;
+            text-align: center;
+            animation: blink 1s infinite;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
         /* ============ MAIN CONTAINER ============ */
         .container {
             max-width: 100%;
@@ -440,33 +514,45 @@
         }
 
         .apple {
-            width: 55px;
-            height: 55px;
+            width: 60px;
+            height: 60px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.5rem;
             cursor: pointer;
-            transition: all 0.2s;
+            transition: all 0.3s ease;
+            background-size: cover;
+            background-position: center;
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .apple:hover {
+            transform: scale(1.1);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
         }
 
         .mystery-apple {
-            background: linear-gradient(135deg, #1a1a3e, #302b63);
-            border: 2px solid rgba(0, 150, 255, 0.5);
-            color: #a0d2ff;
+            background-image: url('https://i.ibb.co/Gf3NcMDQ/maxresdefault.jpg');
+            border: 2px solid rgba(0, 150, 255, 0.6);
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-8px); }
         }
 
         .whole-apple {
-            background: linear-gradient(135deg, #ff3333, #cc0000);
+            background-image: url('https://i.pinimg.com/736x/6a/aa/19/6aaa196961f40afd21cf9d21824f137e.jpg');
             border: 2px solid #ffcc00;
-            color: white;
         }
 
         .bitten-apple {
-            background: linear-gradient(135deg, #33cc33, #009900);
+            background-image: url('https://i.ibb.co/m5sNvNPK/62cd09ea-de08-49b9-9fea-d0100c747423-2.jpg');
             border: 2px solid #00ff00;
-            color: white;
         }
 
         .game-btn {
@@ -499,6 +585,11 @@
             text-align: center;
             font-size: 0.9rem;
             display: none;
+        }
+
+        .signal-success {
+            color: #00ff66;
+            font-weight: 700;
         }
 
         /* ============ WAIT SECTION ============ */
@@ -631,9 +722,8 @@
             }
             
             .apple {
-                width: 65px;
-                height: 65px;
-                font-size: 1.8rem;
+                width: 70px;
+                height: 70px;
             }
         }
 
@@ -648,9 +738,8 @@
             }
             
             .apple {
-                width: 50px;
-                height: 50px;
-                font-size: 1.3rem;
+                width: 55px;
+                height: 55px;
             }
             
             .stats-grid {
@@ -676,9 +765,8 @@
             }
             
             .apple {
-                width: 45px;
-                height: 45px;
-                font-size: 1.2rem;
+                width: 50px;
+                height: 50px;
             }
         }
     </style>
@@ -686,6 +774,17 @@
 <body>
     <!-- Background Effect -->
     <div class="bg-effect"></div>
+
+    <!-- Hacker Animation -->
+    <div class="hacker-animation" id="hackerAnimation">
+        <div class="matrix-code" id="matrixCode">SIGNAL ANALYZING...</div>
+        <div class="progress-container">
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+        </div>
+        <div class="hacker-text" id="hackerText">AI TRADING SYSTEM ACTIVE</div>
+    </div>
 
     <!-- Language Selector -->
     <div id="languageSelector">
@@ -1130,6 +1229,10 @@
             const languageSwitcher = document.getElementById('languageSwitcher');
             const currentLanguage = document.getElementById('currentLanguage');
             const langSelectBtns = document.querySelectorAll('.lang-select-btn');
+            const hackerAnimation = document.getElementById('hackerAnimation');
+            const matrixCode = document.getElementById('matrixCode');
+            const progressFill = document.getElementById('progressFill');
+            const hackerText = document.getElementById('hackerText');
             
             // Top action buttons
             const btnSignal = document.getElementById('btnSignal');
@@ -1242,6 +1345,46 @@
                 container.classList.remove('active');
                 languageSwitcher.classList.add('hidden');
                 languageSelector.style.display = 'flex';
+            }
+
+            // Show hacker animation
+            function showHackerAnimation() {
+                hackerAnimation.style.display = 'flex';
+                progressFill.style.width = '0%';
+                
+                // Matrix code sequences
+                const sequences = [
+                    "SIGNAL ANALYZING...",
+                    "MARKET SCANNING...",
+                    "AI PROCESSING...",
+                    "PATTERN DETECTED...",
+                    "SIGNAL NOW",
+                    "TRADE",
+                    "TAYYOR",
+                    "READY"
+                ];
+                
+                let currentSequence = 0;
+                
+                // Update matrix code
+                const codeInterval = setInterval(() => {
+                    matrixCode.textContent = sequences[currentSequence];
+                    currentSequence++;
+                    
+                    if (currentSequence >= sequences.length) {
+                        clearInterval(codeInterval);
+                    }
+                }, 400);
+                
+                // Animate progress bar
+                setTimeout(() => {
+                    progressFill.style.width = '100%';
+                }, 300);
+                
+                // Hide after animation
+                setTimeout(() => {
+                    hackerAnimation.style.display = 'none';
+                }, 3000);
             }
 
             // Show main sections
@@ -1370,7 +1513,6 @@
                 for (let i = 0; i < 5; i++) {
                     const apple = document.createElement('div');
                     apple.className = 'apple mystery-apple';
-                    apple.innerHTML = '<i class="fas fa-question"></i>';
                     applesContainer.appendChild(apple);
                 }
             }
@@ -1405,10 +1547,6 @@
                     apple.dataset.index = i;
                     apple.dataset.type = appleType;
                     
-                    apple.innerHTML = appleType === 'whole' ? 
-                        '<i class="fas fa-apple-alt"></i>' : 
-                        '<i class="fas fa-apple-alt"></i><i class="fas fa-bite" style="position: absolute; font-size: 0.8rem; top: 5px; right: 5px;"></i>';
-                    
                     apple.addEventListener('click', function() {
                         if (!gameActive) return;
                         selectApple(this);
@@ -1432,25 +1570,29 @@
                     resultMessage.style.display = 'block';
                     restartBtn.classList.remove('hidden');
                 } else {
-                    resultMessage.textContent = t.successMessage;
-                    resultMessage.style.color = '#00ff66';
+                    resultMessage.innerHTML = '<span class="signal-success">✅ Butun olma! Signal tahlil qilinmoqda...</span>';
                     resultMessage.style.display = 'block';
                     
+                    // Show hacker animation before next round
                     setTimeout(() => {
-                        const endProbability = roundEndProbabilities[currentRound] || 0;
+                        showHackerAnimation();
                         
-                        if (Math.random() < endProbability) {
-                            endRoundValue = currentRound;
-                            localStorage.setItem('appleFortuneEndRound', endRoundValue);
-                            showWaitSection();
-                        } else if (currentRound < 6) {
-                            currentRound++;
-                            startGame();
-                        } else {
-                            endRoundValue = 6;
-                            localStorage.setItem('appleFortuneEndRound', endRoundValue);
-                            showWaitSection();
-                        }
+                        setTimeout(() => {
+                            const endProbability = roundEndProbabilities[currentRound] || 0;
+                            
+                            if (Math.random() < endProbability) {
+                                endRoundValue = currentRound;
+                                localStorage.setItem('appleFortuneEndRound', endRoundValue);
+                                showWaitSection();
+                            } else if (currentRound < 6) {
+                                currentRound++;
+                                startGame();
+                            } else {
+                                endRoundValue = 6;
+                                localStorage.setItem('appleFortuneEndRound', endRoundValue);
+                                showWaitSection();
+                            }
+                        }, 3000); // Wait for hacker animation
                     }, 1500);
                 }
             }
