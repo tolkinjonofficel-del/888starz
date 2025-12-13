@@ -1506,26 +1506,6 @@
             let sharedFriends = 0;
             let invitedFriendsVIP = 0; // VIP uchun taklif qilingan do'stlar
 
-            // Round configuration
-            const roundConfig = {
-                1: { whole: 4, bitten: 1 },
-                2: { whole: 4, bitten: 1 },
-                3: { whole: 3, bitten: 2 },
-                4: { whole: 3, bitten: 2 },
-                5: { whole: 3, bitten: 2 },
-                6: { whole: 2, bitten: 3 }
-            };
-            
-            // Game end probabilities
-            const roundEndProbabilities = {
-                1: 0.05,
-                2: 0.15,
-                3: 0.45,
-                4: 0.75,
-                5: 0.92,
-                6: 1.00
-            };
-
             // ==================== FUNCTIONS ====================
 
             // Update translations
@@ -1568,8 +1548,11 @@
             }
 
             // Show VIP hacker animation
-            function showVipHackerAnimation() {
-                if (!hackerAnimation) return;
+            function showVipHackerAnimation(callback) {
+                if (!hackerAnimation) {
+                    if (callback) callback();
+                    return;
+                }
                 
                 hackerAnimation.style.display = 'flex';
                 if (progressFill) progressFill.style.width = '0%';
@@ -1605,20 +1588,10 @@
                     if (progressFill) progressFill.style.width = '100%';
                 }, 300);
                 
-                // Hide after animation
+                // Hide after animation and execute callback
                 setTimeout(() => {
                     if (hackerAnimation) hackerAnimation.style.display = 'none';
-                    
-                    // Check if 5 friends invited
-                    if (invitedFriendsVIP >= 5) {
-                        // Show success message and go to login section
-                        const t = translations[currentLang] || translations.uz;
-                        alert(`Tabriklaymiz! Siz 5 ta do'stni taklif qildingiz. Endi VIP signal olishingiz mumkin!\n\nID raqamingizni kiriting.`);
-                        showLoginSection();
-                    } else {
-                        // Show invite section if not enough friends
-                        showVipInviteSection();
-                    }
+                    if (callback) callback();
                 }, 3000);
             }
 
@@ -1672,20 +1645,6 @@
                 }, 100);
             }
 
-            // Show quick share section
-            function showQuickShareSection() {
-                if (topActions) topActions.classList.add('hidden');
-                if (promoBanner) promoBanner.classList.add('hidden');
-                if (statsSection) statsSection.classList.add('hidden');
-                if (vipSection) vipSection.classList.add('hidden');
-                if (vipInviteSection) vipInviteSection.classList.add('hidden');
-                if (loginSection) loginSection.classList.add('hidden');
-                if (gameSection) gameSection.classList.add('hidden');
-                if (waitSection) waitSection.classList.add('hidden');
-                if (bonusSection) bonusSection.classList.add('hidden');
-                if (quickShareSection) quickShareSection.classList.remove('hidden');
-            }
-
             // Show game section
             function showGameSection() {
                 if (topActions) topActions.classList.add('hidden');
@@ -1723,20 +1682,6 @@
                 startCountdown();
             }
 
-            // Show bonus section
-            function showBonusSection() {
-                if (topActions) topActions.classList.add('hidden');
-                if (promoBanner) promoBanner.classList.add('hidden');
-                if (statsSection) statsSection.classList.add('hidden');
-                if (vipSection) vipSection.classList.add('hidden');
-                if (vipInviteSection) vipInviteSection.classList.add('hidden');
-                if (loginSection) loginSection.classList.add('hidden');
-                if (gameSection) gameSection.classList.add('hidden');
-                if (waitSection) waitSection.classList.add('hidden');
-                if (bonusSection) bonusSection.classList.remove('hidden');
-                if (quickShareSection) quickShareSection.classList.add('hidden');
-            }
-
             // Share message function for VIP
             function shareMessageVIP() {
                 const t = translations[currentLang] || translations.uz;
@@ -1761,7 +1706,9 @@
                         alert(`Tabriklaymiz! Siz 5 ta do'stni taklif qildingiz. Endi VIP signal olishingiz mumkin!\n\nKeyingi bosqichga o'tish uchun animatsiya ko'rsatiladi...`);
                         
                         // Show animation and then go to login section
-                        showVipHackerAnimation();
+                        showVipHackerAnimation(function() {
+                            showLoginSection();
+                        });
                     }, 1000);
                 } else {
                     // Show message
@@ -1869,6 +1816,16 @@
                     revealBtn.innerHTML = `<i class="fas fa-hand-pointer"></i> ${translations[currentLang]?.revealText || 'OLMALARNI KORISH'}`;
                 }
                 
+                // Round configuration
+                const roundConfig = {
+                    1: { whole: 4, bitten: 1 },
+                    2: { whole: 4, bitten: 1 },
+                    3: { whole: 3, bitten: 2 },
+                    4: { whole: 3, bitten: 2 },
+                    5: { whole: 3, bitten: 2 },
+                    6: { whole: 2, bitten: 3 }
+                };
+                
                 const config = roundConfig[currentRound] || { whole: 2, bitten: 3 };
                 const totalApples = 5;
                 
@@ -1931,6 +1888,16 @@
                         
                         setTimeout(() => {
                             if (hackerAnimation) hackerAnimation.style.display = 'none';
+                            
+                            // Game end probabilities
+                            const roundEndProbabilities = {
+                                1: 0.05,
+                                2: 0.15,
+                                3: 0.45,
+                                4: 0.75,
+                                5: 0.92,
+                                6: 1.00
+                            };
                             
                             const endProbability = roundEndProbabilities[currentRound] || 0;
                             
@@ -2024,10 +1991,14 @@
                 // Check if already invited 5 friends
                 if (invitedFriendsVIP >= 5) {
                     // Go directly to login section for VIP
-                    showVipHackerAnimation();
+                    showVipHackerAnimation(function() {
+                        showLoginSection();
+                    });
                 } else {
                     // Show hacker animation first, then invite section
-                    showVipHackerAnimation();
+                    showVipHackerAnimation(function() {
+                        showVipInviteSection();
+                    });
                 }
             }
 
