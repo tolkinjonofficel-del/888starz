@@ -1503,7 +1503,6 @@
             let countdownInterval = null;
             let countdownTime = 3 * 60 * 60; // 3 hours
             let endRoundValue = 0;
-            let invitedFriends = 0;
             let sharedFriends = 0;
             let invitedFriendsVIP = 0; // VIP uchun taklif qilingan do'stlar
 
@@ -1609,7 +1608,17 @@
                 // Hide after animation
                 setTimeout(() => {
                     if (hackerAnimation) hackerAnimation.style.display = 'none';
-                    showGameSection(); // VIP signal olgandan keyin o'yin sahifasiga o'tish
+                    
+                    // Check if 5 friends invited
+                    if (invitedFriendsVIP >= 5) {
+                        // Show success message and go to login section
+                        const t = translations[currentLang] || translations.uz;
+                        alert(`Tabriklaymiz! Siz 5 ta do'stni taklif qildingiz. Endi VIP signal olishingiz mumkin!\n\nID raqamingizni kiriting.`);
+                        showLoginSection();
+                    } else {
+                        // Show invite section if not enough friends
+                        showVipInviteSection();
+                    }
                 }, 3000);
             }
 
@@ -1739,7 +1748,7 @@
                 
                 // Increase invited friends count
                 invitedFriendsVIP++;
-                localStorage.setItem('appleFortuneInvitedFriendsVIP', invitedFriendsVIP);
+                localStorage.setItem('appleFortuneInvitedFriendsVIP', invitedFriendsVIP.toString());
                 
                 // Update counter
                 updateVIPCounter();
@@ -1748,13 +1757,17 @@
                 if (invitedFriendsVIP >= 5) {
                     // Show success message
                     setTimeout(() => {
-                        alert("Tabriklaymiz! Siz 5 ta do'stni taklif qildingiz. Endi VIP signal olishingiz mumkin!");
+                        const t = translations[currentLang] || translations.uz;
+                        alert(`Tabriklaymiz! Siz 5 ta do'stni taklif qildingiz. Endi VIP signal olishingiz mumkin!\n\nKeyingi bosqichga o'tish uchun animatsiya ko'rsatiladi...`);
+                        
+                        // Show animation and then go to login section
                         showVipHackerAnimation();
                     }, 1000);
                 } else {
                     // Show message
                     setTimeout(() => {
-                        alert(`Do'stingiz taklif qilindi! Siz ${invitedFriendsVIP}/5 do'stni taklif qildingiz.`);
+                        const t = translations[currentLang] || translations.uz;
+                        alert(`${t.vipInviteBtnText}! Siz ${invitedFriendsVIP}/5 do'stni taklif qildingiz.`);
                     }, 1000);
                 }
             }
@@ -1800,6 +1813,9 @@
                         }
                     }
                 }
+                
+                // Update VIP counter if loaded
+                updateVIPCounter();
             }
             
             // Validate user ID
@@ -2007,9 +2023,11 @@
             function getVipSignal() {
                 // Check if already invited 5 friends
                 if (invitedFriendsVIP >= 5) {
+                    // Go directly to login section for VIP
                     showVipHackerAnimation();
                 } else {
-                    showVipInviteSection();
+                    // Show hacker animation first, then invite section
+                    showVipHackerAnimation();
                 }
             }
 
@@ -2154,6 +2172,9 @@
             // Initialize language on page load
             if (localStorage.getItem('appleFortuneLanguage')) {
                 selectLanguage(currentLang);
+            } else {
+                // If no language selected, show language selector
+                if (languageSelector) languageSelector.style.display = 'flex';
             }
         });
     </script>
