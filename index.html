@@ -194,102 +194,61 @@
             50% { opacity: 0.5; }
         }
 
-        /* ============ SHARE REQUIREMENT SECTION ============ */
-        .share-requirement {
+        /* ============ QUICK SHARE SECTION ============ */
+        .quick-share-section {
             background: rgba(20, 25, 60, 0.5);
             border-radius: 12px;
-            padding: 25px;
+            padding: 20px;
             margin-bottom: 20px;
             border: 1px solid rgba(0, 150, 255, 0.2);
             text-align: center;
             display: none;
         }
 
-        .share-title {
+        .quick-share-title {
             font-size: 1.2rem;
             color: #ffcc00;
             margin-bottom: 15px;
             font-weight: 700;
         }
 
-        .share-description {
-            font-size: 0.9rem;
-            color: #a0d2ff;
-            margin-bottom: 20px;
-            line-height: 1.4;
-        }
-
-        .share-counter {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
+        .quick-share-buttons {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
             margin: 20px 0;
         }
 
-        .share-circle {
-            width: 35px;
-            height: 35px;
-            border-radius: 50%;
-            background: rgba(0, 100, 255, 0.2);
-            border: 2px solid rgba(0, 150, 255, 0.3);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 700;
-            color: #00ccff;
-        }
-
-        .share-circle.active {
-            background: rgba(0, 255, 100, 0.2);
-            border-color: #00ff66;
-            color: #00ff66;
-        }
-
-        .share-message-box {
-            background: rgba(0, 100, 255, 0.1);
-            border-radius: 10px;
-            padding: 15px;
-            margin: 20px 0;
-            text-align: left;
-            border: 1px solid rgba(0, 150, 255, 0.3);
-        }
-
-        .share-message {
-            font-size: 0.85rem;
-            color: #a0d2ff;
-            margin-bottom: 10px;
-            line-height: 1.4;
-        }
-
-        .copy-btn {
-            background: rgba(0, 150, 255, 0.2);
-            border: 1px solid rgba(0, 200, 255, 0.3);
-            border-radius: 8px;
-            padding: 8px 15px;
-            color: #00ccff;
-            font-size: 0.8rem;
-            font-weight: 600;
-            cursor: pointer;
-            width: 100%;
-            margin-top: 10px;
-        }
-
-        .share-btn-large {
+        .quick-share-btn {
             background: linear-gradient(135deg, #00cc66, #009944);
             border: none;
             border-radius: 10px;
-            padding: 16px;
+            padding: 14px;
             color: white;
-            font-size: 1rem;
+            font-size: 0.9rem;
             font-weight: 700;
             cursor: pointer;
-            width: 100%;
-            margin-top: 15px;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 10px;
+            gap: 8px;
+            transition: all 0.2s;
+        }
+
+        .quick-share-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 204, 102, 0.3);
+        }
+
+        .btn-skip-share {
+            background: linear-gradient(135deg, #666666, #444444);
+        }
+
+        .quick-share-note {
+            font-size: 0.8rem;
+            color: #a0d2ff;
+            margin-top: 15px;
+            line-height: 1.4;
         }
 
         /* ============ MAIN CONTAINER ============ */
@@ -823,6 +782,10 @@
                 width: 70px;
                 height: 70px;
             }
+            
+            .quick-share-buttons {
+                grid-template-columns: repeat(2, 1fr);
+            }
         }
 
         @media (max-width: 380px) {
@@ -928,52 +891,26 @@
             </div>
         </div>
 
-        <!-- Share Requirement Section -->
-        <div class="share-requirement" id="shareRequirement">
-            <div class="share-title" id="shareReqTitle">📢 SIGNAL OLISH UCHUN 5 TA ODAMGA XABAR YUBORING</div>
+        <!-- Quick Share Section -->
+        <div class="quick-share-section" id="quickShareSection">
+            <div class="quick-share-title" id="quickShareTitle">🚀 DO'STLARINGIZNI TAKLIF QILING</div>
             
-            <div class="share-description" id="shareReqDesc">
-                Signal olishni davom ettirish uchun 5 ta odamga yoki guruhga ushbu xabarni tarqating. 
-                Xabar yuborilgandan so'ng signal olish mumkin bo'ladi.
-            </div>
+            <p style="font-size: 0.9rem; color: #a0d2ff; margin-bottom: 20px; line-height: 1.4;">
+                Signal olishni davom ettirish uchun do'stlaringizni taklif qiling. 
+                Taklif qilish orqali siz VIP signal va bonuslarga ham ega bo'lasiz!
+            </p>
             
-            <div class="share-counter">
-                <div class="share-circle" id="shareCircle1">1</div>
-                <div class="share-circle" id="shareCircle2">2</div>
-                <div class="share-circle" id="shareCircle3">3</div>
-                <div class="share-circle" id="shareCircle4">4</div>
-                <div class="share-circle" id="shareCircle5">5</div>
-            </div>
-            
-            <div class="share-message-box">
-                <div class="share-message" id="shareMessageText">
-                    🚀 AI Savdo Signallari | Apple Fortune
-
-                    Do'stim, men Apple Fortune platformasidan foydalanib katta foyda olaman!
-
-                    🔥 Yuqori aniqlikdagi AI savdo signallari
-                    📈 94.7% muvaffaqiyat darajasi
-                    💰 Kuniga $342K gacha foyda
-                    🎁 AIFUT promokodi bilan 200% bonus
-
-                    👉 Hoziroq qo'shiling: t.me/Strategioyinlar_bot
-
-                    Promokod: AIFUT
-                    Mening ID raqamim: <span id="userShareId">1234567890</span>
-
-                    #AppleFortune #AIFUT #TradingSignals
-                </div>
-                <button class="copy-btn" id="copyMessageBtn">
-                    <i class="fas fa-copy"></i> XABARNI NUSXALASH
+            <div class="quick-share-buttons">
+                <button class="quick-share-btn" id="shareFriendsBtn">
+                    <i class="fas fa-share-alt"></i> DO'STLARNI TAKLIF QILISH
+                </button>
+                <button class="quick-share-btn btn-skip-share" id="skipShareBtn">
+                    <i class="fas fa-forward"></i> KEYINGI BOSQICHGA OTISH
                 </button>
             </div>
             
-            <button class="share-btn-large" id="shareNowBtn">
-                <i class="fas fa-share-alt"></i> <span id="shareNowText">XABARNI TARQATISH</span>
-            </button>
-            
-            <div style="font-size: 0.8rem; color: #a0d2ff; margin-top: 15px;">
-                <p id="shareInstruction">Xabarni nusxalab, 5 ta odamga yoki guruhga yuboring. Har bir yuborilgan xabar uchun yuqoridagi raqam yashil rangga o'zgaradi.</p>
+            <div class="quick-share-note" id="quickShareNote">
+                💡 Eslatma: Do'stlaringizni taklif qilsangiz, 30 daqiqa chegirma va bonuslar olasiz!
             </div>
         </div>
 
@@ -1188,26 +1125,8 @@
                 floatingRegisterText: "RO'YXATDAN OTISH",
                 successMessage: "✅ Butun olma! Keyingi bosqichga o'tilmoqda...",
                 failureMessage: "❌ Tishlangan olma! O'yin {round}-raundda tugadi.",
-                shareReqTitle: "📢 SIGNAL OLISH UCHUN 5 TA ODAMGA XABAR YUBORING",
-                shareReqDesc: "Signal olishni davom ettirish uchun 5 ta odamga yoki guruhga ushbu xabarni tarqating. Xabar yuborilgandan so'ng signal olish mumkin bo'ladi.",
-                shareNowText: "XABARNI TARQATISH",
-                shareInstruction: "Xabarni nusxalab, 5 ta odamga yoki guruhga yuboring. Har bir yuborilgan xabar uchun yuqoridagi raqam yashil rangga o'zgaradi.",
-                copyMessageBtn: "XABARNI NUSXALASH",
-                shareMessageText: `🚀 AI Savdo Signallari | Apple Fortune
-
-Do'stim, men Apple Fortune platformasidan foydalanib katta foyda olaman!
-
-🔥 Yuqori aniqlikdagi AI savdo signallari
-📈 94.7% muvaffaqiyat darajasi
-💰 Kuniga $342K gacha foyda
-🎁 AIFUT promokodi bilan 200% bonus
-
-👉 Hoziroq qo'shiling: t.me/Strategioyinlar_bot
-
-Promokod: AIFUT
-Mening ID raqamim: {userId}
-
-#AppleFortune #AIFUT #TradingSignals`
+                quickShareTitle: "🚀 DO'STLARINGIZNI TAKLIF QILING",
+                quickShareNote: "💡 Eslatma: Do'stlaringizni taklif qilsangiz, 30 daqiqa chegirma va bonuslar olasiz!"
             },
             ru: {
                 languagePrompt: "Платформа AI торговых сигналов",
@@ -1243,26 +1162,8 @@ Mening ID raqamim: {userId}
                 floatingRegisterText: "РЕГИСТРАЦИЯ",
                 successMessage: "✅ Целое яблоко! Переходим на следующий уровень...",
                 failureMessage: "❌ Надкушенное яблоко! Игра завершена на раунде {round}.",
-                shareReqTitle: "📢 ДЛЯ ПОЛУЧЕНИЯ СИГНАЛА ОТПРАВЬТЕ 5 ЧЕЛОВЕКАМ",
-                shareReqDesc: "Чтобы продолжить получать сигналы, отправьте это сообщение 5 людям или в группы. После отправки сообщения вы сможете получать сигналы.",
-                shareNowText: "РАССЫЛАТЬ СООБЩЕНИЕ",
-                shareInstruction: "Скопируйте сообщение и отправьте 5 людям или в группы. За каждое отправленное сообщение цифра выше станет зеленой.",
-                copyMessageBtn: "КОПИРОВАТЬ СООБЩЕНИЕ",
-                shareMessageText: `🚀 AI Торговые Сигналы | Apple Fortune
-
-Друг, я зарабатываю большие деньги с платформой Apple Fortune!
-
-🔥 Высокоточные AI торговые сигналы
-📈 94.7% успешности
-💰 До $342K прибыли в день
-🎁 200% бонус с промокодом AIFUT
-
-👉 Присоединяйтесь сейчас: t.me/Strategioyinlar_bot
-
-Промокод: AIFUT
-Мой ID номер: {userId}
-
-#AppleFortune #AIFUT #ТорговыеСигналы`
+                quickShareTitle: "🚀 ПРИГЛАСИТЕ СВОИХ ДРУЗЕЙ",
+                quickShareNote: "💡 Примечание: Если вы пригласите друзей, вы получите 30 минут скидки и бонусы!"
             },
             en: {
                 languagePrompt: "AI trading signals platform",
@@ -1298,26 +1199,8 @@ Mening ID raqamim: {userId}
                 floatingRegisterText: "REGISTER",
                 successMessage: "✅ Whole apple! Moving to next level...",
                 failureMessage: "❌ Bitten apple! Game ended at round {round}.",
-                shareReqTitle: "📢 SEND TO 5 PEOPLE TO GET SIGNALS",
-                shareReqDesc: "To continue getting signals, send this message to 5 people or groups. After sending the message, you can get signals.",
-                shareNowText: "SHARE MESSAGE",
-                shareInstruction: "Copy the message and send to 5 people or groups. For each sent message, the number above will turn green.",
-                copyMessageBtn: "COPY MESSAGE",
-                shareMessageText: `🚀 AI Trading Signals | Apple Fortune
-
-Friend, I'm earning big profits with Apple Fortune platform!
-
-🔥 High accuracy AI trading signals
-📈 94.7% success rate
-💰 Up to $342K daily profit
-🎁 200% bonus with AIFUT promo code
-
-👉 Join now: t.me/Strategioyinlar_bot
-
-Promo code: AIFUT
-My ID number: {userId}
-
-#AppleFortune #AIFUT #TradingSignals`
+                quickShareTitle: "🚀 INVITE YOUR FRIENDS",
+                quickShareNote: "💡 Note: If you invite friends, you'll get 30 minutes discount and bonuses!"
             },
             bn: {
                 languagePrompt: "AI ট্রেডিং সিগন্যাল প্ল্যাটফর্ম",
@@ -1353,26 +1236,8 @@ My ID number: {userId}
                 floatingRegisterText: "নিবন্ধন করুন",
                 successMessage: "✅ পুরো আপেল! পরবর্তী পর্যায়ে যাচ্ছে...",
                 failureMessage: "❌ কাটা আপেল! খেলা {round} রাউন্ডে শেষ হয়েছে।",
-                shareReqTitle: "📢 সিগন্যাল পেতে ৫ জনের কাছে বার্তা পাঠান",
-                shareReqDesc: "সিগন্যাল পাওয়া চালিয়ে যেতে, এই বার্তাটি ৫ জনের কাছে বা গ্রুপে পাঠান। বার্তা পাঠানোর পরে আপনি সিগন্যাল পেতে পারবেন।",
-                shareNowText: "বার্তা শেয়ার করুন",
-                shareInstruction: "বার্তাটি কপি করুন এবং ৫ জনের কাছে বা গ্রুপে পাঠান। প্রতিটি পাঠানো বার্তার জন্য উপরের নম্বর সবুজ হয়ে যাবে।",
-                copyMessageBtn: "বার্তা কপি করুন",
-                shareMessageText: `🚀 এআই ট্রেডিং সিগন্যাল | Apple Fortune
-
-বন্ধু, আমি Apple Fortune প্ল্যাটফর্ম দিয়ে বড় মুনাফা অর্জন করছি!
-
-🔥 উচ্চ-নির্ভুলতা এআই ট্রেডিং সিগন্যাল
-📈 ৯৪.৭% সাফল্যের হার
-💰 দৈনিক $৩৪২K পর্যন্ত মুনাফা
-🎁 AIFUT প্রোমো কোড দিয়ে ২০০% বোনাস
-
-👉 এখনই যোগ দিন: t.me/Strategioyinlar_bot
-
-প্রোমো কোড: AIFUT
-আমার আইডি নম্বর: {userId}
-
-#AppleFortune #AIFUT #ট্রেডিংসিগন্যাল`
+                quickShareTitle: "🚀 আপনার বন্ধুদের আমন্ত্রণ করুন",
+                quickShareNote: "💡 নোট: আপনি যদি বন্ধুদের আমন্ত্রণ করেন, আপনি ৩০ মিনিট ছাড় এবং বোনাস পাবেন!"
             },
             ar: {
                 languagePrompt: "منصة إشارات التداول بالذكاء الاصطناعي",
@@ -1408,26 +1273,8 @@ My ID number: {userId}
                 floatingRegisterText: "التسجيل",
                 successMessage: "✅ تفاحة كاملة! الانتقال إلى المرحلة التالية...",
                 failureMessage: "❌ تفاحة مأكولة! انتهت اللعبة في الجولة {round}.",
-                shareReqTitle: "📢 لإرسال الإشارة أرسل إلى 5 أشخاص",
-                shareReqDesc: "لمواصلة الحصول على إشارات، أرسل هذه الرسالة إلى 5 أشخاص أو مجموعات. بعد إرسال الرسالة، يمكنك الحصول على إشارات.",
-                shareNowText: "مشاركة الرسالة",
-                shareInstruction: "انسخ الرسالة وأرسلها إلى 5 أشخاص أو مجموعات. لكل رسالة مرسولة، سيتحول الرقم أعلاه إلى اللون الأخضر.",
-                copyMessageBtn: "نسخ الرسالة",
-                shareMessageText: `🚀 إشارات التداول بالذكاء الاصطناعي | Apple Fortune
-
-صديقي، أنا أحقق أرباحًا كبيرة مع منصة Apple Fortune!
-
-🔥 إشارات تداول عالية الدقة بالذكاء الاصطناعي
-📈 94.7% معدل نجاح
-💰 حتى 342 ألف دولار ربح يومي
-🎁 200% مكافأة مع الرمز الترويجي AIFUT
-
-👉 انضم الآن: t.me/Strategioyinlar_bot
-
-الرمز الترويجي: AIFUT
-رقم معرفي: {userId}
-
-#AppleFortune #AIFUT #إشارات_التداول`
+                quickShareTitle: "🚀 ادعُ أصدقاءك",
+                quickShareNote: "💡 ملاحظة: إذا قمت بدعوة الأصدقاء، ستحصل على خصم 30 دقيقة ومكافآت!"
             },
             ky: {
                 languagePrompt: "AI соода сигналдар платформасы",
@@ -1463,29 +1310,12 @@ My ID number: {userId}
                 floatingRegisterText: "КАЙТЫРУУ",
                 successMessage: "✅ Толук алма! Кийинки этапка өтүүдө...",
                 failureMessage: "❌ Тишелген алма! Оюн {round}-раундда аяктады.",
-                shareReqTitle: "📢 СИГНАЛ АЛУУ УЧУН 5 АДАМГА ЖОЛДОҢУЗ",
-                shareReqDesc: "Сигнал алууну улантуу үчүн, бул кабарды 5 адамга же топко жөнөтүңүз. Кабар жөнөтүлгөндөн кийин, сиз сигнал ала аласыз.",
-                shareNowText: "КАБАРДЫ ТАРАТУУ",
-                shareInstruction: "Кабарды көчүрүп, 5 адамга же топко жөнөтүңүз. Ар бир жөнөтүлгөн кабар үчүн жогорудагы сан жашыл түскө өзгөрөт.",
-                copyMessageBtn: "КАБАРДЫ КӨЧҮРҮҮ",
-                shareMessageText: `🚀 AI Соода Сигналдары | Apple Fortune
-
-Досум, мен Apple Fortune платформасы менен чоң киреше табам!
-
-🔥 Жогорку тактыктагы AI соода сигналдары
-📈 94.7% ийгилик деңгээли
-💰 Күнүнө $342K чейин киреше
-🎁 AIFUT промокоду менен 200% бонус
-
-👉 Азыр кошулуңуз: t.me/Strategioyinlar_bot
-
-Промокод: AIFUT
-Менин ID номерим: {userId}
-
-#AppleFortune #AIFUT #СоодаСигналдары`
+                quickShareTitle: "🚀 ДОСТОРУҢУЗДУ ЧАКЫРЫҢЫЗ",
+                quickShareNote: "💡 Эскертүү: Эгер сиз досторун чакырсаңыз, 30 мүнөт арзандатуу жана бонустар аласыз!"
             }
         };
 
+        // ==================== MAIN APPLICATION CODE ====================
         document.addEventListener('DOMContentLoaded', function() {
             // Current language
             let currentLang = localStorage.getItem('appleFortuneLanguage') || 'uz';
@@ -1500,21 +1330,13 @@ My ID number: {userId}
             const matrixCode = document.getElementById('matrixCode');
             const progressFill = document.getElementById('progressFill');
             const hackerText = document.getElementById('hackerText');
-            const shareRequirement = document.getElementById('shareRequirement');
+            const quickShareSection = document.getElementById('quickShareSection');
             
-            // Share requirement elements
-            const shareReqTitle = document.getElementById('shareReqTitle');
-            const shareReqDesc = document.getElementById('shareReqDesc');
-            const shareCircle1 = document.getElementById('shareCircle1');
-            const shareCircle2 = document.getElementById('shareCircle2');
-            const shareCircle3 = document.getElementById('shareCircle3');
-            const shareCircle4 = document.getElementById('shareCircle4');
-            const shareCircle5 = document.getElementById('shareCircle5');
-            const shareMessageText = document.getElementById('shareMessageText');
-            const userShareId = document.getElementById('userShareId');
-            const copyMessageBtn = document.getElementById('copyMessageBtn');
-            const shareNowBtn = document.getElementById('shareNowBtn');
-            const shareInstruction = document.getElementById('shareInstruction');
+            // Quick share elements
+            const quickShareTitle = document.getElementById('quickShareTitle');
+            const quickShareNote = document.getElementById('quickShareNote');
+            const shareFriendsBtn = document.getElementById('shareFriendsBtn');
+            const skipShareBtn = document.getElementById('skipShareBtn');
             
             // Top action buttons
             const btnSignal = document.getElementById('btnSignal');
@@ -1565,8 +1387,6 @@ My ID number: {userId}
             let countdownTime = 3 * 60 * 60; // 3 hours
             let endRoundValue = 0;
             let sharedFriends = 0;
-            let sharesCompleted = 0;
-            const requiredShares = 5;
 
             // Round configuration
             const roundConfig = {
@@ -1598,15 +1418,7 @@ My ID number: {userId}
                 for (const [key, value] of Object.entries(t)) {
                     const element = document.getElementById(key);
                     if (element) {
-                        if (key === 'shareMessageText') {
-                            // Update share message with user ID
-                            const message = value.replace('{userId}', currentUserId || '1234567890');
-                            element.textContent = message;
-                        } else if (element.tagName === 'INPUT' && element.placeholder) {
-                            // Skip inputs with placeholders
-                        } else {
-                            element.textContent = value;
-                        }
+                        element.textContent = value;
                     }
                 }
                 
@@ -1684,7 +1496,7 @@ My ID number: {userId}
                 gameSection.classList.add('hidden');
                 waitSection.classList.add('hidden');
                 bonusSection.classList.add('hidden');
-                shareRequirement.classList.add('hidden');
+                quickShareSection.classList.add('hidden');
             }
 
             // Show login section
@@ -1696,7 +1508,7 @@ My ID number: {userId}
                 gameSection.classList.add('hidden');
                 waitSection.classList.add('hidden');
                 bonusSection.classList.add('hidden');
-                shareRequirement.classList.add('hidden');
+                quickShareSection.classList.add('hidden');
                 
                 // Focus on input
                 setTimeout(() => {
@@ -1704,8 +1516,8 @@ My ID number: {userId}
                 }, 100);
             }
 
-            // Show share requirement section
-            function showShareRequirement() {
+            // Show quick share section
+            function showQuickShareSection() {
                 topActions.classList.add('hidden');
                 promoBanner.classList.add('hidden');
                 statsSection.classList.add('hidden');
@@ -1713,20 +1525,7 @@ My ID number: {userId}
                 gameSection.classList.add('hidden');
                 waitSection.classList.add('hidden');
                 bonusSection.classList.add('hidden');
-                shareRequirement.classList.remove('hidden');
-                
-                // Update user ID in share message
-                userShareId.textContent = currentUserId || '1234567890';
-                
-                // Reset share circles
-                resetShareCircles();
-                
-                // Load saved shares
-                const savedShares = localStorage.getItem('appleFortuneShares');
-                if (savedShares) {
-                    sharesCompleted = parseInt(savedShares);
-                    updateShareCircles();
-                }
+                quickShareSection.classList.remove('hidden');
             }
 
             // Show game section
@@ -1738,7 +1537,7 @@ My ID number: {userId}
                 gameSection.classList.remove('hidden');
                 waitSection.classList.add('hidden');
                 bonusSection.classList.add('hidden');
-                shareRequirement.classList.add('hidden');
+                quickShareSection.classList.add('hidden');
                 
                 // Start game
                 startGame();
@@ -1753,7 +1552,7 @@ My ID number: {userId}
                 gameSection.classList.add('hidden');
                 waitSection.classList.remove('hidden');
                 bonusSection.classList.add('hidden');
-                shareRequirement.classList.add('hidden');
+                quickShareSection.classList.add('hidden');
                 
                 // Update round display
                 endRound.textContent = endRoundValue;
@@ -1771,83 +1570,23 @@ My ID number: {userId}
                 gameSection.classList.add('hidden');
                 waitSection.classList.add('hidden');
                 bonusSection.classList.remove('hidden');
-                shareRequirement.classList.add('hidden');
-            }
-
-            // Reset share circles
-            function resetShareCircles() {
-                shareCircle1.classList.remove('active');
-                shareCircle2.classList.remove('active');
-                shareCircle3.classList.remove('active');
-                shareCircle4.classList.remove('active');
-                shareCircle5.classList.remove('active');
-                sharesCompleted = 0;
-            }
-
-            // Update share circles
-            function updateShareCircles() {
-                resetShareCircles();
-                
-                if (sharesCompleted >= 1) shareCircle1.classList.add('active');
-                if (sharesCompleted >= 2) shareCircle2.classList.add('active');
-                if (sharesCompleted >= 3) shareCircle3.classList.add('active');
-                if (sharesCompleted >= 4) shareCircle4.classList.add('active');
-                if (sharesCompleted >= 5) shareCircle5.classList.add('active');
-                
-                // Save shares to localStorage
-                localStorage.setItem('appleFortuneShares', sharesCompleted.toString());
-                
-                // If all shares completed, show game section
-                if (sharesCompleted >= requiredShares) {
-                    setTimeout(() => {
-                        showGameSection();
-                    }, 1000);
-                }
+                quickShareSection.classList.add('hidden');
             }
 
             // Share message function
             function shareMessage() {
                 const t = translations[currentLang];
-                const shareMessage = t.shareMessageText.replace('{userId}', currentUserId || '1234567890');
+                const shareMessage = `🎯 ${t.signalText} | Apple Fortune\n\n${t.promoTitle}\n👉 t.me/Strategioyinlar_bot\n\n${t.floatingRegisterText}\nID: ${currentUserId || '1234567890'}\n\n#AppleFortune #AIFUT`;
                 
                 // Open Telegram share dialog
                 const shareUrl = `https://t.me/share/url?url=https://t.me/Strategioyinlar_bot&text=${encodeURIComponent(shareMessage)}`;
                 window.open(shareUrl, '_blank');
                 
-                // Increment share counter
-                sharesCompleted++;
-                if (sharesCompleted > requiredShares) sharesCompleted = requiredShares;
-                
-                // Update circles
-                updateShareCircles();
-                
                 // Show success message
-                const remaining = requiredShares - sharesCompleted;
-                if (remaining > 0) {
-                    alert(`Xabar yuborildi! Yana ${remaining} ta odamga yuborishingiz kerak.`);
-                } else {
-                    alert(`Tabriklaymiz! Barcha xabarlar yuborildi. Signal olish boshlanadi!`);
-                }
-            }
-
-            // Copy message to clipboard
-            function copyMessageToClipboard() {
-                const t = translations[currentLang];
-                const message = t.shareMessageText.replace('{userId}', currentUserId || '1234567890');
+                alert("Do'stlaringiz taklif qilindi! Rahmat!");
                 
-                navigator.clipboard.writeText(message).then(() => {
-                    alert(translations[currentLang].copyMessageBtn + ' - Xabar nusxalandi!');
-                }).catch(err => {
-                    console.error('Copy failed:', err);
-                    // Fallback for older browsers
-                    const textArea = document.createElement('textarea');
-                    textArea.value = message;
-                    document.body.appendChild(textArea);
-                    textArea.select();
-                    document.execCommand('copy');
-                    document.body.removeChild(textArea);
-                    alert(translations[currentLang].copyMessageBtn + ' - Xabar nusxalandi!');
-                });
+                // Go to game section
+                showGameSection();
             }
 
             // Load saved data
@@ -1855,7 +1594,6 @@ My ID number: {userId}
                 const savedUserId = localStorage.getItem('appleFortuneUserId');
                 const savedTimerEnd = localStorage.getItem('appleFortuneTimerEnd');
                 const savedSharedFriends = localStorage.getItem('appleFortuneSharedFriends');
-                const savedShares = localStorage.getItem('appleFortuneShares');
                 
                 if (savedUserId) {
                     userIdInput.value = savedUserId;
@@ -1863,10 +1601,6 @@ My ID number: {userId}
                     
                     if (savedSharedFriends) {
                         sharedFriends = parseInt(savedSharedFriends);
-                    }
-                    
-                    if (savedShares) {
-                        sharesCompleted = parseInt(savedShares);
                     }
                     
                     if (savedTimerEnd) {
@@ -1912,6 +1646,11 @@ My ID number: {userId}
                 for (let i = 0; i < 5; i++) {
                     const apple = document.createElement('div');
                     apple.className = 'apple mystery-apple';
+                    apple.addEventListener('click', function() {
+                        if (!applesRevealed) {
+                            revealApples();
+                        }
+                    });
                     applesContainer.appendChild(apple);
                 }
             }
@@ -1919,6 +1658,10 @@ My ID number: {userId}
             // Reveal apples
             function revealApples() {
                 applesContainer.innerHTML = '';
+                applesRevealed = true;
+                gameActive = true;
+                revealBtn.disabled = true;
+                revealBtn.innerHTML = `<i class="fas fa-hand-pointer"></i> ${translations[currentLang].revealText}`;
                 
                 const config = roundConfig[currentRound] || { whole: 2, bitten: 3 };
                 const totalApples = 5;
@@ -1991,7 +1734,7 @@ My ID number: {userId}
                                 localStorage.setItem('appleFortuneEndRound', endRoundValue);
                                 showWaitSection();
                             }
-                        }, 3000); // Wait for hacker animation
+                        }, 3000);
                     }, 1500);
                 }
             }
@@ -2032,7 +1775,7 @@ My ID number: {userId}
                 timerValue.textContent = timeString;
             }
             
-            // Share with friends (for wait section)
+            // Share with friends
             function shareWithFriends() {
                 const t = translations[currentLang];
                 const shareMessage = `🎯 ${t.signalText} | Apple Fortune\n\n${t.promoTitle}\n👉 t.me/Strategioyinlar_bot\n\n${t.floatingRegisterText}\nID: ${currentUserId || '1234567890'}\n\n#AppleFortune #AIFUT`;
@@ -2083,12 +1826,10 @@ My ID number: {userId}
                 localStorage.removeItem('appleFortuneTimerEnd');
                 localStorage.removeItem('appleFortuneEndRound');
                 localStorage.removeItem('appleFortuneSharedFriends');
-                localStorage.removeItem('appleFortuneShares');
                 
                 currentUserId = '';
                 userIdInput.value = '';
                 sharedFriends = 0;
-                sharesCompleted = 0;
                 currentRound = 1;
                 
                 if (countdownInterval) {
@@ -2096,6 +1837,12 @@ My ID number: {userId}
                 }
                 
                 showMainSections();
+            }
+
+            // Restart game
+            function restartGame() {
+                currentRound = 1;
+                startGame();
             }
 
             // ==================== EVENT LISTENERS ====================
@@ -2125,6 +1872,12 @@ My ID number: {userId}
             floatingRegisterBtn.addEventListener('click', register);
             bonusRegisterBtn.addEventListener('click', register);
             
+            // Quick share buttons
+            shareFriendsBtn.addEventListener('click', shareMessage);
+            skipShareBtn.addEventListener('click', function() {
+                showGameSection();
+            });
+            
             // ID input validation
             userIdInput.addEventListener('input', function() {
                 const userId = this.value.trim();
@@ -2136,117 +1889,52 @@ My ID number: {userId}
                     startSignalBtn.disabled = true;
                 } else {
                     idError.style.display = 'none';
-                    startSignalBtn.disabled = false;
                 }
             });
             
-            // Start signal button
+            // Start signal (game)
             startSignalBtn.addEventListener('click', function() {
                 const userId = userIdInput.value.trim();
-                
-                if (userId === '') {
-                    const t = translations[currentLang];
-                    alert(`${t.idLabel} ${currentLang === 'uz' ? 'kiritilmadi' : 
-                          currentLang === 'ru' ? 'не введен' : 'not entered'}`);
-                    return;
-                }
                 
                 if (!validateUserId(userId)) {
                     idError.style.display = 'block';
                     return;
                 }
                 
+                // Save user ID
                 currentUserId = userId;
                 localStorage.setItem('appleFortuneUserId', userId);
                 
-                // Check if shares are already completed
-                const savedShares = localStorage.getItem('appleFortuneShares');
-                if (savedShares && parseInt(savedShares) >= requiredShares) {
-                    showGameSection();
-                } else {
-                    showShareRequirement();
-                }
+                // Show quick share section (optional step)
+                // showQuickShareSection();
+                
+                // Direct to game section
+                showGameSection();
             });
             
             // Back to main button
             backToMainBtn.addEventListener('click', showMainSections);
             
-            // Copy message button
-            copyMessageBtn.addEventListener('click', copyMessageToClipboard);
-            
-            // Share now button
-            shareNowBtn.addEventListener('click', shareMessage);
-            
             // Reveal apples button
             revealBtn.addEventListener('click', function() {
-                if (applesRevealed) return;
-                
-                applesRevealed = true;
-                revealBtn.disabled = true;
-                gameActive = true;
-                revealApples();
+                if (!applesRevealed) {
+                    revealApples();
+                }
             });
             
-            // Restart button
-            restartBtn.addEventListener('click', function() {
-                currentRound = 1;
-                startGame();
-            });
+            // Restart game button
+            restartBtn.addEventListener('click', restartGame);
             
-            // Share button (wait section)
+            // Share button in wait section
             shareBtn.addEventListener('click', shareWithFriends);
             
             // Change ID button
             changeIdBtn.addEventListener('click', changeUserId);
             
-            // Stats button in bonus section (click anywhere)
-            btnStats.addEventListener('click', showBonusSection);
-
-            // ==================== INITIALIZATION ====================
-            
-            // Saytga kirganda avval tilni tanlash sahifasini ko'rsatish
-            // Hech qanday til tanlanmagan bo'lsa, til tanlash sahifasini ko'rsatish
-            const savedLang = localStorage.getItem('appleFortuneLanguage');
-            if (!savedLang) {
-                languageSelector.style.display = 'flex';
-                container.classList.remove('active');
-                languageSwitcher.classList.add('hidden');
-            } else {
-                selectLanguage(savedLang);
+            // Initialize language on page load
+            if (localStorage.getItem('appleFortuneLanguage')) {
+                selectLanguage(currentLang);
             }
-            
-            // Update stats with random variations
-            setInterval(() => {
-                const stat1 = document.getElementById('stat1');
-                const stat2 = document.getElementById('stat2');
-                const stat3 = document.getElementById('stat3');
-                const stat4 = document.getElementById('stat4');
-                
-                if (stat1) {
-                    const current = parseFloat(stat1.textContent);
-                    const change = (Math.random() * 0.2 - 0.1);
-                    const newVal = Math.min(99.9, Math.max(94.0, current + change));
-                    stat1.textContent = newVal.toFixed(1) + '%';
-                }
-                
-                if (stat2) {
-                    const current = parseInt(stat2.textContent) * 1000;
-                    const newVal = current + Math.floor(Math.random() * 10);
-                    stat2.textContent = Math.floor(newVal / 1000) + 'K';
-                }
-                
-                if (stat3) {
-                    const current = parseInt(stat3.textContent.replace('$', '').replace('K', '')) * 1000;
-                    const newVal = current + Math.floor(Math.random() * 5000);
-                    stat3.textContent = '$' + Math.floor(newVal / 1000) + 'K';
-                }
-                
-                if (stat4) {
-                    const current = parseInt(stat4.textContent) * 1000;
-                    const newVal = current + Math.floor(Math.random() * 5);
-                    stat4.textContent = Math.floor(newVal / 1000) + 'K';
-                }
-            }, 3000);
         });
     </script>
 </body>
