@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Apple Fortune | Kunlik 4 Signal & Bonuslar</title>
+    <title>Apple Fortune | ID Kiriting & Signal Oling</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         /* ============ GLOBAL STYLES ============ */
@@ -84,44 +84,6 @@
             background: radial-gradient(circle, rgba(0, 102, 255, 0.1), transparent 70%);
             z-index: -1;
             pointer-events: none;
-        }
-
-        /* ============ ANIMATION CLASSES ============ */
-        .pulse {
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
-        }
-
-        .float {
-            animation: float 3s ease-in-out infinite;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-        }
-
-        .glow {
-            animation: glow 2s ease-in-out infinite alternate;
-        }
-
-        @keyframes glow {
-            from { box-shadow: 0 0 20px rgba(0, 204, 255, 0.5); }
-            to { box-shadow: 0 0 30px rgba(0, 204, 255, 0.8); }
-        }
-
-        .slide-in {
-            animation: slideIn 0.5s ease-out;
-        }
-
-        @keyframes slideIn {
-            from { transform: translateY(20px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
         }
 
         /* ============ LOADING SCREEN ============ */
@@ -263,6 +225,170 @@
             box-shadow: 0 5px 15px rgba(0, 204, 255, 0.3);
         }
 
+        /* ============ ID LOGIN SCREEN ============ */
+        #idLoginScreen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--darker);
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 900;
+            padding: 20px;
+        }
+
+        .login-container {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 25px;
+            padding: 40px 30px;
+            width: 100%;
+            max-width: 400px;
+            border: 2px solid rgba(0, 204, 255, 0.3);
+            backdrop-filter: blur(20px);
+            text-align: center;
+        }
+
+        .login-logo {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+            font-size: 40px;
+        }
+
+        .login-title {
+            font-size: 1.8rem;
+            font-weight: 800;
+            background: linear-gradient(to right, var(--secondary), var(--primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+        }
+
+        .login-subtitle {
+            font-size: 0.95rem;
+            color: var(--gray);
+            margin-bottom: 30px;
+            line-height: 1.5;
+        }
+
+        .promo-warning {
+            background: linear-gradient(135deg, rgba(255, 149, 0, 0.1), rgba(255, 94, 0, 0.05));
+            border-radius: 15px;
+            padding: 15px;
+            margin-bottom: 25px;
+            border: 1px solid var(--accent);
+            text-align: left;
+        }
+
+        .promo-warning-title {
+            font-size: 1rem;
+            color: var(--accent);
+            font-weight: 700;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .promo-warning-text {
+            font-size: 0.85rem;
+            color: var(--gray);
+            line-height: 1.5;
+        }
+
+        .promo-code-display {
+            background: rgba(255, 204, 0, 0.1);
+            border: 2px dashed var(--warning);
+            border-radius: 12px;
+            padding: 12px;
+            margin: 15px 0;
+            font-size: 1.2rem;
+            font-weight: 800;
+            color: var(--warning);
+            letter-spacing: 2px;
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .input-label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 0.9rem;
+            color: var(--secondary);
+            font-weight: 600;
+        }
+
+        .input-field {
+            width: 100%;
+            padding: 16px;
+            background: rgba(0, 50, 100, 0.2);
+            border: 2px solid rgba(0, 204, 255, 0.3);
+            border-radius: 12px;
+            color: var(--light);
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+
+        .input-field:focus {
+            outline: none;
+            border-color: var(--secondary);
+            box-shadow: 0 0 0 3px rgba(0, 204, 255, 0.1);
+        }
+
+        .error-message {
+            color: var(--danger);
+            font-size: 0.85rem;
+            margin-top: 5px;
+            display: none;
+        }
+
+        .login-btn {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border: none;
+            border-radius: 15px;
+            padding: 18px;
+            color: var(--light);
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            transition: all 0.3s;
+            margin-top: 10px;
+        }
+
+        .login-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0, 204, 255, 0.3);
+        }
+
+        .register-link {
+            margin-top: 20px;
+            font-size: 0.9rem;
+            color: var(--gray);
+        }
+
+        .register-link a {
+            color: var(--secondary);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
         /* ============ MAIN CONTAINER ============ */
         .container {
             max-width: 100%;
@@ -336,6 +462,7 @@
             color: var(--light);
             font-size: 1.2rem;
             border: 2px solid var(--secondary);
+            cursor: pointer;
         }
 
         .language-switcher {
@@ -357,6 +484,143 @@
         .language-switcher:hover {
             background: rgba(0, 204, 255, 0.2);
             transform: translateY(-2px);
+        }
+
+        /* ============ PROFILE SECTION ============ */
+        .profile-section {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 25px;
+            margin-bottom: 25px;
+            border: 1px solid rgba(0, 204, 255, 0.2);
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .profile-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 25px;
+        }
+
+        .profile-title {
+            font-size: 1.3rem;
+            color: var(--secondary);
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .profile-warning {
+            background: rgba(255, 51, 102, 0.1);
+            border: 1px solid var(--danger);
+            border-radius: 12px;
+            padding: 12px 15px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.9rem;
+        }
+
+        .profile-warning i {
+            color: var(--danger);
+            font-size: 1.2rem;
+        }
+
+        .profile-info-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+
+        .info-card {
+            background: rgba(0, 102, 255, 0.1);
+            border-radius: 15px;
+            padding: 20px;
+            border: 1px solid rgba(0, 204, 255, 0.2);
+        }
+
+        .info-label {
+            font-size: 0.85rem;
+            color: var(--gray);
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .info-value {
+            font-size: 1.2rem;
+            font-weight: 800;
+            color: var(--light);
+        }
+
+        .id-display {
+            background: linear-gradient(135deg, rgba(0, 204, 255, 0.1), rgba(0, 102, 255, 0.05));
+            border-radius: 12px;
+            padding: 15px;
+            margin: 20px 0;
+            border: 2px solid var(--secondary);
+            text-align: center;
+        }
+
+        .id-label {
+            font-size: 0.9rem;
+            color: var(--gray);
+            margin-bottom: 8px;
+        }
+
+        .id-value {
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: var(--secondary);
+            letter-spacing: 3px;
+            font-family: 'Courier New', monospace;
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            margin-top: 10px;
+        }
+
+        .status-active {
+            background: linear-gradient(135deg, var(--success), #00AA55);
+            color: var(--light);
+        }
+
+        .status-warning {
+            background: linear-gradient(135deg, var(--warning), #FF9900);
+            color: var(--dark);
+        }
+
+        .change-id-btn {
+            background: rgba(0, 204, 255, 0.1);
+            border: 1px solid var(--secondary);
+            border-radius: 12px;
+            padding: 12px;
+            color: var(--secondary);
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 15px;
+            transition: all 0.3s;
+        }
+
+        .change-id-btn:hover {
+            background: rgba(0, 204, 255, 0.2);
         }
 
         /* ============ DAILY STATS ============ */
@@ -865,6 +1129,12 @@
             color: var(--light);
         }
 
+        .btn-disabled {
+            background: linear-gradient(135deg, #666, #444);
+            color: var(--gray);
+            cursor: not-allowed;
+        }
+
         /* ============ SUCCESS ANIMATION ============ */
         .success-animation {
             position: fixed;
@@ -1238,6 +1508,10 @@
             .nav-icon {
                 font-size: 1.1rem;
             }
+            
+            .profile-info-grid {
+                grid-template-columns: 1fr;
+            }
         }
 
         @media (max-width: 480px) {
@@ -1270,6 +1544,10 @@
             .vip-req-counter {
                 font-size: 2.5rem;
             }
+            
+            .login-container {
+                padding: 30px 20px;
+            }
         }
     </style>
 </head>
@@ -1284,6 +1562,48 @@
             <span>🍎</span>
         </div>
         <div class="loading-text" id="loadingText">Apple Fortune Yuklanmoqda...</div>
+    </div>
+
+    <!-- ID Login Screen -->
+    <div id="idLoginScreen">
+        <div class="login-container">
+            <div class="login-logo">🍎</div>
+            <h2 class="login-title" id="loginTitle">ID RAQAMINGIZNI KIRITING</h2>
+            <p class="login-subtitle" id="loginSubtitle">
+                AIFUT promokodi bilan ro'yxatdan o'tgan ID raqamingizni kiriting
+            </p>
+            
+            <div class="promo-warning">
+                <div class="promo-warning-title">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <span id="promoWarningTitle">DIQQAT!</span>
+                </div>
+                <p class="promo-warning-text" id="promoWarningText">
+                    AIFUT promokodi bilan ro'yxatdan o'tmagan bo'lsangiz, signallar ishlamaydi.
+                    Faqatgina ro'yxatdan o'tgan foydalanuvchilar yuqori aniqlikdagi signallarni olishi mumkin.
+                </p>
+            </div>
+            
+            <div class="promo-code-display">AIFUT</div>
+            
+            <div class="input-group">
+                <label class="input-label" id="idLabel">ID RAQAM (Masalan: 1XXXXXXXXX)</label>
+                <input type="text" class="input-field" id="userIdInput" 
+                       placeholder="1 bilan boshlanadigan 10 xonali raqam" 
+                       maxlength="10">
+                <div class="error-message" id="idError">Noto'g'ri ID raqam formati</div>
+            </div>
+            
+            <button class="login-btn" id="loginBtn">
+                <i class="fas fa-sign-in-alt"></i>
+                <span id="loginBtnText">TASDIQLASH</span>
+            </button>
+            
+            <div class="register-link">
+                <span id="registerText">Ro'yxatdan o'tmaganmisiz? </span>
+                <a href="#" id="registerLink">Ro'yxatdan o'tish</a>
+            </div>
+        </div>
     </div>
 
     <!-- Success Animation -->
@@ -1376,7 +1696,7 @@
             <span>🍎</span>
         </div>
         <h1>Apple Fortune</h1>
-        <p id="languagePrompt">Kunlik 4 Signal & Bonuslar Platformasi</p>
+        <p id="languagePrompt">ID Kiriting & Signal Oling</p>
         
         <div class="language-buttons">
             <button class="lang-select-btn" data-lang="uz">
@@ -1401,12 +1721,70 @@
             </div>
             
             <div class="user-info">
-                <div class="user-avatar" id="userAvatar">U</div>
+                <div class="user-avatar" id="userAvatar" title="Profil">U</div>
                 <div class="language-switcher" id="languageSwitcher">
                     <span>🌐</span>
                     <span id="currentLanguage">UZ</span>
                 </div>
             </div>
+        </div>
+
+        <!-- Profile Section -->
+        <div class="profile-section">
+            <div class="profile-header">
+                <h2 class="profile-title">
+                    <i class="fas fa-user-circle"></i>
+                    <span id="profileTitle">PROFIL MA'LUMOTLARI</span>
+                </h2>
+            </div>
+            
+            <div class="profile-warning" id="profileWarning">
+                <i class="fas fa-exclamation-circle"></i>
+                <span id="warningText">ID raqamingiz profilida bo'lmasa, signallar ishlamaydi!</span>
+            </div>
+            
+            <div class="profile-info-grid">
+                <div class="info-card">
+                    <div class="info-label">
+                        <i class="fas fa-id-card"></i>
+                        <span id="statusLabel">STATUS</span>
+                    </div>
+                    <div class="info-value">
+                        <span class="status-badge status-active" id="userStatus">FAOL</span>
+                    </div>
+                </div>
+                
+                <div class="info-card">
+                    <div class="info-label">
+                        <i class="fas fa-calendar-alt"></i>
+                        <span id="regDateLabel">RO'YXATDAN OTISH</span>
+                    </div>
+                    <div class="info-value" id="regDate">2024.01.01</div>
+                </div>
+            </div>
+            
+            <div class="id-display">
+                <div class="id-label" id="yourIdLabel">SIZNING ID RAQAMINGIZ</div>
+                <div class="id-value" id="userDisplayId">-</div>
+                <div class="status-badge status-warning" id="promoStatus">
+                    AIFUT Promokod
+                </div>
+            </div>
+            
+            <div class="info-card">
+                <div class="info-label">
+                    <i class="fas fa-info-circle"></i>
+                    <span id="promoInfoLabel">PROMOKOD HAQIDA</span>
+                </div>
+                <div class="info-value" id="promoInfoText">
+                    AIFUT promokodi bilan ro'yxatdan o'tganligingiz sababli, signallar yuqori aniqlikda!
+                </div>
+            </div>
+            
+            <button class="change-id-btn" id="changeIdBtn">
+                <i class="fas fa-sync-alt"></i>
+                <span id="changeIdText">ID O'ZGARTIRISH</span>
+            </button>
         </div>
 
         <!-- Daily Stats -->
@@ -1606,8 +1984,24 @@
         const translations = {
             uz: {
                 loadingText: "Apple Fortune Yuklanmoqda...",
-                languagePrompt: "Kunlik 4 Signal & Bonuslar Platformasi",
+                languagePrompt: "ID Kiriting & Signal Oling",
                 currentLanguage: "UZ",
+                loginTitle: "ID RAQAMINGIZNI KIRITING",
+                loginSubtitle: "AIFUT promokodi bilan ro'yxatdan o'tgan ID raqamingizni kiriting",
+                promoWarningTitle: "DIQQAT!",
+                promoWarningText: "AIFUT promokodi bilan ro'yxatdan o'tmagan bo'lsangiz, signallar ishlamaydi. Faqatgina ro'yxatdan o'tgan foydalanuvchilar yuqori aniqlikdagi signallarni olishi mumkin.",
+                idLabel: "ID RAQAM (Masalan: 1XXXXXXXXX)",
+                loginBtnText: "TASDIQLASH",
+                registerText: "Ro'yxatdan o'tmaganmisiz? ",
+                registerLink: "Ro'yxatdan o'tish",
+                profileTitle: "PROFIL MA'LUMOTLARI",
+                warningText: "ID raqamingiz profilida bo'lmasa, signallar ishlamaydi!",
+                statusLabel: "STATUS",
+                regDateLabel: "RO'YXATDAN OTISH",
+                yourIdLabel: "SIZNING ID RAQAMINGIZ",
+                promoInfoLabel: "PROMOKOD HAQIDA",
+                promoInfoText: "AIFUT promokodi bilan ro'yxatdan o'tganligingiz sababli, signallar yuqori aniqlikda!",
+                changeIdText: "ID O'ZGARTIRISH",
                 statsTitle: "BUGUNGI STATISTIKA",
                 signalsLabel: "BUGUNGI SIGNALLAR",
                 profitLabel: "BUGUNGI FOYDA",
@@ -1640,12 +2034,31 @@
                 vipReqDesc: "20 ta do'stingizni taklif qiling va VIP signalga ega bo'ling!",
                 inviteText: "DO'STLARNI TAKLIF QILISH",
                 bonusDays: ["Dush", "Sesh", "Chor", "Pay", "Jum", "Shan", "Yak"],
-                bonusRewards: ["$5", "$10", "$15", "$20", "$25", "$50", "$100"]
+                bonusRewards: ["$5", "$10", "$15", "$20", "$25", "$50", "$100"],
+                noIdError: "ID raqam kiritilmagan! Iltimos, ID raqamingizni kiriting.",
+                invalidIdError: "Noto'g'ri ID raqam formati! ID 1 bilan boshlanadigan 10 xonali raqam bo'lishi kerak.",
+                registerAlert: "Ro'yxatdan o'tish uchun quyidagi havolaga o'ting:\n\nhttps://superlative-twilight-47ef34.netlify.app/\n\nPromokod: AIFUT"
             },
             ru: {
                 loadingText: "Загрузка Apple Fortune...",
-                languagePrompt: "Платформа 4 Сигнала в День и Бонусов",
+                languagePrompt: "Введите ID и Получите Сигнал",
                 currentLanguage: "RU",
+                loginTitle: "ВВЕДИТЕ ВАШ ID",
+                loginSubtitle: "Введите ваш ID номер, зарегистрированный с промокодом AIFUT",
+                promoWarningTitle: "ВНИМАНИЕ!",
+                promoWarningText: "Если вы не зарегистрированы с промокодом AIFUT, сигналы не будут работать. Только зарегистрированные пользователи могут получать высокоточные сигналы.",
+                idLabel: "ID НОМЕР (Например: 1XXXXXXXXX)",
+                loginBtnText: "ПОДТВЕРДИТЬ",
+                registerText: "Не зарегистрированы? ",
+                registerLink: "Регистрация",
+                profileTitle: "ИНФОРМАЦИЯ О ПРОФИЛЕ",
+                warningText: "Если вашего ID нет в профиле, сигналы не будут работать!",
+                statusLabel: "СТАТУС",
+                regDateLabel: "РЕГИСТРАЦИЯ",
+                yourIdLabel: "ВАШ ID НОМЕР",
+                promoInfoLabel: "О ПРОМОКОДЕ",
+                promoInfoText: "Поскольку вы зарегистрированы с промокодом AIFUT, сигналы имеют высокую точность!",
+                changeIdText: "СМЕНИТЬ ID",
                 statsTitle: "СЕГОДНЯШНЯЯ СТАТИСТИКА",
                 signalsLabel: "СИГНАЛЫ СЕГОДНЯ",
                 profitLabel: "ПРИБЫЛЬ СЕГОДНЯ",
@@ -1678,12 +2091,31 @@
                 vipReqDesc: "Пригласите 20 друзей и получите VIP сигнал!",
                 inviteText: "ПРИГЛАСИТЬ ДРУЗЕЙ",
                 bonusDays: ["Пн", "Вт", "Ср", "Чт", "Пт", "Сб", "Вс"],
-                bonusRewards: ["$5", "$10", "$15", "$20", "$25", "$50", "$100"]
+                bonusRewards: ["$5", "$10", "$15", "$20", "$25", "$50", "$100"],
+                noIdError: "ID номер не введен! Пожалуйста, введите ваш ID номер.",
+                invalidIdError: "Неверный формат ID номера! ID должен быть 10-значным числом, начинающимся с 1.",
+                registerAlert: "Для регистрации перейдите по ссылке:\n\nhttps://superlative-twilight-47ef34.netlify.app/\n\nПромокод: AIFUT"
             },
             en: {
                 loadingText: "Loading Apple Fortune...",
-                languagePrompt: "Daily 4 Signals & Bonuses Platform",
+                languagePrompt: "Enter ID & Get Signal",
                 currentLanguage: "EN",
+                loginTitle: "ENTER YOUR ID NUMBER",
+                loginSubtitle: "Enter your ID number registered with AIFUT promo code",
+                promoWarningTitle: "WARNING!",
+                promoWarningText: "If you are not registered with AIFUT promo code, signals will not work. Only registered users can receive high accuracy signals.",
+                idLabel: "ID NUMBER (Example: 1XXXXXXXXX)",
+                loginBtnText: "CONFIRM",
+                registerText: "Not registered? ",
+                registerLink: "Register",
+                profileTitle: "PROFILE INFORMATION",
+                warningText: "If your ID is not in profile, signals will not work!",
+                statusLabel: "STATUS",
+                regDateLabel: "REGISTRATION DATE",
+                yourIdLabel: "YOUR ID NUMBER",
+                promoInfoLabel: "ABOUT PROMOCODE",
+                promoInfoText: "Since you registered with AIFUT promocode, signals have high accuracy!",
+                changeIdText: "CHANGE ID",
                 statsTitle: "TODAY'S STATS",
                 signalsLabel: "TODAY'S SIGNALS",
                 profitLabel: "TODAY'S PROFIT",
@@ -1716,7 +2148,10 @@
                 vipReqDesc: "Invite 20 friends and get VIP signal!",
                 inviteText: "INVITE FRIENDS",
                 bonusDays: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
-                bonusRewards: ["$5", "$10", "$15", "$20", "$25", "$50", "$100"]
+                bonusRewards: ["$5", "$10", "$15", "$20", "$25", "$50", "$100"],
+                noIdError: "ID number not entered! Please enter your ID number.",
+                invalidIdError: "Invalid ID number format! ID must be a 10-digit number starting with 1.",
+                registerAlert: "To register, go to:\n\nhttps://superlative-twilight-47ef34.netlify.app/\n\nPromocode: AIFUT"
             }
         };
 
@@ -1724,6 +2159,7 @@
         document.addEventListener('DOMContentLoaded', function() {
             // Initialize variables
             let currentLang = localStorage.getItem('appleFortuneLang') || 'uz';
+            let userId = localStorage.getItem('appleFortuneUserId') || '';
             let todaySignals = parseInt(localStorage.getItem('todaySignals')) || 0;
             let totalSignals = parseInt(localStorage.getItem('totalSignals')) || 0;
             let todayProfit = parseInt(localStorage.getItem('todayProfit')) || 0;
@@ -1734,10 +2170,12 @@
             let currentBonusDay = new Date().getDay();
             let lastVisitDate = localStorage.getItem('lastVisitDate') || '';
             let today = new Date().toDateString();
+            let regDate = localStorage.getItem('regDate') || new Date().toISOString().split('T')[0];
             
             // DOM Elements
             const loadingScreen = document.getElementById('loadingScreen');
             const languageSelector = document.getElementById('languageSelector');
+            const idLoginScreen = document.getElementById('idLoginScreen');
             const container = document.querySelector('.container');
             const languageSwitcher = document.getElementById('languageSwitcher');
             const currentLanguage = document.getElementById('currentLanguage');
@@ -1746,6 +2184,17 @@
             const vipAccessPage = document.getElementById('vipAccessPage');
             const backFromVip = document.getElementById('backFromVip');
             const bgParticles = document.getElementById('bgParticles');
+            
+            // Login elements
+            const userIdInput = document.getElementById('userIdInput');
+            const idError = document.getElementById('idError');
+            const loginBtn = document.getElementById('loginBtn');
+            const registerLink = document.getElementById('registerLink');
+            
+            // Profile elements
+            const userDisplayId = document.getElementById('userDisplayId');
+            const userAvatar = document.getElementById('userAvatar');
+            const regDateEl = document.getElementById('regDate');
             
             // Stats elements
             const todaySignalsEl = document.getElementById('todaySignals');
@@ -1764,6 +2213,7 @@
             const revealApplesBtn = document.getElementById('revealApplesBtn');
             const getFreeSignalBtn = document.getElementById('getFreeSignalBtn');
             const inviteFriendsBtn = document.getElementById('inviteFriendsBtn');
+            const changeIdBtn = document.getElementById('changeIdBtn');
             
             // Game elements
             const applesContainer = document.getElementById('applesContainer');
@@ -1811,7 +2261,13 @@
                     loadingScreen.style.display = 'none';
                     
                     if (localStorage.getItem('appleFortuneLang')) {
-                        selectLanguage(currentLang);
+                        // Check if user is logged in
+                        if (!userId) {
+                            // Show ID login screen
+                            idLoginScreen.style.display = 'flex';
+                        } else {
+                            selectLanguage(currentLang);
+                        }
                     } else {
                         languageSelector.style.display = 'flex';
                     }
@@ -1836,6 +2292,13 @@
                     particle.style.animationDelay = `${Math.random() * 5}s`;
                     bgParticles.appendChild(particle);
                 }
+            }
+            
+            // Validate ID format
+            function validateId(id) {
+                // ID should be 10 digits starting with 1
+                const idRegex = /^1\d{9}$/;
+                return idRegex.test(id);
             }
             
             // Update translations
@@ -1870,9 +2333,11 @@
             // Select language
             function selectLanguage(lang) {
                 languageSelector.style.display = 'none';
+                idLoginScreen.style.display = 'none';
                 container.classList.add('active');
                 languageSwitcher.classList.remove('hidden');
                 updateTranslations(lang);
+                updateProfile();
                 updateStats();
                 createBonusDays();
                 createApples();
@@ -1883,6 +2348,47 @@
                 container.classList.remove('active');
                 languageSwitcher.classList.add('hidden');
                 languageSelector.style.display = 'flex';
+            }
+            
+            // Update profile display
+            function updateProfile() {
+                if (userId) {
+                    userDisplayId.textContent = userId;
+                    userAvatar.textContent = userId.charAt(0); // First character of ID
+                    regDateEl.textContent = regDate;
+                    
+                    // Enable buttons since user is logged in
+                    getSignalBtn.classList.remove('btn-disabled');
+                    dailyBonusBtn.classList.remove('btn-disabled');
+                    vipAccessBtn.classList.remove('btn-disabled');
+                    inviteFriendsBtnMain.classList.remove('btn-disabled');
+                    vipBtn.classList.remove('btn-disabled');
+                    claimBonusBtn.classList.remove('btn-disabled');
+                    revealApplesBtn.classList.remove('btn-disabled');
+                    getFreeSignalBtn.classList.remove('btn-disabled');
+                    
+                    // Remove disabled styling from action cards
+                    document.querySelectorAll('.action-card').forEach(card => {
+                        card.style.opacity = '1';
+                        card.style.cursor = 'pointer';
+                    });
+                } else {
+                    // Disable buttons since user is not logged in
+                    getSignalBtn.classList.add('btn-disabled');
+                    dailyBonusBtn.classList.add('btn-disabled');
+                    vipAccessBtn.classList.add('btn-disabled');
+                    inviteFriendsBtnMain.classList.add('btn-disabled');
+                    vipBtn.classList.add('btn-disabled');
+                    claimBonusBtn.classList.add('btn-disabled');
+                    revealApplesBtn.classList.add('btn-disabled');
+                    getFreeSignalBtn.classList.add('btn-disabled');
+                    
+                    // Add disabled styling to action cards
+                    document.querySelectorAll('.action-card').forEach(card => {
+                        card.style.opacity = '0.5';
+                        card.style.cursor = 'not-allowed';
+                    });
+                }
             }
             
             // Update stats display
@@ -1987,8 +2493,58 @@
                 }, 5000);
             }
             
+            // Login function
+            function login() {
+                const id = userIdInput.value.trim();
+                const t = translations[currentLang] || translations.uz;
+                
+                // Validate ID
+                if (!id) {
+                    idError.textContent = t.noIdError;
+                    idError.style.display = 'block';
+                    return;
+                }
+                
+                if (!validateId(id)) {
+                    idError.textContent = t.invalidIdError;
+                    idError.style.display = 'block';
+                    return;
+                }
+                
+                // Save user ID
+                userId = id;
+                localStorage.setItem('appleFortuneUserId', userId);
+                
+                // Save registration date if not exists
+                if (!localStorage.getItem('regDate')) {
+                    localStorage.setItem('regDate', new Date().toISOString().split('T')[0]);
+                }
+                
+                // Hide error message
+                idError.style.display = 'none';
+                
+                // Proceed to main app
+                selectLanguage(currentLang);
+            }
+            
+            // Logout function
+            function logout() {
+                userId = '';
+                localStorage.removeItem('appleFortuneUserId');
+                idLoginScreen.style.display = 'flex';
+                container.classList.remove('active');
+                updateProfile();
+            }
+            
             // Get signal function
             function getSignal() {
+                if (!userId) {
+                    alert(translations[currentLang].noIdError);
+                    idLoginScreen.style.display = 'flex';
+                    container.classList.remove('active');
+                    return;
+                }
+                
                 if (todaySignals >= 4) {
                     alert(
                         currentLang === 'uz' ? "Bugun barcha signallarni olib bo'ldingiz! Ertaga qayta urinib ko'ring." :
@@ -2042,6 +2598,13 @@
             
             // Claim bonus function
             function claimBonus() {
+                if (!userId) {
+                    alert(translations[currentLang].noIdError);
+                    idLoginScreen.style.display = 'flex';
+                    container.classList.remove('active');
+                    return;
+                }
+                
                 if (lastBonusDay === currentBonusDay.toString()) {
                     alert(
                         currentLang === 'uz' ? "Bugungi bonusni allaqachon olgansiz!" :
@@ -2093,6 +2656,13 @@
             }
             
             function revealApples() {
+                if (!userId) {
+                    alert(translations[currentLang].noIdError);
+                    idLoginScreen.style.display = 'flex';
+                    container.classList.remove('active');
+                    return;
+                }
+                
                 if (applesRevealed || !gameActive) return;
                 
                 applesContainer.innerHTML = '';
@@ -2149,11 +2719,18 @@
             
             // VIP invite function
             function inviteFriends() {
+                if (!userId) {
+                    alert(translations[currentLang].noIdError);
+                    idLoginScreen.style.display = 'flex';
+                    container.classList.remove('active');
+                    return;
+                }
+                
                 const message = currentLang === 'uz'
-                    ? `🎯 APPLE FORTUNE - Kunlik 4 Signal & Bonuslar\n\nVIP signal olish uchun menga qo'shiling:\n👉 t.me/AppleFortuneBot\n\nMening ID: USER${Math.floor(Math.random() * 10000)}\n\n#AppleFortune #TradingSignals`
+                    ? `🎯 APPLE FORTUNE - Kunlik 4 Signal & Bonuslar\n\nVIP signal olish uchun menga qo'shiling:\n👉 t.me/AppleFortuneBot\n\nMening ID: ${userId}\nPromokod: AIFUT\n\n#AppleFortune #TradingSignals`
                     : currentLang === 'ru'
-                    ? `🎯 APPLE FORTUNE - 4 Сигнала в День и Бонусы\n\nПрисоединяйтесь ко мне для получения VIP сигналов:\n👉 t.me/AppleFortuneBot\n\nМой ID: USER${Math.floor(Math.random() * 10000)}\n\n#AppleFortune #TradingSignals`
-                    : `🎯 APPLE FORTUNE - Daily 4 Signals & Bonuses\n\nJoin me to get VIP signals:\n👉 t.me/AppleFortuneBot\n\nMy ID: USER${Math.floor(Math.random() * 10000)}\n\n#AppleFortune #TradingSignals`;
+                    ? `🎯 APPLE FORTUNE - 4 Сигнала в День и Бонусы\n\nПрисоединяйтесь ко мне для получения VIP сигналов:\n👉 t.me/AppleFortuneBot\n\nМой ID: ${userId}\nПромокод: AIFUT\n\n#AppleFortune #TradingSignals`
+                    : `🎯 APPLE FORTUNE - Daily 4 Signals & Bonuses\n\nJoin me to get VIP signals:\n👉 t.me/AppleFortuneBot\n\nMy ID: ${userId}\nPromocode: AIFUT\n\n#AppleFortune #TradingSignals`;
                 
                 // Open Telegram share
                 const shareUrl = `https://t.me/share/url?url=https://t.me/AppleFortuneBot&text=${encodeURIComponent(message)}`;
@@ -2178,6 +2755,13 @@
             
             // Free signal function (watch ad)
             function getFreeSignal() {
+                if (!userId) {
+                    alert(translations[currentLang].noIdError);
+                    idLoginScreen.style.display = 'flex';
+                    container.classList.remove('active');
+                    return;
+                }
+                
                 if (todaySignals >= 4) {
                     alert(
                         currentLang === 'uz' ? "Bugun barcha signallarni olib bo'ldingiz!" :
@@ -2219,6 +2803,19 @@
                 }, 3000);
             }
             
+            // Change ID function
+            function changeId() {
+                if (confirm(
+                    currentLang === 'uz' 
+                        ? "ID raqamingizni o'zgartirmoqchimisiz? Barcha statistikangiz saqlanib qoladi."
+                        : currentLang === 'ru'
+                        ? "Вы хотите изменить свой ID номер? Ваша статистика сохранится."
+                        : "Do you want to change your ID number? Your statistics will be saved."
+                )) {
+                    logout();
+                }
+            }
+            
             // ==================== EVENT LISTENERS ====================
             
             // Language selection
@@ -2232,24 +2829,69 @@
             // Language switcher
             languageSwitcher.addEventListener('click', switchLanguage);
             
+            // ID input validation
+            userIdInput.addEventListener('input', function() {
+                idError.style.display = 'none';
+            });
+            
+            // Login button
+            loginBtn.addEventListener('click', login);
+            
+            // Register link
+            registerLink.addEventListener('click', function(e) {
+                e.preventDefault();
+                alert(translations[currentLang].registerAlert);
+            });
+            
+            // User avatar click (profile)
+            userAvatar.addEventListener('click', function() {
+                document.querySelector('.profile-section').scrollIntoView({ behavior: 'smooth' });
+            });
+            
             // Get signal button
-            getSignalBtn.addEventListener('click', getSignal);
+            getSignalBtn.addEventListener('click', function() {
+                if (!userId) {
+                    alert(translations[currentLang].noIdError);
+                    idLoginScreen.style.display = 'flex';
+                    container.classList.remove('active');
+                    return;
+                }
+                getSignal();
+            });
             
             // Daily bonus button
             dailyBonusBtn.addEventListener('click', () => {
+                if (!userId) {
+                    alert(translations[currentLang].noIdError);
+                    idLoginScreen.style.display = 'flex';
+                    container.classList.remove('active');
+                    return;
+                }
                 const bonusSection = document.querySelector('.daily-bonus');
                 bonusSection.scrollIntoView({ behavior: 'smooth' });
             });
             
             // VIP access buttons
             vipAccessBtn.addEventListener('click', () => {
+                if (!userId) {
+                    alert(translations[currentLang].noIdError);
+                    idLoginScreen.style.display = 'flex';
+                    container.classList.remove('active');
+                    return;
+                }
                 vipAccessPage.style.display = 'flex';
                 document.querySelector('.container').style.display = 'none';
             });
             
             vipBtn.addEventListener('click', () => {
+                if (!userId) {
+                    alert(translations[currentLang].noIdError);
+                    idLoginScreen.style.display = 'flex';
+                    container.classList.remove('active');
+                    return;
+                }
                 vipAccessPage.style.display = 'flex';
-                document.querySelector('.container').style.display = 'none';
+                container.style.display = 'none';
             });
             
             // Back from VIP page
@@ -2269,6 +2911,9 @@
             revealApplesBtn.addEventListener('click', revealApples);
             getFreeSignalBtn.addEventListener('click', getFreeSignal);
             
+            // Change ID button
+            changeIdBtn.addEventListener('click', changeId);
+            
             // Continue button (from success animation)
             continueBtn.addEventListener('click', () => {
                 successAnimation.style.display = 'none';
@@ -2281,6 +2926,13 @@
             navItems.forEach(item => {
                 item.addEventListener('click', function(e) {
                     e.preventDefault();
+                    if (!userId && this.id !== 'navHome') {
+                        alert(translations[currentLang].noIdError);
+                        idLoginScreen.style.display = 'flex';
+                        container.classList.remove('active');
+                        return;
+                    }
+                    
                     navItems.forEach(nav => nav.classList.remove('active'));
                     this.classList.add('active');
                     
@@ -2300,12 +2952,7 @@
                             document.querySelector('.vip-section').scrollIntoView({ behavior: 'smooth' });
                             break;
                         case 'navProfile':
-                            // Could implement profile page
-                            alert(
-                                currentLang === 'uz' ? "Profil sahifasi yaqinda..." :
-                                currentLang === 'ru' ? "Страница профиля скоро..." :
-                                "Profile page coming soon..."
-                            );
+                            document.querySelector('.profile-section').scrollIntoView({ behavior: 'smooth' });
                             break;
                     }
                 });
@@ -2336,7 +2983,10 @@
             updateBonusTimer();
             
             // Initialize with saved data
-            updateStats();
+            if (userId) {
+                updateProfile();
+                updateStats();
+            }
         });
     </script>
 </body>
