@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Apple Fortune | AI Trading</title>
+    <title>Apple Fortune | AI Trading VIP</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         /* ============ GLOBAL STYLES ============ */
@@ -132,7 +132,11 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            z-index: 2000;
+            z-index: 3000;
+        }
+
+        .hacker-animation.vip {
+            background: linear-gradient(145deg, #000000, #001a00);
         }
 
         .matrix-code {
@@ -147,6 +151,11 @@
             display: flex;
             align-items: center;
             justify-content: center;
+        }
+
+        .hacker-animation.vip .matrix-code {
+            color: #00ff66;
+            text-shadow: 0 0 15px #00ff66;
         }
 
         @keyframes text-flicker {
@@ -166,11 +175,15 @@
 
         .progress-bar {
             width: 100%;
-            height: 10px;
+            height: 12px;
             background: #003300;
-            border-radius: 5px;
+            border-radius: 6px;
             overflow: hidden;
             border: 1px solid #00ff00;
+        }
+
+        .hacker-animation.vip .progress-bar {
+            border-color: #00ff66;
         }
 
         .progress-fill {
@@ -178,6 +191,10 @@
             background: linear-gradient(90deg, #00ff00, #00cc00);
             width: 0%;
             transition: width 2s ease;
+        }
+
+        .hacker-animation.vip .progress-fill {
+            background: linear-gradient(90deg, #00ff66, #00cc66);
         }
 
         .hacker-text {
@@ -189,9 +206,214 @@
             animation: blink 1s infinite;
         }
 
+        .hacker-animation.vip .hacker-text {
+            color: #00ff66;
+        }
+
         @keyframes blink {
             0%, 100% { opacity: 1; }
             50% { opacity: 0.5; }
+        }
+
+        /* ============ VIP SIGNAL PAGE ============ */
+        .vip-signal-page {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(145deg, #0a0a1f, #1a1a3e);
+            z-index: 2000;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .vip-signal-header {
+            background: rgba(0, 0, 0, 0.4);
+            padding: 15px;
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid rgba(0, 150, 255, 0.2);
+        }
+
+        .back-btn {
+            background: rgba(0, 100, 255, 0.15);
+            border: 1px solid rgba(0, 150, 255, 0.3);
+            border-radius: 8px;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #00ccff;
+            cursor: pointer;
+            margin-right: 15px;
+        }
+
+        .vip-signal-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            background: linear-gradient(to right, #ffd700, #ff8c00);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .vip-signal-content {
+            padding: 20px;
+            flex: 1;
+        }
+
+        .vip-requirements {
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.1), rgba(255, 140, 0, 0.05));
+            border-radius: 15px;
+            padding: 25px;
+            text-align: center;
+            border: 2px solid rgba(255, 215, 0, 0.3);
+            margin-bottom: 25px;
+        }
+
+        .vip-req-icon {
+            font-size: 3rem;
+            color: #ffd700;
+            margin-bottom: 15px;
+        }
+
+        .vip-req-title {
+            font-size: 1.2rem;
+            color: #ffd700;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .vip-req-counter {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 20px 0;
+            font-size: 3rem;
+            font-weight: 800;
+        }
+
+        .vip-req-current {
+            color: #00ff66;
+            margin-right: 10px;
+        }
+
+        .vip-req-separator {
+            color: #ffd700;
+            margin: 0 5px;
+        }
+
+        .vip-req-total {
+            color: #ffd700;
+            margin-left: 10px;
+        }
+
+        .vip-req-desc {
+            font-size: 0.9rem;
+            color: #a0d2ff;
+            line-height: 1.5;
+            margin-top: 15px;
+        }
+
+        .vip-features-list {
+            background: rgba(20, 25, 60, 0.5);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 25px;
+            border: 1px solid rgba(0, 150, 255, 0.2);
+        }
+
+        .vip-feature-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            padding: 12px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+        }
+
+        .vip-feature-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .vip-feature-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            font-size: 1.2rem;
+        }
+
+        .vip-feature-icon.success {
+            background: rgba(0, 255, 102, 0.1);
+            color: #00ff66;
+        }
+
+        .vip-feature-icon.warning {
+            background: rgba(255, 204, 0, 0.1);
+            color: #ffcc00;
+        }
+
+        .vip-feature-icon.primary {
+            background: rgba(0, 150, 255, 0.1);
+            color: #0096ff;
+        }
+
+        .vip-feature-icon.danger {
+            background: rgba(255, 50, 102, 0.1);
+            color: #ff3366;
+        }
+
+        .vip-feature-text {
+            flex: 1;
+            font-size: 0.9rem;
+            color: #ffffff;
+            line-height: 1.4;
+        }
+
+        .vip-invite-btn-large {
+            background: linear-gradient(135deg, #ffd700, #ff8c00);
+            border: none;
+            border-radius: 12px;
+            padding: 18px;
+            color: #000;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 10px;
+            transition: all 0.3s;
+        }
+
+        .vip-invite-btn-large:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 20px rgba(255, 215, 0, 0.4);
+        }
+
+        .vip-share-tip {
+            background: rgba(0, 150, 255, 0.1);
+            border-radius: 10px;
+            padding: 15px;
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #00ccff;
+            font-size: 0.85rem;
+        }
+
+        .vip-share-tip i {
+            font-size: 1.2rem;
+            color: #ffd700;
         }
 
         /* ============ VIP SECTION ============ */
@@ -1272,6 +1494,8 @@
         </div>
     </div>
 
+    <!-- VIP Signal Page (will be dynamically added) -->
+
     <!-- Floating Register Button -->
     <div class="floating-register">
         <button class="floating-btn" id="floatingRegisterBtn">
@@ -1327,7 +1551,11 @@
                 successMessage: "✅ Butun olma! Keyingi bosqichga o'tilmoqda...",
                 failureMessage: "❌ Tishlangan olma! O'yin {round}-raundda tugadi.",
                 quickShareTitle: "🚀 DO'STLARINGIZNI TAKLIF QILING",
-                quickShareNote: "💡 Eslatma: Do'stlaringizni taklif qilsangiz, 30 daqiqa chegirma va bonuslar olasiz!"
+                quickShareNote: "💡 Eslatma: Do'stlaringizni taklif qilsangiz, 30 daqiqa chegirma va bonuslar olasiz!",
+                vipSignalTitle: "VIP SIGNAL OLISH",
+                vipRequirements: "VIP SIGNAL TALABLARI",
+                vipRequirementDesc: "VIP signal olish uchun 20 ta do'stingizni taklif qilishingiz kerak.",
+                vipShareTip: "Har bir taklif qilingan do'st bilan siz VIP signalga yaqinlashasiz!"
             },
             ru: {
                 languagePrompt: "Платформа AI торговых сигналов",
@@ -1374,7 +1602,11 @@
                 successMessage: "✅ Целое яблоко! Переходим на следующий уровень...",
                 failureMessage: "❌ Надкушенное яблоко! Игра завершена на раунде {round}.",
                 quickShareTitle: "🚀 ПРИГЛАСИТЕ СВОИХ ДРУЗЕЙ",
-                quickShareNote: "💡 Примечание: Если вы пригласите друзей, вы получите 30 минут скидки и бонусы!"
+                quickShareNote: "💡 Примечание: Если вы пригласите друзей, вы получите 30 минут скидки и бонусы!",
+                vipSignalTitle: "ПОЛУЧЕНИЕ VIP СИГНАЛА",
+                vipRequirements: "ТРЕБОВАНИЯ ДЛЯ VIP СИГНАЛА",
+                vipRequirementDesc: "Для получения VIP сигнала нужно пригласить 20 друзей.",
+                vipShareTip: "С каждым приглашенным другом вы приближаетесь к VIP сигналу!"
             },
             en: {
                 languagePrompt: "AI trading signals platform",
@@ -1421,7 +1653,11 @@
                 successMessage: "✅ Whole apple! Moving to next level...",
                 failureMessage: "❌ Bitten apple! Game ended at round {round}.",
                 quickShareTitle: "🚀 INVITE YOUR FRIENDS",
-                quickShareNote: "💡 Note: If you invite friends, you'll get 30 minutes discount and bonuses!"
+                quickShareNote: "💡 Note: If you invite friends, you'll get 30 minutes discount and bonuses!",
+                vipSignalTitle: "GET VIP SIGNAL",
+                vipRequirements: "VIP SIGNAL REQUIREMENTS",
+                vipRequirementDesc: "To get VIP signal you need to invite 20 friends.",
+                vipShareTip: "With each invited friend you get closer to VIP signal!"
             }
         };
 
@@ -1505,6 +1741,7 @@
             let endRoundValue = 0;
             let sharedFriends = 0;
             let invitedFriendsVIP = 0; // VIP uchun taklif qilingan do'stlar
+            const REQUIRED_VIP_FRIENDS = 20;
 
             // ==================== FUNCTIONS ====================
 
@@ -1547,6 +1784,29 @@
                 if (languageSelector) languageSelector.style.display = 'flex';
             }
 
+            // VIP sahifasini ochish
+            function showVipSignalPage() {
+                // Barcha boshqa sahifalarni yashirish
+                document.querySelectorAll('.container > *:not(.vip-signal-page)').forEach(el => {
+                    el.classList.add('hidden');
+                });
+                
+                // VIP sahifasini ko'rsatish
+                const vipSignalPage = document.getElementById('vipSignalPage');
+                if (vipSignalPage) {
+                    vipSignalPage.classList.remove('hidden');
+                    updateVipFriendsCount();
+                }
+            }
+
+            // VIP do'stlar sonini yangilash
+            function updateVipFriendsCount() {
+                const vipFriendsCount = document.getElementById('vipFriendsCount');
+                if (vipFriendsCount) {
+                    vipFriendsCount.textContent = invitedFriendsVIP;
+                }
+            }
+
             // Show VIP hacker animation
             function showVipHackerAnimation(callback) {
                 if (!hackerAnimation) {
@@ -1554,19 +1814,19 @@
                     return;
                 }
                 
+                hackerAnimation.classList.add('vip');
                 hackerAnimation.style.display = 'flex';
                 if (progressFill) progressFill.style.width = '0%';
                 
                 // VIP matrix code sequences
                 const sequences = [
-                    "VIP SIGNAL ANALYZING...",
-                    "MARKET SCANNING...",
-                    "AI PROCESSING...",
-                    "VIP PATTERN DETECTED...",
-                    "SIGNAL CONFIRMED",
-                    "VIP TRADING NOW",
-                    "TAYYOR",
-                    "READY"
+                    "VIP ACCESS INITIALIZING...",
+                    "VERIFYING VIP CREDENTIALS...",
+                    "ANALYZING INVITATION STATUS...",
+                    "LOADING VIP TRADING MODULE...",
+                    "CONNECTING TO AI SIGNALS...",
+                    "VIP SYSTEM ACTIVATED",
+                    "WELCOME TO VIP CLUB"
                 ];
                 
                 let currentSequence = 0;
@@ -1590,7 +1850,10 @@
                 
                 // Hide after animation and execute callback
                 setTimeout(() => {
-                    if (hackerAnimation) hackerAnimation.style.display = 'none';
+                    if (hackerAnimation) {
+                        hackerAnimation.style.display = 'none';
+                        hackerAnimation.classList.remove('vip');
+                    }
                     if (callback) callback();
                 }, 3000);
             }
@@ -1607,6 +1870,10 @@
                 if (waitSection) waitSection.classList.add('hidden');
                 if (bonusSection) bonusSection.classList.add('hidden');
                 if (quickShareSection) quickShareSection.classList.add('hidden');
+                
+                // VIP sahifasini yashirish
+                const vipSignalPage = document.getElementById('vipSignalPage');
+                if (vipSignalPage) vipSignalPage.classList.add('hidden');
             }
 
             // Show VIP invite section
@@ -1639,6 +1906,10 @@
                 if (bonusSection) bonusSection.classList.add('hidden');
                 if (quickShareSection) quickShareSection.classList.add('hidden');
                 
+                // VIP sahifasini yashirish
+                const vipSignalPage = document.getElementById('vipSignalPage');
+                if (vipSignalPage) vipSignalPage.classList.add('hidden');
+                
                 // Focus on input
                 setTimeout(() => {
                     if (userIdInput) userIdInput.focus();
@@ -1658,6 +1929,10 @@
                 if (bonusSection) bonusSection.classList.add('hidden');
                 if (quickShareSection) quickShareSection.classList.add('hidden');
                 
+                // VIP sahifasini yashirish
+                const vipSignalPage = document.getElementById('vipSignalPage');
+                if (vipSignalPage) vipSignalPage.classList.add('hidden');
+                
                 // Start game
                 startGame();
             }
@@ -1675,11 +1950,104 @@
                 if (bonusSection) bonusSection.classList.add('hidden');
                 if (quickShareSection) quickShareSection.classList.add('hidden');
                 
+                // VIP sahifasini yashirish
+                const vipSignalPage = document.getElementById('vipSignalPage');
+                if (vipSignalPage) vipSignalPage.classList.add('hidden');
+                
                 // Update round display
                 if (endRound) endRound.textContent = endRoundValue;
                 
                 // Start countdown
                 startCountdown();
+            }
+
+            // VIP taklif qilish funktsiyasi
+            function shareVipMessage() {
+                const t = translations[currentLang] || translations.uz;
+                
+                // Maxsus VIP xabar tuzish
+                const vipShareMessage = `🎯 VIP SIGNAL | Apple Fortune\n\n` +
+                                       `VIP savdo signallarini olish uchun meni qo'shing:\n` +
+                                       `👉 t.me/Strategioyinlar_bot\n\n` +
+                                       `💰 98.5% Aniq savdo signallari\n` +
+                                       `⚡ Real-vaqtda bildirishnomalar\n` +
+                                       `📊 AI tahlil asosida\n\n` +
+                                       `Mening ID: ${currentUserId || 'VIP_ACCESS'}\n` +
+                                       `#AppleFortune #VIPSignal #Trading`;
+                
+                // Telegram sahifasiga yo'naltirish
+                const telegramShareUrl = `https://t.me/share/url?url=https://t.me/Strategioyinlar_bot&text=${encodeURIComponent(vipShareMessage)}`;
+                
+                // Yangi oynada ochish
+                window.open(telegramShareUrl, '_blank', 'width=600,height=700');
+                
+                // Do'stlar sonini oshirish
+                invitedFriendsVIP++;
+                localStorage.setItem('appleFortuneInvitedFriendsVIP', invitedFriendsVIP.toString());
+                
+                // Ko'rsatkichni yangilash
+                updateVipFriendsCount();
+                
+                // Xabar ko'rsatish
+                setTimeout(() => {
+                    if (invitedFriendsVIP >= REQUIRED_VIP_FRIENDS) {
+                        // 20 ta do'st taklif qilingan
+                        showVipSuccess();
+                    } else {
+                        // Kamida 20 ta do'st kerak
+                        const remaining = REQUIRED_VIP_FRIENDS - invitedFriendsVIP;
+                        const t = translations[currentLang] || translations.uz;
+                        const message = currentLang === 'uz' 
+                            ? `Tabriklaymiz! Siz ${invitedFriendsVIP}/20 do'stni taklif qildingiz. Yana ${remaining} ta do'st kerak.`
+                            : currentLang === 'ru'
+                            ? `Поздравляем! Вы пригласили ${invitedFriendsVIP}/20 друзей. Еще нужно ${remaining} друзей.`
+                            : `Congratulations! You invited ${invitedFriendsVIP}/20 friends. Need ${remaining} more friends.`;
+                        
+                        alert(message);
+                    }
+                }, 1000);
+            }
+
+            // VIP muvaffaqiyatli olinganda
+            function showVipSuccess() {
+                // Hacker animatsiyasini ko'rsatish
+                if (hackerAnimation) {
+                    hackerAnimation.classList.add('vip');
+                    hackerAnimation.style.display = 'flex';
+                    
+                    // VIP uchun maxsus matnlar
+                    if (matrixCode) matrixCode.textContent = "VIP ACCESS GRANTED...";
+                    if (hackerText) hackerText.textContent = "WELCOME TO VIP CLUB";
+                    
+                    // Progress barni to'ldirish
+                    setTimeout(() => {
+                        if (progressFill) progressFill.style.width = '100%';
+                    }, 300);
+                    
+                    // 3 soniyadan keyin login sahifasiga yo'naltirish
+                    setTimeout(() => {
+                        if (hackerAnimation) {
+                            hackerAnimation.style.display = 'none';
+                            hackerAnimation.classList.remove('vip');
+                        }
+                        
+                        // VIP statusni saqlash
+                        localStorage.setItem('appleFortuneVIPStatus', 'active');
+                        localStorage.setItem('appleFortuneVIPUnlocked', Date.now().toString());
+                        
+                        // Login sahifasiga o'tish
+                        showLoginSection();
+                        
+                        // Xabar ko'rsatish
+                        const t = translations[currentLang] || translations.uz;
+                        alert(currentLang === 'uz'
+                            ? "🎉 TABRIKLAYMIZ! VIP signalga muvaffaqiyatli erishdingiz!\n\nEndi yuqori aniqlikdagi savdo signallarini olishingiz mumkin."
+                            : currentLang === 'ru'
+                            ? "🎉 ПОЗДРАВЛЯЕМ! Вы успешно получили VIP сигнал!\n\nТеперь вы можете получать высокоточные торговые сигналы."
+                            : "🎉 CONGRATULATIONS! You successfully unlocked VIP signal!\n\nNow you can get high accuracy trading signals."
+                        );
+                    }, 3000);
+                }
             }
 
             // Share message function for VIP
@@ -1763,6 +2131,7 @@
                 
                 // Update VIP counter if loaded
                 updateVIPCounter();
+                updateVipFriendsCount();
             }
             
             // Validate user ID
@@ -1989,15 +2358,15 @@
             // VIP function
             function getVipSignal() {
                 // Check if already invited 5 friends
-                if (invitedFriendsVIP >= 5) {
+                if (invitedFriendsVIP >= REQUIRED_VIP_FRIENDS) {
                     // Go directly to login section for VIP
                     showVipHackerAnimation(function() {
                         showLoginSection();
                     });
                 } else {
-                    // Show hacker animation first, then invite section
+                    // Show hacker animation first, then VIP sahifasiga
                     showVipHackerAnimation(function() {
-                        showVipInviteSection();
+                        showVipSignalPage();
                     });
                 }
             }
@@ -2018,6 +2387,8 @@
                 localStorage.removeItem('appleFortuneEndRound');
                 localStorage.removeItem('appleFortuneSharedFriends');
                 localStorage.removeItem('appleFortuneInvitedFriendsVIP');
+                localStorage.removeItem('appleFortuneVIPStatus');
+                localStorage.removeItem('appleFortuneVIPUnlocked');
                 
                 currentUserId = '';
                 if (userIdInput) userIdInput.value = '';
@@ -2140,6 +2511,106 @@
                 changeIdBtn.addEventListener('click', changeUserId);
             }
             
+            // ==================== VIP SIGNAL PAGE ELEMENTS ====================
+            // VIP sahifasini HTML ga qo'shish
+            const vipSignalPageHTML = `
+            <div class="vip-signal-page hidden" id="vipSignalPage">
+                <div class="vip-signal-header">
+                    <button class="back-btn" id="backToMainFromVip">
+                        <i class="fas fa-arrow-left"></i>
+                    </button>
+                    <h2 class="vip-signal-title" id="vipSignalTitle">VIP SIGNAL OLISH</h2>
+                </div>
+                
+                <div class="vip-signal-content">
+                    <div class="vip-requirements">
+                        <div class="vip-req-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h3 class="vip-req-title" id="vipRequirements">VIP SIGNAL TALABLARI</h3>
+                        <div class="vip-req-counter">
+                            <div class="vip-req-current" id="vipFriendsCount">0</div>
+                            <div class="vip-req-separator">/</div>
+                            <div class="vip-req-total">20</div>
+                        </div>
+                        <p class="vip-req-desc" id="vipRequirementDesc">
+                            VIP signal olish uchun <strong>20 ta do'stingizni</strong> taklif qilishingiz kerak. 
+                            Har bir taklif qilingan do'st sizning hisobingizga qo'shiladi.
+                        </p>
+                    </div>
+                    
+                    <div class="vip-features-list">
+                        <div class="vip-feature-item">
+                            <div class="vip-feature-icon success">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            <div class="vip-feature-text">
+                                <strong>98.5% Aniqlik</strong> - AI tomonidan tasdiqlangan signallar
+                            </div>
+                        </div>
+                        
+                        <div class="vip-feature-item">
+                            <div class="vip-feature-icon warning">
+                                <i class="fas fa-bolt"></i>
+                            </div>
+                            <div class="vip-feature-text">
+                                <strong>Real-vaqtda bildirishnomalar</strong> - Har qanday savdo imkoniyati
+                            </div>
+                        </div>
+                        
+                        <div class="vip-feature-item">
+                            <div class="vip-feature-icon primary">
+                                <i class="fas fa-chart-line"></i>
+                            </div>
+                            <div class="vip-feature-text">
+                                <strong>Detal tahlillar</strong> - Kirish/chiqish nuqtalari bilan
+                            </div>
+                        </div>
+                        
+                        <div class="vip-feature-item">
+                            <div class="vip-feature-icon danger">
+                                <i class="fas fa-shield-alt"></i>
+                            </div>
+                            <div class="vip-feature-text">
+                                <strong>Risk boshqaruvi</strong> - Stop-loss va take-profit tavsiyalari
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <button class="vip-invite-btn-large" id="vipInviteBtnLarge">
+                        <i class="fas fa-share-alt"></i>
+                        <span id="vipInviteBtnLargeText">DO'STLARNI TAKLIF QILISH</span>
+                    </button>
+                    
+                    <div class="vip-share-tip">
+                        <i class="fas fa-lightbulb"></i>
+                        <span id="vipShareTip">Har bir taklif qilingan do'st bilan siz VIP signalga yaqinlashasiz!</span>
+                    </div>
+                </div>
+            </div>`;
+            
+            // Container ga VIP sahifasini qo'shish
+            if (container) {
+                container.insertAdjacentHTML('beforeend', vipSignalPageHTML);
+            }
+            
+            // VIP sahifasidagi elementlar
+            const vipInviteBtnLarge = document.getElementById('vipInviteBtnLarge');
+            const backToMainFromVip = document.getElementById('backToMainFromVip');
+            
+            // VIP sahifasidagi taklif qilish tugmasi
+            if (vipInviteBtnLarge) {
+                vipInviteBtnLarge.addEventListener('click', shareVipMessage);
+            }
+            
+            // VIP sahifasidan asosiy sahifaga qaytish
+            if (backToMainFromVip) {
+                backToMainFromVip.addEventListener('click', function() {
+                    document.getElementById('vipSignalPage').classList.add('hidden');
+                    showMainSections();
+                });
+            }
+            
             // Initialize language on page load
             if (localStorage.getItem('appleFortuneLanguage')) {
                 selectLanguage(currentLang);
@@ -2147,6 +2618,10 @@
                 // If no language selected, show language selector
                 if (languageSelector) languageSelector.style.display = 'flex';
             }
+            
+            // Load saved VIP friends count
+            invitedFriendsVIP = parseInt(localStorage.getItem('appleFortuneInvitedFriendsVIP')) || 0;
+            updateVipFriendsCount();
         });
     </script>
 </body>
