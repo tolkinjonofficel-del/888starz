@@ -583,12 +583,15 @@
             justify-content: center;
             gap: 10px;
             margin-bottom: 20px;
-            flex-wrap: wrap;
+            flex-wrap: nowrap;
+            overflow-x: auto;
+            padding: 10px 0;
         }
         
         .apple {
             width: 60px;
             height: 60px;
+            min-width: 60px;
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -600,6 +603,7 @@
             border: 2px solid transparent;
             position: relative;
             overflow: hidden;
+            flex-shrink: 0;
         }
         
         .apple:hover {
@@ -990,6 +994,7 @@
             .apple {
                 width: 70px;
                 height: 70px;
+                min-width: 70px;
             }
         }
         
@@ -1007,8 +1012,9 @@
             }
             
             .apple {
-                width: 55px;
-                height: 55px;
+                width: 50px;
+                height: 50px;
+                min-width: 50px;
             }
         }
     </style>
@@ -1089,24 +1095,24 @@
         <!-- Home Section -->
         <div class="content-section active" id="homeSection">
             <div class="welcome-card">
-                <div class="welcome-text" id="welcomeText">Welcome back!</div>
-                <div class="welcome-subtext" id="welcomeSubtext">Your AI trading assistant is ready</div>
+                <div class="welcome-text" id="welcomeText">Xush kelibsiz!</div>
+                <div class="welcome-subtext" id="welcomeSubtext">AI savdo yordamchingiz tayyor</div>
             </div>
             
             <div class="balance-card">
                 <div class="balance-title">
-                    <span id="balanceLabel">Your Balance</span>
+                    <span id="balanceLabel">Hisobingiz</span>
                     <span class="balance-amount" id="balanceAmount">5,000</span>
                 </div>
                 
                 <div class="balance-stats">
                     <div class="stat-item">
                         <div class="stat-value" id="todayProfit">+$342</div>
-                        <div class="stat-label" id="todayProfitLabel">Today's Profit</div>
+                        <div class="stat-label" id="todayProfitLabel">Bugungi foyda</div>
                     </div>
                     <div class="stat-item">
                         <div class="stat-value" id="signalsCount">28</div>
-                        <div class="stat-label" id="signalsLabel">Signals</div>
+                        <div class="stat-label" id="signalsLabel">Signallar</div>
                     </div>
                 </div>
             </div>
@@ -1116,37 +1122,37 @@
                     <div class="action-icon">
                         <i class="fas fa-bolt"></i>
                     </div>
-                    <span id="quickSignalText">Quick Signal</span>
+                    <span id="quickSignalText">Tezkor Signal</span>
                 </button>
                 
                 <button class="action-btn" id="inviteBtn">
                     <div class="action-icon">
                         <i class="fas fa-share-alt"></i>
                     </div>
-                    <span id="inviteText">Invite Friends</span>
+                    <span id="inviteText">Do'stlarni Taklif Qilish</span>
                 </button>
                 
                 <button class="action-btn" id="bonusBtn">
                     <div class="action-icon">
                         <i class="fas fa-gift"></i>
                     </div>
-                    <span id="bonusText">Bonuses</span>
+                    <span id="bonusText">Bonuslar</span>
                 </button>
                 
                 <button class="action-btn" id="statsBtn">
                     <div class="action-icon">
                         <i class="fas fa-chart-line"></i>
                     </div>
-                    <span id="statsText">Statistics</span>
+                    <span id="statsText">Statistika</span>
                 </button>
             </div>
             
             <div class="vip-card">
                 <div class="vip-badge">VIP</div>
-                <h3 style="font-size: 1.3rem; margin-bottom: 10px;" id="vipTitle">Premium Signals</h3>
-                <p style="opacity: 0.9; margin-bottom: 20px;" id="vipDesc">Get exclusive VIP signals with 98.5% accuracy</p>
+                <h3 style="font-size: 1.3rem; margin-bottom: 10px;" id="vipTitle">Premium Signallar</h3>
+                <p style="opacity: 0.9; margin-bottom: 20px;" id="vipDesc">98.5% aniq VIP signallarni oling</p>
                 <button class="btn btn-primary" id="upgradeVipBtn" style="width: 100%;">
-                    <i class="fas fa-crown"></i> <span id="upgradeText">Upgrade to VIP</span>
+                    <i class="fas fa-crown"></i> <span id="upgradeText">VIP ga O'tish</span>
                 </button>
             </div>
         </div>
@@ -1157,8 +1163,8 @@
                 <div class="vip-icon">
                     <i class="fas fa-crown"></i>
                 </div>
-                <h2 style="font-size: 2rem; margin-bottom: 10px;" id="vipMainTitle">VIP ACCESS</h2>
-                <p style="color: var(--gray);" id="vipSubtitle">Exclusive trading signals and benefits</p>
+                <h2 style="font-size: 2rem; margin-bottom: 10px;" id="vipMainTitle">VIP KIRISH</h2>
+                <p style="color: var(--gray);" id="vipSubtitle">Eksklyuziv savdo signallari va imtiyozlar</p>
             </div>
             
             <div class="vip-features">
@@ -1166,45 +1172,45 @@
                     <div class="feature-icon">
                         <i class="fas fa-chart-line"></i>
                     </div>
-                    <div class="feature-title" id="vipFeature1">98.5% Accuracy</div>
-                    <div class="feature-desc" id="vipFeature1Desc">AI-powered signals</div>
+                    <div class="feature-title" id="vipFeature1">98.5% Aniqlik</div>
+                    <div class="feature-desc" id="vipFeature1Desc">AI asosidagi signallar</div>
                 </div>
                 
                 <div class="feature-card">
                     <div class="feature-icon">
                         <i class="fas fa-bolt"></i>
                     </div>
-                    <div class="feature-title" id="vipFeature2">Real-time Alerts</div>
-                    <div class="feature-desc" id="vipFeature2Desc">Instant notifications</div>
+                    <div class="feature-title" id="vipFeature2">Real-vaqtda</div>
+                    <div class="feature-desc" id="vipFeature2Desc">Tezkor bildirishnomalar</div>
                 </div>
                 
                 <div class="feature-card">
                     <div class="feature-icon">
                         <i class="fas fa-shield-alt"></i>
                     </div>
-                    <div class="feature-title" id="vipFeature3">Risk Management</div>
-                    <div class="feature-desc" id="vipFeature3Desc">Safe trading strategies</div>
+                    <div class="feature-title" id="vipFeature3">Risk Boshqaruvi</div>
+                    <div class="feature-desc" id="vipFeature3Desc">Xavfsiz savdo strategiyalari</div>
                 </div>
                 
                 <div class="feature-card">
                     <div class="feature-icon">
                         <i class="fas fa-headset"></i>
                     </div>
-                    <div class="feature-title" id="vipFeature4">24/7 Support</div>
-                    <div class="feature-desc" id="vipFeature4Desc">Personal assistance</div>
+                    <div class="feature-title" id="vipFeature4">24/7 Yordam</div>
+                    <div class="feature-desc" id="vipFeature4Desc">Shaxsiy yordam</div>
                 </div>
             </div>
             
             <div class="signal-card">
-                <h3 style="margin-bottom: 15px;" id="vipRequirementsTitle">VIP Requirements</h3>
+                <h3 style="margin-bottom: 15px;" id="vipRequirementsTitle">VIP Talablari</h3>
                 <div class="progress-bar" style="margin-bottom: 15px;">
                     <div class="progress-fill" id="vipProgress" style="width: 0%"></div>
                 </div>
                 <p style="text-align: center; color: var(--gray); margin-bottom: 20px;" id="vipProgressText">
-                    Invite <span id="vipInvitedCount">0</span>/20 friends to unlock VIP
+                    VIP ni ochish uchun <span id="vipInvitedCount">0</span>/20 do'stni taklif qiling
                 </p>
                 <button class="btn btn-primary" id="vipInviteBtn">
-                    <i class="fas fa-share-alt"></i> <span id="vipInviteBtnText">Invite Friends</span>
+                    <i class="fas fa-share-alt"></i> <span id="vipInviteBtnText">Do'stlarni Taklif Qilish</span>
                 </button>
             </div>
         </div>
@@ -1213,7 +1219,7 @@
         <div class="content-section" id="signalSection">
             <div class="signal-card">
                 <div class="signal-header">
-                    <h3 style="font-size: 1.3rem;" id="signalTitle">Get Trading Signal</h3>
+                    <h3 style="font-size: 1.3rem;" id="signalTitle">Savdo Signallarini Olish</h3>
                     <div class="signal-id" id="displayUserId">ID: -----</div>
                 </div>
                 
@@ -1277,15 +1283,15 @@
             </div>
             
             <div class="signal-card">
-                <h3 style="margin-bottom: 15px;" id="signalStatsTitle">Signal Statistics</h3>
+                <h3 style="margin-bottom: 15px;" id="signalStatsTitle">Signal Statistikalari</h3>
                 <div class="balance-stats">
                     <div class="stat-item">
                         <div class="stat-value" id="accuracyRate">94.7%</div>
-                        <div class="stat-label" id="accuracyLabel">Accuracy</div>
+                        <div class="stat-label" id="accuracyLabel">Aniqlik</div>
                     </div>
                     <div class="stat-item">
                         <div class="stat-value" id="totalSignals">2.8K</div>
-                        <div class="stat-label" id="totalSignalsLabel">Total Signals</div>
+                        <div class="stat-label" id="totalSignalsLabel">Jami Signallar</div>
                     </div>
                 </div>
             </div>
@@ -1302,7 +1308,7 @@
                     <div class="profile-id" id="profileUserId">ID: Not set</div>
                     <div class="profile-status">
                         <i class="fas fa-check-circle"></i>
-                        <span id="profileStatusText">Active</span>
+                        <span id="profileStatusText">Faol</span>
                     </div>
                 </div>
                 
@@ -1313,31 +1319,31 @@
                     </div>
                     <div class="stat-item">
                         <div class="stat-value" id="invitedFriends">0</div>
-                        <div class="stat-label">Invited</div>
+                        <div class="stat-label">Taklif qilingan</div>
                     </div>
                     <div class="stat-item">
                         <div class="stat-value" id="totalGames">12</div>
-                        <div class="stat-label">Games</div>
+                        <div class="stat-label">O'yinlar</div>
                     </div>
                     <div class="stat-item">
                         <div class="stat-value" id="successRate">85%</div>
-                        <div class="stat-label">Success</div>
+                        <div class="stat-label">Muvaffaqiyat</div>
                     </div>
                 </div>
                 
                 <button class="btn btn-primary" id="shareProfileBtn" style="margin-bottom: 15px;">
-                    <i class="fas fa-share-alt"></i> <span id="shareProfileText">Share Profile</span>
+                    <i class="fas fa-share-alt"></i> <span id="shareProfileText">Profilni Ulashish</span>
                 </button>
                 
                 <button class="btn btn-secondary" id="changeProfileIdBtn">
-                    <i class="fas fa-sync-alt"></i> <span id="changeProfileIdText">Change ID</span>
+                    <i class="fas fa-sync-alt"></i> <span id="changeProfileIdText">ID ni O'zgartirish</span>
                 </button>
             </div>
             
             <div class="signal-card">
-                <h3 style="margin-bottom: 15px;" id="activityTitle">Recent Activity</h3>
+                <h3 style="margin-bottom: 15px;" id="activityTitle">Oxirgi Faoliyat</h3>
                 <div id="activityList" style="color: var(--gray); text-align: center; padding: 20px;">
-                    <p id="noActivityText">No activity yet</p>
+                    <p id="noActivityText">Hozircha faoliyat yo'q</p>
                 </div>
             </div>
         </div>
@@ -1347,7 +1353,7 @@
     <div class="bottom-nav">
         <a href="#" class="nav-item active" data-section="home">
             <i class="fas fa-home nav-icon"></i>
-            <span id="navHome">Home</span>
+            <span id="navHome">Asosiy</span>
         </a>
         
         <a href="#" class="nav-item" data-section="vip">
@@ -1363,7 +1369,7 @@
         
         <a href="#" class="nav-item" data-section="profile">
             <i class="fas fa-user nav-icon"></i>
-            <span id="navProfile">Profile</span>
+            <span id="navProfile">Profil</span>
         </a>
     </div>
     
@@ -1371,21 +1377,21 @@
     <div class="modal" id="idModal">
         <div class="modal-content">
             <div class="modal-header">
-                <h3 class="modal-title" id="idModalTitle">Enter Your ID</h3>
-                <p class="modal-subtitle" id="idModalSubtitle">Please enter your 11-digit ID number</p>
+                <h3 class="modal-title" id="idModalTitle">ID Raqamingizni Kiriting</h3>
+                <p class="modal-subtitle" id="idModalSubtitle">9 dan 11 ta gacha raqamli ID raqam kiriting</p>
             </div>
             
             <div class="input-group">
-                <label class="input-label" id="idInputLabel">ID Number</label>
+                <label class="input-label" id="idInputLabel">ID Raqami</label>
                 <input type="text" class="input-field" id="userIdInput" 
-                       placeholder="12345678901" maxlength="11" pattern="[0-9]*" inputmode="numeric">
+                       placeholder="Masalan: 123456789" maxlength="11" pattern="[0-9]*" inputmode="numeric">
                 <p style="font-size: 0.8rem; color: var(--gray); margin-top: 8px;" id="idHelpText">
-                    Your unique 11-digit identification number
+                    Sizning noyob raqamli identifikatsiya raqamingiz (9-11 ta raqam)
                 </p>
             </div>
             
             <button class="btn btn-primary" id="saveIdBtn">
-                <i class="fas fa-save"></i> <span id="saveIdText">Save ID</span>
+                <i class="fas fa-save"></i> <span id="saveIdText">ID ni Saqlash</span>
             </button>
         </div>
     </div>
@@ -1394,26 +1400,26 @@
     <div class="modal" id="inviteModal">
         <div class="modal-content">
             <div class="modal-header">
-                <h3 class="modal-title" id="inviteModalTitle">Invite Friends</h3>
-                <p class="modal-subtitle" id="inviteModalSubtitle">Share with friends and earn bonuses</p>
+                <h3 class="modal-title" id="inviteModalTitle">Do'stlarni Taklif Qilish</h3>
+                <p class="modal-subtitle" id="inviteModalSubtitle">Do'stlaringiz bilan ulashing va bonuslar oling</p>
             </div>
             
             <div style="text-align: center; margin-bottom: 25px;">
                 <div style="font-size: 3rem; color: var(--success); margin-bottom: 15px;">
                     <i class="fas fa-gift"></i>
                 </div>
-                <h4 style="margin-bottom: 10px;" id="bonusAmount">+5 Points per Friend</h4>
+                <h4 style="margin-bottom: 10px;" id="bonusAmount">+5 Ball Har Bir Do'st Uchun</h4>
                 <p style="color: var(--gray);" id="inviteInfo">
-                    Each invited friend adds 5 points to your balance
+                    Har bir taklif qilingan do'st hisobingizga 5 ball qo'shiladi
                 </p>
             </div>
             
             <button class="btn btn-primary" id="shareTelegramBtn" style="margin-bottom: 10px;">
-                <i class="fab fa-telegram"></i> <span id="shareTelegramText">Share on Telegram</span>
+                <i class="fab fa-telegram"></i> <span id="shareTelegramText">Telegramda Ulashish</span>
             </button>
             
             <button class="btn btn-secondary" id="copyLinkBtn">
-                <i class="fas fa-copy"></i> <span id="copyLinkText">Copy Invite Link</span>
+                <i class="fas fa-copy"></i> <span id="copyLinkText">Taklif Havolasini Nusxalash</span>
             </button>
         </div>
     </div>
@@ -1438,8 +1444,8 @@
                 vipSubtitle: "Eksklyuziv savdo signallari va imtiyozlar",
                 vipFeature1: "98.5% Aniqlik",
                 vipFeature1Desc: "AI asosidagi signallar",
-                vipFeature2: "Real-vaqtda Bildirishnoma",
-                vipFeature2Desc: "Tezkor xabarlar",
+                vipFeature2: "Real-vaqtda",
+                vipFeature2Desc: "Tezkor bildirishnomalar",
                 vipFeature3: "Risk Boshqaruvi",
                 vipFeature3Desc: "Xavfsiz savdo strategiyalari",
                 vipFeature4: "24/7 Yordam",
@@ -1472,9 +1478,9 @@
                 navSignal: "Signal",
                 navProfile: "Profil",
                 idModalTitle: "ID Raqamingizni Kiriting",
-                idModalSubtitle: "Iltimos, 11 raqamli ID raqamingizni kiriting",
+                idModalSubtitle: "9 dan 11 ta gacha raqamli ID raqam kiriting",
                 idInputLabel: "ID Raqami",
-                idHelpText: "Sizning noyob 11 raqamli identifikatsiya raqamingiz",
+                idHelpText: "Sizning noyob raqamli identifikatsiya raqamingiz (9-11 ta raqam)",
                 saveIdText: "ID ni Saqlash",
                 inviteModalTitle: "Do'stlarni Taklif Qilish",
                 inviteModalSubtitle: "Do'stlaringiz bilan ulashing va bonuslar oling",
@@ -1541,9 +1547,9 @@
                 navSignal: "Сигнал",
                 navProfile: "Профиль",
                 idModalTitle: "Введите Ваш ID",
-                idModalSubtitle: "Пожалуйста, введите ваш 11-значный ID номер",
+                idModalSubtitle: "Введите 9-11 цифр ID номера",
                 idInputLabel: "ID Номер",
-                idHelpText: "Ваш уникальный 11-значный идентификационный номер",
+                idHelpText: "Ваш уникальный идентификационный номер (9-11 цифр)",
                 saveIdText: "Сохранить ID",
                 inviteModalTitle: "Пригласить Друзей",
                 inviteModalSubtitle: "Делитесь с друзьями и получайте бонусы",
@@ -1610,9 +1616,9 @@
                 navSignal: "Signal",
                 navProfile: "Profile",
                 idModalTitle: "Enter Your ID",
-                idModalSubtitle: "Please enter your 11-digit ID number",
+                idModalSubtitle: "Enter 9-11 digit ID number",
                 idInputLabel: "ID Number",
-                idHelpText: "Your unique 11-digit identification number",
+                idHelpText: "Your unique identification number (9-11 digits)",
                 saveIdText: "Save ID",
                 inviteModalTitle: "Invite Friends",
                 inviteModalSubtitle: "Share with friends and earn bonuses",
@@ -1844,22 +1850,22 @@
             let actionText = '';
             switch(action) {
                 case 'game_start':
-                    actionText = 'Game started';
+                    actionText = 'O\'yin boshladi';
                     break;
                 case 'game_won':
-                    actionText = `Game completed - Round ${details}`;
+                    actionText = `O\'yin yakunlandi - ${details}-raund`;
                     break;
                 case 'game_lost':
-                    actionText = `Game lost - Round ${details}`;
+                    actionText = `O\'yinda yutqazdingiz - ${details}-raund`;
                     break;
                 case 'invite_sent':
-                    actionText = 'Friend invited';
+                    actionText = 'Do\'st taklif qilindi';
                     break;
                 case 'balance_added':
-                    actionText = `+${details} points added`;
+                    actionText = `+${details} ball qo\'shildi`;
                     break;
                 case 'id_saved':
-                    actionText = 'ID saved';
+                    actionText = 'ID saqlandi';
                     break;
                 default:
                     actionText = action;
@@ -1887,7 +1893,7 @@
             if (!activityList) return;
             
             if (activityLog.length === 0) {
-                activityList.innerHTML = `<p id="noActivityText">${translations[currentLang]?.noActivityText || 'No activity yet'}</p>`;
+                activityList.innerHTML = `<p id="noActivityText">${translations[currentLang]?.noActivityText || 'Hozircha faoliyat yo\'q'}</p>`;
                 return;
             }
             
@@ -1904,10 +1910,17 @@
             activityList.innerHTML = html;
         }
 
+        // ==================== ID VALIDATION ====================
+        function validateUserId(userId) {
+            // 9 dan 11 gacha raqamli son
+            const idRegex = /^[0-9]{9,11}$/;
+            return idRegex.test(userId);
+        }
+
         // ==================== GAME FUNCTIONS ====================
         function startGame() {
             if (!userId) {
-                showNotification(translations[currentLang]?.idRequired || 'Please enter ID');
+                showNotification(translations[currentLang]?.idRequired || 'Iltimos, signal olish uchun ID raqamingizni kiriting.');
                 showModal(idModal);
                 return;
             }
@@ -1936,6 +1949,7 @@
             
             if (roundCounter) roundCounter.textContent = gameRound;
             
+            // Create 5 apples in one row
             for (let i = 0; i < 5; i++) {
                 const apple = document.createElement('div');
                 apple.className = 'apple mystery-apple';
@@ -1986,7 +2000,7 @@
                 [apples[i], apples[j]] = [apples[j], apples[i]];
             }
             
-            // Create apples
+            // Create apples in one row
             for (let i = 0; i < totalApples; i++) {
                 const apple = document.createElement('div');
                 const appleType = apples[i];
@@ -2229,16 +2243,16 @@
             saveIdBtn.addEventListener('click', () => {
                 const id = userIdInput.value.trim();
                 
-                if (id.length === 11 && /^\d+$/.test(id)) {
+                if (validateUserId(id)) {
                     userId = id;
                     currentUserId = id;
                     updateUserDisplay();
                     saveUserData();
                     hideModal(idModal);
-                    showNotification(translations[currentLang]?.idSaved || 'ID saved!', 'success');
+                    showNotification(translations[currentLang]?.idSaved || 'ID raqamingiz muvaffaqiyatli saqlandi!', 'success');
                     addActivity('id_saved');
                 } else {
-                    showNotification('Please enter a valid 11-digit ID number', 'error');
+                    showNotification('Iltimos, 9 dan 11 ta gacha raqamli ID raqam kiriting.', 'error');
                 }
             });
             
@@ -2287,14 +2301,14 @@
                 addActivity('balance_added', '5');
                 
                 hideModal(inviteModal);
-                showNotification(t.inviteSent || 'Invitation sent! +5 points added', 'success');
+                showNotification(t.inviteSent || 'Taklif muvaffaqiyatli yuborildi! +5 ball qo\'shildi.', 'success');
             });
             
             copyLinkBtn.addEventListener('click', () => {
                 const link = `https://t.me/Strategioyinlar_bot?start=${userId}`;
                 navigator.clipboard.writeText(link).then(() => {
                     const t = translations[currentLang] || translations.uz;
-                    showNotification(t.copied || 'Link copied!', 'success');
+                    showNotification(t.copied || 'Havola nusxalandi!', 'success');
                     hideModal(inviteModal);
                 });
             });
