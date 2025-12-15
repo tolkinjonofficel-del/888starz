@@ -235,13 +235,9 @@
             background: var(--darker);
             display: none;
             flex-direction: column;
-            justify-content: center;
-            align-items: center;
             z-index: 900;
-            padding: 20px;
-            /* Padding-bottom qo'shish klaviatura uchun */
-            padding-bottom: 100px;
             overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
         }
 
         .login-container {
@@ -253,11 +249,10 @@
             border: 2px solid rgba(0, 204, 255, 0.3);
             backdrop-filter: blur(20px);
             text-align: center;
-            /* Container'ga max-width va margin qo'shamiz */
             margin: auto;
             position: relative;
-            /* Mobile uchun kichik padding */
-            padding-bottom: 80px;
+            margin-top: 20px;
+            margin-bottom: 100px; /* Fixed button uchun joy */
         }
 
         .login-logo {
@@ -348,7 +343,6 @@
             color: var(--light);
             font-size: 1rem;
             transition: all 0.3s;
-            /* Input'ga autofocus qilmaslik */
             caret-color: var(--secondary);
         }
 
@@ -366,18 +360,17 @@
         }
 
         /* ============ FIXED LOGIN BUTTON ============ */
-        .login-button-container {
+        .login-button-wrapper {
             position: fixed;
             bottom: 0;
             left: 0;
             right: 0;
             padding: 15px 20px;
-            background: rgba(10, 10, 31, 0.9);
+            background: rgba(10, 10, 31, 0.95);
             backdrop-filter: blur(20px);
             border-top: 2px solid rgba(0, 204, 255, 0.3);
             z-index: 1000;
-            display: flex;
-            gap: 10px;
+            box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.5);
         }
 
         .login-btn {
@@ -411,7 +404,7 @@
             font-size: 0.9rem;
             color: var(--gray);
             text-align: center;
-            padding-bottom: 80px; /* Button uchun joy */
+            padding-bottom: 20px;
         }
 
         .register-link a {
@@ -426,7 +419,6 @@
             padding: 20px;
             display: none;
             animation: slideIn 0.5s ease-out;
-            /* Klaviatura uchun padding */
             padding-bottom: 100px;
         }
 
@@ -437,6 +429,11 @@
         @keyframes slideIn {
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
         }
 
         /* ============ HEADER ============ */
@@ -471,11 +468,6 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             animation: float 3s ease-in-out infinite;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
         }
 
         .logo-text {
@@ -1426,7 +1418,7 @@
             bottom: 0;
             left: 0;
             right: 0;
-            background: rgba(10, 10, 31, 0.9);
+            background: rgba(10, 10, 31, 0.95);
             backdrop-filter: blur(20px);
             border-top: 2px solid rgba(0, 204, 255, 0.3);
             padding: 15px 20px;
@@ -1434,6 +1426,7 @@
             justify-content: space-around;
             align-items: center;
             z-index: 1000;
+            box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.5);
         }
 
         .nav-item {
@@ -1506,15 +1499,14 @@
         @media (max-width: 768px) {
             .container {
                 padding: 15px;
-            }
-            
-            #idLoginScreen {
-                padding-bottom: 80px;
+                padding-bottom: 90px;
             }
             
             .login-container {
                 padding: 30px 20px;
-                padding-bottom: 100px;
+                margin-top: 10px;
+                margin-bottom: 90px;
+                max-width: 90%;
             }
             
             .header {
@@ -1571,21 +1563,26 @@
             .profile-info-grid {
                 grid-template-columns: 1fr;
             }
+            
+            .login-button-wrapper {
+                padding: 12px 15px;
+            }
+            
+            .login-btn {
+                padding: 16px;
+                font-size: 0.95rem;
+            }
         }
 
         @media (max-width: 480px) {
             .container {
                 padding: 10px;
-            }
-            
-            #idLoginScreen {
-                padding: 15px;
-                padding-bottom: 70px;
+                padding-bottom: 80px;
             }
             
             .login-container {
                 padding: 25px 15px;
-                padding-bottom: 90px;
+                margin-bottom: 80px;
             }
             
             .logo-text {
@@ -1614,18 +1611,13 @@
                 font-size: 2.5rem;
             }
             
-            .login-container {
-                padding: 25px 15px;
-                padding-bottom: 100px;
-            }
-            
-            .login-button-container {
-                padding: 12px 15px;
+            .login-button-wrapper {
+                padding: 10px 12px;
             }
             
             .login-btn {
-                padding: 16px;
-                font-size: 0.95rem;
+                padding: 14px;
+                font-size: 0.9rem;
             }
         }
     </style>
@@ -1641,6 +1633,27 @@
             <span>🍎</span>
         </div>
         <div class="loading-text" id="loadingText">Apple Fortune Yuklanmoqda...</div>
+    </div>
+
+    <!-- Language Selector -->
+    <div id="languageSelector">
+        <div class="language-logo">
+            <span>🍎</span>
+        </div>
+        <h1>Apple Fortune</h1>
+        <p id="languagePrompt">ID Kiriting & Signal Oling</p>
+        
+        <div class="language-buttons">
+            <button class="lang-select-btn" data-lang="uz">
+                <span>🇺🇿</span> O'zbekcha
+            </button>
+            <button class="lang-select-btn" data-lang="ru">
+                <span>🇷🇺</span> Русский
+            </button>
+            <button class="lang-select-btn" data-lang="en">
+                <span>🇺🇸</span> English
+            </button>
+        </div>
     </div>
 
     <!-- ID Login Screen -->
@@ -1670,7 +1683,8 @@
                 <input type="text" class="input-field" id="userIdInput" 
                        placeholder="1 bilan boshlanadigan 10 xonali raqam" 
                        maxlength="10"
-                       inputmode="numeric">
+                       inputmode="numeric"
+                       autocomplete="off">
                 <div class="error-message" id="idError">Noto'g'ri ID raqam formati</div>
             </div>
             
@@ -1680,8 +1694,8 @@
             </div>
         </div>
         
-        <!-- Fixed Login Button Container -->
-        <div class="login-button-container">
+        <!-- Fixed Login Button -->
+        <div class="login-button-wrapper" id="loginButtonWrapper">
             <button class="login-btn" id="loginBtn">
                 <i class="fas fa-sign-in-alt"></i>
                 <span id="loginBtnText">TASDIQLASH</span>
@@ -1770,27 +1784,6 @@
                     Har bir taklif qilingan do'st bilan VIP signalga yaqinlashing!
                 </p>
             </div>
-        </div>
-    </div>
-
-    <!-- Language Selector -->
-    <div id="languageSelector">
-        <div class="language-logo">
-            <span>🍎</span>
-        </div>
-        <h1>Apple Fortune</h1>
-        <p id="languagePrompt">ID Kiriting & Signal Oling</p>
-        
-        <div class="language-buttons">
-            <button class="lang-select-btn" data-lang="uz">
-                <span>🇺🇿</span> O'zbekcha
-            </button>
-            <button class="lang-select-btn" data-lang="ru">
-                <span>🇷🇺</span> Русский
-            </button>
-            <button class="lang-select-btn" data-lang="en">
-                <span>🇺🇸</span> English
-            </button>
         </div>
     </div>
 
@@ -2273,7 +2266,7 @@
             const idError = document.getElementById('idError');
             const loginBtn = document.getElementById('loginBtn');
             const registerLink = document.getElementById('registerLink');
-            const loginButtonContainer = document.querySelector('.login-button-container');
+            const loginButtonWrapper = document.getElementById('loginButtonWrapper');
             
             // Profile elements
             const userDisplayId = document.getElementById('userDisplayId');
@@ -2356,7 +2349,7 @@
                         languageSelector.style.display = 'flex';
                     }
                 }, 500);
-            }, 2000);
+            }, 1500);
             
             // ==================== FUNCTIONS ====================
             
@@ -2587,7 +2580,9 @@
                     idError.textContent = t.noIdError;
                     idError.style.display = 'block';
                     // Scroll to error message
-                    userIdInput.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    setTimeout(() => {
+                        userIdInput.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    }, 100);
                     return;
                 }
                 
@@ -2595,7 +2590,9 @@
                     idError.textContent = t.invalidIdError;
                     idError.style.display = 'block';
                     // Scroll to error message
-                    userIdInput.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    setTimeout(() => {
+                        userIdInput.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    }, 100);
                     return;
                 }
                 
@@ -2904,13 +2901,23 @@
                 }
             }
             
-            // Scroll input into view when keyboard opens
-            function scrollInputIntoView() {
+            // Handle input focus
+            function handleInputFocus() {
+                // Scroll input into view
                 setTimeout(() => {
                     if (userIdInput) {
                         userIdInput.scrollIntoView({ behavior: 'smooth', block: 'center' });
                     }
                 }, 300);
+            }
+            
+            // Handle keyboard
+            function handleKeyboard(event) {
+                // If Enter key is pressed in input field
+                if (event.target === userIdInput && event.key === 'Enter') {
+                    event.preventDefault();
+                    login();
+                }
             }
             
             // ==================== EVENT LISTENERS ====================
@@ -2931,20 +2938,10 @@
                 idError.style.display = 'none';
             });
             
-            userIdInput.addEventListener('focus', function() {
-                // Auto-scroll input into view when focused
-                setTimeout(() => {
-                    this.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                }, 300);
-            });
+            userIdInput.addEventListener('focus', handleInputFocus);
             
-            // Handle Enter key press in input
-            userIdInput.addEventListener('keypress', function(e) {
-                if (e.key === 'Enter') {
-                    e.preventDefault();
-                    login();
-                }
-            });
+            // Handle keyboard events
+            document.addEventListener('keydown', handleKeyboard);
             
             // Login button
             loginBtn.addEventListener('click', login);
