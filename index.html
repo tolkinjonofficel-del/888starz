@@ -289,6 +289,7 @@
             transition: all 0.3s;
             padding: 8px 16px;
             border-radius: 16px;
+            position: relative;
         }
         
         .nav-item.active {
@@ -340,6 +341,7 @@
             position: relative;
             overflow: hidden;
             box-shadow: 0 20px 40px rgba(0, 122, 255, 0.3);
+            text-align: center;
         }
         
         .welcome-card::before {
@@ -353,14 +355,89 @@
         }
         
         .welcome-text {
-            font-size: 1.5rem;
-            font-weight: 700;
+            font-size: 1.8rem;
+            font-weight: 800;
             margin-bottom: 10px;
         }
         
         .welcome-subtext {
-            font-size: 0.9rem;
+            font-size: 1rem;
             opacity: 0.9;
+        }
+        
+        .registration-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            padding: 24px;
+            margin-bottom: 20px;
+            backdrop-filter: blur(10px);
+            text-align: center;
+        }
+        
+        .registration-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+        
+        .step-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 12px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            margin-bottom: 15px;
+        }
+        
+        .step-number {
+            width: 30px;
+            height: 30px;
+            min-width: 30px;
+            background: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+        
+        .step-content {
+            text-align: left;
+            flex: 1;
+        }
+        
+        .step-title {
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+        
+        .step-desc {
+            font-size: 0.85rem;
+            color: var(--gray);
+        }
+        
+        .promo-code {
+            background: rgba(255, 149, 0, 0.1);
+            border: 1px solid var(--warning);
+            border-radius: 12px;
+            padding: 12px;
+            margin: 20px 0;
+            text-align: center;
+        }
+        
+        .promo-code .code {
+            font-family: 'Courier New', monospace;
+            font-size: 1.2rem;
+            font-weight: 800;
+            color: var(--warning);
+            margin: 5px 0;
+        }
+        
+        .promo-code .label {
+            font-size: 0.9rem;
+            color: var(--gray);
         }
         
         .balance-card {
@@ -672,11 +749,6 @@
             background: linear-gradient(135deg, #4a4a8a, #2a2a5a);
             border: 2px solid rgba(0, 150, 255, 0.8);
             animation: float 3s ease-in-out infinite;
-        }
-        
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-8px); }
         }
         
         .whole-apple {
@@ -1008,6 +1080,63 @@
             margin-top: 10px;
         }
         
+        /* ============ WAIT MODAL STYLES ============ */
+        .timer-display {
+            text-align: center;
+            margin: 20px 0;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 20px;
+        }
+        
+        .timer-label {
+            font-size: 0.9rem;
+            color: var(--gray);
+            margin-bottom: 10px;
+        }
+        
+        .timer-value {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--warning);
+            font-family: 'Courier New', monospace;
+        }
+        
+        .share-section {
+            background: rgba(0, 122, 255, 0.1);
+            border-radius: 20px;
+            padding: 20px;
+            margin: 20px 0;
+            text-align: center;
+        }
+        
+        .share-title {
+            font-size: 0.95rem;
+            margin-bottom: 15px;
+            color: white;
+        }
+        
+        .share-btn {
+            width: 100%;
+            padding: 15px;
+            background: var(--gradient);
+            border: none;
+            border-radius: 16px;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            transition: all 0.3s;
+        }
+        
+        .share-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0, 122, 255, 0.3);
+        }
+        
         /* ============ RESPONSIVE ============ */
         @media (min-width: 768px) {
             .main-container {
@@ -1041,7 +1170,7 @@
         
         @media (max-width: 380px) {
             .welcome-text {
-                font-size: 1.3rem;
+                font-size: 1.5rem;
             }
             
             .balance-amount {
@@ -1154,8 +1283,57 @@
                 </div>
                 
                 <div class="welcome-card">
-                    <div class="welcome-text" id="welcomeText">Xush kelibsiz!</div>
-                    <div class="welcome-subtext" id="welcomeSubtext">AI savdo yordamchingiz tayyor</div>
+                    <div class="welcome-text" id="welcomeText">Apple Fortune AI Trading</div>
+                    <div class="welcome-subtext" id="welcomeSubtext">
+                        <p style="margin-bottom: 15px;">98.5% aniq AI asosidagi savdo signallari</p>
+                        <p style="font-size: 0.9rem;">
+                            <i class="fas fa-star" style="color: #FFD700; margin-right: 5px;"></i>
+                            <strong>AIFUT promokodi</strong> orqali ro'yxatdan o'ting va ID raqamingizni tasdiqlang
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="registration-card">
+                    <h3 class="registration-title" id="registrationTitle">Signallarni Olish Jarayoni</h3>
+                    
+                    <div class="step-item">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <div class="step-title" id="step1Title">www.xbet.com saytida ro'yxatdan o'ting</div>
+                            <div class="step-desc" id="step1Desc">AIFUT promokodidan foydalaning</div>
+                        </div>
+                    </div>
+                    
+                    <div class="step-item">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <div class="step-title" id="step2Title">ID raqamingizni oling</div>
+                            <div class="step-desc" id="step2Desc">Ro'yxatdan o'tgandan so'ng ID raqamingizni qayd eting</div>
+                        </div>
+                    </div>
+                    
+                    <div class="step-item">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <div class="step-title" id="step3Title">ID raqamingizni tasdiqlang</div>
+                            <div class="step-desc" id="step3Desc">Signal sahifasida ID raqamingizni kiriting</div>
+                        </div>
+                    </div>
+                    
+                    <div class="promo-code">
+                        <div class="label" id="promoLabel">PROMOKOD:</div>
+                        <div class="code">AIFUT</div>
+                        <div class="label" id="promoDesc">www.xbet.com ro'yxatdan o'tishda kiriting</div>
+                    </div>
+                    
+                    <button class="btn btn-primary" id="registerNowBtn">
+                        <i class="fas fa-external-link-alt"></i> <span id="registerNowText">Ro'yxatdan O'tish</span>
+                    </button>
+                    
+                    <p style="font-size: 0.8rem; color: var(--gray); margin-top: 15px;">
+                        <i class="fas fa-info-circle"></i> 
+                        <span id="registrationNote">Ro'yxatdan o'tgandan so'ng signal sahifasiga o'ting</span>
+                    </p>
                 </div>
                 
                 <div class="balance-card">
@@ -1499,8 +1677,19 @@
         // ==================== TRANSLATIONS ====================
         const translations = {
             uz: {
-                welcomeText: "Xush kelibsiz!",
-                welcomeSubtext: "AI savdo yordamchingiz tayyor",
+                welcomeText: "Apple Fortune AI Trading",
+                welcomeSubtext: "98.5% aniq AI asosidagi savdo signallari\nAIFUT promokodi orqali ro'yxatdan o'ting va ID raqamingizni tasdiqlang",
+                registrationTitle: "Signallarni Olish Jarayoni",
+                step1Title: "www.xbet.com saytida ro'yxatdan o'ting",
+                step1Desc: "AIFUT promokodidan foydalaning",
+                step2Title: "ID raqamingizni oling",
+                step2Desc: "Ro'yxatdan o'tgandan so'ng ID raqamingizni qayd eting",
+                step3Title: "ID raqamingizni tasdiqlang",
+                step3Desc: "Signal sahifasida ID raqamingizni kiriting",
+                promoLabel: "PROMOKOD:",
+                promoDesc: "www.xbet.com ro'yxatdan o'tishda kiriting",
+                registerNowText: "Ro'yxatdan O'tish",
+                registrationNote: "Ro'yxatdan o'tgandan so'ng signal sahifasiga o'ting",
                 balanceLabel: "Hisobingiz",
                 todayProfitLabel: "Bugungi foyda",
                 signalsLabel: "Signallar",
@@ -1573,8 +1762,19 @@
                 registerFirst: "Avval www.xbet.com saytida ro'yxatdan o'ting!"
             },
             ru: {
-                welcomeText: "Добро пожаловать!",
-                welcomeSubtext: "Ваш AI торговый помощник готов",
+                welcomeText: "Apple Fortune AI Trading",
+                welcomeSubtext: "98.5% точные торговые сигналы на основе AI\nЗарегистрируйтесь с промокодом AIFUT и подтвердите свой ID",
+                registrationTitle: "Процесс Получения Сигналов",
+                step1Title: "Зарегистрируйтесь на www.xbet.com",
+                step1Desc: "Используйте промокод AIFUT",
+                step2Title: "Получите ваш ID номер",
+                step2Desc: "Запишите ваш ID номер после регистрации",
+                step3Title: "Подтвердите ваш ID номер",
+                step3Desc: "Введите ваш ID номер на странице сигналов",
+                promoLabel: "ПРОМОКОД:",
+                promoDesc: "Введите при регистрации на www.xbet.com",
+                registerNowText: "Зарегистрироваться",
+                registrationNote: "После регистрации перейдите на страницу сигналов",
                 balanceLabel: "Ваш баланс",
                 todayProfitLabel: "Прибыль сегодня",
                 signalsLabel: "Сигналы",
@@ -1647,8 +1847,19 @@
                 registerFirst: "Сначала зарегистрируйтесь на сайте www.xbet.com!"
             },
             en: {
-                welcomeText: "Welcome back!",
-                welcomeSubtext: "Your AI trading assistant is ready",
+                welcomeText: "Apple Fortune AI Trading",
+                welcomeSubtext: "98.5% accurate AI-based trading signals\nRegister with AIFUT promo code and verify your ID",
+                registrationTitle: "Signal Acquisition Process",
+                step1Title: "Register on www.xbet.com",
+                step1Desc: "Use AIFUT promo code",
+                step2Title: "Get your ID number",
+                step2Desc: "Note your ID number after registration",
+                step3Title: "Verify your ID number",
+                step3Desc: "Enter your ID number on signal page",
+                promoLabel: "PROMO CODE:",
+                promoDesc: "Enter when registering on www.xbet.com",
+                registerNowText: "Register Now",
+                registrationNote: "After registration, go to signal page",
                 balanceLabel: "Your Balance",
                 todayProfitLabel: "Today's Profit",
                 signalsLabel: "Signals",
@@ -1739,6 +1950,8 @@
         let activityLog = [];
         let selectedApple = null;
         let selectedAppleType = null;
+        let totalGamesPlayed = 0;
+        let successfulGames = 0;
 
         // ==================== DOM ELEMENTS ====================
         const languageSelector = document.getElementById('languageSelector');
@@ -1759,6 +1972,7 @@
         const registerFirstBtn = document.getElementById('registerFirstBtn');
         const registerXbetBtn = document.getElementById('registerXbetBtn');
         const verifyIdBtn = document.getElementById('verifyIdBtn');
+        const registerNowBtn = document.getElementById('registerNowBtn');
         
         // Buttons
         const quickSignalBtn = document.getElementById('quickSignalBtn');
@@ -1787,6 +2001,8 @@
         const invitedFriendsDisplay = document.getElementById('invitedFriends');
         const vipInvitedCount = document.getElementById('vipInvitedCount');
         const vipProgress = document.getElementById('vipProgress');
+        const totalGamesDisplay = document.getElementById('totalGames');
+        const successRateDisplay = document.getElementById('successRate');
 
         // ==================== INITIALIZATION ====================
         document.addEventListener('DOMContentLoaded', function() {
@@ -1800,11 +2016,8 @@
             // Set up event listeners
             setupEventListeners();
             
-            // Load user data (but don't check ID on startup)
+            // Load user data
             loadUserData();
-            
-            // Check if need to show wait modal
-            checkWaitTimer();
         });
 
         // ==================== LANGUAGE FUNCTIONS ====================
@@ -1843,6 +2056,8 @@
             const savedActivities = localStorage.getItem('appleFortuneActivities');
             const savedTimerEnd = localStorage.getItem('appleFortuneTimerEnd');
             const savedEndRound = localStorage.getItem('appleFortuneEndRound');
+            const savedTotalGames = localStorage.getItem('appleFortuneTotalGames');
+            const savedSuccessfulGames = localStorage.getItem('appleFortuneSuccessfulGames');
             
             if (savedUserId) {
                 userId = savedUserId;
@@ -1877,17 +2092,17 @@
                 }
             }
             
+            if (savedTotalGames) {
+                totalGamesPlayed = parseInt(savedTotalGames);
+            }
+            
+            if (savedSuccessfulGames) {
+                successfulGames = parseInt(savedSuccessfulGames);
+            }
+            
             updateBalanceDisplay();
             updateInvitedCount();
-        }
-
-        function checkWaitTimer() {
-            if (countdownTime > 0) {
-                // Show wait modal if timer is active
-                setTimeout(() => {
-                    showWaitModal();
-                }, 1000);
-            }
+            updateGameStats();
         }
 
         function saveUserData() {
@@ -1896,6 +2111,8 @@
             localStorage.setItem('appleFortuneInvited', invitedFriends.toString());
             localStorage.setItem('appleFortuneInvitedFriendsVIP', invitedFriendsVIP.toString());
             localStorage.setItem('appleFortuneActivities', JSON.stringify(activityLog));
+            localStorage.setItem('appleFortuneTotalGames', totalGamesPlayed.toString());
+            localStorage.setItem('appleFortuneSuccessfulGames', successfulGames.toString());
         }
 
         function updateUserDisplay() {
@@ -1914,10 +2131,14 @@
             const t = translations[currentLang] || translations.uz;
             if (userId) {
                 statusElements.forEach(el => {
-                    el.textContent = "Faol";
-                    if (el.classList) {
-                        el.classList.remove('fa-times-circle');
-                        el.classList.add('fa-check-circle');
+                    if (el.id === 'profileStatusText') {
+                        el.textContent = "Faol";
+                    } else {
+                        el.textContent = "Faol";
+                    }
+                    if (el.previousElementSibling && el.previousElementSibling.classList) {
+                        el.previousElementSibling.classList.remove('fa-times-circle');
+                        el.previousElementSibling.classList.add('fa-check-circle');
                     }
                 });
                 
@@ -1928,9 +2149,9 @@
             } else {
                 statusElements.forEach(el => {
                     el.textContent = t.profileStatusText || "Ro'yxatlanmagan";
-                    if (el.classList) {
-                        el.classList.remove('fa-check-circle');
-                        el.classList.add('fa-times-circle');
+                    if (el.previousElementSibling && el.previousElementSibling.classList) {
+                        el.previousElementSibling.classList.remove('fa-check-circle');
+                        el.previousElementSibling.classList.add('fa-times-circle');
                     }
                 });
                 
@@ -1963,6 +2184,16 @@
             }
         }
 
+        function updateGameStats() {
+            if (totalGamesDisplay) {
+                totalGamesDisplay.textContent = totalGamesPlayed;
+            }
+            if (successRateDisplay) {
+                const successRate = totalGamesPlayed > 0 ? Math.round((successfulGames / totalGamesPlayed) * 100) : 0;
+                successRateDisplay.textContent = `${successRate}%`;
+            }
+        }
+
         function addActivity(action, details = '') {
             const t = translations[currentLang] || translations.uz;
             const now = new Date();
@@ -1975,9 +2206,16 @@
                     break;
                 case 'game_won':
                     actionText = `O\'yin yakunlandi - ${details}-raund`;
+                    successfulGames++;
+                    totalGamesPlayed++;
+                    updateGameStats();
+                    saveUserData();
                     break;
                 case 'game_lost':
                     actionText = `O\'yinda yutqazdingiz - ${details}-raund`;
+                    totalGamesPlayed++;
+                    updateGameStats();
+                    saveUserData();
                     break;
                 case 'invite_sent':
                     actionText = 'Do\'st taklif qilindi';
@@ -2041,9 +2279,7 @@
         // ==================== GAME FUNCTIONS ====================
         function startGame() {
             if (!userId) {
-                const t = translations[currentLang] || translations.uz;
-                showNotification(t.idRequired || "Signallarni olish uchun AIFUT promokodi orqali ro'yxatdan o'tgan ID raqamingizni tasdiqlang.");
-                return;
+                return; // ID modal signal sahifasida ochiladi
             }
             
             // Hide wait modal if active
@@ -2203,14 +2439,14 @@
             showHackerAnimation(t.analyzingSignal || 'Signal tahlil qilinmoqda...', 2000);
             
             setTimeout(() => {
-                // O'yinni tugatish ehtimolligi (7-raundda 100% tugatish)
+                // O'ZGARTIRILDI: 4-5 raundlarda ko'proq tugash ehtimoli
                 const roundEndProbabilities = {
                     1: 0.05,   // 5%
                     2: 0.15,   // 15%
-                    3: 0.25,   // 25%
-                    4: 0.40,   // 40%
-                    5: 0.60,   // 60%
-                    6: 0.85,   // 85%
+                    3: 0.30,   // 30%
+                    4: 0.65,   // 65% - KO'PROQ
+                    5: 0.85,   // 85% - KO'PROQ
+                    6: 0.95,   // 95%
                     7: 1.00    // 100%
                 };
                 
@@ -2221,9 +2457,15 @@
                     endRoundValue = gameRound;
                     localStorage.setItem('appleFortuneEndRound', endRoundValue);
                     
+                    // Balance qo'shish
+                    const winAmount = gameRound * 500;
+                    userBalance += winAmount;
+                    updateBalanceDisplay();
+                    saveUserData();
+                    
                     // Yutuq xabarini ko'rsatish
                     if (resultMessage) {
-                        resultMessage.innerHTML = `<span class="signal-success">🎉 ${t.gameWonMessage.replace('{round}', gameRound)}</span>`;
+                        resultMessage.innerHTML = `<span class="signal-success">🎉 ${t.gameWonMessage.replace('{round}', gameRound)} +${winAmount} ball!</span>`;
                         resultMessage.style.display = 'block';
                     }
                     
@@ -2270,18 +2512,18 @@
                             <div style="font-size: 3rem; color: var(--warning); margin-bottom: 15px;">
                                 <i class="fas fa-clock"></i>
                             </div>
-                            <h3 class="modal-title" id="waitModalTitle">YUTUQNI OLING!</h3>
-                            <p class="modal-subtitle" id="waitModalSubtitle">
+                            <h3 class="modal-title">YUTUQNI OLING!</h3>
+                            <p class="modal-subtitle">
                                 Siz <span style="color: var(--warning);">${endRoundValue}</span>-raundda yutdingiz!
                             </p>
                         </div>
                         
-                        <div class="timer-display" style="margin: 20px 0;">
+                        <div class="timer-display">
                             <div class="timer-label">KEYINGI SIGNALGACHA</div>
                             <div class="timer-value" id="waitModalTimer">02:00:00</div>
                         </div>
                         
-                        <div class="share-section" style="margin: 20px 0;">
+                        <div class="share-section">
                             <div class="share-title">
                                 Do'stlaringizni taklif qiling va vaqtni qisqartiring!
                             </div>
@@ -2497,15 +2739,17 @@
                 if (section.id === `${sectionName}Section`) {
                     section.classList.add('active');
                     
-                    // If switching to signal section, check for ID
-                    if (sectionName === 'signal') {
-                        if (!userId) {
-                            const t = translations[currentLang] || translations.uz;
-                            showNotification(t.idRequired || "Signallarni olish uchun AIFUT promokodi orqali ro'yxatdan o'tgan ID raqamingizni tasdiqlang.");
+                    // If switching to signal section, ALWAYS show ID modal if no ID
+                    if (sectionName === 'signal' && !userId) {
+                        const t = translations[currentLang] || translations.uz;
+                        setTimeout(() => {
+                            showNotification(t.idRequired || "Signallarni olish uchun ID raqamingizni kiriting");
                             showModal(idModal);
-                            // Don't start game if no ID
-                            return;
-                        }
+                        }, 500);
+                    }
+                    
+                    // If we already have ID and are in signal section, start game
+                    if (sectionName === 'signal' && userId) {
                         startGame();
                     }
                 } else {
@@ -2550,9 +2794,13 @@
                     currentLang = lang;
                     localStorage.setItem('appleFortuneLang', lang);
                     loadLanguage();
+                    
+                    // Hide language selector
                     languageSelector.style.display = 'none';
+                    
+                    // Show main container with HOME section
                     mainContainer.classList.add('active');
-                    // Don't check ID on startup anymore
+                    switchSection('home');
                 });
             });
             
@@ -2576,7 +2824,7 @@
                     saveUserData();
                     hideModal(idModal);
                     
-                    // Add some initial balance when ID is verified
+                    // Add initial balance when ID is verified
                     userBalance = 5000;
                     updateBalanceDisplay();
                     saveUserData();
@@ -2603,6 +2851,11 @@
             
             // Register button in profile section
             registerXbetBtn.addEventListener('click', () => {
+                window.open('https://www.xbet.com', '_blank');
+            });
+            
+            // Register now button in home section
+            registerNowBtn.addEventListener('click', () => {
                 window.open('https://www.xbet.com', '_blank');
             });
             
@@ -2664,12 +2917,6 @@
             
             // Quick signal
             quickSignalBtn.addEventListener('click', () => {
-                if (!userId) {
-                    const t = translations[currentLang] || translations.uz;
-                    showNotification(t.idRequired || "Avval ID raqamingizni tasdiqlang!");
-                    showModal(idModal);
-                    return;
-                }
                 switchSection('signal');
             });
             
