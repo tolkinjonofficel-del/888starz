@@ -569,46 +569,129 @@
             text-align: center;
         }
         
-        .apples-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 15px;
-            margin: 30px 0;
+        /* ============ OLMA OYINI STILLARI ============ */
+        .game-instruction {
+            font-size: 0.9rem;
+            color: #a0d2ff;
+            margin-bottom: 20px;
+            text-align: center;
+            line-height: 1.4;
+        }
+        
+        .apples-container {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
         }
         
         .apple {
-            aspect-ratio: 1;
-            border-radius: 20px;
-            background: var(--card-bg);
-            border: 2px solid var(--border);
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 2.5rem;
             cursor: pointer;
-            transition: all 0.3s;
+            transition: all 0.3s ease;
+            background-size: cover;
+            background-position: center;
+            border: 2px solid transparent;
             position: relative;
             overflow: hidden;
         }
         
         .apple:hover {
-            transform: scale(1.05);
-            border-color: var(--primary);
+            transform: scale(1.1);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
         }
         
-        .apple.whole {
-            background: linear-gradient(135deg, rgba(52, 199, 89, 0.2), rgba(52, 199, 89, 0.1));
-            border-color: var(--success);
+        .mystery-apple {
+            background-image: url('https://i.ibb.co/Gf3NcMDQ/maxresdefault.jpg');
+            border: 2px solid rgba(0, 150, 255, 0.6);
+            animation: float 3s ease-in-out infinite;
         }
         
-        .apple.bitten {
-            background: linear-gradient(135deg, rgba(255, 59, 48, 0.2), rgba(255, 59, 48, 0.1));
-            border-color: var(--danger);
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-8px); }
         }
         
-        .apple.mystery {
-            background: linear-gradient(135deg, rgba(0, 122, 255, 0.2), rgba(88, 86, 214, 0.1));
-            animation: pulse 2s infinite;
+        .whole-apple {
+            background-image: url('https://i.pinimg.com/736x/6a/aa/19/6aaa196961f40afd21cf9d21824f137e.jpg');
+            border: 2px solid #ffcc00;
+        }
+        
+        .bitten-apple {
+            background-image: url('https://i.ibb.co/m5sNvNPK/62cd09ea-de08-49b9-9fea-d0100c747423-2.jpg');
+            border: 2px solid #00ff00;
+        }
+        
+        .game-btn {
+            width: 100%;
+            padding: 16px;
+            border: none;
+            border-radius: 10px;
+            font-size: 0.95rem;
+            font-weight: 700;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: all 0.2s;
+        }
+        
+        .btn-reveal {
+            background: linear-gradient(135deg, #00cc66, #009944);
+            color: white;
+        }
+        
+        .btn-restart {
+            background: linear-gradient(135deg, #ff3366, #cc0044);
+            color: white;
+        }
+        
+        .result-message {
+            background: rgba(0, 200, 255, 0.15);
+            border-radius: 10px;
+            padding: 15px;
+            margin-top: 15px;
+            text-align: center;
+            font-size: 0.9rem;
+            display: none;
+        }
+        
+        .signal-success {
+            color: #00ff66;
+            font-weight: 700;
+        }
+        
+        .round-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .round-title {
+            font-size: 0.95rem;
+            color: var(--gray);
+        }
+        
+        .round-number {
+            font-size: 1.2rem;
+            font-weight: 800;
+            color: #ffcc00;
+        }
+        
+        .user-id-display {
+            background: rgba(0, 100, 255, 0.15);
+            border-radius: 10px;
+            padding: 12px;
+            margin-bottom: 15px;
+            text-align: center;
+            font-size: 0.9rem;
         }
         
         /* ============ PROFILE SECTION ============ */
@@ -668,6 +751,63 @@
             grid-template-columns: repeat(2, 1fr);
             gap: 15px;
             margin-bottom: 30px;
+        }
+        
+        /* ============ WAIT SECTION ============ */
+        .wait-section {
+            display: none;
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            padding: 24px;
+            margin-bottom: 20px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .timer-display {
+            background: rgba(0, 100, 255, 0.15);
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            margin: 20px 0;
+        }
+        
+        .timer-label {
+            font-size: 0.9rem;
+            color: #a0d2ff;
+            margin-bottom: 10px;
+        }
+        
+        .timer-value {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: #ffcc00;
+            font-family: 'Courier New', monospace;
+        }
+        
+        .share-section {
+            background: rgba(102, 0, 255, 0.15);
+            border-radius: 10px;
+            padding: 15px;
+            margin: 20px 0;
+            text-align: center;
+        }
+        
+        .share-title {
+            font-size: 1rem;
+            color: #cc99ff;
+            margin-bottom: 10px;
+        }
+        
+        .share-btn {
+            background: linear-gradient(135deg, #9966ff, #6600cc);
+            border: none;
+            border-radius: 10px;
+            padding: 14px;
+            color: white;
+            font-weight: 700;
+            width: 100%;
+            cursor: pointer;
         }
         
         /* ============ ANIMATIONS ============ */
@@ -847,8 +987,9 @@
                 grid-template-columns: repeat(4, 1fr);
             }
             
-            .apples-grid {
-                grid-template-columns: repeat(5, 1fr);
+            .apple {
+                width: 70px;
+                height: 70px;
             }
         }
         
@@ -865,9 +1006,9 @@
                 grid-template-columns: repeat(2, 1fr);
             }
             
-            .apples-grid {
-                grid-template-columns: repeat(3, 1fr);
-                gap: 10px;
+            .apple {
+                width: 55px;
+                height: 55px;
             }
         }
     </style>
@@ -1077,31 +1218,62 @@
                 </div>
                 
                 <div class="game-container">
-                    <p style="margin-bottom: 20px; color: var(--gray);" id="gameInstruction">
-                        Select whole apples. Bitten apple ends the game!
-                    </p>
+                    <div class="round-info">
+                        <div class="round-title" id="roundLabel">RAUND:</div>
+                        <div class="round-number" id="roundCounter">1</div>
+                    </div>
                     
-                    <div class="apples-grid" id="applesGrid">
+                    <div class="user-id-display">
+                        <span id="yourIdText">ID:</span> <span id="gameUserId">-</span>
+                    </div>
+                    
+                    <div class="game-instruction" id="gameInstruction">
+                        Butun olmalarni tanlang. Tishlangan olma o'yinni tugatadi!
+                    </div>
+                    
+                    <div class="apples-container" id="applesContainer">
                         <!-- Apples will be added here -->
                     </div>
                     
-                    <div style="display: flex; gap: 10px;">
-                        <button class="btn btn-primary" id="startGameBtn" style="flex: 2;">
-                            <i class="fas fa-play"></i> <span id="startGameText">Start Game</span>
-                        </button>
-                        <button class="btn btn-secondary" id="resetGameBtn" style="flex: 1;">
-                            <i class="fas fa-redo"></i>
-                        </button>
-                    </div>
-                </div>
-                
-                <div id="gameResult" style="display: none;">
-                    <h4 style="margin-bottom: 10px; text-align: center;" id="resultTitle">Game Result</h4>
-                    <p style="text-align: center; margin-bottom: 15px;" id="resultMessage"></p>
-                    <button class="btn btn-primary" id="nextRoundBtn" style="width: 100%;">
-                        <i class="fas fa-forward"></i> <span id="nextRoundText">Next Round</span>
+                    <button class="game-btn btn-reveal" id="revealBtn">
+                        <i class="fas fa-eye"></i> <span id="revealText">OLMALARNI KORISH</span>
+                    </button>
+                    
+                    <div class="result-message" id="resultMessage"></div>
+                    
+                    <button class="game-btn btn-restart" id="restartBtn" style="display: none;">
+                        <i class="fas fa-redo"></i> <span id="restartText">QAYTA URINISH</span>
                     </button>
                 </div>
+            </div>
+            
+            <!-- Wait Section (hidden initially) -->
+            <div class="wait-section" id="waitSection">
+                <div style="margin-bottom: 20px;">
+                    <i class="fas fa-clock" style="font-size: 2rem; color: var(--warning); margin-bottom: 15px;"></i>
+                    <h3 style="font-size: 1.3rem; margin-bottom: 10px;" id="waitTitle">KEYINGI SIGNALGACHA</h3>
+                    <p id="waitDesc" style="font-size: 0.85rem; color: var(--gray); margin-bottom: 15px;">
+                        Siz <span id="endRound" class="warning">1</span>-raundgacha yetib keldingiz!
+                    </p>
+                </div>
+                
+                <div class="timer-display">
+                    <div class="timer-label" id="timerLabel">QOLGAN VAQT</div>
+                    <div class="timer-value" id="timerValue">03:00:00</div>
+                </div>
+                
+                <div class="share-section">
+                    <div class="share-title" id="shareTitle">
+                        Do'stlaringizni taklif qiling va vaqtni qisqartiring!
+                    </div>
+                    <button class="share-btn" id="shareBtn">
+                        <i class="fas fa-share-alt"></i> <span id="shareText">DO'STLARNI TAKLIF QILISH</span>
+                    </button>
+                </div>
+                
+                <button class="btn btn-secondary" id="changeIdBtn" style="width: 100%; margin-top: 10px;">
+                    <i class="fas fa-sync-alt"></i> <span id="changeIdText">ID O'ZGARTIRISH</span>
+                </button>
             </div>
             
             <div class="signal-card">
@@ -1157,8 +1329,8 @@
                     <i class="fas fa-share-alt"></i> <span id="shareProfileText">Share Profile</span>
                 </button>
                 
-                <button class="btn btn-secondary" id="changeIdBtn">
-                    <i class="fas fa-sync-alt"></i> <span id="changeIdText">Change ID</span>
+                <button class="btn btn-secondary" id="changeProfileIdBtn">
+                    <i class="fas fa-sync-alt"></i> <span id="changeProfileIdText">Change ID</span>
                 </button>
             </div>
             
@@ -1245,7 +1417,7 @@
             </button>
         </div>
     </div>
-    
+
     <script>
         // ==================== TRANSLATIONS ====================
         const translations = {
@@ -1276,16 +1448,23 @@
                 vipProgressText: "VIP ni ochish uchun <span id='vipInvitedCount'>0</span>/20 do'stni taklif qiling",
                 vipInviteBtnText: "Do'stlarni Taklif Qilish",
                 signalTitle: "Savdo Signallarini Olish",
+                roundLabel: "RAUND:",
+                yourIdText: "ID:",
                 gameInstruction: "Butun olmalarni tanlang. Tishlangan olma o'yinni tugatadi!",
-                startGameText: "O'yinni Boshlash",
-                nextRoundText: "Keyingi Raund",
+                revealText: "OLMALARNI KORISH",
+                restartText: "QAYTA URINISH",
+                waitTitle: "KEYINGI SIGNALGACHA",
+                timerLabel: "QOLGAN VAQT",
+                shareTitle: "Do'stlaringizni taklif qiling va vaqtni qisqartiring!",
+                shareText: "DO'STLARNI TAKLIF QILISH",
+                changeIdText: "ID O'ZGARTIRISH",
                 resultTitle: "O'yin Natijasi",
                 signalStatsTitle: "Signal Statistikalari",
                 accuracyLabel: "Aniqlik",
                 totalSignalsLabel: "Jami Signallar",
                 profileStatusText: "Faol",
                 shareProfileText: "Profilni Ulashish",
-                changeIdText: "ID ni O'zgartirish",
+                changeProfileIdText: "ID ni O'zgartirish",
                 activityTitle: "Oxirgi Faoliyat",
                 noActivityText: "Hozircha faoliyat yo'q",
                 navHome: "Asosiy",
@@ -1303,10 +1482,8 @@
                 inviteInfo: "Har bir taklif qilingan do'st hisobingizga 5 ball qo'shiladi",
                 shareTelegramText: "Telegramda Ulashish",
                 copyLinkText: "Taklif Havolasini Nusxalash",
-                success: "Muvaffaqiyatli",
-                error: "Xatolik",
-                gameWon: "Tabriklaymiz! Siz {round}-raundni muvaffaqiyatli yakunladingiz.",
-                gameLost: "Afsuski! Siz {round}-raundda tishlangan olma tanladingiz.",
+                successMessage: "✅ Butun olma! Keyingi bosqichga o'tilmoqda...",
+                failureMessage: "❌ Tishlangan olma! O'yin {round}-raundda tugadi.",
                 idRequired: "Iltimos, signal olish uchun ID raqamingizni kiriting.",
                 idSaved: "ID raqamingiz muvaffaqiyatli saqlandi!",
                 inviteSent: "Taklif muvaffaqiyatli yuborildi! +5 ball qo'shildi.",
@@ -1340,16 +1517,23 @@
                 vipProgressText: "Пригласите <span id='vipInvitedCount'>0</span>/20 друзей для разблокировки VIP",
                 vipInviteBtnText: "Пригласить Друзей",
                 signalTitle: "Получить Торговый Сигнал",
+                roundLabel: "РАУНД:",
+                yourIdText: "ID:",
                 gameInstruction: "Выбирайте целые яблоки. Надкушенное яблоко заканчивает игру!",
-                startGameText: "Начать Игру",
-                nextRoundText: "Следующий Раунд",
+                revealText: "ПОКАЗАТЬ ЯБЛОКИ",
+                restartText: "ПОПРОБОВАТЬ СНОВА",
+                waitTitle: "ДО СЛЕДУЮЩЕГО СИГНАЛА",
+                timerLabel: "ОСТАВШЕЕСЯ ВРЕМЯ",
+                shareTitle: "Приглашайте друзей и сокращайте время!",
+                shareText: "ПРИГЛАСИТЬ ДРУЗЕЙ",
+                changeIdText: "СМЕНИТЬ ID",
                 resultTitle: "Результат Игры",
                 signalStatsTitle: "Статистика Сигналов",
                 accuracyLabel: "Точность",
                 totalSignalsLabel: "Всего Сигналов",
                 profileStatusText: "Активный",
                 shareProfileText: "Поделиться Профилем",
-                changeIdText: "Сменить ID",
+                changeProfileIdText: "Сменить ID",
                 activityTitle: "Недавняя Активность",
                 noActivityText: "Активности пока нет",
                 navHome: "Главная",
@@ -1367,10 +1551,8 @@
                 inviteInfo: "Каждый приглашенный друг добавляет 5 баллов на ваш баланс",
                 shareTelegramText: "Поделиться в Telegram",
                 copyLinkText: "Копировать Пригласительную Ссылку",
-                success: "Успешно",
-                error: "Ошибка",
-                gameWon: "Поздравляем! Вы успешно завершили {round}-й раунд.",
-                gameLost: "К сожалению! Вы выбрали надкушенное яблоко в {round}-м раунде.",
+                successMessage: "✅ Целое яблоко! Переходим на следующий уровень...",
+                failureMessage: "❌ Надкушенное яблоко! Игра завершена на раунде {round}.",
                 idRequired: "Пожалуйста, введите ваш ID номер для получения сигналов.",
                 idSaved: "Ваш ID номер успешно сохранен!",
                 inviteSent: "Приглашение успешно отправлено! +5 баллов добавлено.",
@@ -1404,16 +1586,23 @@
                 vipProgressText: "Invite <span id='vipInvitedCount'>0</span>/20 friends to unlock VIP",
                 vipInviteBtnText: "Invite Friends",
                 signalTitle: "Get Trading Signal",
-                gameInstruction: "Select whole apples. Bitten apple ends the game!",
-                startGameText: "Start Game",
-                nextRoundText: "Next Round",
+                roundLabel: "ROUND:",
+                yourIdText: "ID:",
+                gameInstruction: "Select whole apples. Bitten apple will end the game!",
+                revealText: "REVEAL APPLES",
+                restartText: "TRY AGAIN",
+                waitTitle: "NEXT SIGNAL IN",
+                timerLabel: "TIME LEFT",
+                shareTitle: "Invite friends and reduce time!",
+                shareText: "INVITE FRIENDS",
+                changeIdText: "CHANGE ID",
                 resultTitle: "Game Result",
                 signalStatsTitle: "Signal Statistics",
                 accuracyLabel: "Accuracy",
                 totalSignalsLabel: "Total Signals",
                 profileStatusText: "Active",
                 shareProfileText: "Share Profile",
-                changeIdText: "Change ID",
+                changeProfileIdText: "Change ID",
                 activityTitle: "Recent Activity",
                 noActivityText: "No activity yet",
                 navHome: "Home",
@@ -1431,10 +1620,8 @@
                 inviteInfo: "Each invited friend adds 5 points to your balance",
                 shareTelegramText: "Share on Telegram",
                 copyLinkText: "Copy Invite Link",
-                success: "Success",
-                error: "Error",
-                gameWon: "Congratulations! You successfully completed round {round}.",
-                gameLost: "Unfortunately! You selected bitten apple in round {round}.",
+                successMessage: "✅ Whole apple! Moving to next level...",
+                failureMessage: "❌ Bitten apple! Game ended at round {round}.",
                 idRequired: "Please enter your ID number to get signals.",
                 idSaved: "Your ID number successfully saved!",
                 inviteSent: "Invitation successfully sent! +5 points added.",
@@ -1450,8 +1637,14 @@
         let invitedFriends = 0;
         let gameRound = 1;
         let gameActive = false;
-        let currentApples = [];
-        let selectedAppleIndex = null;
+        let applesRevealed = false;
+        let currentUserId = '';
+        let countdownInterval = null;
+        let countdownTime = 3 * 60 * 60; // 3 hours
+        let endRoundValue = 0;
+        let sharedFriends = 0;
+        let invitedFriendsVIP = 0;
+        const REQUIRED_VIP_FRIENDS = 20;
         let activityLog = [];
 
         // ==================== DOM ELEMENTS ====================
@@ -1476,13 +1669,23 @@
         const inviteBtn = document.getElementById('inviteBtn');
         const upgradeVipBtn = document.getElementById('upgradeVipBtn');
         const vipInviteBtn = document.getElementById('vipInviteBtn');
-        const startGameBtn = document.getElementById('startGameBtn');
-        const resetGameBtn = document.getElementById('resetGameBtn');
-        const nextRoundBtn = document.getElementById('nextRoundBtn');
-        const shareProfileBtn = document.getElementById('shareProfileBtn');
+        const revealBtn = document.getElementById('revealBtn');
+        const restartBtn = document.getElementById('restartBtn');
+        const shareBtn = document.getElementById('shareBtn');
         const changeIdBtn = document.getElementById('changeIdBtn');
+        const changeProfileIdBtn = document.getElementById('changeProfileIdBtn');
+        const shareProfileBtn = document.getElementById('shareProfileBtn');
         const shareTelegramBtn = document.getElementById('shareTelegramBtn');
         const copyLinkBtn = document.getElementById('copyLinkBtn');
+        
+        // Game elements
+        const roundCounter = document.getElementById('roundCounter');
+        const gameUserId = document.getElementById('gameUserId');
+        const applesContainer = document.getElementById('applesContainer');
+        const resultMessage = document.getElementById('resultMessage');
+        const endRound = document.getElementById('endRound');
+        const timerValue = document.getElementById('timerValue');
+        const waitSection = document.getElementById('waitSection');
         
         // Display elements
         const displayUserId = document.getElementById('displayUserId');
@@ -1492,9 +1695,6 @@
         const invitedFriendsDisplay = document.getElementById('invitedFriends');
         const vipInvitedCount = document.getElementById('vipInvitedCount');
         const vipProgress = document.getElementById('vipProgress');
-        const applesGrid = document.getElementById('applesGrid');
-        const gameResult = document.getElementById('gameResult');
-        const resultMessage = document.getElementById('resultMessage');
 
         // ==================== INITIALIZATION ====================
         document.addEventListener('DOMContentLoaded', function() {
@@ -1545,10 +1745,14 @@
             const savedUserId = localStorage.getItem('appleFortuneUserId');
             const savedBalance = localStorage.getItem('appleFortuneBalance');
             const savedInvited = localStorage.getItem('appleFortuneInvited');
+            const savedInvitedVIP = localStorage.getItem('appleFortuneInvitedFriendsVIP');
             const savedActivities = localStorage.getItem('appleFortuneActivities');
+            const savedTimerEnd = localStorage.getItem('appleFortuneTimerEnd');
+            const savedEndRound = localStorage.getItem('appleFortuneEndRound');
             
             if (savedUserId) {
                 userId = savedUserId;
+                currentUserId = savedUserId;
                 updateUserDisplay();
             }
             
@@ -1560,9 +1764,24 @@
                 invitedFriends = parseInt(savedInvited);
             }
             
+            if (savedInvitedVIP) {
+                invitedFriendsVIP = parseInt(savedInvitedVIP);
+            }
+            
             if (savedActivities) {
                 activityLog = JSON.parse(savedActivities);
                 updateActivityLog();
+            }
+            
+            if (savedTimerEnd) {
+                const now = Date.now();
+                const timerEnd = parseInt(savedTimerEnd);
+                
+                if (timerEnd > now) {
+                    countdownTime = Math.floor((timerEnd - now) / 1000);
+                    endRoundValue = savedEndRound || 1;
+                    showWaitSection();
+                }
             }
             
             updateBalanceDisplay();
@@ -1573,6 +1792,7 @@
             localStorage.setItem('appleFortuneUserId', userId);
             localStorage.setItem('appleFortuneBalance', userBalance.toString());
             localStorage.setItem('appleFortuneInvited', invitedFriends.toString());
+            localStorage.setItem('appleFortuneInvitedFriendsVIP', invitedFriendsVIP.toString());
             localStorage.setItem('appleFortuneActivities', JSON.stringify(activityLog));
         }
 
@@ -1588,6 +1808,9 @@
             }
             if (profileUserId) {
                 profileUserId.textContent = `ID: ${userId}`;
+            }
+            if (gameUserId) {
+                gameUserId.textContent = userId || '-';
             }
         }
 
@@ -1605,21 +1828,45 @@
                 invitedFriendsDisplay.textContent = invitedFriends;
             }
             if (vipInvitedCount) {
-                vipInvitedCount.textContent = invitedFriends;
+                vipInvitedCount.textContent = invitedFriendsVIP;
             }
             if (vipProgress) {
-                const progress = Math.min((invitedFriends / 20) * 100, 100);
+                const progress = Math.min((invitedFriendsVIP / 20) * 100, 100);
                 vipProgress.style.width = `${progress}%`;
             }
         }
 
-        function addActivity(action) {
+        function addActivity(action, details = '') {
             const t = translations[currentLang] || translations.uz;
             const now = new Date();
             const time = now.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
             
+            let actionText = '';
+            switch(action) {
+                case 'game_start':
+                    actionText = 'Game started';
+                    break;
+                case 'game_won':
+                    actionText = `Game completed - Round ${details}`;
+                    break;
+                case 'game_lost':
+                    actionText = `Game lost - Round ${details}`;
+                    break;
+                case 'invite_sent':
+                    actionText = 'Friend invited';
+                    break;
+                case 'balance_added':
+                    actionText = `+${details} points added`;
+                    break;
+                case 'id_saved':
+                    actionText = 'ID saved';
+                    break;
+                default:
+                    actionText = action;
+            }
+            
             activityLog.unshift({
-                action: action,
+                action: actionText,
                 time: time,
                 date: now.toLocaleDateString()
             });
@@ -1646,27 +1893,9 @@
             
             let html = '';
             activityLog.forEach(activity => {
-                let actionText = '';
-                switch(activity.action) {
-                    case 'game_start':
-                        actionText = 'Game started';
-                        break;
-                    case 'game_won':
-                        actionText = 'Game completed';
-                        break;
-                    case 'invite_sent':
-                        actionText = 'Friend invited';
-                        break;
-                    case 'balance_added':
-                        actionText = 'Points added';
-                        break;
-                    default:
-                        actionText = activity.action;
-                }
-                
                 html += `
                     <div style="display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid var(--border);">
-                        <span>${actionText}</span>
+                        <span>${activity.action}</span>
                         <span style="color: var(--gray); font-size: 0.9rem;">${activity.time}</span>
                     </div>
                 `;
@@ -1684,36 +1913,72 @@
             }
             
             gameRound = 1;
-            gameActive = true;
-            createApples();
+            gameActive = false;
+            applesRevealed = false;
+            createMysteryApples();
             
             addActivity('game_start');
             
-            // Switch to signal section if not already
-            switchSection('signal');
+            // Hide wait section if shown
+            waitSection.style.display = 'none';
         }
 
-        function createApples() {
-            applesGrid.innerHTML = '';
-            currentApples = [];
+        function createMysteryApples() {
+            if (!applesContainer) return;
             
-            // Configuration based on round
-            const config = {
+            applesContainer.innerHTML = '';
+            if (resultMessage) resultMessage.style.display = 'none';
+            if (restartBtn) restartBtn.style.display = 'none';
+            if (revealBtn) {
+                revealBtn.disabled = false;
+                revealBtn.innerHTML = `<i class="fas fa-eye"></i> ${translations[currentLang]?.revealText || 'OLMALARNI KORISH'}`;
+            }
+            
+            if (roundCounter) roundCounter.textContent = gameRound;
+            
+            for (let i = 0; i < 5; i++) {
+                const apple = document.createElement('div');
+                apple.className = 'apple mystery-apple';
+                apple.addEventListener('click', function() {
+                    if (!applesRevealed) {
+                        revealApples();
+                    }
+                });
+                applesContainer.appendChild(apple);
+            }
+        }
+
+        function revealApples() {
+            if (!applesContainer) return;
+            
+            applesContainer.innerHTML = '';
+            applesRevealed = true;
+            gameActive = true;
+            if (revealBtn) {
+                revealBtn.disabled = true;
+                revealBtn.innerHTML = `<i class="fas fa-hand-pointer"></i> ${translations[currentLang]?.revealText || 'OLMALARNI KORISH'}`;
+            }
+            
+            // Round configuration
+            const roundConfig = {
                 1: { whole: 4, bitten: 1 },
                 2: { whole: 4, bitten: 1 },
                 3: { whole: 3, bitten: 2 },
                 4: { whole: 3, bitten: 2 },
-                5: { whole: 2, bitten: 3 },
+                5: { whole: 3, bitten: 2 },
                 6: { whole: 2, bitten: 3 }
             };
             
-            const roundConfig = config[gameRound] || config[1];
+            const config = roundConfig[gameRound] || { whole: 2, bitten: 3 };
             const totalApples = 5;
             
-            // Create apple types array
             let apples = [];
-            for (let i = 0; i < roundConfig.whole; i++) apples.push('whole');
-            for (let i = 0; i < roundConfig.bitten; i++) apples.push('bitten');
+            for (let i = 0; i < config.whole; i++) {
+                apples.push('whole');
+            }
+            for (let i = 0; i < config.bitten; i++) {
+                apples.push('bitten');
+            }
             
             // Shuffle
             for (let i = apples.length - 1; i > 0; i--) {
@@ -1721,99 +1986,130 @@
                 [apples[i], apples[j]] = [apples[j], apples[i]];
             }
             
-            // Create apple elements
-            apples.forEach((type, index) => {
+            // Create apples
+            for (let i = 0; i < totalApples; i++) {
                 const apple = document.createElement('div');
-                apple.className = `apple mystery`;
-                apple.dataset.index = index;
-                apple.dataset.type = type;
-                apple.innerHTML = '🍎';
+                const appleType = apples[i];
                 
-                apple.addEventListener('click', () => selectApple(index));
-                applesGrid.appendChild(apple);
-                currentApples.push({ type, revealed: false });
-            });
-            
-            // Update game state
-            gameActive = true;
-            startGameBtn.disabled = true;
-            resetGameBtn.disabled = false;
-            gameResult.style.display = 'none';
-        }
-
-        function selectApple(index) {
-            if (!gameActive) return;
-            
-            const apple = applesGrid.children[index];
-            const appleData = currentApples[index];
-            
-            // Reveal apple
-            apple.classList.remove('mystery');
-            apple.classList.add(appleData.type);
-            appleData.revealed = true;
-            
-            // Check result
-            if (appleData.type === 'bitten') {
-                // Game over
-                gameActive = false;
-                showGameResult(false);
-                addActivity('game_lost');
-            } else {
-                // Check if all whole apples are selected
-                const allWholeSelected = currentApples.every((apple, i) => {
-                    if (apple.type === 'whole') {
-                        return apple.revealed;
-                    }
-                    return true;
+                apple.className = `apple ${appleType === 'whole' ? 'whole-apple' : 'bitten-apple'}`;
+                apple.dataset.index = i;
+                apple.dataset.type = appleType;
+                
+                apple.addEventListener('click', function() {
+                    if (!gameActive) return;
+                    selectApple(this);
                 });
                 
-                if (allWholeSelected) {
-                    // Round won
-                    gameActive = false;
-                    showGameResult(true);
-                    addActivity('game_won');
-                }
+                applesContainer.appendChild(apple);
             }
         }
 
-        function showGameResult(isWin) {
+        function selectApple(appleElement) {
+            const appleType = appleElement.dataset.type;
+            gameActive = false;
+            
             const t = translations[currentLang] || translations.uz;
             
-            if (isWin) {
-                resultMessage.textContent = t.gameWon.replace('{round}', gameRound);
-                resultMessage.style.color = 'var(--success)';
-                
-                // Add balance for winning
-                userBalance += 100 * gameRound;
-                updateBalanceDisplay();
-                saveUserData();
-                
-                nextRoundBtn.style.display = 'block';
+            if (appleType === 'bitten') {
+                endRoundValue = gameRound;
+                if (resultMessage) {
+                    resultMessage.textContent = t.failureMessage.replace('{round}', gameRound);
+                    resultMessage.style.color = '#ff3366';
+                    resultMessage.style.display = 'block';
+                }
+                if (restartBtn) restartBtn.style.display = 'block';
+                addActivity('game_lost', gameRound);
             } else {
-                resultMessage.textContent = t.gameLost.replace('{round}', gameRound);
-                resultMessage.style.color = 'var(--danger)';
-                nextRoundBtn.style.display = 'none';
+                if (resultMessage) {
+                    resultMessage.innerHTML = '<span class="signal-success">✅ Butun olma! Signal tahlil qilinmoqda...</span>';
+                    resultMessage.style.display = 'block';
+                }
+                
+                // Show hacker animation before next round
+                setTimeout(() => {
+                    if (hackerAnimation) {
+                        hackerAnimation.style.display = 'flex';
+                        setTimeout(() => {
+                            if (hackerAnimation) hackerAnimation.style.display = 'none';
+                            
+                            // Game end probabilities
+                            const roundEndProbabilities = {
+                                1: 0.05,
+                                2: 0.15,
+                                3: 0.45,
+                                4: 0.75,
+                                5: 0.92,
+                                6: 1.00
+                            };
+                            
+                            const endProbability = roundEndProbabilities[gameRound] || 0;
+                            
+                            if (Math.random() < endProbability) {
+                                endRoundValue = gameRound;
+                                localStorage.setItem('appleFortuneEndRound', endRoundValue);
+                                showWaitSection();
+                                addActivity('game_won', gameRound);
+                            } else if (gameRound < 6) {
+                                gameRound++;
+                                startGame();
+                                addActivity('game_won', gameRound - 1);
+                            } else {
+                                endRoundValue = 6;
+                                localStorage.setItem('appleFortuneEndRound', endRoundValue);
+                                showWaitSection();
+                                addActivity('game_won', 6);
+                            }
+                        }, 3000);
+                    }
+                }, 1500);
             }
-            
-            gameResult.style.display = 'block';
         }
 
-        function nextRound() {
-            gameRound++;
+        // ==================== WAIT SECTION FUNCTIONS ====================
+        function showWaitSection() {
+            waitSection.style.display = 'block';
             
-            if (gameRound > 6) {
-                // Game completed
-                showNotification('Game completed! Maximum round reached.');
-                gameRound = 1;
-                startGameBtn.disabled = false;
-                resetGameBtn.disabled = true;
-                gameResult.style.display = 'none';
-                applesGrid.innerHTML = '';
-                return;
+            if (endRound) endRound.textContent = endRoundValue;
+            
+            // Start countdown
+            startCountdown();
+        }
+
+        function startCountdown() {
+            updateCountdown();
+            
+            if (countdownInterval) {
+                clearInterval(countdownInterval);
             }
             
-            createApples();
-            gameResult.style.display = 'none';
+            countdownInterval = setInterval(() => {
+                countdownTime--;
+                updateCountdown();
+                
+                const timerEndTime = Date.now() + (countdownTime * 1000);
+                localStorage.setItem('appleFortuneTimerEnd', timerEndTime.toString());
+                
+                if (countdownTime <= 0) {
+                    clearInterval(countdownInterval);
+                    localStorage.removeItem('appleFortuneTimerEnd');
+                    localStorage.removeItem('appleFortuneEndRound');
+                    
+                    gameRound = 1;
+                    waitSection.style.display = 'none';
+                    startGame();
+                }
+            }, 1000);
+        }
+
+        function updateCountdown() {
+            if (!timerValue) return;
+            
+            const hours = Math.floor(countdownTime / 3600);
+            const minutes = Math.floor((countdownTime % 3600) / 60);
+            const seconds = countdownTime % 60;
+            
+            const timeString = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+            timerValue.textContent = timeString;
         }
 
         // ==================== MODAL FUNCTIONS ====================
@@ -1894,6 +2190,11 @@
             contentSections.forEach(section => {
                 if (section.id === `${sectionName}Section`) {
                     section.classList.add('active');
+                    
+                    // If switching to signal section, start game
+                    if (sectionName === 'signal') {
+                        startGame();
+                    }
                 } else {
                     section.classList.remove('active');
                 }
@@ -1930,6 +2231,7 @@
                 
                 if (id.length === 11 && /^\d+$/.test(id)) {
                     userId = id;
+                    currentUserId = id;
                     updateUserDisplay();
                     saveUserData();
                     hideModal(idModal);
@@ -1941,9 +2243,15 @@
             });
             
             // Game buttons
-            startGameBtn.addEventListener('click', startGame);
-            resetGameBtn.addEventListener('click', startGame);
-            nextRoundBtn.addEventListener('click', nextRound);
+            revealBtn.addEventListener('click', function() {
+                if (!applesRevealed) {
+                    revealApples();
+                }
+            });
+            
+            restartBtn.addEventListener('click', function() {
+                startGame();
+            });
             
             // Invite buttons
             inviteBtn.addEventListener('click', () => showModal(inviteModal));
@@ -1958,10 +2266,6 @@
             
             // Quick signal
             quickSignalBtn.addEventListener('click', () => {
-                if (!userId) {
-                    showModal(idModal);
-                    return;
-                }
                 switchSection('signal');
             });
             
@@ -1975,10 +2279,12 @@
                 // Add balance for sharing
                 userBalance += 5;
                 invitedFriends++;
+                invitedFriendsVIP++;
                 updateBalanceDisplay();
                 updateInvitedCount();
                 saveUserData();
                 addActivity('invite_sent');
+                addActivity('balance_added', '5');
                 
                 hideModal(inviteModal);
                 showNotification(t.inviteSent || 'Invitation sent! +5 points added', 'success');
@@ -2002,7 +2308,35 @@
             });
             
             changeIdBtn.addEventListener('click', () => {
+                localStorage.removeItem('appleFortuneUserId');
+                localStorage.removeItem('appleFortuneTimerEnd');
+                localStorage.removeItem('appleFortuneEndRound');
+                userId = '';
+                currentUserId = '';
                 showModal(idModal);
+            });
+            
+            changeProfileIdBtn.addEventListener('click', () => {
+                showModal(idModal);
+            });
+            
+            shareBtn.addEventListener('click', () => {
+                const t = translations[currentLang] || translations.uz;
+                const shareMessage = `🎯 ${t.signalTitle} | Apple Fortune\n\nJoin me for AI trading signals!\n👉 t.me/Strategioyinlar_bot\n\nMy ID: ${userId}\n\n#AppleFortune #AITrading`;
+                const shareUrl = `https://t.me/share/url?url=https://t.me/Strategioyinlar_bot?start=${userId}&text=${encodeURIComponent(shareMessage)}`;
+                window.open(shareUrl, '_blank');
+                
+                // Reduce wait time
+                if (countdownTime > 30 * 60) {
+                    countdownTime -= 30 * 60;
+                    updateCountdown();
+                    
+                    const timerEndTime = Date.now() + (countdownTime * 1000);
+                    localStorage.setItem('appleFortuneTimerEnd', timerEndTime.toString());
+                    
+                    const t = translations[currentLang] || translations.uz;
+                    showNotification(`${t.shareText}! +30 daqiqa`, 'success');
+                }
             });
             
             // Close modals on background click
