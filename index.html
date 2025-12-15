@@ -1359,7 +1359,7 @@
                 </div>
                 
                 <div class="game-instruction" id="gameInstruction">
-                    Butun olmalarni tanlang. Tishlangan olma o'yinni tugatadi!
+                    Butun olmalarni tanlang. Tishlangan olma o'yinni tugatadi! 7-raundgacha davom eting.
                 </div>
                 
                 <div class="game-content">
@@ -1563,11 +1563,11 @@
                 signalTitle: "Savdo Signallarini Olish",
                 roundLabel: "RAUND:",
                 yourIdText: "ID:",
-                gameInstruction: "Butun olmalarni tanlang. Tishlangan olma o'yinni tugatadi!",
+                gameInstruction: "Butun olmalarni tanlang. Tishlangan olma o'yinni tugatadi! 7-raundgacha davom eting.",
                 revealText: "OLMALARNI KORISH",
                 restartText: "QAYTA URINISH",
-                waitTitle: "KEYINGI SIGNALGACHA",
-                timerLabel: "QOLGAN VAQT",
+                waitTitle: "YUTUQNI OLING!",
+                timerLabel: "KEYINGI SIGNALGACHA",
                 shareTitle: "Do'stlaringizni taklif qiling va vaqtni qisqartiring!",
                 shareText: "DO'STLARNI TAKLIF QILISH",
                 changeIdText: "ID O'ZGARTIRISH",
@@ -1597,6 +1597,7 @@
                 copyLinkText: "Taklif Havolasini Nusxalash",
                 successMessage: "✅ Butun olma! Keyingi bosqichga o'tilmoqda...",
                 failureMessage: "❌ Tishlangan olma! O'yin {round}-raundda tugadi.",
+                gameWonMessage: "🎉 TABRIKLAYMIZ! Siz {round}-raundda yutdingiz!",
                 idRequired: "Iltimos, signal olish uchun ID raqamingizni kiriting.",
                 idSaved: "ID raqamingiz muvaffaqiyatli saqlandi!",
                 inviteSent: "Taklif muvaffaqiyatli yuborildi! +5 ball qo'shildi.",
@@ -1632,11 +1633,11 @@
                 signalTitle: "Получить Торговый Сигнал",
                 roundLabel: "РАУНД:",
                 yourIdText: "ID:",
-                gameInstruction: "Выбирайте целые яблоки. Надкушенное яблоко заканчивает игру!",
+                gameInstruction: "Выбирайте целые яблоки. Надкушенное яблоко заканчивает игру! Играйте до 7-го раунда.",
                 revealText: "ПОКАЗАТЬ ЯБЛОКИ",
                 restartText: "ПОПРОБОВАТЬ СНОВА",
-                waitTitle: "ДО СЛЕДУЮЩЕГО СИГНАЛА",
-                timerLabel: "ОСТАВШЕЕСЯ ВРЕМЯ",
+                waitTitle: "ПОБЕДА!",
+                timerLabel: "ДО СЛЕДУЮЩЕГО СИГНАЛА",
                 shareTitle: "Приглашайте друзей и сокращайте время!",
                 shareText: "ПРИГЛАСИТЬ ДРУЗЕЙ",
                 changeIdText: "СМЕНИТЬ ID",
@@ -1666,6 +1667,7 @@
                 copyLinkText: "Копировать Пригласительную Ссылку",
                 successMessage: "✅ Целое яблоко! Переходим на следующий уровень...",
                 failureMessage: "❌ Надкушенное яблоко! Игра завершена на раунде {round}.",
+                gameWonMessage: "🎉 ПОЗДРАВЛЯЕМ! Вы выиграли на {round}-м раунде!",
                 idRequired: "Пожалуйста, введите ваш ID номер для получения сигналов.",
                 idSaved: "Ваш ID номер успешно сохранен!",
                 inviteSent: "Приглашение успешно отправлено! +5 баллов добавлено.",
@@ -1701,11 +1703,11 @@
                 signalTitle: "Get Trading Signal",
                 roundLabel: "ROUND:",
                 yourIdText: "ID:",
-                gameInstruction: "Select whole apples. Bitten apple will end the game!",
+                gameInstruction: "Select whole apples. Bitten apple will end the game! Continue until round 7.",
                 revealText: "REVEAL APPLES",
                 restartText: "TRY AGAIN",
-                waitTitle: "NEXT SIGNAL IN",
-                timerLabel: "TIME LEFT",
+                waitTitle: "VICTORY!",
+                timerLabel: "NEXT SIGNAL IN",
                 shareTitle: "Invite friends and reduce time!",
                 shareText: "INVITE FRIENDS",
                 changeIdText: "CHANGE ID",
@@ -1735,6 +1737,7 @@
                 copyLinkText: "Copy Invite Link",
                 successMessage: "✅ Whole apple! Moving to next level...",
                 failureMessage: "❌ Bitten apple! Game ended at round {round}.",
+                gameWonMessage: "🎉 CONGRATULATIONS! You won at round {round}!",
                 idRequired: "Please enter your ID number to get signals.",
                 idSaved: "Your ID number successfully saved!",
                 inviteSent: "Invitation successfully sent! +5 points added.",
@@ -1753,11 +1756,12 @@
         let applesRevealed = false;
         let currentUserId = '';
         let countdownInterval = null;
-        let countdownTime = 3 * 60 * 60; // 3 hours
+        let countdownTime = 2 * 60 * 60; // 2 soat (2 hours)
         let endRoundValue = 0;
         let invitedFriendsVIP = 0;
         const REQUIRED_VIP_FRIENDS = 20;
         let activityLog = [];
+        let lastSelectedRound = 0;
 
         // ==================== DOM ELEMENTS ====================
         const languageSelector = document.getElementById('languageSelector');
@@ -2086,14 +2090,18 @@
                 revealBtn.innerHTML = `<i class="fas fa-hand-pointer"></i> ${translations[currentLang]?.revealText || 'OLMALARNI KORISH'}`;
             }
             
-            // Round configuration
+            // Tishlangan olmalar konfiguratsiyasi
+            // 1-2 raund: 1 ta tishlangan olma
+            // 3-4 raund: 2 ta tishlangan olma  
+            // 5-6-7 raund: 3 ta tishlangan olma
             const roundConfig = {
                 1: { whole: 4, bitten: 1 },
                 2: { whole: 4, bitten: 1 },
                 3: { whole: 3, bitten: 2 },
                 4: { whole: 3, bitten: 2 },
-                5: { whole: 3, bitten: 2 },
-                6: { whole: 2, bitten: 3 }
+                5: { whole: 2, bitten: 3 },
+                6: { whole: 2, bitten: 3 },
+                7: { whole: 2, bitten: 3 }
             };
             
             const config = roundConfig[gameRound] || { whole: 2, bitten: 3 };
@@ -2151,7 +2159,7 @@
                 addActivity('game_lost', gameRound);
             } else {
                 if (resultMessage) {
-                    resultMessage.innerHTML = '<span class="signal-success">✅ Butun olma! Signal tahlil qilinmoqda...</span>';
+                    resultMessage.innerHTML = '<span class="signal-success">✅ Butun olma! Keyingi bosqichga o\'tilmoqda...</span>';
                     resultMessage.style.display = 'block';
                 }
                 
@@ -2162,38 +2170,46 @@
                         setTimeout(() => {
                             if (hackerAnimation) hackerAnimation.style.display = 'none';
                             
-                            // Game end probabilities
+                            // O'yinni tugatish ehtimolligi (7-raundda 100% tugatish)
                             const roundEndProbabilities = {
-                                1: 0.05,
-                                2: 0.15,
-                                3: 0.45,
-                                4: 0.75,
-                                5: 0.92,
-                                6: 1.00
+                                1: 0.05,   // 5%
+                                2: 0.15,   // 15%
+                                3: 0.25,   // 25%
+                                4: 0.40,   // 40%
+                                5: 0.60,   // 60%
+                                6: 0.85,   // 85%
+                                7: 1.00    // 100%
                             };
                             
                             const endProbability = roundEndProbabilities[gameRound] || 0;
                             
-                            if (Math.random() < endProbability) {
+                            if (Math.random() < endProbability || gameRound >= 7) {
+                                // O'yin tugadi - yutuq
                                 endRoundValue = gameRound;
                                 localStorage.setItem('appleFortuneEndRound', endRoundValue);
                                 
-                                // Show wait modal instead of wait section
-                                showWaitModal();
-                                addActivity('game_won', gameRound);
-                            } else if (gameRound < 6) {
-                                gameRound++;
-                                startGame();
-                                addActivity('game_won', gameRound - 1);
+                                // Yutuq xabarini ko'rsatish
+                                if (resultMessage) {
+                                    resultMessage.innerHTML = `<span class="signal-success">🎉 ${t.gameWonMessage.replace('{round}', gameRound)}</span>`;
+                                    resultMessage.style.display = 'block';
+                                }
+                                
+                                // Taymerni boshlash
+                                setTimeout(() => {
+                                    showWaitModal();
+                                    addActivity('game_won', gameRound);
+                                }, 2000);
                             } else {
-                                endRoundValue = 6;
-                                localStorage.setItem('appleFortuneEndRound', endRoundValue);
-                                showWaitModal();
-                                addActivity('game_won', 6);
+                                // Keyingi raundga o'tish
+                                gameRound++;
+                                setTimeout(() => {
+                                    startGame();
+                                    addActivity('game_won', gameRound - 1);
+                                }, 1500);
                             }
-                        }, 3000);
+                        }, 2000);
                     }
-                }, 1500);
+                }, 1000);
             }
         }
 
@@ -2207,15 +2223,15 @@
                             <div style="font-size: 3rem; color: var(--warning); margin-bottom: 15px;">
                                 <i class="fas fa-clock"></i>
                             </div>
-                            <h3 class="modal-title" id="waitModalTitle">KEYINGI SIGNALGACHA</h3>
+                            <h3 class="modal-title" id="waitModalTitle">YUTUQNI OLING!</h3>
                             <p class="modal-subtitle" id="waitModalSubtitle">
-                                Siz <span style="color: var(--warning);">${endRoundValue}</span>-raundgacha yetib keldingiz!
+                                Siz <span style="color: var(--warning);">${endRoundValue}</span>-raundda yutdingiz!
                             </p>
                         </div>
                         
                         <div class="timer-display" style="margin: 20px 0;">
-                            <div class="timer-label">QOLGAN VAQT</div>
-                            <div class="timer-value" id="waitModalTimer">03:00:00</div>
+                            <div class="timer-label">KEYINGI SIGNALGACHA</div>
+                            <div class="timer-value" id="waitModalTimer">02:00:00</div>
                         </div>
                         
                         <div class="share-section" style="margin: 20px 0;">
@@ -2225,6 +2241,9 @@
                             <button class="share-btn" id="waitModalShareBtn">
                                 <i class="fas fa-share-alt"></i> DO'STLARNI TAKLIF QILISH
                             </button>
+                            <p style="color: var(--gray); font-size: 0.9rem; margin-top: 10px;">
+                                Har bir taklif qilingan do'st uchun 30 daqiqa vaqt qisqaradi
+                            </p>
                         </div>
                         
                         <div style="display: flex; gap: 10px; margin-top: 20px;">
@@ -2248,7 +2267,8 @@
             // Add new wait modal
             document.body.insertAdjacentHTML('beforeend', waitModalHTML);
             
-            // Start countdown
+            // Start countdown (2 soat)
+            countdownTime = 2 * 60 * 60; // 2 soat
             startWaitModalCountdown();
             
             // Add event listeners for wait modal
@@ -2261,7 +2281,7 @@
                 if (waitModalShareBtn) {
                     waitModalShareBtn.addEventListener('click', () => {
                         shareMessage();
-                        // Reduce wait time
+                        // Reduce wait time - 30 daqiqa qisqartirish
                         if (countdownTime > 30 * 60) {
                             countdownTime -= 30 * 60;
                             updateWaitModalCountdown();
