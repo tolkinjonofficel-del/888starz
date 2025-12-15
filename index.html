@@ -239,6 +239,9 @@
             align-items: center;
             z-index: 900;
             padding: 20px;
+            /* Padding-bottom qo'shish klaviatura uchun */
+            padding-bottom: 100px;
+            overflow-y: auto;
         }
 
         .login-container {
@@ -250,6 +253,11 @@
             border: 2px solid rgba(0, 204, 255, 0.3);
             backdrop-filter: blur(20px);
             text-align: center;
+            /* Container'ga max-width va margin qo'shamiz */
+            margin: auto;
+            position: relative;
+            /* Mobile uchun kichik padding */
+            padding-bottom: 80px;
         }
 
         .login-logo {
@@ -320,6 +328,7 @@
         .input-group {
             margin-bottom: 20px;
             text-align: left;
+            position: relative;
         }
 
         .input-label {
@@ -339,6 +348,8 @@
             color: var(--light);
             font-size: 1rem;
             transition: all 0.3s;
+            /* Input'ga autofocus qilmaslik */
+            caret-color: var(--secondary);
         }
 
         .input-field:focus {
@@ -352,6 +363,21 @@
             font-size: 0.85rem;
             margin-top: 5px;
             display: none;
+        }
+
+        /* ============ FIXED LOGIN BUTTON ============ */
+        .login-button-container {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 15px 20px;
+            background: rgba(10, 10, 31, 0.9);
+            backdrop-filter: blur(20px);
+            border-top: 2px solid rgba(0, 204, 255, 0.3);
+            z-index: 1000;
+            display: flex;
+            gap: 10px;
         }
 
         .login-btn {
@@ -369,7 +395,6 @@
             justify-content: center;
             gap: 10px;
             transition: all 0.3s;
-            margin-top: 10px;
         }
 
         .login-btn:hover {
@@ -377,10 +402,16 @@
             box-shadow: 0 10px 25px rgba(0, 204, 255, 0.3);
         }
 
+        .login-btn:active {
+            transform: translateY(0);
+        }
+
         .register-link {
             margin-top: 20px;
             font-size: 0.9rem;
             color: var(--gray);
+            text-align: center;
+            padding-bottom: 80px; /* Button uchun joy */
         }
 
         .register-link a {
@@ -395,10 +426,17 @@
             padding: 20px;
             display: none;
             animation: slideIn 0.5s ease-out;
+            /* Klaviatura uchun padding */
+            padding-bottom: 100px;
         }
 
         .container.active {
             display: block;
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         /* ============ HEADER ============ */
@@ -433,6 +471,11 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
         }
 
         .logo-text {
@@ -1182,6 +1225,12 @@
             animation: pulse 2s infinite;
         }
 
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
         .success-icon {
             font-size: 5rem;
             color: var(--success);
@@ -1267,6 +1316,7 @@
         .vip-content {
             padding: 30px 20px;
             flex: 1;
+            padding-bottom: 100px;
         }
 
         .vip-requirements {
@@ -1458,6 +1508,15 @@
                 padding: 15px;
             }
             
+            #idLoginScreen {
+                padding-bottom: 80px;
+            }
+            
+            .login-container {
+                padding: 30px 20px;
+                padding-bottom: 100px;
+            }
+            
             .header {
                 margin-bottom: 20px;
             }
@@ -1519,6 +1578,16 @@
                 padding: 10px;
             }
             
+            #idLoginScreen {
+                padding: 15px;
+                padding-bottom: 70px;
+            }
+            
+            .login-container {
+                padding: 25px 15px;
+                padding-bottom: 90px;
+            }
+            
             .logo-text {
                 font-size: 1.1rem;
             }
@@ -1546,7 +1615,17 @@
             }
             
             .login-container {
-                padding: 30px 20px;
+                padding: 25px 15px;
+                padding-bottom: 100px;
+            }
+            
+            .login-button-container {
+                padding: 12px 15px;
+            }
+            
+            .login-btn {
+                padding: 16px;
+                font-size: 0.95rem;
             }
         }
     </style>
@@ -1590,19 +1669,23 @@
                 <label class="input-label" id="idLabel">ID RAQAM (Masalan: 1XXXXXXXXX)</label>
                 <input type="text" class="input-field" id="userIdInput" 
                        placeholder="1 bilan boshlanadigan 10 xonali raqam" 
-                       maxlength="10">
+                       maxlength="10"
+                       inputmode="numeric">
                 <div class="error-message" id="idError">Noto'g'ri ID raqam formati</div>
             </div>
-            
-            <button class="login-btn" id="loginBtn">
-                <i class="fas fa-sign-in-alt"></i>
-                <span id="loginBtnText">TASDIQLASH</span>
-            </button>
             
             <div class="register-link">
                 <span id="registerText">Ro'yxatdan o'tmaganmisiz? </span>
                 <a href="#" id="registerLink">Ro'yxatdan o'tish</a>
             </div>
+        </div>
+        
+        <!-- Fixed Login Button Container -->
+        <div class="login-button-container">
+            <button class="login-btn" id="loginBtn">
+                <i class="fas fa-sign-in-alt"></i>
+                <span id="loginBtnText">TASDIQLASH</span>
+            </button>
         </div>
     </div>
 
@@ -2190,6 +2273,7 @@
             const idError = document.getElementById('idError');
             const loginBtn = document.getElementById('loginBtn');
             const registerLink = document.getElementById('registerLink');
+            const loginButtonContainer = document.querySelector('.login-button-container');
             
             // Profile elements
             const userDisplayId = document.getElementById('userDisplayId');
@@ -2502,12 +2586,16 @@
                 if (!id) {
                     idError.textContent = t.noIdError;
                     idError.style.display = 'block';
+                    // Scroll to error message
+                    userIdInput.scrollIntoView({ behavior: 'smooth', block: 'center' });
                     return;
                 }
                 
                 if (!validateId(id)) {
                     idError.textContent = t.invalidIdError;
                     idError.style.display = 'block';
+                    // Scroll to error message
+                    userIdInput.scrollIntoView({ behavior: 'smooth', block: 'center' });
                     return;
                 }
                 
@@ -2816,6 +2904,15 @@
                 }
             }
             
+            // Scroll input into view when keyboard opens
+            function scrollInputIntoView() {
+                setTimeout(() => {
+                    if (userIdInput) {
+                        userIdInput.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    }
+                }, 300);
+            }
+            
             // ==================== EVENT LISTENERS ====================
             
             // Language selection
@@ -2829,9 +2926,24 @@
             // Language switcher
             languageSwitcher.addEventListener('click', switchLanguage);
             
-            // ID input validation
+            // ID input events
             userIdInput.addEventListener('input', function() {
                 idError.style.display = 'none';
+            });
+            
+            userIdInput.addEventListener('focus', function() {
+                // Auto-scroll input into view when focused
+                setTimeout(() => {
+                    this.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }, 300);
+            });
+            
+            // Handle Enter key press in input
+            userIdInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    e.preventDefault();
+                    login();
+                }
             });
             
             // Login button
