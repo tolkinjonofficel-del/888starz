@@ -6,6 +6,7 @@
     <title>Apple Fortune | ID Kiriting & Signal Oling</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        /* Reset va asosiy stillar */
         * {
             margin: 0;
             padding: 0;
@@ -32,50 +33,10 @@
             color: var(--light);
             min-height: 100vh;
             overflow-x: hidden;
-            position: relative;
             line-height: 1.6;
         }
 
-        /* Background Effects */
-        .bg-particles {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -2;
-            overflow: hidden;
-        }
-
-        .particle {
-            position: absolute;
-            border-radius: 50%;
-            background: radial-gradient(circle, var(--secondary), transparent);
-            opacity: 0.3;
-            animation: floatParticle 20s infinite linear;
-        }
-
-        @keyframes floatParticle {
-            0% { transform: translateY(0) translateX(0); }
-            25% { transform: translateY(-100px) translateX(100px); }
-            50% { transform: translateY(-50px) translateX(-100px); }
-            75% { transform: translateY(100px) translateX(50px); }
-            100% { transform: translateY(0) translateX(0); }
-        }
-
-        .glow-effect {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 800px;
-            height: 800px;
-            background: radial-gradient(circle, rgba(0, 102, 255, 0.1), transparent 70%);
-            z-index: -1;
-            pointer-events: none;
-        }
-
-        /* Loading Screen */
+        /* Loading screen */
         #loadingScreen {
             position: fixed;
             top: 0;
@@ -111,14 +72,7 @@
             100% { transform: rotate(360deg); }
         }
 
-        .loading-text {
-            font-size: 1.2rem;
-            color: var(--secondary);
-            margin-top: 20px;
-            font-weight: 600;
-        }
-
-        /* Language Selector */
+        /* Til tanlovi sahifasi */
         #languageSelector {
             position: fixed;
             top: 0;
@@ -145,10 +99,6 @@
             justify-content: center;
             margin-bottom: 30px;
             animation: float 3s ease-in-out infinite;
-        }
-
-        .language-logo span {
-            font-size: 60px;
         }
 
         @keyframes float {
@@ -190,12 +140,7 @@
             gap: 12px;
         }
 
-        .lang-select-btn:hover {
-            background: rgba(0, 204, 255, 0.2);
-            transform: translateY(-3px);
-        }
-
-        /* ID Login Screen */
+        /* ID Login sahifasi */
         #idLoginScreen {
             position: fixed;
             top: 0;
@@ -327,7 +272,7 @@
             display: none;
         }
 
-        /* Fixed Login Button */
+        /* Tasdiqlash tugmasi */
         .login-button-wrapper {
             position: fixed;
             bottom: 0;
@@ -366,7 +311,6 @@
             font-size: 0.9rem;
             color: var(--gray);
             text-align: center;
-            padding-bottom: 80px;
         }
 
         .register-link a {
@@ -375,7 +319,7 @@
             font-weight: 600;
         }
 
-        /* Main Container */
+        /* Asosiy kontainer */
         .container {
             max-width: 100%;
             padding: 20px;
@@ -437,37 +381,15 @@
             color: var(--light);
             font-size: 1.2rem;
             border: 2px solid var(--secondary);
-            cursor: pointer;
         }
 
-        .language-switcher {
-            background: rgba(0, 102, 255, 0.1);
-            border: 2px solid rgba(0, 204, 255, 0.3);
-            border-radius: 12px;
-            padding: 10px 15px;
-            color: var(--secondary);
-            font-size: 0.9rem;
-            font-weight: 600;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        /* Profile Section */
+        /* Profil bo'limi */
         .profile-section {
             background: rgba(255, 255, 255, 0.05);
             border-radius: 20px;
             padding: 25px;
             margin-bottom: 25px;
             border: 1px solid rgba(0, 204, 255, 0.2);
-        }
-
-        .profile-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: 25px;
         }
 
         .profile-title {
@@ -477,50 +399,7 @@
             display: flex;
             align-items: center;
             gap: 10px;
-        }
-
-        .profile-warning {
-            background: rgba(255, 51, 102, 0.1);
-            border: 1px solid var(--danger);
-            border-radius: 12px;
-            padding: 12px 15px;
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-size: 0.9rem;
-        }
-
-        .profile-warning i {
-            color: var(--danger);
-        }
-
-        .profile-info-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 15px;
-        }
-
-        .info-card {
-            background: rgba(0, 102, 255, 0.1);
-            border-radius: 15px;
-            padding: 20px;
-            border: 1px solid rgba(0, 204, 255, 0.2);
-        }
-
-        .info-label {
-            font-size: 0.85rem;
-            color: var(--gray);
-            margin-bottom: 8px;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-
-        .info-value {
-            font-size: 1.2rem;
-            font-weight: 800;
-            color: var(--light);
+            margin-bottom: 25px;
         }
 
         .id-display {
@@ -560,51 +439,13 @@
             color: var(--light);
         }
 
-        .change-id-btn {
-            background: rgba(0, 204, 255, 0.1);
-            border: 1px solid var(--secondary);
-            border-radius: 12px;
-            padding: 12px;
-            color: var(--secondary);
-            font-size: 0.9rem;
-            font-weight: 600;
-            cursor: pointer;
-            width: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            margin-top: 15px;
-            transition: all 0.3s;
-        }
-
-        .change-id-btn:hover {
-            background: rgba(0, 204, 255, 0.2);
-        }
-
-        /* Daily Stats */
+        /* Statistikalar */
         .daily-stats {
             background: rgba(255, 255, 255, 0.05);
             border-radius: 20px;
             padding: 20px;
             margin-bottom: 25px;
             border: 1px solid rgba(0, 204, 255, 0.2);
-        }
-
-        .stats-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px;
-        }
-
-        .stats-title {
-            font-size: 1.1rem;
-            color: var(--secondary);
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            gap: 10px;
         }
 
         .stats-grid {
@@ -633,12 +474,7 @@
             margin-bottom: 5px;
         }
 
-        .stat-label {
-            font-size: 0.8rem;
-            color: var(--gray);
-        }
-
-        /* Quick Actions */
+        /* Tezkor amallar */
         .quick-actions {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -681,7 +517,7 @@
             color: var(--gray);
         }
 
-        /* VIP Section */
+        /* VIP bo'limi */
         .vip-section {
             background: linear-gradient(135deg, rgba(255, 215, 0, 0.15), rgba(255, 140, 0, 0.1));
             border-radius: 20px;
@@ -712,31 +548,6 @@
             gap: 10px;
         }
 
-        .vip-features {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 15px;
-            margin: 20px 0;
-        }
-
-        .vip-feature {
-            background: rgba(255, 215, 0, 0.1);
-            border-radius: 15px;
-            padding: 15px;
-            border: 1px solid rgba(255, 215, 0, 0.3);
-        }
-
-        .vip-feature-icon {
-            font-size: 1.2rem;
-            color: var(--vip);
-            margin-bottom: 10px;
-        }
-
-        .vip-feature-text {
-            font-size: 0.85rem;
-            color: var(--light);
-        }
-
         .vip-btn {
             background: linear-gradient(135deg, var(--vip), #FF8C00);
             border: none;
@@ -755,25 +566,13 @@
             margin-top: 15px;
         }
 
-        .vip-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(255, 215, 0, 0.4);
-        }
-
-        /* Daily Bonus */
+        /* Bonuslar bo'limi */
         .daily-bonus {
             background: linear-gradient(135deg, rgba(255, 149, 0, 0.15), rgba(255, 94, 0, 0.1));
             border-radius: 20px;
             padding: 25px;
             margin-bottom: 25px;
             border: 2px solid rgba(255, 149, 0, 0.4);
-        }
-
-        .bonus-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: 20px;
         }
 
         .bonus-title {
@@ -783,42 +582,25 @@
             display: flex;
             align-items: center;
             gap: 10px;
+            margin-bottom: 20px;
         }
 
-        .bonus-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 10px;
-            margin: 20px 0;
-        }
-
-        .bonus-day {
+        .bonus-content {
             background: rgba(255, 255, 255, 0.1);
-            border-radius: 12px;
-            padding: 15px 10px;
+            border-radius: 15px;
+            padding: 20px;
+            margin: 20px 0;
             text-align: center;
-            border: 2px solid transparent;
         }
 
-        .bonus-day.active {
-            border-color: var(--accent);
-            background: rgba(255, 149, 0, 0.2);
-        }
-
-        .bonus-day-number {
-            font-size: 1.2rem;
-            font-weight: 800;
-            color: var(--light);
-            margin-bottom: 5px;
-        }
-
-        .bonus-day-reward {
-            font-size: 0.9rem;
+        .bonus-amount {
+            font-size: 2.5rem;
+            font-weight: 900;
             color: var(--accent);
-            font-weight: 600;
+            margin: 15px 0;
         }
 
-        .bonus-claim-btn {
+        .bonus-btn {
             background: linear-gradient(135deg, var(--accent), #FF5E00);
             border: none;
             border-radius: 15px;
@@ -836,20 +618,13 @@
             margin-top: 15px;
         }
 
-        /* Signal Game */
+        /* Signal o'yini */
         .signal-game {
             background: rgba(255, 255, 255, 0.05);
             border-radius: 20px;
             padding: 25px;
             margin-bottom: 25px;
             border: 1px solid rgba(0, 204, 255, 0.2);
-        }
-
-        .game-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: 20px;
         }
 
         .game-title {
@@ -859,41 +634,7 @@
             display: flex;
             align-items: center;
             gap: 10px;
-        }
-
-        .signal-counter {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            background: rgba(0, 204, 255, 0.1);
-            border-radius: 12px;
-            padding: 10px 15px;
-            border: 1px solid var(--secondary);
-        }
-
-        .signal-count {
-            font-size: 1.2rem;
-            font-weight: 800;
-            color: var(--secondary);
-        }
-
-        .signal-max {
-            font-size: 0.9rem;
-            color: var(--gray);
-        }
-
-        .game-content {
-            text-align: center;
-        }
-
-        .game-instruction {
-            font-size: 0.95rem;
-            color: var(--gray);
-            margin-bottom: 25px;
-            line-height: 1.6;
-            background: rgba(0, 102, 255, 0.1);
-            border-radius: 15px;
-            padding: 15px;
+            margin-bottom: 20px;
         }
 
         .apples-container {
@@ -912,7 +653,6 @@
             transition: all 0.3s;
             background-size: cover;
             background-position: center;
-            position: relative;
             border: 3px solid transparent;
         }
 
@@ -931,13 +671,6 @@
             border-color: var(--danger);
         }
 
-        .game-buttons {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 15px;
-            margin-top: 20px;
-        }
-
         .game-btn {
             padding: 18px;
             border: none;
@@ -950,6 +683,7 @@
             align-items: center;
             justify-content: center;
             gap: 10px;
+            width: 100%;
         }
 
         .btn-primary {
@@ -957,12 +691,7 @@
             color: var(--light);
         }
 
-        .btn-success {
-            background: linear-gradient(135deg, var(--success), #00AA55);
-            color: var(--light);
-        }
-
-        /* Success Animation */
+        /* Success animation */
         .success-animation {
             position: fixed;
             top: 0;
@@ -1006,7 +735,7 @@
             margin-bottom: 25px;
         }
 
-        /* VIP Access Page */
+        /* VIP access page */
         .vip-access-page {
             position: fixed;
             top: 0;
@@ -1064,63 +793,6 @@
             margin-bottom: 30px;
         }
 
-        .vip-req-icon {
-            font-size: 4rem;
-            color: var(--vip);
-            margin-bottom: 20px;
-        }
-
-        .vip-req-counter {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin: 25px 0;
-            font-size: 3.5rem;
-            font-weight: 900;
-        }
-
-        .vip-req-current {
-            color: var(--success);
-            margin-right: 10px;
-        }
-
-        .vip-req-total {
-            color: var(--vip);
-            margin-left: 10px;
-        }
-
-        .vip-features-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
-            margin-bottom: 30px;
-        }
-
-        .vip-feature-card {
-            background: rgba(255, 215, 0, 0.05);
-            border-radius: 15px;
-            padding: 20px;
-            border: 1px solid rgba(255, 215, 0, 0.3);
-        }
-
-        .vip-feature-card-icon {
-            font-size: 2rem;
-            color: var(--vip);
-            margin-bottom: 15px;
-        }
-
-        .vip-feature-card-title {
-            font-size: 1rem;
-            font-weight: 700;
-            color: var(--light);
-            margin-bottom: 10px;
-        }
-
-        .vip-feature-card-desc {
-            font-size: 0.85rem;
-            color: var(--gray);
-        }
-
         .vip-invite-btn {
             background: linear-gradient(135deg, var(--vip), #FF8C00);
             border: none;
@@ -1138,7 +810,7 @@
             margin-bottom: 20px;
         }
 
-        /* Bottom Navigation */
+        /* Bottom navigation */
         .bottom-nav {
             position: fixed;
             bottom: 0;
@@ -1175,23 +847,7 @@
             font-size: 1.3rem;
         }
 
-        .nav-badge {
-            position: absolute;
-            top: -5px;
-            right: -5px;
-            background: var(--danger);
-            color: var(--light);
-            font-size: 0.7rem;
-            font-weight: bold;
-            padding: 3px 6px;
-            border-radius: 10px;
-        }
-
-        /* Utility Classes */
-        .hidden {
-            display: none !important;
-        }
-
+        /* Responsive */
         @media (max-width: 768px) {
             .container {
                 padding: 15px;
@@ -1203,12 +859,8 @@
                 margin-bottom: 90px;
             }
             
-            .quick-actions, .vip-features, .stats-grid {
+            .quick-actions, .stats-grid {
                 grid-template-columns: 1fr;
-            }
-            
-            .bonus-grid {
-                grid-template-columns: repeat(2, 1fr);
             }
             
             .apple {
@@ -1216,8 +868,9 @@
                 height: 50px;
             }
             
-            .game-buttons, .vip-features-grid {
-                grid-template-columns: 1fr;
+            .game-btn {
+                padding: 15px;
+                font-size: 0.9rem;
             }
             
             .bottom-nav {
@@ -1227,11 +880,7 @@
     </style>
 </head>
 <body>
-    <!-- Background Effects -->
-    <div class="bg-particles" id="bgParticles"></div>
-    <div class="glow-effect"></div>
-
-    <!-- Loading Screen -->
+    <!-- Loading screen -->
     <div id="loadingScreen">
         <div class="loading-logo">
             <span>🍎</span>
@@ -1239,7 +888,7 @@
         <div class="loading-text">Apple Fortune Yuklanmoqda...</div>
     </div>
 
-    <!-- Language Selector -->
+    <!-- Til tanlovi -->
     <div id="languageSelector">
         <div class="language-logo">
             <span>🍎</span>
@@ -1260,7 +909,7 @@
         </div>
     </div>
 
-    <!-- ID Login Screen -->
+    <!-- ID kiritish sahifasi -->
     <div id="idLoginScreen">
         <div class="login-container">
             <div class="login-logo">🍎</div>
@@ -1297,8 +946,8 @@
             </div>
         </div>
         
-        <!-- Fixed Login Button -->
-        <div class="login-button-wrapper">
+        <!-- Tasdiqlash tugmasi -->
+        <div class="login-button-wrapper" id="loginButtonWrapper">
             <button class="login-btn" id="loginBtn">
                 <i class="fas fa-sign-in-alt"></i>
                 <span>TASDIQLASH</span>
@@ -1306,7 +955,7 @@
         </div>
     </div>
 
-    <!-- Success Animation -->
+    <!-- Success animation -->
     <div class="success-animation" id="successAnimation">
         <div class="success-content">
             <div class="success-icon">🎯</div>
@@ -1316,7 +965,7 @@
         </div>
     </div>
 
-    <!-- VIP Access Page -->
+    <!-- VIP access page -->
     <div class="vip-access-page" id="vipAccessPage">
         <div class="vip-header">
             <button class="back-btn" id="backFromVip">
@@ -1343,46 +992,12 @@
                 </p>
             </div>
             
-            <div class="vip-features-grid">
-                <div class="vip-feature-card">
-                    <div class="vip-feature-card-icon">
-                        <i class="fas fa-bolt"></i>
-                    </div>
-                    <h4 class="vip-feature-card-title">Kuniga 4 Signal</h4>
-                    <p class="vip-feature-card-desc">Har 6 soatda yangi signal</p>
-                </div>
-                
-                <div class="vip-feature-card">
-                    <div class="vip-feature-card-icon">
-                        <i class="fas fa-chart-line"></i>
-                    </div>
-                    <h4 class="vip-feature-card-title">98.5% Aniqlik</h4>
-                    <p class="vip-feature-card-desc">AI tomonidan tasdiqlangan</p>
-                </div>
-                
-                <div class="vip-feature-card">
-                    <div class="vip-feature-card-icon">
-                        <i class="fas fa-shield-alt"></i>
-                    </div>
-                    <h4 class="vip-feature-card-title">Risk Boshqaruvi</h4>
-                    <p class="vip-feature-card-desc">Stop-loss va take-profit</p>
-                </div>
-                
-                <div class="vip-feature-card">
-                    <div class="vip-feature-card-icon">
-                        <i class="fas fa-gem"></i>
-                    </div>
-                    <h4 class="vip-feature-card-title">Ekskluziv Bonuslar</h4>
-                    <p class="vip-feature-card-desc">VIP uchun maxsus imtiyozlar</p>
-                </div>
-            </div>
-            
             <button class="vip-invite-btn" id="inviteFriendsBtn">
                 <i class="fas fa-share-alt"></i>
                 <span>DO'STLARNI TAKLIF QILISH</span>
             </button>
             
-            <div class="text-center">
+            <div style="text-align: center; margin-top: 20px;">
                 <p style="color: var(--gray); font-size: 0.9rem;">
                     Har bir taklif qilingan do'st bilan VIP signalga yaqinlashing!
                 </p>
@@ -1390,7 +1005,7 @@
         </div>
     </div>
 
-    <!-- Main Container -->
+    <!-- Asosiy kontainer -->
     <div class="container" id="mainContainer">
         <!-- Header -->
         <div class="header">
@@ -1401,80 +1016,27 @@
             
             <div class="user-info">
                 <div class="user-avatar" id="userAvatar">U</div>
-                <div class="language-switcher" id="languageSwitcher">
-                    <span>🌐</span>
-                    <span id="currentLanguage">UZ</span>
-                </div>
             </div>
         </div>
 
-        <!-- Profile Section -->
+        <!-- Profil -->
         <div class="profile-section">
-            <div class="profile-header">
-                <h2 class="profile-title">
-                    <i class="fas fa-user-circle"></i>
-                    <span>PROFIL MA'LUMOTLARI</span>
-                </h2>
-            </div>
-            
-            <div class="profile-warning" id="profileWarning">
-                <i class="fas fa-exclamation-circle"></i>
-                <span>ID raqamingiz profilida bo'lmasa, signallar ishlamaydi!</span>
-            </div>
-            
-            <div class="profile-info-grid">
-                <div class="info-card">
-                    <div class="info-label">
-                        <i class="fas fa-id-card"></i>
-                        <span>STATUS</span>
-                    </div>
-                    <div class="info-value">
-                        <span class="status-badge status-active">FAOL</span>
-                    </div>
-                </div>
-                
-                <div class="info-card">
-                    <div class="info-label">
-                        <i class="fas fa-calendar-alt"></i>
-                        <span>RO'YXATDAN OTISH</span>
-                    </div>
-                    <div class="info-value" id="regDate">2024.01.01</div>
-                </div>
-            </div>
+            <h2 class="profile-title">
+                <i class="fas fa-user-circle"></i>
+                <span>PROFIL MA'LUMOTLARI</span>
+            </h2>
             
             <div class="id-display">
                 <div class="id-label">SIZNING ID RAQAMINGIZ</div>
                 <div class="id-value" id="userDisplayId">-</div>
                 <div class="status-badge status-active">
-                    AIFUT Promokod
+                    STATUS: FAOL
                 </div>
             </div>
-            
-            <div class="info-card">
-                <div class="info-label">
-                    <i class="fas fa-info-circle"></i>
-                    <span>PROMOKOD HAQIDA</span>
-                </div>
-                <div class="info-value">
-                    AIFUT promokodi bilan ro'yxatdan o'tganligingiz sababli, signallar yuqori aniqlikda!
-                </div>
-            </div>
-            
-            <button class="change-id-btn" id="changeIdBtn">
-                <i class="fas fa-sync-alt"></i>
-                <span>ID O'ZGARTIRISH</span>
-            </button>
         </div>
 
-        <!-- Daily Stats -->
+        <!-- Bugungi statistikalar -->
         <div class="daily-stats">
-            <div class="stats-header">
-                <div class="stats-title">
-                    <i class="fas fa-chart-bar"></i>
-                    <span>BUGUNGI STATISTIKA</span>
-                </div>
-            </div>
-            
             <div class="stats-grid">
                 <div class="stat-item">
                     <div class="stat-icon"><i class="fas fa-bolt"></i></div>
@@ -1502,7 +1064,7 @@
             </div>
         </div>
 
-        <!-- Quick Actions -->
+        <!-- Tezkor amallar -->
         <div class="quick-actions">
             <div class="action-card" id="getSignalBtn">
                 <div class="action-icon"><i class="fas fa-satellite-dish"></i></div>
@@ -1513,51 +1075,33 @@
             <div class="action-card" id="dailyBonusBtn">
                 <div class="action-icon"><i class="fas fa-gift"></i></div>
                 <h3 class="action-title">KUNLIK BONUS</h3>
-                <p class="action-desc" id="bonusDesc">Har kuni yangi sovg'alar</p>
+                <p class="action-desc">$300 BONUS OLISH</p>
             </div>
             
             <div class="action-card" id="vipAccessBtn">
                 <div class="action-icon"><i class="fas fa-crown"></i></div>
                 <h3 class="action-title">VIP ACCESS</h3>
-                <p class="action-desc">Kuniga 4 ta yuqori aniqlikdagi signal</p>
+                <p class="action-desc">Do'stlarni taklif qiling</p>
             </div>
             
             <div class="action-card" id="inviteFriendsBtnMain">
                 <div class="action-icon"><i class="fas fa-user-plus"></i></div>
-                <h3 class="action-title">DO'STLAR</h3>
-                <p class="action-desc">Taklif qiling va bonuslar oling</p>
+                <h3 class="action-title">BALL TOPLASH</h3>
+                <p class="action-desc">Ro'yxatdan o'ting va ball to'plang</p>
             </div>
         </div>
 
-        <!-- VIP Section -->
+        <!-- VIP bo'limi -->
         <div class="vip-section">
             <div class="vip-badge">VIP</div>
             <h2 class="vip-title">
                 <i class="fas fa-gem"></i>
-                <span>VIP SIGNAL - KUNIGA 4 MARTA</span>
+                <span>VIP SIGNAL OLISH</span>
             </h2>
             
-            <div class="vip-features">
-                <div class="vip-feature">
-                    <div class="vip-feature-icon"><i class="fas fa-clock"></i></div>
-                    <p class="vip-feature-text">Har 6 soatda yangi signal</p>
-                </div>
-                
-                <div class="vip-feature">
-                    <div class="vip-feature-icon"><i class="fas fa-chart-pie"></i></div>
-                    <p class="vip-feature-text">98.5% aniq signal</p>
-                </div>
-                
-                <div class="vip-feature">
-                    <div class="vip-feature-icon"><i class="fas fa-shield-alt"></i></div>
-                    <p class="vip-feature-text">Risk boshqaruvi bilan</p>
-                </div>
-                
-                <div class="vip-feature">
-                    <div class="vip-feature-icon"><i class="fas fa-coins"></i></div>
-                    <p class="vip-feature-text">VIP bonuslar va imtiyozlar</p>
-                </div>
-            </div>
+            <p style="color: var(--gray); margin-bottom: 20px;">
+                20 ta do'stingizni taklif qiling va VIP signalga ega bo'ling!
+            </p>
             
             <button class="vip-btn" id="vipBtn">
                 <i class="fas fa-crown"></i>
@@ -1565,66 +1109,64 @@
             </button>
         </div>
 
-        <!-- Daily Bonus -->
+        <!-- Bonuslar bo'limi -->
         <div class="daily-bonus">
-            <div class="bonus-header">
-                <h2 class="bonus-title">
-                    <i class="fas fa-calendar-star"></i>
-                    <span>KUNLIK BONUSLAR</span>
-                </h2>
-                <div class="bonus-timer">
-                    <i class="fas fa-clock"></i>
-                    <span id="bonusTimer">24:00:00</span>
-                </div>
+            <h2 class="bonus-title">
+                <i class="fas fa-calendar-star"></i>
+                <span>BONUSLAR</span>
+            </h2>
+            
+            <div class="bonus-content">
+                <h3 style="color: var(--accent); margin-bottom: 10px;">AIFUT Promokodi</h3>
+                <p style="color: var(--gray); margin-bottom: 15px;">
+                    AIFUT promokodi bilan ro'yxatdan o'ting va $300 bonus oling!
+                </p>
+                
+                <div class="promo-code-display">AIFUT</div>
+                
+                <p style="color: var(--success); font-size: 0.9rem; margin-top: 10px;">
+                    Promokodni kiritib, darhol $300 bonus oling!
+                </p>
             </div>
             
-            <div class="bonus-grid" id="bonusGrid"></div>
-            
-            <button class="bonus-claim-btn" id="claimBonusBtn">
+            <button class="bonus-btn" id="claimBonusBtn">
                 <i class="fas fa-gift"></i>
-                <span>BUGUNGI BONUSNI OLISH</span>
+                <span>$300 BONUS OLISH</span>
             </button>
         </div>
 
-        <!-- Signal Game -->
+        <!-- Signal o'yini -->
         <div class="signal-game">
-            <div class="game-header">
-                <h2 class="game-title">
-                    <i class="fas fa-gamepad"></i>
-                    <span>SIGNAL O'YINI</span>
-                </h2>
-                <div class="signal-counter">
-                    <span class="signal-count" id="signalCount">0</span>
-                    <span class="signal-max">/4</span>
-                </div>
-            </div>
+            <h2 class="game-title">
+                <i class="fas fa-gamepad"></i>
+                <span>SIGNAL O'YINI</span>
+            </h2>
             
-            <div class="game-content">
-                <p class="game-instruction">
+            <div style="text-align: center;">
+                <p style="color: var(--gray); margin-bottom: 20px;">
                     Butun olmalarni tanlang va signal oling. Tishlangan olma sizni kutish vaqtiga olib boradi.
                 </p>
                 
-                <div class="apples-container" id="applesContainer"></div>
-                
-                <div class="game-buttons">
-                    <button class="game-btn btn-primary" id="revealApplesBtn">
-                        <i class="fas fa-eye"></i>
-                        <span>OLMALARNI KORISH</span>
-                    </button>
-                    <button class="game-btn btn-success" id="getSignalGameBtn">
-                        <i class="fas fa-bolt"></i>
-                        <span>SIGNAL OLISH</span>
-                    </button>
+                <div class="apples-container" id="applesContainer">
+                    <!-- Olmalar bu yerga joylashtiriladi -->
                 </div>
                 
-                <div style="margin-top: 20px; font-size: 0.9rem; color: var(--accent);" id="timerDisplay">
-                    Keyingi signal uchun: <span id="cooldownTimer">00:00</span>
+                <div style="margin-top: 20px;">
+                    <button class="game-btn btn-primary" id="revealApplesBtn">
+                        <i class="fas fa-eye"></i>
+                        <span>OLMALARNI KO'RISH</span>
+                    </button>
+                    
+                    <button class="game-btn btn-primary" id="startGameBtn" style="margin-top: 10px;">
+                        <i class="fas fa-play"></i>
+                        <span>OYINNI BOSHLASH</span>
+                    </button>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Bottom Navigation -->
+    <!-- Pastki navigatsiya -->
     <div class="bottom-nav">
         <a href="#" class="nav-item active" id="navHome">
             <i class="fas fa-home nav-icon"></i>
@@ -1653,34 +1195,29 @@
     </div>
 
     <script>
-        // App State
+        // App holati
         let currentLang = 'uz';
         let userId = '';
         let currentRow = 1;
         let gameActive = false;
-        let cooldownEnd = 0;
         let canGetSignal = true;
 
-        // Stats
+        // Statistika
         let stats = {
             todaySignals: 0,
             totalSignals: 0,
             todayProfit: 0,
             streakDays: 1,
-            invitedFriends: 0,
-            lastSignalTime: 0,
-            lastBonusDay: null,
-            lastVisitDate: null
+            invitedFriends: 0
         };
 
-        // DOM Elements
+        // DOM elementlari
         const loadingScreen = document.getElementById('loadingScreen');
         const languageSelector = document.getElementById('languageSelector');
         const idLoginScreen = document.getElementById('idLoginScreen');
         const mainContainer = document.getElementById('mainContainer');
         const userDisplayId = document.getElementById('userDisplayId');
         const userAvatar = document.getElementById('userAvatar');
-        const regDate = document.getElementById('regDate');
         const userIdInput = document.getElementById('userIdInput');
         const idError = document.getElementById('idError');
         const loginBtn = document.getElementById('loginBtn');
@@ -1690,123 +1227,41 @@
         const continueBtn = document.getElementById('continueBtn');
         const vipAccessPage = document.getElementById('vipAccessPage');
         const backFromVip = document.getElementById('backFromVip');
-        const vipFriendsCount = document.getElementById('vipFriendsCount');
         const inviteFriendsBtn = document.getElementById('inviteFriendsBtn');
-        const inviteFriendsBtnMain = document.getElementById('inviteFriendsBtnMain');
-        const changeIdBtn = document.getElementById('changeIdBtn');
         const getSignalBtn = document.getElementById('getSignalBtn');
-        const dailyBonusBtn = document.getElementById('dailyBonusBtn');
         const vipAccessBtn = document.getElementById('vipAccessBtn');
         const vipBtn = document.getElementById('vipBtn');
         const claimBonusBtn = document.getElementById('claimBonusBtn');
-        const getSignalGameBtn = document.getElementById('getSignalGameBtn');
+        const startGameBtn = document.getElementById('startGameBtn');
         const revealApplesBtn = document.getElementById('revealApplesBtn');
         const applesContainer = document.getElementById('applesContainer');
-        const timerDisplay = document.getElementById('timerDisplay');
-        const cooldownTimer = document.getElementById('cooldownTimer');
         const navItems = document.querySelectorAll('.nav-item');
         const todaySignalsEl = document.getElementById('todaySignals');
         const totalSignalsEl = document.getElementById('totalSignals');
         const todayProfitEl = document.getElementById('todayProfit');
         const streakDaysEl = document.getElementById('streakDays');
-        const signalCount = document.getElementById('signalCount');
         const signalDesc = document.getElementById('signalDesc');
-        const bonusDesc = document.getElementById('bonusDesc');
-        const bonusGrid = document.getElementById('bonusGrid');
-        const bonusTimer = document.getElementById('bonusTimer');
-        const profileWarning = document.getElementById('profileWarning');
-        const languageSwitcher = document.getElementById('languageSwitcher');
-        const currentLanguage = document.getElementById('currentLanguage');
         const langSelectBtns = document.querySelectorAll('.lang-select-btn');
 
-        // Translations
-        const translations = {
-            uz: {
-                loading: "Apple Fortune Yuklanmoqda...",
-                chooseLang: "Tilni tanlang",
-                loginTitle: "ID RAQAMINGIZNI KIRITING",
-                loginSubtitle: "AIFUT promokodi bilan ro'yxatdan o'tgan ID raqamingizni kiriting",
-                promoWarning: "DIQQAT!",
-                promoText: "AIFUT promokodi bilan ro'yxatdan o'tmagan bo'lsangiz, signallar ishlamaydi.",
-                idLabel: "ID RAQAM (Masalan: 1XXXXXXXXX)",
-                loginBtn: "TASDIQLASH",
-                registerText: "Ro'yxatdan o'tmaganmisiz? ",
-                registerLink: "Ro'yxatdan o'tish",
-                profileTitle: "PROFIL MA'LUMOTLARI",
-                warningText: "ID raqamingiz profilida bo'lmasa, signallar ishlamaydi!",
-                status: "STATUS",
-                regDate: "RO'YXATDAN OTISH",
-                yourId: "SIZNING ID RAQAMINGIZ",
-                promoInfo: "PROMOKOD HAQIDA",
-                promoInfoText: "AIFUT promokodi bilan ro'yxatdan o'tganligingiz sababli, signallar yuqori aniqlikda!",
-                changeId: "ID O'ZGARTIRISH",
-                statsTitle: "BUGUNGI STATISTIKA",
-                todaySignals: "BUGUNGI SIGNALLAR",
-                todayProfit: "BUGUNGI FOYDA",
-                streakDays: "KETMA-KET KUNLAR",
-                totalSignals: "JAMI SIGNALLAR",
-                getSignal: "SIGNAL OLISH",
-                signalDesc: "Hozirgina yangi signal mavjud",
-                dailyBonus: "KUNLIK BONUS",
-                bonusDesc: "Har kuni yangi sovg'alar",
-                vipAccess: "VIP ACCESS",
-                vipDesc: "Kuniga 4 ta yuqori aniqlikdagi signal",
-                inviteFriends: "DO'STLAR",
-                inviteDesc: "Taklif qiling va bonuslar oling",
-                vipSection: "VIP SIGNAL - KUNIGA 4 MARTA",
-                vipFeature1: "Har 6 soatda yangi signal",
-                vipFeature2: "98.5% aniq signal",
-                vipFeature3: "Risk boshqaruvi bilan",
-                vipFeature4: "VIP bonuslar va imtiyozlar",
-                vipBtn: "VIP SIGNAL OLISH",
-                bonusTitle: "KUNLIK BONUSLAR",
-                claimBonus: "BUGUNGI BONUSNI OLISH",
-                gameTitle: "SIGNAL O'YINI",
-                gameInstruction: "Butun olmalarni tanlang va signal oling. Tishlangan olma sizni kutish vaqtiga olib boradi.",
-                revealApples: "OLMALARNI KORISH",
-                signalGame: "SIGNAL OLISH",
-                successTitle: "SIGNAL OLINDI!",
-                vipPageTitle: "VIP ACCESS",
-                vipReqTitle: "VIP SIGNAL OLISH UCHUN",
-                vipReqDesc: "20 ta do'stingizni taklif qiling va VIP signalga ega bo'ling!",
-                inviteBtn: "DO'STLARNI TAKLIF QILISH",
-                bonusDays: ["Dush", "Sesh", "Chor", "Pay", "Jum", "Shan", "Yak"],
-                bonusRewards: ["$5", "$10", "$15", "$20", "$25", "$50", "$100"],
-                noIdError: "ID raqam kiritilmagan!",
-                invalidIdError: "ID 1 bilan boshlanadigan 10 xonali raqam bo'lishi kerak!",
-                registerAlert: "Ro'yxatdan o'tish uchun quyidagi havolaga o'ting:\nhttps://superlative-twilight-47ef34.netlify.app/\n\nPromokod: AIFUT",
-                navHome: "Asosiy",
-                navSignals: "Signallar",
-                navBonus: "Bonuslar",
-                navVip: "VIP",
-                navProfile: "Profil"
-            }
-        };
-
-        // Initialize
+        // Dastlabki sozlash
         function init() {
-            // Load from localStorage
+            // LocalStoragedan yuklash
             loadState();
             
-            // Create particles
-            createParticles();
-            
-            // Start loading animation
+            // Yuklash animatsiyasi
             setTimeout(() => {
                 loadingScreen.style.opacity = '0';
                 setTimeout(() => {
                     loadingScreen.style.display = 'none';
                     
-                    // Check if language is selected
+                    // Til tanlanganligini tekshirish
                     const savedLang = localStorage.getItem('appleFortuneLang');
                     if (!savedLang) {
-                        // Show language selector first
                         languageSelector.style.display = 'flex';
                     } else {
                         currentLang = savedLang;
-                        updateTranslations();
                         
-                        // Check if user is logged in
+                        // Foydalanuvchi ID si borligini tekshirish
                         if (!userId) {
                             idLoginScreen.style.display = 'flex';
                         } else {
@@ -1817,43 +1272,21 @@
                 }, 500);
             }, 1500);
 
-            // Event Listeners
+            // Event listenerlarni sozlash
             setupEventListeners();
-            
-            // Start bonus timer
-            startBonusTimer();
-            
-            // Start cooldown timer
-            updateCooldownTimer();
-            setInterval(updateCooldownTimer, 1000);
         }
 
-        // Load state from localStorage
+        // Holatni yuklash
         function loadState() {
             const saved = localStorage.getItem('appleFortuneState');
             if (saved) {
                 const state = JSON.parse(saved);
                 userId = state.userId || '';
                 stats = state.stats || stats;
-                
-                // Update date if new day
-                const today = new Date().toDateString();
-                if (stats.lastVisitDate !== today) {
-                    stats.todaySignals = 0;
-                    stats.todayProfit = 0;
-                    stats.lastVisitDate = today;
-                    saveState();
-                }
-            }
-            
-            // Load registration date
-            const savedRegDate = localStorage.getItem('regDate');
-            if (savedRegDate) {
-                regDate.textContent = savedRegDate;
             }
         }
 
-        // Save state to localStorage
+        // Holatni saqlash
         function saveState() {
             const state = {
                 userId,
@@ -1862,148 +1295,39 @@
             localStorage.setItem('appleFortuneState', JSON.stringify(state));
         }
 
-        // Create background particles
-        function createParticles() {
-            const container = document.getElementById('bgParticles');
-            for (let i = 0; i < 30; i++) {
-                const particle = document.createElement('div');
-                particle.className = 'particle';
-                particle.style.width = `${Math.random() * 5 + 2}px`;
-                particle.style.height = particle.style.width;
-                particle.style.left = `${Math.random() * 100}%`;
-                particle.style.top = `${Math.random() * 100}%`;
-                particle.style.opacity = Math.random() * 0.3 + 0.1;
-                particle.style.animationDuration = `${Math.random() * 20 + 10}s`;
-                container.appendChild(particle);
-            }
-        }
-
-        // Update translations
-        function updateTranslations() {
-            const t = translations[currentLang];
-            if (!t) return;
-            
-            // Update all translatable elements
-            document.querySelectorAll('[data-translate]').forEach(el => {
-                const key = el.getAttribute('data-translate');
-                if (t[key]) el.textContent = t[key];
-            });
-            
-            // Update current language display
-            currentLanguage.textContent = currentLang.toUpperCase();
-            
-            // Update bonus days
-            createBonusDays();
-        }
-
-        // Create bonus days
-        function createBonusDays() {
-            const t = translations[currentLang];
-            bonusGrid.innerHTML = '';
-            
-            const today = new Date().getDay(); // 0-6, 0 = Sunday
-            const currentDay = today === 0 ? 7 : today; // Convert to 1-7
-            
-            for (let i = 0; i < 7; i++) {
-                const dayDiv = document.createElement('div');
-                dayDiv.className = 'bonus-day';
-                if (i + 1 === currentDay) {
-                    dayDiv.classList.add('active');
-                }
-                
-                dayDiv.innerHTML = `
-                    <div class="bonus-day-number">${t.bonusDays[i]}</div>
-                    <div class="bonus-day-reward">${t.bonusRewards[i]}</div>
-                `;
-                
-                bonusGrid.appendChild(dayDiv);
-            }
-        }
-
-        // Start bonus timer
-        function startBonusTimer() {
-            function updateTimer() {
-                const now = new Date();
-                const tomorrow = new Date(now);
-                tomorrow.setDate(tomorrow.getDate() + 1);
-                tomorrow.setHours(0, 0, 0, 0);
-                
-                const diff = tomorrow - now;
-                const hours = Math.floor(diff / (1000 * 60 * 60));
-                const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-                const seconds = Math.floor((diff % (1000 * 60)) / 1000);
-                
-                bonusTimer.textContent = 
-                    `${hours.toString().padStart(2, '0')}:` +
-                    `${minutes.toString().padStart(2, '0')}:` +
-                    `${seconds.toString().padStart(2, '0')}`;
-            }
-            
-            updateTimer();
-            setInterval(updateTimer, 1000);
-        }
-
-        // Update cooldown timer
-        function updateCooldownTimer() {
-            const now = Date.now();
-            if (cooldownEnd > now) {
-                const diff = cooldownEnd - now;
-                const minutes = Math.floor(diff / (1000 * 60));
-                const seconds = Math.floor((diff % (1000 * 60)) / 1000);
-                
-                cooldownTimer.textContent = 
-                    `${minutes.toString().padStart(2, '0')}:` +
-                    `${seconds.toString().padStart(2, '0')}`;
-                
-                timerDisplay.style.display = 'block';
-                getSignalGameBtn.disabled = true;
-                canGetSignal = false;
-            } else {
-                timerDisplay.style.display = 'none';
-                getSignalGameBtn.disabled = false;
-                canGetSignal = true;
-            }
-        }
-
-        // Update UI
+        // UI ni yangilash
         function updateUI() {
-            // Update user info
+            // Foydalanuvchi ma'lumotlari
             userDisplayId.textContent = userId;
             userAvatar.textContent = userId.charAt(0);
             
-            // Update stats
+            // Statistika
             todaySignalsEl.textContent = `${stats.todaySignals}/4`;
             totalSignalsEl.textContent = stats.totalSignals;
             todayProfitEl.textContent = `$${stats.todayProfit}`;
             streakDaysEl.textContent = stats.streakDays;
-            signalCount.textContent = stats.todaySignals;
             
-            // Update signal description
-            const t = translations[currentLang];
+            // Signal tavsifi
             if (stats.todaySignals >= 4) {
                 signalDesc.textContent = "Bugun barcha signallar olingan";
                 getSignalBtn.style.opacity = '0.5';
                 getSignalBtn.style.cursor = 'not-allowed';
             } else {
-                signalDesc.textContent = t.signalDesc;
+                signalDesc.textContent = "Hozirgina yangi signal mavjud";
                 getSignalBtn.style.opacity = '1';
                 getSignalBtn.style.cursor = 'pointer';
             }
-            
-            // Update VIP friends count
-            vipFriendsCount.textContent = stats.invitedFriends;
         }
 
-        // Setup event listeners
+        // Event listenerlarni sozlash
         function setupEventListeners() {
-            // Language selection
+            // Til tanlovi
             langSelectBtns.forEach(btn => {
                 btn.addEventListener('click', () => {
                     currentLang = btn.dataset.lang;
                     localStorage.setItem('appleFortuneLang', currentLang);
                     languageSelector.style.display = 'none';
                     idLoginScreen.style.display = 'flex';
-                    updateTranslations();
                 });
             });
 
@@ -2012,79 +1336,76 @@
                 const id = userIdInput.value.trim();
                 
                 if (!id) {
-                    showError(translations[currentLang].noIdError);
+                    showError("ID raqam kiritilmagan!");
                     return;
                 }
                 
                 if (!/^1\d{9}$/.test(id)) {
-                    showError(translations[currentLang].invalidIdError);
+                    showError("ID 1 bilan boshlanadigan 10 xonali raqam bo'lishi kerak!");
                     return;
                 }
                 
                 userId = id;
-                stats.lastVisitDate = new Date().toDateString();
                 
-                // Save registration date if first time
-                if (!localStorage.getItem('regDate')) {
-                    const today = new Date();
-                    const formattedDate = `${today.getFullYear()}.${(today.getMonth() + 1).toString().padStart(2, '0')}.${today.getDate().toString().padStart(2, '0')}`;
-                    regDate.textContent = formattedDate;
-                    localStorage.setItem('regDate', formattedDate);
-                }
+                // Ro'yxatdan o'tish sanasi
+                const today = new Date();
+                const formattedDate = `${today.getFullYear()}.${(today.getMonth() + 1).toString().padStart(2, '0')}.${today.getDate().toString().padStart(2, '0')}`;
                 
+                // Holatni saqlash
                 saveState();
+                
+                // Login sahifasini yopish
                 idLoginScreen.style.display = 'none';
+                
+                // Asosiy sahifani ochish
                 mainContainer.classList.add('active');
+                
+                // UI ni yangilash
                 updateUI();
+                
+                // Kutish tugmasini yoqish
+                setTimeout(() => {
+                    alert("Tabriklaymiz! Tizimga muvaffaqiyatli kirdingiz.");
+                }, 500);
             });
 
-            // Register link
+            // Registratsiya havolasi
             registerLink.addEventListener('click', (e) => {
                 e.preventDefault();
-                alert(translations[currentLang].registerAlert);
+                alert("Ro'yxatdan o'tish uchun quyidagi havolaga o'ting:\nhttps://superlative-twilight-47ef34.netlify.app/\n\nPromokod: AIFUT");
             });
 
-            // Get signal (quick action)
+            // Signal olish (tezkor amallar)
             getSignalBtn.addEventListener('click', () => {
                 if (stats.todaySignals >= 4) {
                     alert("Bugun barcha signallarni olib bo'ldingiz! Ertaga qayta urinib ko'ring.");
                     return;
                 }
                 
-                startGame();
-            });
-
-            // Daily bonus
-            dailyBonusBtn.addEventListener('click', () => {
-                // Scroll to bonus section
-                document.querySelector('.daily-bonus').scrollIntoView({ behavior: 'smooth' });
+                startSignalGame();
             });
 
             // VIP access
-            vipAccessBtn.addEventListener('click', showVIPPage);
-            vipBtn.addEventListener('click', showVIPPage);
+            vipAccessBtn.addEventListener('click', () => {
+                vipAccessPage.style.display = 'flex';
+                mainContainer.style.display = 'none';
+            });
 
-            // Back from VIP page
+            vipBtn.addEventListener('click', () => {
+                vipAccessPage.style.display = 'flex';
+                mainContainer.style.display = 'none';
+            });
+
+            // VIP sahifasidan qaytish
             backFromVip.addEventListener('click', () => {
                 vipAccessPage.style.display = 'none';
+                mainContainer.style.display = 'block';
             });
 
-            // Invite friends
+            // Do'stlarni taklif qilish
             inviteFriendsBtn.addEventListener('click', inviteFriends);
-            inviteFriendsBtnMain.addEventListener('click', inviteFriends);
 
-            // Change ID
-            changeIdBtn.addEventListener('click', () => {
-                if (confirm("ID raqamingizni o'zgartirmoqchimisiz?")) {
-                    userId = '';
-                    userIdInput.value = '';
-                    saveState();
-                    idLoginScreen.style.display = 'flex';
-                    mainContainer.classList.remove('active');
-                }
-            });
-
-            // Claim bonus
+            // Bonus olish
             claimBonusBtn.addEventListener('click', () => {
                 const bonusAmount = 300;
                 stats.todayProfit += bonusAmount;
@@ -2093,42 +1414,27 @@
                 showSuccess(`Tabriklaymiz! ${bonusAmount}$ bonus olindingiz!`);
             });
 
-            // Get signal from game
-            getSignalGameBtn.addEventListener('click', () => {
-                if (!canGetSignal) {
-                    alert("Keyingi signal uchun kutishingiz kerak!");
-                    return;
-                }
-                
-                if (stats.todaySignals >= 4) {
-                    alert("Bugun barcha signallarni olib bo'ldingiz!");
-                    return;
-                }
-                
-                startGame();
-            });
+            // O'yinni boshlash
+            startGameBtn.addEventListener('click', startSignalGame);
 
-            // Reveal apples
-            revealApplesBtn.addEventListener('click', () => {
-                if (!gameActive) return;
-                revealApples();
-            });
+            // Olmalarni ko'rish
+            revealApplesBtn.addEventListener('click', revealApples);
 
-            // Continue from success animation
+            // Success animatsiyasidan davom etish
             continueBtn.addEventListener('click', () => {
                 successAnimation.style.display = 'none';
             });
 
-            // Navigation
+            // Navigatsiya
             navItems.forEach(item => {
                 item.addEventListener('click', (e) => {
                     e.preventDefault();
                     
-                    // Update active nav item
+                    // Active nav itemni yangilash
                     navItems.forEach(nav => nav.classList.remove('active'));
                     item.classList.add('active');
                     
-                    // Scroll to section
+                    // Bo'limga scroll qilish
                     const navId = item.id;
                     let targetSection;
                     
@@ -2156,46 +1462,40 @@
                 });
             });
 
-            // Language switcher
-            languageSwitcher.addEventListener('click', () => {
-                mainContainer.classList.remove('active');
-                languageSelector.style.display = 'flex';
-            });
-
-            // Handle input validation
+            // Input validatsiyasi
             userIdInput.addEventListener('input', () => {
                 idError.style.display = 'none';
             });
+            
+            // Enter tugmasi bilan login
+            userIdInput.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') {
+                    loginBtn.click();
+                }
+            });
         }
 
-        // Show error message
+        // Xatolikni ko'rsatish
         function showError(message) {
             idError.textContent = message;
             idError.style.display = 'block';
         }
 
-        // Show success animation
+        // Muvaffaqiyat animatsiyasi
         function showSuccess(message) {
             successMessage.textContent = message;
             successAnimation.style.display = 'flex';
         }
 
-        // Show VIP page
-        function showVIPPage() {
-            vipAccessPage.style.display = 'flex';
-            mainContainer.style.display = 'none';
-        }
-
-        // Invite friends
+        // Do'stlarni taklif qilish
         function inviteFriends() {
             const message = `🎯 APPLE FORTUNE - Kunlik 4 Signal & Bonuslar\n\nVIP signal olish uchun menga qo'shiling:\n👉 t.me/AppleFortuneBot\n\nMening ID: ${userId}\nPromokod: AIFUT\n\n#AppleFortune #TradingSignals`;
             
-            // Simulate sharing
+            // Taklif simulyatsiyasi
             alert("Taklif havolasi nusxalandi! Uni do'stlaringizga yuboring.");
             
-            // Increase invited friends count
+            // Taklif qilingan do'stlar sonini oshirish
             stats.invitedFriends++;
-            vipFriendsCount.textContent = stats.invitedFriends;
             saveState();
             
             if (stats.invitedFriends >= 20) {
@@ -2203,17 +1503,17 @@
             }
         }
 
-        // Start game
-        function startGame() {
+        // Signal o'yinini boshlash
+        function startSignalGame() {
             if (gameActive) return;
             
             gameActive = true;
             currentRow = 1;
             
-            // Clear apples container
+            // Olmalar konteynerini tozalash
             applesContainer.innerHTML = '';
             
-            // Create first row of apples (5 mystery apples)
+            // Birinchi qator (5 ta sirli olma)
             for (let i = 0; i < 5; i++) {
                 const apple = document.createElement('div');
                 apple.className = 'apple mystery';
@@ -2222,18 +1522,17 @@
             }
             
             revealApplesBtn.disabled = false;
-            getSignalGameBtn.disabled = true;
+            startGameBtn.disabled = true;
             
-            // Show game instructions
-            const t = translations[currentLang];
+            // O'yin ko'rsatmalari
             alert(`${currentRow}-qator: 5 ta sirli olma\nButun olmalarni tanlang va signal oling!`);
         }
 
-        // Reveal apples
+        // Olmalarni ko'rsatish
         function revealApples() {
             if (!gameActive) return;
             
-            // Determine bitten apples based on row
+            // Qatorga qarab tishlangan olmalar soni
             let bittenCount = 0;
             if (currentRow === 2) {
                 bittenCount = 1;
@@ -2243,24 +1542,24 @@
                 bittenCount = 3;
             }
             
-            // Create array of apple types
+            // Olma turlari massivi
             const apples = [];
             for (let i = 0; i < 5; i++) {
                 apples.push(i < (5 - bittenCount) ? 'whole' : 'bitten');
             }
             
-            // Shuffle apples
+            // Olmalarni aralashtirish
             for (let i = apples.length - 1; i > 0; i--) {
                 const j = Math.floor(Math.random() * (i + 1));
                 [apples[i], apples[j]] = [apples[j], apples[i]];
             }
             
-            // Update apple display
+            // Olmalarni yangilash
             const appleElements = applesContainer.querySelectorAll('.apple');
             appleElements.forEach((apple, index) => {
                 apple.className = `apple ${apples[index]}`;
                 
-                // Add click event for whole apples
+                // Butun olmalarga click event qo'shish
                 if (apples[index] === 'whole') {
                     apple.style.cursor = 'pointer';
                     apple.onclick = () => selectApple(apple, apples[index]);
@@ -2272,24 +1571,24 @@
             revealApplesBtn.disabled = true;
         }
 
-        // Select apple
+        // Olmani tanlash
         function selectApple(appleElement, type) {
             if (!gameActive) return;
             
             if (type === 'whole') {
-                // Success - continue to next row or win
+                // Muvaffaqiyat - keyingi qator yoki g'alaba
                 currentRow++;
                 
                 if (currentRow > 7) {
-                    // Win the game
+                    // O'yinda g'alaba
                     winGame();
                 } else {
-                    // Show next row message
+                    // Keyingi qator xabari
                     const riskLevel = currentRow >= 5 ? "YUQORI" : "O'RTA";
                     const message = `Tabriklaymiz! ${currentRow-1}-qatordan o'tdingiz.\n\n${currentRow}-qatorda xavf darajasi: ${riskLevel}\nDavom etasizmi?`;
                     
                     if (confirm(message)) {
-                        // Create next row
+                        // Keyingi qatorni yaratish
                         applesContainer.innerHTML = '';
                         for (let i = 0; i < 5; i++) {
                             const apple = document.createElement('div');
@@ -2300,81 +1599,74 @@
                         
                         revealApplesBtn.disabled = false;
                     } else {
-                        // Player chose to stop
+                        // O'yinchi to'xtatishni tanladi
                         endGame(true);
                     }
                 }
             } else {
-                // Hit bitten apple - lose
+                // Tishlangan olma urildi - yutqazish
                 endGame(false);
             }
         }
 
-        // Win game
+        // O'yinda g'alaba
         function winGame() {
             gameActive = false;
             
-            // Calculate profit
+            // Foydani hisoblash
             const profit = Math.floor(Math.random() * 91) + 10; // $10-$100
             
-            // Update stats
+            // Statistika yangilash
             stats.todaySignals++;
             stats.totalSignals++;
             stats.todayProfit += profit;
-            stats.lastSignalTime = Date.now();
             
-            // Set cooldown
-            cooldownEnd = Date.now() + (2 * 60 * 60 * 1000); // 2 hours
-            
-            // Save state
+            // Holatni saqlash
             saveState();
             
-            // Update UI
+            // UI yangilash
             updateUI();
             
-            // Show success
+            // Muvaffaqiyatni ko'rsatish
             showSuccess(`Tabriklaymiz! Signal olindingiz.\nDaromadingiz: $${profit}`);
             
-            // Reset game
+            // O'yinni qayta sozlash
             resetGame();
         }
 
-        // End game
+        // O'yinni tugatish
         function endGame(voluntary) {
             gameActive = false;
             
             if (voluntary) {
-                // Player chose to stop
+                // O'yinchi to'xtatishni tanladi
                 const profit = Math.floor(Math.random() * 41) + 5; // $5-$45
                 stats.todayProfit += profit;
                 
                 showSuccess(`Aqlli qaror! O'yinni to'xtatdingiz.\nDaromadingiz: $${profit}`);
             } else {
-                // Player hit bitten apple
+                // O'yinchi tishlangan olma urdi
                 showSuccess(`Tishlangan olma! Keyingi urinish uchun 2 soat kutishingiz kerak.`);
-                
-                // Set cooldown
-                cooldownEnd = Date.now() + (2 * 60 * 60 * 1000); // 2 hours
             }
             
-            // Save state
+            // Holatni saqlash
             saveState();
             
-            // Update UI
+            // UI yangilash
             updateUI();
             
-            // Reset game
+            // O'yinni qayta sozlash
             resetGame();
         }
 
-        // Reset game
+        // O'yinni qayta sozlash
         function resetGame() {
             applesContainer.innerHTML = '';
             revealApplesBtn.disabled = true;
-            getSignalGameBtn.disabled = !canGetSignal;
+            startGameBtn.disabled = false;
         }
 
-        // Initialize the app
+        // Dasturni ishga tushirish
         document.addEventListener('DOMContentLoaded', init);
     </script>
 </body>
