@@ -689,10 +689,19 @@
             border: 2px solid #00ff00;
         }
         
+        .selected-apple {
+            transform: scale(1.15);
+            box-shadow: 0 0 20px rgba(255, 204, 0, 0.8);
+            border: 3px solid #ffcc00;
+        }
+        
         .game-buttons {
             width: 100%;
             max-width: 400px;
             margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
         }
         
         .game-btn {
@@ -726,6 +735,17 @@
             cursor: not-allowed;
             transform: none;
             box-shadow: 0 10px 20px rgba(0, 204, 102, 0.2);
+        }
+        
+        .btn-next {
+            background: linear-gradient(135deg, #007AFF, #5856D6);
+            color: white;
+            box-shadow: 0 10px 20px rgba(0, 122, 255, 0.3);
+        }
+        
+        .btn-next:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(0, 122, 255, 0.4);
         }
         
         .btn-restart {
@@ -823,70 +843,6 @@
             grid-template-columns: repeat(2, 1fr);
             gap: 15px;
             margin-bottom: 30px;
-        }
-        
-        /* ============ WAIT SECTION ============ */
-        .wait-section {
-            display: none;
-            background: rgba(0, 0, 0, 0.8);
-            border-radius: 16px;
-            padding: 30px;
-            margin: 20px;
-            backdrop-filter: blur(20px);
-            border: 1px solid var(--border);
-        }
-        
-        .timer-display {
-            background: rgba(0, 100, 255, 0.15);
-            border-radius: 16px;
-            padding: 25px;
-            text-align: center;
-            margin: 30px 0;
-        }
-        
-        .timer-label {
-            font-size: 1rem;
-            color: #a0d2ff;
-            margin-bottom: 15px;
-        }
-        
-        .timer-value {
-            font-size: 2.5rem;
-            font-weight: 800;
-            color: #ffcc00;
-            font-family: 'Courier New', monospace;
-        }
-        
-        .share-section {
-            background: rgba(102, 0, 255, 0.15);
-            border-radius: 16px;
-            padding: 20px;
-            margin: 30px 0;
-            text-align: center;
-        }
-        
-        .share-title {
-            font-size: 1.1rem;
-            color: #cc99ff;
-            margin-bottom: 15px;
-        }
-        
-        .share-btn {
-            background: linear-gradient(135deg, #9966ff, #6600cc);
-            border: none;
-            border-radius: 16px;
-            padding: 18px;
-            color: white;
-            font-size: 1rem;
-            font-weight: 700;
-            width: 100%;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-        
-        .share-btn:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(102, 0, 255, 0.3);
         }
         
         /* ============ ANIMATIONS ============ */
@@ -1359,7 +1315,7 @@
                 </div>
                 
                 <div class="game-instruction" id="gameInstruction">
-                    Butun olmalarni tanlang. Tishlangan olma o'yinni tugatadi! 7-raundgacha davom eting.
+                    "Olmalarni ko'rish" tugmasini bosing va butun olma tanlang. Keyin "Keyingi signal" tugmasi orqali davom eting.
                 </div>
                 
                 <div class="game-content">
@@ -1370,6 +1326,10 @@
                     <div class="game-buttons">
                         <button class="game-btn btn-reveal" id="revealBtn">
                             <i class="fas fa-eye"></i> <span id="revealText">OLMALARNI KORISH</span>
+                        </button>
+                        
+                        <button class="game-btn btn-next" id="nextRoundBtn" style="display: none;">
+                            <i class="fas fa-forward"></i> <span id="nextRoundText">KEYINGI SIGNAL</span>
                         </button>
                         
                         <div class="result-message" id="resultMessage"></div>
@@ -1563,8 +1523,9 @@
                 signalTitle: "Savdo Signallarini Olish",
                 roundLabel: "RAUND:",
                 yourIdText: "ID:",
-                gameInstruction: "Butun olmalarni tanlang. Tishlangan olma o'yinni tugatadi! 7-raundgacha davom eting.",
+                gameInstruction: "'Olmalarni ko'rish' tugmasini bosing va butun olma tanlang. Keyin 'Keyingi signal' tugmasi orqali davom eting.",
                 revealText: "OLMALARNI KORISH",
+                nextRoundText: "KEYINGI SIGNAL",
                 restartText: "QAYTA URINISH",
                 waitTitle: "YUTUQNI OLING!",
                 timerLabel: "KEYINGI SIGNALGACHA",
@@ -1595,14 +1556,16 @@
                 inviteInfo: "Har bir taklif qilingan do'st hisobingizga 5 ball qo'shiladi",
                 shareTelegramText: "Telegramda Ulashish",
                 copyLinkText: "Taklif Havolasini Nusxalash",
-                successMessage: "✅ Butun olma! Keyingi bosqichga o'tilmoqda...",
+                successMessage: "✅ Butun olma tanlandi!",
                 failureMessage: "❌ Tishlangan olma! O'yin {round}-raundda tugadi.",
                 gameWonMessage: "🎉 TABRIKLAYMIZ! Siz {round}-raundda yutdingiz!",
                 idRequired: "Iltimos, signal olish uchun ID raqamingizni kiriting.",
                 idSaved: "ID raqamingiz muvaffaqiyatli saqlandi!",
                 inviteSent: "Taklif muvaffaqiyatli yuborildi! +5 ball qo'shildi.",
                 copied: "Havola nusxalandi!",
-                loading: "Yuklanmoqda..."
+                loading: "Yuklanmoqda...",
+                selectAppleMessage: "Iltimos, butun olma tanlang!",
+                analyzingSignal: "Signal tahlil qilinmoqda..."
             },
             ru: {
                 welcomeText: "Добро пожаловать!",
@@ -1633,8 +1596,9 @@
                 signalTitle: "Получить Торговый Сигнал",
                 roundLabel: "РАУНД:",
                 yourIdText: "ID:",
-                gameInstruction: "Выбирайте целые яблоки. Надкушенное яблоко заканчивает игру! Играйте до 7-го раунда.",
+                gameInstruction: "Нажмите кнопку 'Показать яблоки' и выберите целое яблоко. Затем продолжите с помощью кнопки 'Следующий сигнал'.",
                 revealText: "ПОКАЗАТЬ ЯБЛОКИ",
+                nextRoundText: "СЛЕДУЮЩИЙ СИГНАЛ",
                 restartText: "ПОПРОБОВАТЬ СНОВА",
                 waitTitle: "ПОБЕДА!",
                 timerLabel: "ДО СЛЕДУЮЩЕГО СИГНАЛА",
@@ -1665,14 +1629,16 @@
                 inviteInfo: "Каждый приглашенный друг добавляет 5 баллов на ваш баланс",
                 shareTelegramText: "Поделиться в Telegram",
                 copyLinkText: "Копировать Пригласительную Ссылку",
-                successMessage: "✅ Целое яблоко! Переходим на следующий уровень...",
+                successMessage: "✅ Целое яблоко выбрано!",
                 failureMessage: "❌ Надкушенное яблоко! Игра завершена на раунде {round}.",
                 gameWonMessage: "🎉 ПОЗДРАВЛЯЕМ! Вы выиграли на {round}-м раунде!",
                 idRequired: "Пожалуйста, введите ваш ID номер для получения сигналов.",
                 idSaved: "Ваш ID номер успешно сохранен!",
                 inviteSent: "Приглашение успешно отправлено! +5 баллов добавлено.",
                 copied: "Ссылка скопирована!",
-                loading: "Загрузка..."
+                loading: "Загрузка...",
+                selectAppleMessage: "Пожалуйста, выберите целое яблоко!",
+                analyzingSignal: "Анализ сигнала..."
             },
             en: {
                 welcomeText: "Welcome back!",
@@ -1703,8 +1669,9 @@
                 signalTitle: "Get Trading Signal",
                 roundLabel: "ROUND:",
                 yourIdText: "ID:",
-                gameInstruction: "Select whole apples. Bitten apple will end the game! Continue until round 7.",
+                gameInstruction: "Click 'Reveal Apples' button and select a whole apple. Then continue with 'Next Signal' button.",
                 revealText: "REVEAL APPLES",
+                nextRoundText: "NEXT SIGNAL",
                 restartText: "TRY AGAIN",
                 waitTitle: "VICTORY!",
                 timerLabel: "NEXT SIGNAL IN",
@@ -1735,14 +1702,16 @@
                 inviteInfo: "Each invited friend adds 5 points to your balance",
                 shareTelegramText: "Share on Telegram",
                 copyLinkText: "Copy Invite Link",
-                successMessage: "✅ Whole apple! Moving to next level...",
+                successMessage: "✅ Whole apple selected!",
                 failureMessage: "❌ Bitten apple! Game ended at round {round}.",
                 gameWonMessage: "🎉 CONGRATULATIONS! You won at round {round}!",
                 idRequired: "Please enter your ID number to get signals.",
                 idSaved: "Your ID number successfully saved!",
                 inviteSent: "Invitation successfully sent! +5 points added.",
                 copied: "Link copied!",
-                loading: "Loading..."
+                loading: "Loading...",
+                selectAppleMessage: "Please select a whole apple!",
+                analyzingSignal: "Analyzing signal..."
             }
         };
 
@@ -1761,7 +1730,8 @@
         let invitedFriendsVIP = 0;
         const REQUIRED_VIP_FRIENDS = 20;
         let activityLog = [];
-        let lastSelectedRound = 0;
+        let selectedApple = null;
+        let selectedAppleType = null;
 
         // ==================== DOM ELEMENTS ====================
         const languageSelector = document.getElementById('languageSelector');
@@ -1786,6 +1756,7 @@
         const upgradeVipBtn = document.getElementById('upgradeVipBtn');
         const vipInviteBtn = document.getElementById('vipInviteBtn');
         const revealBtn = document.getElementById('revealBtn');
+        const nextRoundBtn = document.getElementById('nextRoundBtn');
         const restartBtn = document.getElementById('restartBtn');
         const shareProfileBtn = document.getElementById('shareProfileBtn');
         const changeProfileIdBtn = document.getElementById('changeProfileIdBtn');
@@ -2044,9 +2015,10 @@
             // Hide wait modal if active
             hideWaitModal();
             
-            gameRound = 1;
             gameActive = false;
             applesRevealed = false;
+            selectedApple = null;
+            selectedAppleType = null;
             createMysteryApples();
             
             addActivity('game_start');
@@ -2058,6 +2030,7 @@
             applesContainer.innerHTML = '';
             if (resultMessage) resultMessage.style.display = 'none';
             if (restartBtn) restartBtn.style.display = 'none';
+            if (nextRoundBtn) nextRoundBtn.style.display = 'none';
             if (revealBtn) {
                 revealBtn.disabled = false;
                 revealBtn.innerHTML = `<i class="fas fa-eye"></i> ${translations[currentLang]?.revealText || 'OLMALARNI KORISH'}`;
@@ -2066,15 +2039,11 @@
             
             if (roundCounter) roundCounter.textContent = gameRound;
             
-            // Create 5 apples in one row
+            // Create 5 mystery apples in one row
             for (let i = 0; i < 5; i++) {
                 const apple = document.createElement('div');
                 apple.className = 'apple mystery-apple';
-                apple.addEventListener('click', function() {
-                    if (!applesRevealed) {
-                        revealApples();
-                    }
-                });
+                apple.dataset.index = i;
                 applesContainer.appendChild(apple);
             }
         }
@@ -2140,77 +2109,121 @@
         }
 
         function selectApple(appleElement) {
-            const appleType = appleElement.dataset.type;
+            if (!gameActive) return;
+            
+            // Remove previous selection
+            if (selectedApple) {
+                selectedApple.classList.remove('selected-apple');
+            }
+            
+            // Select new apple
+            appleElement.classList.add('selected-apple');
+            selectedApple = appleElement;
+            selectedAppleType = appleElement.dataset.type;
+            
+            const t = translations[currentLang] || translations.uz;
+            
+            if (selectedAppleType === 'whole') {
+                if (resultMessage) {
+                    resultMessage.innerHTML = '<span class="signal-success">✅ Butun olma tanlandi! "Keyingi signal" tugmasini bosing.</span>';
+                    resultMessage.style.display = 'block';
+                }
+                
+                // Show next round button
+                if (nextRoundBtn) {
+                    nextRoundBtn.style.display = 'block';
+                }
+                
+            } else {
+                if (resultMessage) {
+                    resultMessage.textContent = t.selectAppleMessage;
+                    resultMessage.style.color = '#ffcc00';
+                    resultMessage.style.display = 'block';
+                }
+                
+                // Hide next round button if shown
+                if (nextRoundBtn) {
+                    nextRoundBtn.style.display = 'none';
+                }
+            }
+        }
+
+        function goToNextRound() {
+            if (!selectedApple || !selectedAppleType) {
+                const t = translations[currentLang] || translations.uz;
+                showNotification(t.selectAppleMessage || 'Iltimos, butun olma tanlang!', 'warning');
+                return;
+            }
+            
+            if (selectedAppleType === 'bitten') {
+                const t = translations[currentLang] || translations.uz;
+                showNotification(t.selectAppleMessage || 'Iltimos, butun olma tanlang!', 'warning');
+                return;
+            }
+            
             gameActive = false;
             
             const t = translations[currentLang] || translations.uz;
             
-            if (appleType === 'bitten') {
-                endRoundValue = gameRound;
-                if (resultMessage) {
-                    resultMessage.textContent = t.failureMessage.replace('{round}', gameRound);
-                    resultMessage.style.color = '#ff3366';
-                    resultMessage.style.display = 'block';
-                }
-                if (restartBtn) {
-                    restartBtn.style.display = 'block';
-                    restartBtn.innerHTML = `<i class="fas fa-redo"></i> ${t.restartText || 'QAYTA URINISH'}`;
-                }
-                addActivity('game_lost', gameRound);
-            } else {
-                if (resultMessage) {
-                    resultMessage.innerHTML = '<span class="signal-success">✅ Butun olma! Keyingi bosqichga o\'tilmoqda...</span>';
-                    resultMessage.style.display = 'block';
+            // Show analyzing animation
+            showHackerAnimation(t.analyzingSignal || 'Signal tahlil qilinmoqda...', 2000);
+            
+            setTimeout(() => {
+                // O'yinni tugatish ehtimolligi (7-raundda 100% tugatish)
+                const roundEndProbabilities = {
+                    1: 0.05,   // 5%
+                    2: 0.15,   // 15%
+                    3: 0.25,   // 25%
+                    4: 0.40,   // 40%
+                    5: 0.60,   // 60%
+                    6: 0.85,   // 85%
+                    7: 1.00    // 100%
+                };
+                
+                const endProbability = roundEndProbabilities[gameRound] || 0;
+                
+                if (Math.random() < endProbability || gameRound >= 7) {
+                    // O'yin tugadi - yutuq
+                    endRoundValue = gameRound;
+                    localStorage.setItem('appleFortuneEndRound', endRoundValue);
+                    
+                    // Yutuq xabarini ko'rsatish
+                    if (resultMessage) {
+                        resultMessage.innerHTML = `<span class="signal-success">🎉 ${t.gameWonMessage.replace('{round}', gameRound)}</span>`;
+                        resultMessage.style.display = 'block';
+                    }
+                    
+                    // Restart tugmasini ko'rsatish
+                    if (restartBtn) {
+                        restartBtn.style.display = 'block';
+                    }
+                    
+                    // Taymerni boshlash
+                    setTimeout(() => {
+                        showWaitModal();
+                        addActivity('game_won', gameRound);
+                    }, 2000);
+                } else {
+                    // Keyingi raundga o'tish
+                    gameRound++;
+                    
+                    if (resultMessage) {
+                        resultMessage.innerHTML = '<span class="signal-success">✅ Keyingi raundga o\'tilmoqda...</span>';
+                        resultMessage.style.display = 'block';
+                    }
+                    
+                    setTimeout(() => {
+                        startGame();
+                        addActivity('game_won', gameRound - 1);
+                    }, 1500);
                 }
                 
-                // Show hacker animation before next round
-                setTimeout(() => {
-                    if (hackerAnimation) {
-                        hackerAnimation.style.display = 'flex';
-                        setTimeout(() => {
-                            if (hackerAnimation) hackerAnimation.style.display = 'none';
-                            
-                            // O'yinni tugatish ehtimolligi (7-raundda 100% tugatish)
-                            const roundEndProbabilities = {
-                                1: 0.05,   // 5%
-                                2: 0.15,   // 15%
-                                3: 0.25,   // 25%
-                                4: 0.40,   // 40%
-                                5: 0.60,   // 60%
-                                6: 0.85,   // 85%
-                                7: 1.00    // 100%
-                            };
-                            
-                            const endProbability = roundEndProbabilities[gameRound] || 0;
-                            
-                            if (Math.random() < endProbability || gameRound >= 7) {
-                                // O'yin tugadi - yutuq
-                                endRoundValue = gameRound;
-                                localStorage.setItem('appleFortuneEndRound', endRoundValue);
-                                
-                                // Yutuq xabarini ko'rsatish
-                                if (resultMessage) {
-                                    resultMessage.innerHTML = `<span class="signal-success">🎉 ${t.gameWonMessage.replace('{round}', gameRound)}</span>`;
-                                    resultMessage.style.display = 'block';
-                                }
-                                
-                                // Taymerni boshlash
-                                setTimeout(() => {
-                                    showWaitModal();
-                                    addActivity('game_won', gameRound);
-                                }, 2000);
-                            } else {
-                                // Keyingi raundga o'tish
-                                gameRound++;
-                                setTimeout(() => {
-                                    startGame();
-                                    addActivity('game_won', gameRound - 1);
-                                }, 1500);
-                            }
-                        }, 2000);
-                    }
-                }, 1000);
-            }
+                // Hide next round button
+                if (nextRoundBtn) {
+                    nextRoundBtn.style.display = 'none';
+                }
+                
+            }, 2000);
         }
 
         // ==================== WAIT MODAL FUNCTIONS ====================
@@ -2298,6 +2311,7 @@
                     waitModalContinueBtn.addEventListener('click', () => {
                         if (countdownTime <= 0) {
                             hideWaitModal();
+                            gameRound = 1;
                             startGame();
                         } else {
                             showNotification('Hali vaqt qolmagan!', 'warning');
@@ -2527,7 +2541,12 @@
                 }
             });
             
+            nextRoundBtn.addEventListener('click', function() {
+                goToNextRound();
+            });
+            
             restartBtn.addEventListener('click', function() {
+                gameRound = 1;
                 startGame();
             });
             
