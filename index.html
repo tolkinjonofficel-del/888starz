@@ -34,6 +34,229 @@
             z-index: -1;
         }
 
+        /* ============ ANIMATIONS ============ */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-8px); }
+        }
+
+        @keyframes textPop {
+            0% {
+                opacity: 0;
+                transform: scale(0.5) translateY(50px);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1.1) translateY(0);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+            50% {
+                opacity: 0.7;
+                transform: scale(1.05);
+            }
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg) scale(0.5);
+                opacity: 0;
+            }
+            70% {
+                transform: rotate(180deg) scale(1.2);
+                opacity: 1;
+            }
+            100% {
+                transform: rotate(360deg) scale(1);
+                opacity: 1;
+            }
+        }
+
+        @keyframes successPulse {
+            0%, 100% {
+                box-shadow: 0 0 0 0 rgba(0, 255, 102, 0.7);
+            }
+            50% {
+                box-shadow: 0 0 0 20px rgba(0, 255, 102, 0);
+            }
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-10px); }
+            75% { transform: translateX(10px); }
+        }
+
+        @keyframes floatUp {
+            0% {
+                opacity: 0;
+                transform: translateY(0) scale(0.5);
+            }
+            50% {
+                opacity: 1;
+                transform: translateY(-30px) scale(1.1);
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(-60px) scale(0.8);
+            }
+        }
+
+        @keyframes confettiFall {
+            0% {
+                transform: translateY(-100px) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(500px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        @keyframes progressBar {
+            0% { width: 0%; }
+            100% { width: 100%; }
+        }
+
+        /* ============ NEXT STAGE ANIMATION ============ */
+        .next-stage-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 2000;
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .animation-text {
+            font-size: 3.5rem;
+            font-weight: 900;
+            margin: 10px 0;
+            text-align: center;
+            opacity: 0;
+        }
+
+        @media (max-width: 768px) {
+            .animation-text {
+                font-size: 2.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .animation-text {
+                font-size: 2rem;
+            }
+        }
+
+        .trade-text {
+            color: #00ccff;
+            text-shadow: 0 0 20px #00ccff;
+        }
+
+        .signals-text {
+            color: #00ff66;
+            text-shadow: 0 0 20px #00ff66;
+        }
+
+        .tayyor-text {
+            color: #ffcc00;
+            text-shadow: 0 0 20px #ffcc00;
+        }
+
+        .next-round-text {
+            font-size: 2rem;
+            color: #ffffff;
+            margin-top: 40px;
+            opacity: 0;
+        }
+
+        @media (max-width: 480px) {
+            .next-round-text {
+                font-size: 1.5rem;
+            }
+        }
+
+        /* ============ PROGRESS BAR ============ */
+        .progress-container {
+            width: 80%;
+            max-width: 300px;
+            height: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 5px;
+            margin: 20px 0;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, #00ccff, #0066ff);
+            border-radius: 5px;
+            width: 0%;
+            transition: width 0.5s ease;
+        }
+
+        /* ============ CONFETTI ============ */
+        .confetti {
+            position: fixed;
+            width: 15px;
+            height: 15px;
+            opacity: 0;
+            z-index: 1999;
+        }
+
+        /* ============ APPLE ANIMATIONS ============ */
+        .apple.selected-whole {
+            animation: successPulse 0.5s ease-out, pulse 1s infinite;
+            border: 3px solid #00ff66 !important;
+            box-shadow: 0 0 20px #00ff66;
+        }
+
+        .apple.selected-bitten {
+            animation: shake 0.5s ease-in-out;
+            border: 3px solid #ff3366 !important;
+            box-shadow: 0 0 20px #ff3366;
+        }
+
+        .apple.revealing {
+            animation: spin 0.8s ease-out;
+        }
+
+        /* ============ STATS ANIMATIONS ============ */
+        .stat-box.updated {
+            animation: pulse 0.5s ease-out;
+        }
+
         /* ============ MAIN CONTAINER ============ */
         .container {
             max-width: 100%;
@@ -62,6 +285,7 @@
             background: linear-gradient(135deg, #00ccff, #0066ff);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            animation: pulse 2s infinite;
         }
 
         .logo-text {
@@ -80,11 +304,6 @@
 
         .section.active {
             display: block;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
         }
 
         /* ============ PROFILE SECTION ============ */
@@ -112,6 +331,7 @@
             align-items: center;
             justify-content: center;
             font-size: 1.5rem;
+            animation: pulse 2s infinite;
         }
 
         .profile-info h2 {
@@ -154,6 +374,11 @@
             padding: 15px;
             text-align: center;
             border: 1px solid rgba(0, 150, 255, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .stat-box:hover {
+            transform: translateY(-5px);
         }
 
         .stat-value {
@@ -196,11 +421,13 @@
             border-radius: 10px;
             color: white;
             font-size: 0.95rem;
+            transition: all 0.3s ease;
         }
 
         .input-field:focus {
             outline: none;
             border-color: #00ccff;
+            box-shadow: 0 0 0 3px rgba(0, 150, 255, 0.2);
         }
 
         .error-message {
@@ -240,12 +467,18 @@
             padding: 15px;
             text-align: center;
             border: 1px solid rgba(0, 150, 255, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
         }
 
         .stat-icon {
             font-size: 1.2rem;
             color: #00ccff;
             margin-bottom: 5px;
+            animation: float 3s ease-in-out infinite;
         }
 
         .promo-banner {
@@ -255,6 +488,7 @@
             margin-bottom: 20px;
             border: 1px solid rgba(255, 204, 0, 0.3);
             text-align: center;
+            animation: pulse 2s infinite;
         }
 
         .promo-title {
@@ -275,6 +509,7 @@
             color: #ffcc00;
             margin: 10px 0;
             letter-spacing: 2px;
+            animation: pulse 1.5s infinite;
         }
 
         .vip-banner {
@@ -320,6 +555,7 @@
             font-size: 1.2rem;
             font-weight: 800;
             color: #ffcc00;
+            animation: pulse 2s infinite;
         }
 
         .game-instruction {
@@ -362,11 +598,6 @@
             animation: float 3s ease-in-out infinite;
         }
 
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-8px); }
-        }
-
         .whole-apple {
             background-image: url('https://i.pinimg.com/736x/6a/aa/19/6aaa196961f40afd21cf9d21824f137e.jpg');
             border: 2px solid #ffcc00;
@@ -394,9 +625,19 @@
             color: white;
         }
 
+        .btn-reveal:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 204, 102, 0.3);
+        }
+
         .btn-restart {
             background: linear-gradient(135deg, #ff3366, #cc0044);
             color: white;
+        }
+
+        .btn-restart:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(255, 51, 102, 0.3);
         }
 
         .result-message {
@@ -430,6 +671,12 @@
             padding: 12px;
             background: rgba(255, 255, 255, 0.05);
             border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .vip-feature:hover {
+            transform: translateX(10px);
+            background: rgba(255, 215, 0, 0.1);
         }
 
         .vip-feature i {
@@ -445,6 +692,7 @@
             margin: 20px 0;
             text-align: center;
             border: 2px solid #ffd700;
+            animation: pulse 2s infinite;
         }
 
         .vip-counter-value {
@@ -468,6 +716,12 @@
             justify-content: center;
             gap: 10px;
             margin-top: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .vip-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(255, 215, 0, 0.3);
         }
 
         /* ============ BONUS SECTION ============ */
@@ -491,6 +745,12 @@
             padding: 12px;
             background: rgba(255, 255, 255, 0.05);
             border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .bonus-item:hover {
+            transform: translateX(10px);
+            background: rgba(0, 255, 153, 0.1);
         }
 
         .bonus-item i {
@@ -546,6 +806,7 @@
             padding: 20px;
             text-align: center;
             margin: 20px 0;
+            animation: pulse 2s infinite;
         }
 
         .timer-label {
@@ -644,6 +905,7 @@
         .nav-btn.active {
             color: #00ccff;
             background: rgba(0, 100, 255, 0.2);
+            transform: translateY(-5px);
         }
 
         .nav-btn:hover {
@@ -709,6 +971,21 @@
 <body>
     <!-- Background Effect -->
     <div class="bg-effect"></div>
+
+    <!-- Next Stage Animation Overlay -->
+    <div class="next-stage-animation" id="nextStageAnimation">
+        <div class="animation-text trade-text">TRADE</div>
+        <div class="animation-text signals-text">SIGNALS</div>
+        <div class="animation-text tayyor-text">TAYYOR</div>
+        
+        <div class="progress-container">
+            <div class="progress-bar" id="animationProgressBar"></div>
+        </div>
+        
+        <div class="next-round-text" id="nextRoundText">
+            Keyingi bosqichga o'tilmoqda...
+        </div>
+    </div>
 
     <!-- Main Container -->
     <div class="container" id="mainContainer">
@@ -1070,6 +1347,11 @@
             const navButtons = document.querySelectorAll('.nav-btn');
             const sections = document.querySelectorAll('.section');
             
+            // Animation elements
+            const nextStageAnimation = document.getElementById('nextStageAnimation');
+            const animationProgressBar = document.getElementById('animationProgressBar');
+            const nextRoundText = document.getElementById('nextRoundText');
+            
             // Profile section elements
             const userIdInput = document.getElementById('userIdInput');
             const idError = document.getElementById('idError');
@@ -1228,6 +1510,20 @@
                 if (vipCounterValue) {
                     vipCounterValue.textContent = invitedFriends;
                 }
+                
+                // Update stats animation
+                updateStatsWithAnimation();
+            }
+
+            // Update stats with animation
+            function updateStatsWithAnimation() {
+                const statBoxes = document.querySelectorAll('.stat-box');
+                statBoxes.forEach(box => {
+                    box.classList.add('updated');
+                    setTimeout(() => {
+                        box.classList.remove('updated');
+                    }, 500);
+                });
             }
 
             // Validate user ID
@@ -1343,30 +1639,37 @@
                     [apples[i], apples[j]] = [apples[j], apples[i]];
                 }
                 
-                // Create apples
+                // Create apples with reveal animation
                 for (let i = 0; i < totalApples; i++) {
                     const apple = document.createElement('div');
                     const appleType = apples[i];
                     
-                    apple.className = `apple ${appleType === 'whole' ? 'whole-apple' : 'bitten-apple'}`;
+                    apple.className = `apple ${appleType === 'whole' ? 'whole-apple' : 'bitten-apple'} revealing`;
                     apple.dataset.index = i;
                     apple.dataset.type = appleType;
                     
-                    apple.addEventListener('click', function() {
-                        if (!gameActive) return;
-                        selectApple(this);
-                    });
+                    // Add click listener after animation
+                    setTimeout(() => {
+                        apple.classList.remove('revealing');
+                        apple.addEventListener('click', function() {
+                            if (!gameActive) return;
+                            selectApple(this);
+                        });
+                    }, 800);
                     
                     applesContainer.appendChild(apple);
                 }
             }
 
-            // Select apple
+            // Select apple with animation
             function selectApple(appleElement) {
                 const appleType = appleElement.dataset.type;
                 gameActive = false;
                 
                 if (appleType === 'bitten') {
+                    // Bitten apple animation
+                    appleElement.classList.add('selected-bitten');
+                    
                     if (resultMessage) {
                         resultMessage.textContent = `❌ Tishlangan olma! O'yin ${currentRound}-raundda tugadi.`;
                         resultMessage.style.color = '#ff3366';
@@ -1377,31 +1680,139 @@
                     // Update signals used
                     signalsUsed++;
                     localStorage.setItem('appleFortuneSignalsUsed', signalsUsed.toString());
+                    
+                    // Update stats with animation
+                    setTimeout(() => {
+                        loadUserProfile();
+                    }, 1000);
                 } else {
+                    // Whole apple animation
+                    appleElement.classList.add('selected-whole');
+                    
                     if (resultMessage) {
-                        resultMessage.innerHTML = '<span style="color: #00ff66; font-weight: bold;">✅ Butun olma! Keyingi bosqichga o\'tish...</span>';
+                        resultMessage.innerHTML = '<span style="color: #00ff66; font-weight: bold;">✅ Butun olma!</span>';
                         resultMessage.style.display = 'block';
                     }
                     
+                    // Show next stage animation
                     setTimeout(() => {
-                        if (currentRound < 6) {
-                            currentRound++;
-                            startGame();
-                        } else {
-                            // End game and show wait section
-                            endRound.textContent = currentRound;
-                            localStorage.setItem('appleFortuneEndRound', currentRound);
-                            
-                            // Update signals used
-                            signalsUsed++;
-                            localStorage.setItem('appleFortuneSignalsUsed', signalsUsed.toString());
-                            
-                            // Update profile
-                            loadUserProfile();
-                            
-                            showWaitSection();
+                        showNextStageAnimation();
+                    }, 800);
+                }
+            }
+
+            // Show next stage animation
+            function showNextStageAnimation() {
+                if (!nextStageAnimation) return;
+                
+                nextStageAnimation.style.display = 'flex';
+                
+                // Reset animations
+                const animationTexts = nextStageAnimation.querySelectorAll('.animation-text');
+                animationTexts.forEach(text => {
+                    text.style.animation = 'none';
+                    text.style.opacity = '0';
+                });
+                if (nextRoundText) {
+                    nextRoundText.style.animation = 'none';
+                    nextRoundText.style.opacity = '0';
+                }
+                if (animationProgressBar) {
+                    animationProgressBar.style.width = '0%';
+                }
+                
+                // Start animations
+                setTimeout(() => {
+                    // Animate TRADE
+                    const tradeText = document.querySelector('.trade-text');
+                    if (tradeText) {
+                        tradeText.style.animation = 'textPop 1s ease-out forwards';
+                    }
+                }, 300);
+                
+                setTimeout(() => {
+                    // Animate SIGNALS
+                    const signalsText = document.querySelector('.signals-text');
+                    if (signalsText) {
+                        signalsText.style.animation = 'textPop 1s ease-out forwards';
+                    }
+                }, 1500);
+                
+                setTimeout(() => {
+                    // Animate TAYYOR
+                    const tayyorText = document.querySelector('.tayyor-text');
+                    if (tayyorText) {
+                        tayyorText.style.animation = 'textPop 1s ease-out forwards';
+                    }
+                }, 2700);
+                
+                setTimeout(() => {
+                    // Start progress bar
+                    if (animationProgressBar) {
+                        animationProgressBar.style.transition = 'width 2s ease';
+                        animationProgressBar.style.width = '100%';
+                    }
+                    
+                    // Animate next round text
+                    if (nextRoundText) {
+                        nextRoundText.textContent = currentRound < 6 ? 
+                            `RAUND ${currentRound + 1} GA O'TILMOQDA...` : 
+                            'TAYYORLANMOQDA...';
+                        nextRoundText.style.animation = 'fadeInUp 1s ease-out forwards';
+                    }
+                    
+                    // Create confetti
+                    createConfetti();
+                }, 3700);
+                
+                // Hide animation and proceed to next round
+                setTimeout(() => {
+                    nextStageAnimation.style.display = 'none';
+                    
+                    if (currentRound < 6) {
+                        currentRound++;
+                        startGame();
+                    } else {
+                        // End game and show wait section
+                        endRound.textContent = currentRound;
+                        localStorage.setItem('appleFortuneEndRound', currentRound);
+                        
+                        // Update signals used
+                        signalsUsed++;
+                        localStorage.setItem('appleFortuneSignalsUsed', signalsUsed.toString());
+                        
+                        // Update profile
+                        loadUserProfile();
+                        
+                        showWaitSection();
+                    }
+                }, 6000);
+            }
+
+            // Create confetti animation
+            function createConfetti() {
+                const colors = ['#00ccff', '#00ff66', '#ffcc00', '#ff3366', '#9966ff'];
+                
+                for (let i = 0; i < 50; i++) {
+                    const confetti = document.createElement('div');
+                    confetti.className = 'confetti';
+                    confetti.style.left = Math.random() * 100 + 'vw';
+                    confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                    confetti.style.width = Math.random() * 10 + 5 + 'px';
+                    confetti.style.height = Math.random() * 10 + 5 + 'px';
+                    confetti.style.borderRadius = Math.random() > 0.5 ? '50%' : '0';
+                    
+                    document.body.appendChild(confetti);
+                    
+                    const animationDuration = Math.random() * 3 + 2;
+                    confetti.style.animation = `confettiFall ${animationDuration}s ease-out forwards`;
+                    confetti.style.animationDelay = Math.random() * 1 + 's';
+                    
+                    setTimeout(() => {
+                        if (confetti.parentNode) {
+                            confetti.parentNode.removeChild(confetti);
                         }
-                    }, 1500);
+                    }, 4000);
                 }
             }
 
