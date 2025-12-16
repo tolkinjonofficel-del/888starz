@@ -39,133 +39,271 @@
 
         /* ============ USER MANUAL SECTION ============ */
         .manual-section {
-            background: rgba(20, 25, 60, 0.8);
-            border-radius: 15px;
-            padding: 20px;
+            background: rgba(10, 15, 40, 0.95);
+            border-radius: 20px;
+            padding: 0;
             margin-bottom: 20px;
-            border: 2px solid rgba(0, 150, 255, 0.3);
+            border: 2px solid rgba(0, 150, 255, 0.4);
             display: none;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .manual-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #0066ff, #00ccff, #0066ff);
         }
 
         .manual-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px;
-            padding-bottom: 15px;
-            border-bottom: 1px solid rgba(0, 150, 255, 0.2);
+            background: linear-gradient(135deg, rgba(0, 102, 255, 0.2), rgba(0, 200, 255, 0.1));
+            padding: 20px;
+            text-align: center;
+            border-bottom: 1px solid rgba(0, 150, 255, 0.3);
+            position: relative;
         }
 
         .manual-title {
-            font-size: 1.2rem;
+            font-size: 1.4rem;
             color: #00ccff;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            text-shadow: 0 0 15px rgba(0, 204, 255, 0.3);
+        }
+
+        .manual-title i {
+            font-size: 1.6rem;
+            color: #ffcc00;
+        }
+
+        .manual-content-container {
+            max-height: 500px;
+            overflow-y: auto;
+            padding: 25px;
+            padding-right: 15px;
+        }
+
+        .manual-content-container::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .manual-content-container::-webkit-scrollbar-track {
+            background: rgba(0, 50, 100, 0.2);
+            border-radius: 10px;
+        }
+
+        .manual-content-container::-webkit-scrollbar-thumb {
+            background: linear-gradient(135deg, #00ccff, #0066ff);
+            border-radius: 10px;
+        }
+
+        .manual-section h3 {
+            color: #ffcc00;
+            margin: 20px 0 15px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid rgba(255, 204, 0, 0.3);
+        }
+
+        .manual-section h3 i {
+            font-size: 1.2rem;
+        }
+
+        .manual-section p {
+            color: #cce5ff;
+            margin-bottom: 15px;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .manual-section ul {
+            padding-left: 25px;
+            margin-bottom: 20px;
+        }
+
+        .manual-section li {
+            color: #a0d2ff;
+            margin-bottom: 10px;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            position: relative;
+            padding-left: 10px;
+        }
+
+        .manual-section li::before {
+            content: '•';
+            color: #00ccff;
+            font-size: 1.2rem;
+            position: absolute;
+            left: -15px;
+            top: -2px;
+        }
+
+        .warning-box {
+            background: linear-gradient(135deg, rgba(255, 100, 0, 0.15), rgba(255, 150, 0, 0.1));
+            border: 2px solid rgba(255, 150, 0, 0.4);
+            border-radius: 15px;
+            padding: 20px;
+            margin: 20px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .warning-box::before {
+            content: '⚠️';
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 1.5rem;
+            opacity: 0.2;
+        }
+
+        .warning-box h4 {
+            color: #ff9900;
+            margin-bottom: 12px;
+            font-size: 1rem;
             font-weight: 700;
             display: flex;
             align-items: center;
             gap: 10px;
         }
 
-        .close-manual {
-            background: rgba(255, 50, 50, 0.2);
-            border: 1px solid rgba(255, 100, 100, 0.3);
-            border-radius: 8px;
-            width: 36px;
-            height: 36px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #ff6666;
-            cursor: pointer;
-        }
-
-        .manual-content {
-            max-height: 400px;
-            overflow-y: auto;
-            padding-right: 10px;
-        }
-
-        .manual-content::-webkit-scrollbar {
-            width: 6px;
-        }
-
-        .manual-content::-webkit-scrollbar-track {
-            background: rgba(0, 50, 100, 0.1);
-            border-radius: 10px;
-        }
-
-        .manual-content::-webkit-scrollbar-thumb {
-            background: rgba(0, 150, 255, 0.3);
-            border-radius: 10px;
-        }
-
-        .manual-section h3 {
-            color: #ffcc00;
-            margin: 15px 0 10px;
-            font-size: 1rem;
-        }
-
-        .manual-section p {
-            color: #a0d2ff;
-            margin-bottom: 12px;
-            font-size: 0.9rem;
-            line-height: 1.5;
-        }
-
-        .manual-section ul {
-            padding-left: 20px;
-            margin-bottom: 15px;
-        }
-
-        .manual-section li {
-            color: #a0d2ff;
-            margin-bottom: 8px;
-            font-size: 0.9rem;
-            line-height: 1.4;
-        }
-
-        .warning-box {
-            background: rgba(255, 100, 0, 0.1);
-            border: 1px solid rgba(255, 150, 0, 0.3);
-            border-radius: 10px;
-            padding: 15px;
-            margin: 15px 0;
-        }
-
-        .warning-box h4 {
-            color: #ff9900;
-            margin-bottom: 8px;
-            font-size: 0.95rem;
+        .warning-box h4 i {
+            font-size: 1.2rem;
         }
 
         .success-box {
-            background: rgba(0, 200, 100, 0.1);
-            border: 1px solid rgba(0, 255, 150, 0.3);
-            border-radius: 10px;
-            padding: 15px;
-            margin: 15px 0;
+            background: linear-gradient(135deg, rgba(0, 200, 100, 0.15), rgba(0, 255, 150, 0.1));
+            border: 2px solid rgba(0, 255, 150, 0.4);
+            border-radius: 15px;
+            padding: 20px;
+            margin: 20px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .success-box::before {
+            content: '✅';
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 1.5rem;
+            opacity: 0.2;
         }
 
         .success-box h4 {
             color: #00ff99;
-            margin-bottom: 8px;
-            font-size: 0.95rem;
+            margin-bottom: 12px;
+            font-size: 1rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .success-box h4 i {
+            font-size: 1.2rem;
+        }
+
+        .manual-footer {
+            background: linear-gradient(135deg, rgba(0, 102, 255, 0.2), rgba(0, 200, 255, 0.1));
+            padding: 20px;
+            border-top: 1px solid rgba(0, 150, 255, 0.3);
+            display: flex;
+            gap: 15px;
         }
 
         .manual-btn {
-            background: linear-gradient(135deg, #00ccff, #0066ff);
+            flex: 1;
             border: none;
-            border-radius: 10px;
-            padding: 12px;
-            color: white;
-            font-size: 0.9rem;
-            font-weight: 600;
+            border-radius: 12px;
+            padding: 16px;
+            font-size: 0.95rem;
+            font-weight: 700;
             cursor: pointer;
-            width: 100%;
-            margin-top: 15px;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 8px;
+            gap: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .manual-btn-primary {
+            background: linear-gradient(135deg, #00ccff, #0066ff);
+            color: white;
+            box-shadow: 0 5px 15px rgba(0, 102, 255, 0.3);
+        }
+
+        .manual-btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 102, 255, 0.4);
+        }
+
+        .manual-btn-secondary {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: white;
+        }
+
+        .manual-btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-3px);
+        }
+
+        .manual-btn-close {
+            background: rgba(255, 50, 50, 0.2);
+            border: 1px solid rgba(255, 100, 100, 0.3);
+            color: #ff6666;
+        }
+
+        .manual-btn-close:hover {
+            background: rgba(255, 50, 50, 0.3);
+            transform: translateY(-3px);
+        }
+
+        /* ============ MANUAL ACCESS BUTTON ============ */
+        .manual-access-btn {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #00ccff, #0066ff);
+            border: none;
+            border-radius: 50%;
+            color: white;
+            font-size: 1.2rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            box-shadow: 0 5px 20px rgba(0, 102, 255, 0.4);
+            transition: all 0.3s ease;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 5px 20px rgba(0, 102, 255, 0.4); }
+            50% { box-shadow: 0 5px 30px rgba(0, 102, 255, 0.6); }
+            100% { box-shadow: 0 5px 20px rgba(0, 102, 255, 0.4); }
+        }
+
+        .manual-access-btn:hover {
+            transform: scale(1.1) rotate(5deg);
+            box-shadow: 0 8px 25px rgba(0, 102, 255, 0.6);
         }
 
         /* ============ LANGUAGE SELECTOR ============ */
@@ -249,6 +387,7 @@
 
         .lang-select-btn:hover {
             background: rgba(0, 150, 255, 0.25);
+            transform: translateY(-2px);
         }
 
         /* ============ HACKER ANIMATION ============ */
@@ -803,21 +942,6 @@
             gap: 5px;
         }
 
-        .manual-btn-header {
-            background: rgba(0, 200, 100, 0.15);
-            border: 1px solid rgba(0, 255, 150, 0.3);
-            border-radius: 8px;
-            padding: 8px 12px;
-            color: #00ff99;
-            font-size: 0.8rem;
-            font-weight: 600;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-            margin-left: 10px;
-        }
-
         /* ============ MAIN ACTIONS ============ */
         .main-actions {
             display: grid;
@@ -1298,6 +1422,14 @@
             .quick-share-buttons {
                 grid-template-columns: repeat(2, 1fr);
             }
+            
+            .manual-access-btn {
+                top: 30px;
+                right: 30px;
+                width: 60px;
+                height: 60px;
+                font-size: 1.4rem;
+            }
         }
 
         @media (max-width: 380px) {
@@ -1317,6 +1449,10 @@
             
             .stats-grid {
                 grid-template-columns: 1fr;
+            }
+            
+            .manual-footer {
+                flex-direction: column;
             }
         }
 
@@ -1341,12 +1477,25 @@
                 width: 50px;
                 height: 50px;
             }
+            
+            .manual-access-btn {
+                width: 45px;
+                height: 45px;
+                font-size: 1rem;
+                top: 15px;
+                right: 15px;
+            }
         }
     </style>
 </head>
 <body>
     <!-- Background Effect -->
     <div class="bg-effect"></div>
+
+    <!-- Manual Access Button -->
+    <button class="manual-access-btn hidden" id="manualAccessBtn">
+        <i class="fas fa-book"></i>
+    </button>
 
     <!-- Hacker Animation -->
     <div class="hacker-animation" id="hackerAnimation">
@@ -1397,15 +1546,9 @@
                 <div class="logo-icon">🍎</div>
                 <div class="logo-text">Apple Fortune</div>
             </div>
-            <div style="display: flex; align-items: center;">
-                <div class="language-switcher hidden" id="languageSwitcher">
-                    <span>🌐</span>
-                    <span id="currentLanguage">UZ</span>
-                </div>
-                <div class="manual-btn-header hidden" id="manualBtnHeader">
-                    <i class="fas fa-book"></i>
-                    <span id="manualBtnText">QO'LLANMA</span>
-                </div>
+            <div class="language-switcher hidden" id="languageSwitcher">
+                <span>🌐</span>
+                <span id="currentLanguage">UZ</span>
             </div>
         </div>
 
@@ -1416,19 +1559,22 @@
                     <i class="fas fa-book"></i>
                     <span id="manualTitle">Foydalanuvchi Qo'llanmasi</span>
                 </div>
-                <div class="close-manual" id="closeManual">
-                    <i class="fas fa-times"></i>
-                </div>
             </div>
             
-            <div class="manual-content" id="manualContent">
+            <div class="manual-content-container" id="manualContent">
                 <!-- Content will be dynamically generated -->
             </div>
             
-            <button class="manual-btn" id="closeManualBtn">
-                <i class="fas fa-check"></i>
-                <span id="closeManualText">QO'LLANMANI YOPISH</span>
-            </button>
+            <div class="manual-footer">
+                <button class="manual-btn manual-btn-primary" id="registerManualBtn">
+                    <i class="fas fa-user-plus"></i>
+                    <span id="registerManualText">RO'YXATDAN OTISH</span>
+                </button>
+                <button class="manual-btn manual-btn-secondary" id="closeManualBtn">
+                    <i class="fas fa-times"></i>
+                    <span id="closeManualText">YOPISH</span>
+                </button>
+            </div>
         </div>
 
         <!-- VIP Section -->
@@ -1683,9 +1829,9 @@
             uz: {
                 languagePrompt: "AI savdo signallari platformasi",
                 currentLanguage: "UZ",
-                manualBtnText: "QO'LLANMA",
                 manualTitle: "Foydalanuvchi Qo'llanmasi",
-                closeManualText: "QO'LLANMANI YOPISH",
+                registerManualText: "RO'YXATDAN OTISH",
+                closeManualText: "YOPISH",
                 signalText: "SIGNAL OLISH",
                 registerText: "RO'YXATDAN OTISH",
                 vipText: "VIP SIGNAL",
@@ -1737,9 +1883,9 @@
             ru: {
                 languagePrompt: "Платформа AI торговых сигналов",
                 currentLanguage: "RU",
-                manualBtnText: "РУКОВОДСТВО",
                 manualTitle: "Руководство пользователя",
-                closeManualText: "ЗАКРЫТЬ РУКОВОДСТВО",
+                registerManualText: "РЕГИСТРАЦИЯ",
+                closeManualText: "ЗАКРЫТЬ",
                 signalText: "ПОЛУЧИТЬ СИГНАЛ",
                 registerText: "РЕГИСТРАЦИЯ",
                 vipText: "VIP СИГНАЛ",
@@ -1791,9 +1937,9 @@
             en: {
                 languagePrompt: "AI trading signals platform",
                 currentLanguage: "EN",
-                manualBtnText: "MANUAL",
                 manualTitle: "User Manual",
-                closeManualText: "CLOSE MANUAL",
+                registerManualText: "REGISTER",
+                closeManualText: "CLOSE",
                 signalText: "GET SIGNAL",
                 registerText: "REGISTER",
                 vipText: "VIP SIGNAL",
@@ -1841,222 +1987,51 @@
                 vipRequirements: "VIP SIGNAL REQUIREMENTS",
                 vipRequirementDesc: "To get VIP signal you need to invite 20 friends.",
                 vipShareTip: "With each invited friend you get closer to VIP signal!"
-            },
-            bn: {
-                languagePrompt: "AI ট্রেডিং সিগন্যাল প্ল্যাটফর্ম",
-                currentLanguage: "BN",
-                manualBtnText: "ম্যানুয়াল",
-                manualTitle: "ব্যবহারকারী ম্যানুয়াল",
-                closeManualText: "ম্যানুয়াল বন্ধ করুন",
-                signalText: "সিগন্যাল পান",
-                registerText: "নিবন্ধন",
-                vipText: "ভিআইপি সিগন্যাল",
-                downloadText: "এপিকে",
-                vipTitle: "ভিআইপি সিগন্যাল পান!",
-                vipFeature1: "98.5% সঠিক সিগন্যাল",
-                vipFeature2: "সরাসরি অ্যাকাউন্ট",
-                vipFeature3: "এক্সক্লুসিভ বোনাস",
-                vipBtnText: "ভিআইপি সিগন্যাল পান",
-                vipInviteTitle: "ভিআইপি সিগন্যাল পেতে",
-                vipCounterLabel: "আমন্ত্রিত বন্ধু",
-                vipCounterTotal: "/ ৫",
-                vipInviteBtnText: "বন্ধুদের আমন্ত্রণ করুন",
-                vipInviteNote: "💡 নোট: ৫ জন বন্ধু আমন্ত্রণ করুন এবং ভিআইপি সিগন্যাল পান!",
-                promoTitle: "AIFUT - ২০০% বোনাস",
-                promoDesc: "প্রোমো কোড দিয়ে নিবন্ধন করুন এবং ২০০% বোনাস পান",
-                promoBtnText: "বোনাস পান",
-                statLabel1: "সঠিকতা",
-                statLabel2: "ব্যবহারকারী",
-                statLabel3: "আজকের লাভ",
-                statLabel4: "সিগন্যাল",
-                loginTitle: "আপনার আইডি নম্বর দিন",
-                loginDesc: "AIFUT প্রোমো কোড দিয়ে নিবন্ধন করুন, উচ্চ সঠিকতার সিগন্যাল আপনার হবে!",
-                idLabel: "আইডি নম্বর",
-                idError: "আইডি নম্বর ভুল ফরম্যাট",
-                startBtnText: "সিগন্যাল পান",
-                roundLabel: "রাউন্ড:",
-                yourIdText: "আইডি:",
-                gameInstruction: "পুরো আপেল নির্বাচন করুন। কামড়ে থাকা আপেল খেলা শেষ করবে!",
-                revealText: "আপেল দেখুন",
-                restartText: "আবার চেষ্টা করুন",
-                waitTitle: "পরবর্তী সিগন্যাল পর্যন্ত",
-                timerLabel: "সময় বাকি",
-                shareTitle: "বন্ধুদের আমন্ত্রণ করুন এবং সময় কমিয়ে নিন!",
-                shareText: "বন্ধুদের আমন্ত্রণ করুন",
-                changeIdText: "আইডি পরিবর্তন",
-                bonusTitle: "বোনাস এবং সুযোগ-সুবিধা",
-                bonusBtnText: "বোনাস পান",
-                floatingRegisterText: "নিবন্ধন",
-                successMessage: "✅ পুরো আপেল! সিগন্যাল বিশ্লেষণ করা হচ্ছে...",
-                failureMessage: "❌ কামড়ে থাকা আপেল! {round} রাউন্ডে খেলা শেষ।",
-                quickShareTitle: "🚀 আপনার বন্ধুদের আমন্ত্রণ করুন",
-                quickShareNote: "💡 নোট: বন্ধুদের আমন্ত্রণ করলে ৩০ মিনিটের ছাড় এবং বোনাস পাবেন!",
-                vipSignalTitle: "ভিআইপি সিগন্যাল পান",
-                vipRequirements: "ভিআইপি সিগন্যালের শর্ত",
-                vipRequirementDesc: "ভিআইপি সিগন্যাল পেতে আপনার ২০ জন বন্ধুকে আমন্ত্রণ করতে হবে।",
-                vipShareTip: "প্রতিটি আমন্ত্রিত বন্ধুর সাথে আপনি ভিআইপি সিগন্যালের কাছাকাছি হবেন!"
-            },
-            ar: {
-                languagePrompt: "منصة إشارات التداول بالذكاء الاصطناعي",
-                currentLanguage: "AR",
-                manualBtnText: "الدليل",
-                manualTitle: "دليل المستخدم",
-                closeManualText: "إغلاق الدليل",
-                signalText: "الحصول على إشارة",
-                registerText: "تسجيل",
-                vipText: "إشارة VIP",
-                downloadText: "APK",
-                vipTitle: "احصل على إشارة VIP!",
-                vipFeature1: "98.5% إشارة دقيقة",
-                vipFeature2: "حساب مباشر",
-                vipFeature3: "مكافآت حصرية",
-                vipBtnText: "احصل على إشارة VIP",
-                vipInviteTitle: "للحصول على إشارة VIP",
-                vipCounterLabel: "الأصدقاء المدعوين",
-                vipCounterTotal: "/ 5",
-                vipInviteBtnText: "دعوة الأصدقاء",
-                vipInviteNote: "💡 ملاحظة: ادعُ 5 أصدقاء للحصول على إشارة VIP!",
-                promoTitle: "AIFUT - 200% مكافأة",
-                promoDesc: "سجل باستخدام الرمز الترويجي واحصل على 200% مكافأة",
-                promoBtnText: "الحصول على مكافأة",
-                statLabel1: "الدقة",
-                statLabel2: "المستخدمين",
-                statLabel3: "ربح اليوم",
-                statLabel4: "الإشارات",
-                loginTitle: "أدخل رقم الهوية الخاص بك",
-                loginDesc: "إذا سجلت باستخدام الرمز الترويجي AIFUT، فإن إشارات الدقة العالية لك!",
-                idLabel: "رقم الهوية",
-                idError: "تنسيق رقم الهوية غير صالح",
-                startBtnText: "الحصول على إشارة",
-                roundLabel: "الجولة:",
-                yourIdText: "الهوية:",
-                gameInstruction: "اختر التفاح الكامل. التفاحة المقطوعة ستنهي اللعبة!",
-                revealText: "كشف التفاح",
-                restartText: "حاول مرة أخرى",
-                waitTitle: "حتى الإشارة التالية",
-                timerLabel: "الوقت المتبقي",
-                shareTitle: "ادعُ أصدقاءك وقلل الوقت!",
-                shareText: "دعوة الأصدقاء",
-                changeIdText: "تغيير الهوية",
-                bonusTitle: "المكافآت والامتيازات",
-                bonusBtnText: "الحصول على مكافأة",
-                floatingRegisterText: "تسجيل",
-                successMessage: "✅ تفاحة كاملة! يتم تحليل الإشارة...",
-                failureMessage: "❌ تفاحة مقطوعة! انتهت اللعبة في الجولة {round}.",
-                quickShareTitle: "🚀 ادعُ أصدقاءك",
-                quickShareNote: "💡 ملاحظة: إذا دعوت أصدقاء، ستحصل على خصم 30 دقيقة ومكافآت!",
-                vipSignalTitle: "الحصول على إشارة VIP",
-                vipRequirements: "متطلبات إشارة VIP",
-                vipRequirementDesc: "للحصول على إشارة VIP تحتاج إلى دعوة 20 صديقًا.",
-                vipShareTip: "مع كل صديق مدعو تقترب من إشارة VIP!"
-            },
-            ky: {
-                languagePrompt: "AI соода сигналдары платформасы",
-                currentLanguage: "KG",
-                manualBtnText: "Колдонуучу Колдонмосу",
-                manualTitle: "Колдонуучунун Колдонмосу",
-                closeManualText: "КОЛДОНМОНУ ЖАПУУ",
-                signalText: "СИГНАЛ АЛУУ",
-                registerText: "КАКТАЛУУ",
-                vipText: "ВИП СИГНАЛ",
-                downloadText: "APK",
-                vipTitle: "ВИП СИГНАЛ АЛЫҢЫЗ!",
-                vipFeature1: "98.5% так сигнал",
-                vipFeature2: "Түз эсеп",
-                vipFeature3: "Өзгөчө бонус",
-                vipBtnText: "ВИП СИГНАЛ АЛУУ",
-                vipInviteTitle: "ВИП СИГНАЛ АЛУУ ҮЧҮН",
-                vipCounterLabel: "ЧАКЫРЫЛГАН ДОСТОР",
-                vipCounterTotal: "/ 5",
-                vipInviteBtnText: "ДОСТОРДУ ЧАКЫРУУ",
-                vipInviteNote: "💡 Эскертүү: 5 досту чакырыңыз, ВИП сигнал алуу үчүн!",
-                promoTitle: "AIFUT - 200% БОНУС",
-                promoDesc: "Промокод менен катталып, 200% бонус алыңыз",
-                promoBtnText: "БОНУС АЛУУ",
-                statLabel1: "ТАКТЫК",
-                statLabel2: "КОЛДОНУУЧУ",
-                statLabel3: "БҮГҮНКҮ КИРЕШЕ",
-                statLabel4: "СИГНАЛДАР",
-                loginTitle: "ID НОМЕРУҢУЗДУ КИРГИЗИҢИЗ",
-                loginDesc: "AIFUT промокоду менен катталсаңыз, жогорку тактыктагы сигналдар сиздики!",
-                idLabel: "ID НОМЕРУ",
-                idError: "ID номери туура эмес формат",
-                startBtnText: "СИГНАЛ АЛУУ",
-                roundLabel: "РАУНД:",
-                yourIdText: "ID:",
-                gameInstruction: "Толук алмаларды тандаңыз. Тиштелген алма оюнду бүтөт!",
-                revealText: "АЛМАЛАРДЫ КӨРҮҮ",
-                restartText: "КАТАЛАП КӨРҮҮ",
-                waitTitle: "КЕЛЕЧЕК СИГНАЛГА ЧЕЙИН",
-                timerLabel: "КАЛГАН УБАКЫТ",
-                shareTitle: "Досторду чакырып, убакытты кыскартыңыз!",
-                shareText: "ДОСТОРДУ ЧАКЫРУУ",
-                changeIdText: "ID ӨЗГӨРТҮҮ",
-                bonusTitle: "БОНУСТАР ЖАНА ЭРКИНДИКТЕР",
-                bonusBtnText: "БОНУС АЛУУ",
-                floatingRegisterText: "КАКТАЛУУ",
-                successMessage: "✅ Толук алма! Сигнал талданууда...",
-                failureMessage: "❌ Тиштелген алма! Оюн {round}-раундда аяктады.",
-                quickShareTitle: "🚀 ДОСТОРУҢУЗДУ ЧАКЫРЫҢЫЗ",
-                quickShareNote: "💡 Эскертүү: Достуңузду чакырсаңыз, 30 мүнөттүк арзандатуу жана бонустар аласыз!",
-                vipSignalTitle: "ВИП СИГНАЛ АЛУУ",
-                vipRequirements: "ВИП СИГНАЛ ТАЛАПТАРЫ",
-                vipRequirementDesc: "ВИП сигнал алуу үчүн 20 досту чакырышыңыз керек.",
-                vipShareTip: "Ар бир чакырылган дос менен сиз ВИП сигналга жакындашасыз!"
             }
         };
 
         // ==================== USER MANUAL CONTENT ====================
         const manualContent = {
             uz: `
-                <h3>📋 Platformaga Kirish</h3>
-                <p><strong>Apple Fortune</strong> - Bu AI (Sun'iy Intellekt) asosida ishlaydigan professional savdo signallari platformasi. Platforma kriptovalyuta va Forex bozorlarida yuqori aniqlikdagi savdo signallarini taqdim etadi.</p>
-                
-                <h3>🚀 Tez Boshlash</h3>
-                <p><strong>1. Ro'yxatdan o'tish:</strong></p>
-                <ul>
-                    <li><strong>Promokod kiritish:</strong> <code>AIFUT</code> promokodini kiritish (200% bonus olish uchun)</li>
-                    <li><strong>To'liq ro'yxatdan o'tish:</strong> <a href="https://superlative-twilight-47ef34.netlify.app/" target="_blank" style="color: #00ccff;">Bu havola orqali</a> to'liq ro'yxatdan o'ting</li>
-                    <li><strong>ID olish:</strong> Ro'yxatdan o'tgandan so'ng shaxsiy ID raqamingizni oling</li>
-                </ul>
-                
-                <p><strong>2. Signallar olish:</strong></p>
-                <ul>
-                    <li><strong>ID kiritish:</strong> Olingan ID raqamingizni kiring</li>
-                    <li><strong>Olma tanlash o'yini:</strong> Signallar olish uchun o'yinda qatnashing</li>
-                    <li><strong>Signal olish:</strong> Har bir muvaffaqiyatli bosqichda yangi signal olasiz</li>
-                </ul>
-                
-                <div class="warning-box">
-                    <h4>⚠️ MUHIM: Signal Limitlari va Qoidalari</h4>
-                    <p><strong>Kundalik Signal Limitlari:</strong></p>
-                    <ul>
-                        <li><strong>Promokodsiz:</strong> 1 ta signal (70-75% aniq)</li>
-                        <li><strong>AIFUT promokodi bilan:</strong> <strong>5 ta signal</strong> (94.7% aniq)</li>
-                        <li><strong>VIP statusli:</strong> Cheksiz signal (98.5% aniq)</li>
-                    </ul>
-                </div>
+                <h3><i class="fas fa-rocket"></i> Tez Boshlash</h3>
+                <p><strong>Apple Fortune</strong> - Bu AI (Sun'iy Intellekt) asosida ishlaydigan professional savdo signallari platformasi.</p>
                 
                 <div class="success-box">
-                    <h4>✅ To'g'ri foydalanish qoidalari:</h4>
-                    <p><strong>1. Signal sonini kamaytiring:</strong></p>
+                    <h4><i class="fas fa-check-circle"></i> 1-QADAM: Ro'yxatdan o'ting</h4>
                     <ul>
-                        <li>Agar katta miqdordagi pul bilan o'ynasangiz</li>
-                        <li>1 kunda faqat 1 marta signal olish kifoya</li>
-                        <li>Har bir signalni puxta tahlil qiling</li>
-                    </ul>
-                    
-                    <p><strong>2. Aniqlikni oshirish uchun:</strong></p>
-                    <p><code>AIFUT promokodi + To'liq ro'yxatdan o'tish = 94.7% aniq signal</code></p>
-                    
-                    <p><strong>3. Signal limitlariga rioya qiling:</strong></p>
-                    <ul>
-                        <li>Bot orqali maksimal 5 ta signal (faqat AIFUT promokodi bilan)</li>
-                        <li>Limitdan oshmang - bu signal sifatiga ta'sir qiladi</li>
+                        <li><strong>Promokod kiritish:</strong> <code style="background: rgba(255,204,0,0.2); padding: 4px 8px; border-radius: 5px; font-weight: bold;">AIFUT</code> promokodini kiring (200% bonus uchun)</li>
+                        <li><strong>To'liq ro'yxatdan o'ting:</strong> <a href="https://superlative-twilight-47ef34.netlify.app/" target="_blank" style="color: #00ccff; text-decoration: none; font-weight: bold;">Bu havola orqali</a> to'liq ro'yxatdan o'ting</li>
+                        <li><strong>ID oling:</strong> Ro'yxatdan o'tgandan so'ng shaxsiy ID raqamingizni saqlang</li>
                     </ul>
                 </div>
                 
-                <h3>🎮 O'yin Qoidalari</h3>
+                <div class="warning-box">
+                    <h4><i class="fas fa-exclamation-triangle"></i> ⚠️ MUHIM: Signal Limitlari</h4>
+                    <table style="width: 100%; border-collapse: collapse; margin-top: 10px;">
+                        <tr style="background: rgba(0,0,0,0.2);">
+                            <th style="padding: 10px; text-align: left; border-bottom: 1px solid rgba(255,150,0,0.3);">Foydalanuvchi turi</th>
+                            <th style="padding: 10px; text-align: center; border-bottom: 1px solid rgba(255,150,0,0.3);">Kunlik limit</th>
+                            <th style="padding: 10px; text-align: center; border-bottom: 1px solid rgba(255,150,0,0.3);">Aniqlik</th>
+                        </tr>
+                        <tr>
+                            <td style="padding: 10px; border-bottom: 1px solid rgba(255,150,0,0.1);">Promokodsiz</td>
+                            <td style="padding: 10px; text-align: center; border-bottom: 1px solid rgba(255,150,0,0.1);">1 ta signal</td>
+                            <td style="padding: 10px; text-align: center; border-bottom: 1px solid rgba(255,150,0,0.1); color: #ff6666;">70-75%</td>
+                        </tr>
+                        <tr style="background: rgba(255,204,0,0.1);">
+                            <td style="padding: 10px; border-bottom: 1px solid rgba(255,150,0,0.1); font-weight: bold;">AIFUT promokodi bilan</td>
+                            <td style="padding: 10px; text-align: center; border-bottom: 1px solid rgba(255,150,0,0.1); font-weight: bold; color: #ffcc00;">5 ta signal</td>
+                            <td style="padding: 10px; text-align: center; border-bottom: 1px solid rgba(255,150,0,0.1); font-weight: bold; color: #00ff99;">94.7%</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 10px;">VIP statusli</td>
+                            <td style="padding: 10px; text-align: center; color: #00ccff;">Cheksiz</td>
+                            <td style="padding: 10px; text-align: center; color: #00ff99;">98.5%</td>
+                        </tr>
+                    </table>
+                </div>
+                
+                <h3><i class="fas fa-gamepad"></i> O'yin Qoidalari</h3>
                 <p><strong>"Olma tanlash" o'yini qanday ishlaydi?</strong></p>
                 <ul>
                     <li><strong>6 bosqichli tizim:</strong> Har bir bosqichda 5 ta olma</li>
@@ -2065,7 +2040,17 @@
                     <li><strong>Vaqtni qisqartirish:</strong> Do'stlaringizni taklif qiling (har bir taklif 30 daqiqa vaqtni qisqartiradi)</li>
                 </ul>
                 
-                <h3>👑 VIP Status</h3>
+                <div class="success-box">
+                    <h4><i class="fas fa-lightbulb"></i> ✅ To'g'ri foydalanish maslahatlari</h4>
+                    <ul>
+                        <li><strong>Signal sonini kamaytiring:</strong> Agar katta miqdordagi pul bilan o'ynasangiz, kuniga 1 signal yetarli</li>
+                        <li><strong>Aniqlikni oshirish:</strong> <code>AIFUT promokodi + To'liq ro'yxatdan o'tish = 94.7% aniq signal</code></li>
+                        <li><strong>Limitlarni buzmaslik:</strong> Bot orqali maksimal 5 ta signal (faqat AIFUT promokodi bilan)</li>
+                        <li><strong>Har bir signalni tahlil qiling:</strong> Signal olishdan oldin bozor holatini tekshiring</li>
+                    </ul>
+                </div>
+                
+                <h3><i class="fas fa-crown"></i> VIP Status</h3>
                 <p><strong>VIP bo'lish uchun:</strong></p>
                 <ul>
                     <li><strong>20 ta do'st taklif qiling</strong></li>
@@ -2077,16 +2062,18 @@
                     <li>98.5% aniq signal</li>
                     <li>Cheksiz signal olish</li>
                     <li>Birinchi navbatda xizmat</li>
+                    <li>Eksklyuziv bonuslar</li>
                 </ul>
                 
-                <h3>💰 Bonuslar va Imtiyozlar</h3>
+                <h3><i class="fas fa-gift"></i> Bonuslar va Imtiyozlar</h3>
                 <ul>
                     <li><strong>Birinchi depozit bonus:</strong> AIFUT promokodi bilan - 200% bonus</li>
                     <li><strong>Kunlik imtiyozlar:</strong> Har kuni yangi signallar, bepul tahlillar</li>
                     <li><strong>Taklif tizimi:</strong> Har bir taklif qilingan do'st uchun bonus</li>
+                    <li><strong>5 ta do'st = VIP signal</strong> - Do'stlaringizni taklif qiling va VIP signal oling</li>
                 </ul>
                 
-                <h3>📞 Yordam va Qo'llab-quvvatlash</h3>
+                <h3><i class="fas fa-question-circle"></i> Yordam va Qo'llab-quvvatlash</h3>
                 <p><strong>Muammo yuzaga kelsa:</strong></p>
                 <ul>
                     <li><strong>ID yo'qolsa:</strong> Ro'yxatdan qayta o'ting</li>
@@ -2094,63 +2081,54 @@
                     <li><strong>Boshqa muammolar:</strong> @Strategioyinlar_bot ga yozing</li>
                 </ul>
                 
-                <p><strong>Muhim raqamlar va havolalar:</strong></p>
-                <ul>
-                    <li><strong>Bot:</strong> @Strategioyinlar_bot</li>
-                    <li><strong>Ro'yxatdan o'tish:</strong> https://superlative-twilight-47ef34.netlify.app/</li>
-                    <li><strong>APK yuklash:</strong> @BonusAPKxbetbot</li>
-                    <li><strong>Promokod:</strong> AIFUT</li>
-                </ul>
+                <p style="background: rgba(0,150,255,0.1); padding: 15px; border-radius: 10px; margin-top: 20px; text-align: center;">
+                    <strong>Muhim raqamlar va havolalar:</strong><br>
+                    <span style="color: #00ccff;">Bot:</span> @Strategioyinlar_bot<br>
+                    <span style="color: #00ccff;">Ro'yxatdan o'tish:</span> https://superlative-twilight-47ef34.netlify.app/<br>
+                    <span style="color: #00ccff;">APK yuklash:</span> @BonusAPKxbetbot<br>
+                    <span style="color: #ffcc00;">Promokod:</span> <strong>AIFUT</strong>
+                </p>
             `,
             ru: `
-                <h3>📋 Вход в платформу</h3>
-                <p><strong>Apple Fortune</strong> - Это профессиональная платформа торговых сигналов на основе ИИ. Платформа предоставляет высокоточные торговые сигналы на рынках криптовалют и Forex.</p>
-                
-                <h3>🚀 Быстрый старт</h3>
-                <p><strong>1. Регистрация:</strong></p>
-                <ul>
-                    <li><strong>Ввод промокода:</strong> Введите промокод <code>AIFUT</code> (для получения 200% бонуса)</li>
-                    <li><strong>Полная регистрация:</strong> <a href="https://superlative-twilight-47ef34.netlify.app/" target="_blank" style="color: #00ccff;">Пройдите полную регистрацию</a></li>
-                    <li><strong>Получение ID:</strong> После регистрации получите свой личный ID номер</li>
-                </ul>
-                
-                <p><strong>2. Получение сигналов:</strong></p>
-                <ul>
-                    <li><strong>Ввод ID:</strong> Введите полученный ID номер</li>
-                    <li><strong>Игра "Выбор яблока":</strong> Участвуйте в игре для получения сигналов</li>
-                    <li><strong>Получение сигнала:</strong> На каждом успешном этапе вы получаете новый сигнал</li>
-                </ul>
-                
-                <div class="warning-box">
-                    <h4>⚠️ ВАЖНО: Лимиты сигналов и правила</h4>
-                    <p><strong>Дневные лимиты сигналов:</strong></p>
-                    <ul>
-                        <li><strong>Без промокода:</strong> 1 сигнал (70-75% точности)</li>
-                        <li><strong>С промокодом AIFUT:</strong> <strong>5 сигналов</strong> (94.7% точности)</li>
-                        <li><strong>VIP статус:</strong> Неограниченные сигналы (98.5% точности)</li>
-                    </ul>
-                </div>
+                <h3><i class="fas fa-rocket"></i> Быстрый старт</h3>
+                <p><strong>Apple Fortune</strong> - Это профессиональная платформа торговых сигналов на основе ИИ.</p>
                 
                 <div class="success-box">
-                    <h4>✅ Правила правильного использования:</h4>
-                    <p><strong>1. Уменьшите количество сигналов:</strong></p>
+                    <h4><i class="fas fa-check-circle"></i> 1-ШАГ: Регистрация</h4>
                     <ul>
-                        <li>Если вы торгуете с большими суммами</li>
-                        <li>Достаточно 1 сигнала в день</li>
-                        <li>Тщательно анализируйте каждый сигнал</li>
-                    </ul>
-                    
-                    <p><strong>2. Для повышения точности:</strong></p>
-                    <p><code>Промокод AIFUT + Полная регистрация = 94.7% точный сигнал</code></p>
-                    
-                    <p><strong>3. Соблюдайте лимиты сигналов:</strong></p>
-                    <ul>
-                        <li>Максимум 5 сигналов через бота (только с промокодом AIFUT)</li>
-                        <li>Не превышайте лимит - это влияет на качество сигналов</li>
+                        <li><strong>Ввод промокода:</strong> Введите промокод <code style="background: rgba(255,204,0,0.2); padding: 4px 8px; border-radius: 5px; font-weight: bold;">AIFUT</code> (для получения 200% бонуса)</li>
+                        <li><strong>Полная регистрация:</strong> <a href="https://superlative-twilight-47ef34.netlify.app/" target="_blank" style="color: #00ccff; text-decoration: none; font-weight: bold;">Пройдите полную регистрацию</a></li>
+                        <li><strong>Получение ID:</strong> После регистрации сохраните свой личный ID номер</li>
                     </ul>
                 </div>
                 
-                <h3>🎮 Правила игры</h3>
+                <div class="warning-box">
+                    <h4><i class="fas fa-exclamation-triangle"></i> ⚠️ ВАЖНО: Лимиты сигналов</h4>
+                    <table style="width: 100%; border-collapse: collapse; margin-top: 10px;">
+                        <tr style="background: rgba(0,0,0,0.2);">
+                            <th style="padding: 10px; text-align: left; border-bottom: 1px solid rgba(255,150,0,0.3);">Тип пользователя</th>
+                            <th style="padding: 10px; text-align: center; border-bottom: 1px solid rgba(255,150,0,0.3);">Дневной лимит</th>
+                            <th style="padding: 10px; text-align: center; border-bottom: 1px solid rgba(255,150,0,0.3);">Точность</th>
+                        </tr>
+                        <tr>
+                            <td style="padding: 10px; border-bottom: 1px solid rgba(255,150,0,0.1);">Без промокода</td>
+                            <td style="padding: 10px; text-align: center; border-bottom: 1px solid rgba(255,150,0,0.1);">1 сигнал</td>
+                            <td style="padding: 10px; text-align: center; border-bottom: 1px solid rgba(255,150,0,0.1); color: #ff6666;">70-75%</td>
+                        </tr>
+                        <tr style="background: rgba(255,204,0,0.1);">
+                            <td style="padding: 10px; border-bottom: 1px solid rgba(255,150,0,0.1); font-weight: bold;">С промокодом AIFUT</td>
+                            <td style="padding: 10px; text-align: center; border-bottom: 1px solid rgba(255,150,0,0.1); font-weight: bold; color: #ffcc00;">5 сигналов</td>
+                            <td style="padding: 10px; text-align: center; border-bottom: 1px solid rgba(255,150,0,0.1); font-weight: bold; color: #00ff99;">94.7%</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 10px;">VIP статус</td>
+                            <td style="padding: 10px; text-align: center; color: #00ccff;">Неограниченно</td>
+                            <td style="padding: 10px; text-align: center; color: #00ff99;">98.5%</td>
+                        </tr>
+                    </table>
+                </div>
+                
+                <h3><i class="fas fa-gamepad"></i> Правила игры</h3>
                 <p><strong>Как работает игра "Выбор яблока"?</strong></p>
                 <ul>
                     <li><strong>6-уровневая система:</strong> 5 яблок на каждом уровне</li>
@@ -2159,7 +2137,17 @@
                     <li><strong>Сокращение времени:</strong> Приглашайте друзей (каждое приглашение сокращает время на 30 минут)</li>
                 </ul>
                 
-                <h3>👑 VIP Статус</h3>
+                <div class="success-box">
+                    <h4><i class="fas fa-lightbulb"></i> ✅ Советы по правильному использованию</h4>
+                    <ul>
+                        <li><strong>Уменьшите количество сигналов:</strong> Если торгуете с большими суммами, достаточно 1 сигнала в день</li>
+                        <li><strong>Повышение точности:</strong> <code>Промокод AIFUT + Полная регистрация = 94.7% точный сигнал</code></li>
+                        <li><strong>Не превышайте лимиты:</strong> Максимум 5 сигналов через бота (только с промокодом AIFUT)</li>
+                        <li><strong>Анализируйте каждый сигнал:</strong> Перед использованием сигнала проверьте состояние рынка</li>
+                    </ul>
+                </div>
+                
+                <h3><i class="fas fa-crown"></i> VIP Статус</h3>
                 <p><strong>Для получения VIP статуса:</strong></p>
                 <ul>
                     <li><strong>Пригласите 20 друзей</strong></li>
@@ -2171,16 +2159,18 @@
                     <li>98.5% точные сигналы</li>
                     <li>Неограниченное количество сигналов</li>
                     <li>Приоритетное обслуживание</li>
+                    <li>Эксклюзивные бонусы</li>
                 </ul>
                 
-                <h3>💰 Бонусы и привилегии</h3>
+                <h3><i class="fas fa-gift"></i> Бонусы и привилегии</h3>
                 <ul>
                     <li><strong>Бонус за первый депозит:</strong> С промокодом AIFUT - 200% бонус</li>
                     <li><strong>Ежедневные привилегии:</strong> Новые сигналы каждый день, бесплатный анализ</li>
                     <li><strong>Реферальная система:</strong> Бонус за каждого приглашенного друга</li>
+                    <li><strong>5 друзей = VIP сигнал</strong> - Приглашайте друзей и получайте VIP сигнал</li>
                 </ul>
                 
-                <h3>📞 Помощь и поддержка</h3>
+                <h3><i class="fas fa-question-circle"></i> Помощь и поддержка</h3>
                 <p><strong>Если возникли проблемы:</strong></p>
                 <ul>
                     <li><strong>Потеряли ID:</strong> Пройдите регистрацию заново</li>
@@ -2188,63 +2178,54 @@
                     <li><strong>Другие проблемы:</strong> Напишите @Strategioyinlar_bot</li>
                 </ul>
                 
-                <p><strong>Важные контакты и ссылки:</strong></p>
-                <ul>
-                    <li><strong>Бот:</strong> @Strategioyinlar_bot</li>
-                    <li><strong>Регистрация:</strong> https://superlative-twilight-47ef34.netlify.app/</li>
-                    <li><strong>Скачать APK:</strong> @BonusAPKxbetbot</li>
-                    <li><strong>Промокод:</strong> AIFUT</li>
-                </ul>
+                <p style="background: rgba(0,150,255,0.1); padding: 15px; border-radius: 10px; margin-top: 20px; text-align: center;">
+                    <strong>Важные контакты и ссылки:</strong><br>
+                    <span style="color: #00ccff;">Бот:</span> @Strategioyinlar_bot<br>
+                    <span style="color: #00ccff;">Регистрация:</span> https://superlative-twilight-47ef34.netlify.app/<br>
+                    <span style="color: #00ccff;">Скачать APK:</span> @BonusAPKxbetbot<br>
+                    <span style="color: #ffcc00;">Промокод:</span> <strong>AIFUT</strong>
+                </p>
             `,
             en: `
-                <h3>📋 Platform Introduction</h3>
-                <p><strong>Apple Fortune</strong> - This is a professional AI-based trading signals platform. The platform provides high-accuracy trading signals for cryptocurrency and Forex markets.</p>
-                
-                <h3>🚀 Quick Start</h3>
-                <p><strong>1. Registration:</strong></p>
-                <ul>
-                    <li><strong>Enter promo code:</strong> Enter <code>AIFUT</code> promo code (to get 200% bonus)</li>
-                    <li><strong>Complete registration:</strong> <a href="https://superlative-twilight-47ef34.netlify.app/" target="_blank" style="color: #00ccff;">Complete full registration here</a></li>
-                    <li><strong>Get ID:</strong> After registration, get your personal ID number</li>
-                </ul>
-                
-                <p><strong>2. Getting Signals:</strong></p>
-                <ul>
-                    <li><strong>Enter ID:</strong> Enter your obtained ID number</li>
-                    <li><strong>Apple selection game:</strong> Participate in the game to get signals</li>
-                    <li><strong>Get signal:</strong> On each successful level, you get a new signal</li>
-                </ul>
-                
-                <div class="warning-box">
-                    <h4>⚠️ IMPORTANT: Signal Limits and Rules</h4>
-                    <p><strong>Daily Signal Limits:</strong></p>
-                    <ul>
-                        <li><strong>Without promo code:</strong> 1 signal (70-75% accuracy)</li>
-                        <li><strong>With AIFUT promo code:</strong> <strong>5 signals</strong> (94.7% accuracy)</li>
-                        <li><strong>VIP status:</strong> Unlimited signals (98.5% accuracy)</li>
-                    </ul>
-                </div>
+                <h3><i class="fas fa-rocket"></i> Quick Start</h3>
+                <p><strong>Apple Fortune</strong> - This is a professional AI-based trading signals platform.</p>
                 
                 <div class="success-box">
-                    <h4>✅ Correct Usage Rules:</h4>
-                    <p><strong>1. Reduce signal quantity:</strong></p>
+                    <h4><i class="fas fa-check-circle"></i> STEP 1: Registration</h4>
                     <ul>
-                        <li>If you're trading with large amounts</li>
-                        <li>1 signal per day is enough</li>
-                        <li>Analyze each signal thoroughly</li>
-                    </ul>
-                    
-                    <p><strong>2. To increase accuracy:</strong></p>
-                    <p><code>AIFUT promo code + Complete registration = 94.7% accurate signal</code></p>
-                    
-                    <p><strong>3. Follow signal limits:</strong></p>
-                    <ul>
-                        <li>Maximum 5 signals via bot (only with AIFUT promo code)</li>
-                        <li>Don't exceed limit - it affects signal quality</li>
+                        <li><strong>Enter promo code:</strong> Enter <code style="background: rgba(255,204,0,0.2); padding: 4px 8px; border-radius: 5px; font-weight: bold;">AIFUT</code> promo code (for 200% bonus)</li>
+                        <li><strong>Complete registration:</strong> <a href="https://superlative-twilight-47ef34.netlify.app/" target="_blank" style="color: #00ccff; text-decoration: none; font-weight: bold;">Complete full registration here</a></li>
+                        <li><strong>Get ID:</strong> After registration, save your personal ID number</li>
                     </ul>
                 </div>
                 
-                <h3>🎮 Game Rules</h3>
+                <div class="warning-box">
+                    <h4><i class="fas fa-exclamation-triangle"></i> ⚠️ IMPORTANT: Signal Limits</h4>
+                    <table style="width: 100%; border-collapse: collapse; margin-top: 10px;">
+                        <tr style="background: rgba(0,0,0,0.2);">
+                            <th style="padding: 10px; text-align: left; border-bottom: 1px solid rgba(255,150,0,0.3);">User Type</th>
+                            <th style="padding: 10px; text-align: center; border-bottom: 1px solid rgba(255,150,0,0.3);">Daily Limit</th>
+                            <th style="padding: 10px; text-align: center; border-bottom: 1px solid rgba(255,150,0,0.3);">Accuracy</th>
+                        </tr>
+                        <tr>
+                            <td style="padding: 10px; border-bottom: 1px solid rgba(255,150,0,0.1);">Without promo code</td>
+                            <td style="padding: 10px; text-align: center; border-bottom: 1px solid rgba(255,150,0,0.1);">1 signal</td>
+                            <td style="padding: 10px; text-align: center; border-bottom: 1px solid rgba(255,150,0,0.1); color: #ff6666;">70-75%</td>
+                        </tr>
+                        <tr style="background: rgba(255,204,0,0.1);">
+                            <td style="padding: 10px; border-bottom: 1px solid rgba(255,150,0,0.1); font-weight: bold;">With AIFUT promo code</td>
+                            <td style="padding: 10px; text-align: center; border-bottom: 1px solid rgba(255,150,0,0.1); font-weight: bold; color: #ffcc00;">5 signals</td>
+                            <td style="padding: 10px; text-align: center; border-bottom: 1px solid rgba(255,150,0,0.1); font-weight: bold; color: #00ff99;">94.7%</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 10px;">VIP status</td>
+                            <td style="padding: 10px; text-align: center; color: #00ccff;">Unlimited</td>
+                            <td style="padding: 10px; text-align: center; color: #00ff99;">98.5%</td>
+                        </tr>
+                    </table>
+                </div>
+                
+                <h3><i class="fas fa-gamepad"></i> Game Rules</h3>
                 <p><strong>How does "Apple Selection" game work?</strong></p>
                 <ul>
                     <li><strong>6-level system:</strong> 5 apples on each level</li>
@@ -2253,7 +2234,17 @@
                     <li><strong>Reduce time:</strong> Invite friends (each invitation reduces time by 30 minutes)</li>
                 </ul>
                 
-                <h3>👑 VIP Status</h3>
+                <div class="success-box">
+                    <h4><i class="fas fa-lightbulb"></i> ✅ Correct Usage Tips</h4>
+                    <ul>
+                        <li><strong>Reduce signal quantity:</strong> If trading with large amounts, 1 signal per day is enough</li>
+                        <li><strong>Increase accuracy:</strong> <code>AIFUT promo code + Complete registration = 94.7% accurate signal</code></li>
+                        <li><strong>Don't exceed limits:</strong> Maximum 5 signals via bot (only with AIFUT promo code)</li>
+                        <li><strong>Analyze each signal:</strong> Check market conditions before using signal</li>
+                    </ul>
+                </div>
+                
+                <h3><i class="fas fa-crown"></i> VIP Status</h3>
                 <p><strong>To get VIP status:</strong></p>
                 <ul>
                     <li><strong>Invite 20 friends</strong></li>
@@ -2265,16 +2256,18 @@
                     <li>98.5% accurate signals</li>
                     <li>Unlimited signals</li>
                     <li>Priority service</li>
+                    <li>Exclusive bonuses</li>
                 </ul>
                 
-                <h3>💰 Bonuses and Privileges</h3>
+                <h3><i class="fas fa-gift"></i> Bonuses and Privileges</h3>
                 <ul>
                     <li><strong>First deposit bonus:</strong> With AIFUT promo code - 200% bonus</li>
                     <li><strong>Daily privileges:</strong> New signals every day, free analysis</li>
                     <li><strong>Referral system:</strong> Bonus for each invited friend</li>
+                    <li><strong>5 friends = VIP signal</strong> - Invite friends and get VIP signal</li>
                 </ul>
                 
-                <h3>📞 Help and Support</h3>
+                <h3><i class="fas fa-question-circle"></i> Help and Support</h3>
                 <p><strong>If you have problems:</strong></p>
                 <ul>
                     <li><strong>Lost ID:</strong> Register again</li>
@@ -2282,13 +2275,13 @@
                     <li><strong>Other problems:</strong> Write to @Strategioyinlar_bot</li>
                 </ul>
                 
-                <p><strong>Important contacts and links:</strong></p>
-                <ul>
-                    <li><strong>Bot:</strong> @Strategioyinlar_bot</li>
-                    <li><strong>Registration:</strong> https://superlative-twilight-47ef34.netlify.app/</li>
-                    <li><strong>Download APK:</strong> @BonusAPKxbetbot</li>
-                    <li><strong>Promo code:</strong> AIFUT</li>
-                </ul>
+                <p style="background: rgba(0,150,255,0.1); padding: 15px; border-radius: 10px; margin-top: 20px; text-align: center;">
+                    <strong>Important contacts and links:</strong><br>
+                    <span style="color: #00ccff;">Bot:</span> @Strategioyinlar_bot<br>
+                    <span style="color: #00ccff;">Registration:</span> https://superlative-twilight-47ef34.netlify.app/<br>
+                    <span style="color: #00ccff;">Download APK:</span> @BonusAPKxbetbot<br>
+                    <span style="color: #ffcc00;">Promo code:</span> <strong>AIFUT</strong>
+                </p>
             `
         };
 
@@ -2302,11 +2295,11 @@
             const container = document.querySelector('.container');
             const languageSwitcher = document.getElementById('languageSwitcher');
             const currentLanguage = document.getElementById('currentLanguage');
-            const manualBtnHeader = document.getElementById('manualBtnHeader');
+            const manualAccessBtn = document.getElementById('manualAccessBtn');
             const manualSection = document.getElementById('manualSection');
             const manualContentEl = document.getElementById('manualContent');
-            const closeManual = document.getElementById('closeManual');
             const closeManualBtn = document.getElementById('closeManualBtn');
+            const registerManualBtn = document.getElementById('registerManualBtn');
             const langSelectBtns = document.querySelectorAll('.lang-select-btn');
             const hackerAnimation = document.getElementById('hackerAnimation');
             const matrixCode = document.getElementById('matrixCode');
@@ -2413,7 +2406,7 @@
                 if (languageSelector) languageSelector.style.display = 'none';
                 if (container) container.classList.add('active');
                 if (languageSwitcher) languageSwitcher.classList.remove('hidden');
-                if (manualBtnHeader) manualBtnHeader.classList.remove('hidden');
+                if (manualAccessBtn) manualAccessBtn.classList.remove('hidden');
                 updateTranslations(lang);
                 loadSavedData();
                 showMainSections();
@@ -2423,7 +2416,7 @@
             function switchLanguage() {
                 if (container) container.classList.remove('active');
                 if (languageSwitcher) languageSwitcher.classList.add('hidden');
-                if (manualBtnHeader) manualBtnHeader.classList.add('hidden');
+                if (manualAccessBtn) manualAccessBtn.classList.add('hidden');
                 if (languageSelector) languageSelector.style.display = 'flex';
             }
 
@@ -2670,10 +2663,6 @@
                             ? `Поздравляем! Вы пригласили ${invitedFriendsVIP}/20 друзей. Еще нужно ${remaining} друзей.`
                             : currentLang === 'en'
                             ? `Congratulations! You invited ${invitedFriendsVIP}/20 friends. Need ${remaining} more friends.`
-                            : currentLang === 'bn'
-                            ? `অভিনন্দন! আপনি ${invitedFriendsVIP}/20 জন বন্ধুকে আমন্ত্রণ করেছেন। আরও ${remaining} জন বন্ধু প্রয়োজন।`
-                            : currentLang === 'ar'
-                            ? `تهانينا! لقد دعوت ${invitedFriendsVIP}/20 صديقًا. تحتاج إلى ${remaining} صديقًا آخر.`
                             : `Куттуктайбыз! Сиз ${invitedFriendsVIP}/20 досту чакырдыңыз. Дагы ${remaining} дост керек.`;
                         
                         alert(message);
@@ -2719,10 +2708,6 @@
                             ? "🎉 ПОЗДРАВЛЯЕМ! Вы успешно получили VIP сигнал!\n\nТеперь вы можете получать высокоточные торговые сигналы."
                             : currentLang === 'en'
                             ? "🎉 CONGRATULATIONS! You successfully unlocked VIP signal!\n\nNow you can get high accuracy trading signals."
-                            : currentLang === 'bn'
-                            ? "🎉 অভিনন্দন! আপনি সফলভাবে ভিআইপি সিগন্যাল আনলক করেছেন!\n\nএখন আপনি উচ্চ সঠিকতার ট্রেডিং সিগন্যাল পেতে পারেন।"
-                            : currentLang === 'ar'
-                            ? "🎉 تهانينا! لقد فتحت بنجاح إشارة VIP!\n\nيمكنك الآن الحصول على إشارات تداول عالية الدقة."
                             : "🎉 КУТТУКТАЙБЫЗ! Сиз ВИП сигналды ийгиликтүү ачтыңыз!\n\nЭми сиз жогорку тактыктагы соода сигналдарын ала аласыз.";
                         
                         alert(message);
@@ -2757,10 +2742,6 @@
                             ? "Поздравляем! Вы пригласили 5 друзей. Теперь вы можете получить VIP сигнал!\n\nДля перехода на следующий этап будет показана анимация..."
                             : currentLang === 'en'
                             ? "Congratulations! You invited 5 friends. Now you can get VIP signal!\n\nAnimation will be shown to go to the next stage..."
-                            : currentLang === 'bn'
-                            ? "অভিনন্দন! আপনি ৫ জন বন্ধুকে আমন্ত্রণ করেছেন। এখন আপনি ভিআইপি সিগন্যাল পেতে পারেন!\n\nপরবর্তী স্তরে যাওয়ার জন্য অ্যানিমেশন দেখানো হবে..."
-                            : currentLang === 'ar'
-                            ? "تهانينا! لقد دعوت 5 أصدقاء. এখন يمكنك الحصول على إشارة VIP!\n\nسيتم عرض الرسوم المتحركة للانتقال إلى المرحلة التالية..."
                             : "Куттуктайбыз! Сиз 5 досту чакырдыңыз. Эми сиз ВИП сигнал ала аласыз!\n\nКийинки баскычка өтүү үчүн анимация көрсөтүлөт...";
                         
                         alert(message);
@@ -2780,10 +2761,6 @@
                             ? `${t.vipInviteBtnText}! Вы пригласили ${invitedFriendsVIP}/5 друзей.`
                             : currentLang === 'en'
                             ? `${t.vipInviteBtnText}! You invited ${invitedFriendsVIP}/5 friends.`
-                            : currentLang === 'bn'
-                            ? `${t.vipInviteBtnText}! আপনি ${invitedFriendsVIP}/৫ জন বন্ধুকে আমন্ত্রণ করেছেন।`
-                            : currentLang === 'ar'
-                            ? `${t.vipInviteBtnText}! لقد دعوت ${invitedFriendsVIP}/5 أصدقاء.`
                             : `${t.vipInviteBtnText}! Сиз ${invitedFriendsVIP}/5 досту чакырдыңыз.`;
                         
                         alert(message);
@@ -3054,10 +3031,6 @@
                         ? `${t.shareText}! +30 минут`
                         : currentLang === 'en'
                         ? `${t.shareText}! +30 minutes`
-                        : currentLang === 'bn'
-                        ? `${t.shareText}! +৩০ মিনিট`
-                        : currentLang === 'ar'
-                        ? `${t.shareText}! +30 دقيقة`
                         : `${t.shareText}! +30 мүнөт`;
                     
                     alert(message);
@@ -3074,10 +3047,6 @@
                     ? `${t.registerText} - 200% бонус с промокодом AIFUT!`
                     : currentLang === 'en'
                     ? `${t.registerText} - 200% bonus with AIFUT promo code!`
-                    : currentLang === 'bn'
-                    ? `${t.registerText} - AIFUT প্রোমো কোড দিয়ে ২০০% বোনাস!`
-                    : currentLang === 'ar'
-                    ? `${t.registerText} - 200% مكافأة مع الرمز الترويجي AIFUT!`
                     : `${t.registerText} - AIFUT промокоду менен 200% бонус!`;
                 
                 alert(message);
@@ -3109,10 +3078,6 @@
                     ? `${t.downloadText} - Для загрузки APK вы перенаправлены в Telegram канал!`
                     : currentLang === 'en'
                     ? `${t.downloadText} - Redirected to Telegram channel for APK download!`
-                    : currentLang === 'bn'
-                    ? `${t.downloadText} - এপিকে ডাউনলোড করার জন্য টেলিগ্রাম চ্যানেলে পুনর্নির্দেশিত!`
-                    : currentLang === 'ar'
-                    ? `${t.downloadText} - تمت إعادة التوجيه إلى قناة Telegram لتنزيل APK!`
                     : `${t.downloadText} - APK жүктөө үчүн Telegram каналына багытталды!`;
                 
                 alert(message);
@@ -3164,18 +3129,19 @@
                 languageSwitcher.addEventListener('click', switchLanguage);
             }
 
-            // Manual button
-            if (manualBtnHeader) {
-                manualBtnHeader.addEventListener('click', showUserManual);
+            // Manual access button
+            if (manualAccessBtn) {
+                manualAccessBtn.addEventListener('click', showUserManual);
             }
 
-            // Close manual buttons
-            if (closeManual) {
-                closeManual.addEventListener('click', hideUserManual);
-            }
-            
+            // Close manual button
             if (closeManualBtn) {
                 closeManualBtn.addEventListener('click', hideUserManual);
+            }
+
+            // Register button in manual
+            if (registerManualBtn) {
+                registerManualBtn.addEventListener('click', register);
             }
 
             // Top action buttons
