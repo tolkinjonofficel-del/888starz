@@ -72,16 +72,6 @@
             -webkit-text-fill-color: transparent;
         }
 
-        .user-id-display {
-            background: rgba(0, 100, 255, 0.15);
-            border-radius: 10px;
-            padding: 12px;
-            margin-bottom: 20px;
-            text-align: center;
-            font-size: 0.9rem;
-            border: 1px solid rgba(0, 150, 255, 0.3);
-        }
-
         /* ============ CONTENT SECTIONS ============ */
         .section {
             display: none;
@@ -95,6 +85,129 @@
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(10px); }
             to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ============ PROFILE SECTION ============ */
+        .profile-section {
+            background: rgba(20, 25, 60, 0.5);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 20px;
+            border: 1px solid rgba(0, 150, 255, 0.2);
+        }
+
+        .profile-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .profile-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #00ccff, #0066ff);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+
+        .profile-info h2 {
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+            color: #00ccff;
+        }
+
+        .profile-info p {
+            font-size: 0.9rem;
+            color: #a0d2ff;
+        }
+
+        .profile-status {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 15px;
+            background: rgba(255, 215, 0, 0.1);
+            border-radius: 20px;
+            font-size: 0.8rem;
+            color: #ffd700;
+            border: 1px solid rgba(255, 215, 0, 0.3);
+        }
+
+        .profile-status i {
+            font-size: 0.9rem;
+        }
+
+        .profile-stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            margin: 25px 0;
+        }
+
+        .stat-box {
+            background: rgba(0, 50, 100, 0.3);
+            border-radius: 10px;
+            padding: 15px;
+            text-align: center;
+            border: 1px solid rgba(0, 150, 255, 0.2);
+        }
+
+        .stat-value {
+            font-size: 1.1rem;
+            font-weight: 800;
+            color: #ffcc00;
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            font-size: 0.7rem;
+            color: #a0d2ff;
+        }
+
+        .id-input-section {
+            background: rgba(0, 50, 100, 0.2);
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+            border: 1px solid rgba(0, 150, 255, 0.3);
+        }
+
+        .input-group {
+            margin-bottom: 15px;
+        }
+
+        .input-label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 0.85rem;
+            color: #00ccff;
+            font-weight: 600;
+        }
+
+        .input-field {
+            width: 100%;
+            padding: 14px;
+            background: rgba(0, 50, 100, 0.3);
+            border: 1px solid rgba(0, 150, 255, 0.3);
+            border-radius: 10px;
+            color: white;
+            font-size: 0.95rem;
+        }
+
+        .input-field:focus {
+            outline: none;
+            border-color: #00ccff;
+        }
+
+        .error-message {
+            color: #ff3366;
+            font-size: 0.8rem;
+            margin-top: 5px;
+            display: none;
         }
 
         /* ============ MAIN MENU SECTION ============ */
@@ -133,18 +246,6 @@
             font-size: 1.2rem;
             color: #00ccff;
             margin-bottom: 5px;
-        }
-
-        .stat-value {
-            font-size: 1.1rem;
-            font-weight: 800;
-            color: #ffcc00;
-            margin-bottom: 2px;
-        }
-
-        .stat-label {
-            font-size: 0.7rem;
-            color: #a0d2ff;
         }
 
         .promo-banner {
@@ -460,35 +561,45 @@
             font-family: 'Courier New', monospace;
         }
 
-        /* ============ LOGIN SECTION ============ */
-        .login-section {
-            background: rgba(20, 25, 60, 0.5);
-            border-radius: 15px;
-            padding: 20px;
-            margin-bottom: 20px;
-            border: 1px solid rgba(0, 150, 255, 0.2);
-        }
-
-        .input-group {
-            margin-bottom: 15px;
-        }
-
-        .input-label {
-            display: block;
-            margin-bottom: 8px;
-            font-size: 0.85rem;
-            color: #00ccff;
-            font-weight: 600;
-        }
-
-        .input-field {
-            width: 100%;
-            padding: 14px;
-            background: rgba(0, 50, 100, 0.3);
-            border: 1px solid rgba(0, 150, 255, 0.3);
+        /* ============ ACTION BUTTONS ============ */
+        .action-btn {
+            background: linear-gradient(135deg, #0066ff, #0044cc);
+            border: none;
             border-radius: 10px;
+            padding: 14px;
             color: white;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
+            font-weight: 700;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: all 0.2s;
+        }
+
+        .action-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 102, 255, 0.3);
+        }
+
+        .btn-orange {
+            background: linear-gradient(135deg, #ff9500, #ff5e00);
+        }
+
+        .btn-green {
+            background: linear-gradient(135deg, #00cc66, #009944);
+        }
+
+        .btn-purple {
+            background: linear-gradient(135deg, #9966ff, #6600cc);
+        }
+
+        .btn-yellow {
+            background: linear-gradient(135deg, #ffd700, #ff8c00);
+            color: #000;
         }
 
         /* ============ BOTTOM NAVBAR ============ */
@@ -540,42 +651,6 @@
             transform: translateY(-3px);
         }
 
-        /* ============ ACTION BUTTONS ============ */
-        .action-btn {
-            background: linear-gradient(135deg, #0066ff, #0044cc);
-            border: none;
-            border-radius: 10px;
-            padding: 14px;
-            color: white;
-            font-size: 0.9rem;
-            font-weight: 700;
-            cursor: pointer;
-            width: 100%;
-            margin-top: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            transition: all 0.2s;
-        }
-
-        .action-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0, 102, 255, 0.3);
-        }
-
-        .btn-orange {
-            background: linear-gradient(135deg, #ff9500, #ff5e00);
-        }
-
-        .btn-green {
-            background: linear-gradient(135deg, #00cc66, #009944);
-        }
-
-        .btn-purple {
-            background: linear-gradient(135deg, #9966ff, #6600cc);
-        }
-
         /* ============ UTILITY CLASSES ============ */
         .hidden {
             display: none !important;
@@ -604,7 +679,7 @@
                 margin: 0 auto;
             }
             
-            .stats-grid {
+            .stats-grid, .profile-stats {
                 grid-template-columns: repeat(4, 1fr);
             }
             
@@ -645,15 +720,90 @@
             </div>
         </div>
 
-        <!-- User ID Display -->
-        <div class="user-id-display hidden" id="userIdDisplay">
-            <span id="yourIdText">ID:</span> <span id="gameUserId">-</span>
-        </div>
-
         <!-- ============ SECTIONS ============ -->
         
+        <!-- Profile Section -->
+        <div class="section active" id="profileSection">
+            <div class="profile-section">
+                <div class="profile-header">
+                    <div class="profile-avatar">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="profile-info">
+                        <h2 id="userName">Apple Fortune Foydalanuvchisi</h2>
+                        <p id="userStatus">Standart hisob</p>
+                    </div>
+                    <div class="profile-status" id="vipStatusBadge">
+                        <i class="fas fa-crown"></i>
+                        <span>VIP</span>
+                    </div>
+                </div>
+
+                <div class="profile-stats">
+                    <div class="stat-box">
+                        <div class="stat-value" id="statSignals">0</div>
+                        <div class="stat-label">SIGNALLAR</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-value" id="statFriends">0</div>
+                        <div class="stat-label">TAKLIF DO'STLAR</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-value" id="statAccuracy">94.7%</div>
+                        <div class="stat-label">ANIQLIK</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-value" id="statBonus">200%</div>
+                        <div class="stat-label">BONUS</div>
+                    </div>
+                </div>
+
+                <!-- ID Input Section -->
+                <div class="id-input-section">
+                    <div class="input-group">
+                        <label class="input-label" for="userIdInput">ID RAQAM</label>
+                        <input type="text" class="input-field" id="userIdInput" 
+                               placeholder="Masalan: 1987654321" maxlength="11">
+                        <div class="error-message" id="idError">Noto'g'ri ID raqam formati</div>
+                    </div>
+
+                    <div id="profileActions">
+                        <!-- If user has ID -->
+                        <button class="action-btn btn-green" id="saveIdBtn">
+                            <i class="fas fa-save"></i> ID SAQLASH VA SIGNAL OLISH
+                        </button>
+                        
+                        <!-- If no ID -->
+                        <button class="action-btn btn-orange" id="registerFromProfileBtn">
+                            <i class="fas fa-user-plus"></i> RO'YXATDAN OTISH
+                        </button>
+                        
+                        <!-- Change ID button (shown when ID exists) -->
+                        <button class="action-btn" id="changeIdBtn">
+                            <i class="fas fa-sync-alt"></i> ID O'ZGARTIRISH
+                        </button>
+                    </div>
+
+                    <!-- User ID Display -->
+                    <div style="margin-top: 15px; padding: 10px; background: rgba(0,100,255,0.1); border-radius: 8px; text-align: center;">
+                        <div style="font-size: 0.8rem; color: #a0d2ff;">Joriy ID:</div>
+                        <div style="font-size: 1rem; color: #ffcc00; font-weight: bold;" id="currentUserIdDisplay">
+                            ID kiritilmagan
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Actions -->
+                <div style="margin-top: 20px;">
+                    <button class="action-btn btn-yellow" id="goToSignalBtn">
+                        <i class="fas fa-satellite-dish"></i> SIGNAL OLISHGA OTISH
+                    </button>
+                </div>
+            </div>
+        </div>
+
         <!-- Main Menu Section -->
-        <div class="section active" id="mainMenuSection">
+        <div class="section" id="mainMenuSection">
             <div class="main-menu">
                 <div class="menu-title">ASOSIY MENU</div>
                 
@@ -666,19 +816,19 @@
                     
                     <div class="stat-card">
                         <div class="stat-icon"><i class="fas fa-users"></i></div>
-                        <div class="stat-value">18.5K</div>
+                        <div class="stat-value" id="mainStatUsers">18.5K</div>
                         <div class="stat-label">FOYDALANUVCHI</div>
                     </div>
                     
                     <div class="stat-card">
                         <div class="stat-icon"><i class="fas fa-coins"></i></div>
-                        <div class="stat-value">$342K</div>
+                        <div class="stat-value" id="mainStatProfit">$342K</div>
                         <div class="stat-label">BUGUNGI FOYDA</div>
                     </div>
                     
                     <div class="stat-card">
                         <div class="stat-icon"><i class="fas fa-bolt"></i></div>
-                        <div class="stat-value">2.8K</div>
+                        <div class="stat-value" id="mainStatSignals">2.8K</div>
                         <div class="stat-label">SIGNALLAR</div>
                     </div>
                 </div>
@@ -693,6 +843,19 @@
                     <div class="vip-title">VIP SIGNAL OLING!</div>
                     <p style="font-size: 0.8rem; color: #ffd700;">98.5% aniq signal va cheksiz imkoniyatlar</p>
                 </div>
+
+                <!-- Main Menu Actions -->
+                <button class="action-btn btn-green" id="startGameFromMenuBtn">
+                    <i class="fas fa-satellite-dish"></i> SIGNAL OLISH
+                </button>
+                
+                <button class="action-btn btn-orange" id="registerFromMenuBtn">
+                    <i class="fas fa-user-plus"></i> RO'YXATDAN OTISH
+                </button>
+                
+                <button class="action-btn btn-purple" id="downloadFromMenuBtn">
+                    <i class="fas fa-download"></i> APK YUKLASH
+                </button>
             </div>
         </div>
 
@@ -863,56 +1026,22 @@
                     <i class="fas fa-share-alt"></i> DO'STLARNI TAKLIF QILISH
                 </button>
                 
-                <button class="action-btn" id="changeIdBtn">
+                <button class="action-btn" id="changeIdFromWaitBtn">
                     <i class="fas fa-sync-alt"></i> ID O'ZGARTIRISH
                 </button>
             </div>
-        </div>
-
-        <!-- Login Section -->
-        <div class="section" id="loginSection">
-            <div class="login-section">
-                <h2 class="menu-title">ID RAQAMINGIZNI KIRITING</h2>
-                
-                <p style="font-size: 0.85rem; color: #a0d2ff; margin-bottom: 20px; text-align: center;">
-                    AIFUT promokodi bilan ro'yxatdan o'tgan bo'lsangiz, yuqori aniqlikdagi signallar sizniki!
-                </p>
-                
-                <div class="input-group">
-                    <label class="input-label">ID RAQAM</label>
-                    <input type="text" class="input-field" id="userId" placeholder="Masalan: 1987654321" maxlength="11">
-                </div>
-                
-                <button class="action-btn btn-green" id="startSignalBtn">
-                    <i class="fas fa-play"></i> SIGNAL OLISHNI BOSHLASH
-                </button>
-                
-                <button class="action-btn" id="backToMenuBtn">
-                    <i class="fas fa-arrow-left"></i> MENYUGA QAYTISH
-                </button>
-            </div>
-        </div>
-
-        <!-- ============ ACTION BUTTONS FOR MAIN MENU ============ -->
-        <div id="mainMenuActions" class="main-menu-actions">
-            <button class="action-btn btn-green" id="startGameBtn">
-                <i class="fas fa-satellite-dish"></i> SIGNAL OLISH
-            </button>
-            
-            <button class="action-btn btn-orange" id="registerBtn">
-                <i class="fas fa-user-plus"></i> RO'YXATDAN OTISH
-            </button>
-            
-            <button class="action-btn" id="downloadBtn">
-                <i class="fas fa-download"></i> APK YUKLASH
-            </button>
         </div>
     </div>
 
     <!-- Bottom Navigation Bar -->
     <div class="bottom-navbar">
         <div class="nav-buttons">
-            <button class="nav-btn active" data-section="mainMenuSection">
+            <button class="nav-btn active" data-section="profileSection">
+                <i class="fas fa-user"></i>
+                <span>PROFIL</span>
+            </button>
+            
+            <button class="nav-btn" data-section="mainMenuSection">
                 <i class="fas fa-home"></i>
                 <span>ASOSIY</span>
             </button>
@@ -931,11 +1060,6 @@
                 <i class="fas fa-gift"></i>
                 <span>BONUS</span>
             </button>
-            
-            <button class="nav-btn" data-section="manualSection">
-                <i class="fas fa-book"></i>
-                <span>QO'LLANMA</span>
-            </button>
         </div>
     </div>
 
@@ -945,25 +1069,45 @@
             // Get elements
             const navButtons = document.querySelectorAll('.nav-btn');
             const sections = document.querySelectorAll('.section');
-            const mainMenuActions = document.getElementById('mainMenuActions');
-            const userIdDisplay = document.getElementById('userIdDisplay');
-            const gameUserId = document.getElementById('gameUserId');
+            
+            // Profile section elements
+            const userIdInput = document.getElementById('userIdInput');
+            const idError = document.getElementById('idError');
+            const saveIdBtn = document.getElementById('saveIdBtn');
+            const registerFromProfileBtn = document.getElementById('registerFromProfileBtn');
+            const changeIdBtn = document.getElementById('changeIdBtn');
+            const goToSignalBtn = document.getElementById('goToSignalBtn');
+            const currentUserIdDisplay = document.getElementById('currentUserIdDisplay');
+            const vipStatusBadge = document.getElementById('vipStatusBadge');
+            
+            // Stats elements
+            const statSignals = document.getElementById('statSignals');
+            const statFriends = document.getElementById('statFriends');
+            const statAccuracy = document.getElementById('statAccuracy');
+            const statBonus = document.getElementById('statBonus');
+            
+            // Main menu elements
+            const startGameFromMenuBtn = document.getElementById('startGameFromMenuBtn');
+            const registerFromMenuBtn = document.getElementById('registerFromMenuBtn');
+            const downloadFromMenuBtn = document.getElementById('downloadFromMenuBtn');
+            
+            // Signal section elements
             const roundCounter = document.getElementById('roundCounter');
             const applesContainer = document.getElementById('applesContainer');
             const revealBtn = document.getElementById('revealBtn');
             const resultMessage = document.getElementById('resultMessage');
             const restartBtn = document.getElementById('restartBtn');
+            
+            // VIP section elements
             const vipCounterValue = document.getElementById('vipCounterValue');
             const vipInviteBtn = document.getElementById('vipInviteBtn');
-            const userIdInput = document.getElementById('userId');
-            const startSignalBtn = document.getElementById('startSignalBtn');
-            const backToMenuBtn = document.getElementById('backToMenuBtn');
-            const startGameBtn = document.getElementById('startGameBtn');
-            const registerBtn = document.getElementById('registerBtn');
-            const downloadBtn = document.getElementById('downloadBtn');
+            
+            // Bonus section elements
             const bonusRegisterBtn = document.getElementById('bonusRegisterBtn');
+            
+            // Wait section elements
             const shareBtn = document.getElementById('shareBtn');
-            const changeIdBtn = document.getElementById('changeIdBtn');
+            const changeIdFromWaitBtn = document.getElementById('changeIdFromWaitBtn');
             const timerValue = document.getElementById('timerValue');
             const endRound = document.getElementById('endRound');
 
@@ -975,7 +1119,9 @@
             let countdownInterval = null;
             let countdownTime = 3 * 60 * 60; // 3 hours
             let invitedFriends = parseInt(localStorage.getItem('appleFortuneInvitedFriends')) || 0;
-            let currentSection = 'mainMenuSection';
+            let signalsUsed = parseInt(localStorage.getItem('appleFortuneSignalsUsed')) || 0;
+            let isVIP = localStorage.getItem('appleFortuneVIPStatus') === 'true' || false;
+            let currentSection = 'profileSection';
 
             // ==================== FUNCTIONS ====================
 
@@ -1002,24 +1148,19 @@
                     }
                 });
                 
-                // Show/hide main menu actions
-                if (sectionId === 'mainMenuSection') {
-                    mainMenuActions.style.display = 'block';
-                    userIdDisplay.classList.add('hidden');
-                } else if (sectionId === 'signalSection') {
-                    mainMenuActions.style.display = 'none';
-                    userIdDisplay.classList.remove('hidden');
-                } else {
-                    mainMenuActions.style.display = 'none';
-                    userIdDisplay.classList.add('hidden');
+                // Load user data for profile section
+                if (sectionId === 'profileSection') {
+                    loadUserProfile();
                 }
                 
-                // Special handling for login section
-                if (sectionId === 'loginSection') {
-                    const savedUserId = localStorage.getItem('appleFortuneUserId');
-                    if (savedUserId) {
-                        userIdInput.value = savedUserId;
+                // Special handling for signal section
+                if (sectionId === 'signalSection') {
+                    if (!currentUserId) {
+                        alert('Iltimos, avval ID raqamingizni kiriting!');
+                        showSection('profileSection');
+                        return;
                     }
+                    startGame();
                 }
                 
                 // Special handling for wait section
@@ -1032,9 +1173,106 @@
                 }
             }
 
+            // Load user profile
+            function loadUserProfile() {
+                const savedUserId = localStorage.getItem('appleFortuneUserId');
+                
+                if (savedUserId) {
+                    currentUserId = savedUserId;
+                    userIdInput.value = savedUserId;
+                    currentUserIdDisplay.textContent = savedUserId;
+                    currentUserIdDisplay.style.color = '#00ff99';
+                    
+                    // Show save button as "ID O'zgartirish"
+                    saveIdBtn.innerHTML = '<i class="fas fa-sync-alt"></i> ID O\'ZGARTIRISH VA SIGNAL OLISH';
+                    
+                    // Hide register button, show change button
+                    registerFromProfileBtn.style.display = 'none';
+                    changeIdBtn.style.display = 'block';
+                    goToSignalBtn.style.display = 'block';
+                } else {
+                    currentUserId = '';
+                    currentUserIdDisplay.textContent = 'ID kiritilmagan';
+                    currentUserIdDisplay.style.color = '#ff6666';
+                    
+                    // Show save button as "ID Saqlash"
+                    saveIdBtn.innerHTML = '<i class="fas fa-save"></i> ID SAQLASH VA SIGNAL OLISH';
+                    
+                    // Show register button, hide change button
+                    registerFromProfileBtn.style.display = 'block';
+                    changeIdBtn.style.display = 'none';
+                    goToSignalBtn.style.display = 'none';
+                }
+                
+                // Load stats
+                invitedFriends = parseInt(localStorage.getItem('appleFortuneInvitedFriends')) || 0;
+                signalsUsed = parseInt(localStorage.getItem('appleFortuneSignalsUsed')) || 0;
+                isVIP = localStorage.getItem('appleFortuneVIPStatus') === 'true' || false;
+                
+                // Update stats display
+                statSignals.textContent = signalsUsed;
+                statFriends.textContent = invitedFriends;
+                statAccuracy.textContent = isVIP ? '98.5%' : '94.7%';
+                statBonus.textContent = '200%';
+                
+                // Update VIP badge
+                if (isVIP) {
+                    vipStatusBadge.style.display = 'flex';
+                    statAccuracy.textContent = '98.5%';
+                } else {
+                    vipStatusBadge.style.display = 'none';
+                    statAccuracy.textContent = invitedFriends >= 5 ? '94.7%' : '70-75%';
+                }
+                
+                // Update VIP counter
+                if (vipCounterValue) {
+                    vipCounterValue.textContent = invitedFriends;
+                }
+            }
+
+            // Validate user ID
+            function validateUserId(userId) {
+                const idRegex = /^1\d{8,10}$/;
+                return idRegex.test(userId);
+            }
+
+            // Save user ID
+            function saveUserId() {
+                const userId = userIdInput.value.trim();
+                
+                if (!userId) {
+                    idError.textContent = 'ID raqamni kiriting';
+                    idError.style.display = 'block';
+                    return false;
+                }
+                
+                if (!validateUserId(userId)) {
+                    idError.textContent = 'Noto\'g\'ri ID raqam formati (1 bilan boshlanishi kerak, 9-12 ta raqam)';
+                    idError.style.display = 'block';
+                    return false;
+                }
+                
+                // Save user ID
+                currentUserId = userId;
+                localStorage.setItem('appleFortuneUserId', userId);
+                
+                // Hide error message
+                idError.style.display = 'none';
+                
+                // Update display
+                loadUserProfile();
+                
+                return true;
+            }
+
             // Start game
             function startGame() {
-                if (gameUserId) gameUserId.textContent = currentUserId || '-';
+                if (!currentUserId) {
+                    alert('Iltimos, avval ID raqamingizni kiriting!');
+                    showSection('profileSection');
+                    return;
+                }
+                
                 if (roundCounter) roundCounter.textContent = currentRound;
                 gameActive = false;
                 applesRevealed = false;
@@ -1135,6 +1373,10 @@
                         resultMessage.style.display = 'block';
                     }
                     if (restartBtn) restartBtn.classList.remove('hidden');
+                    
+                    // Update signals used
+                    signalsUsed++;
+                    localStorage.setItem('appleFortuneSignalsUsed', signalsUsed.toString());
                 } else {
                     if (resultMessage) {
                         resultMessage.innerHTML = '<span style="color: #00ff66; font-weight: bold;">✅ Butun olma! Keyingi bosqichga o\'tish...</span>';
@@ -1149,6 +1391,14 @@
                             // End game and show wait section
                             endRound.textContent = currentRound;
                             localStorage.setItem('appleFortuneEndRound', currentRound);
+                            
+                            // Update signals used
+                            signalsUsed++;
+                            localStorage.setItem('appleFortuneSignalsUsed', signalsUsed.toString());
+                            
+                            // Update profile
+                            loadUserProfile();
+                            
                             showWaitSection();
                         }
                     }, 1500);
@@ -1200,7 +1450,7 @@
                         localStorage.removeItem('appleFortuneEndRound');
                         
                         currentRound = 1;
-                        showSection('mainMenuSection');
+                        showSection('profileSection');
                     }
                 }, 1000);
             }
@@ -1215,12 +1465,6 @@
                 
                 const timeString = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
                 timerValue.textContent = timeString;
-            }
-
-            // Validate user ID
-            function validateUserId(userId) {
-                const idRegex = /^1\d{8,10}$/;
-                return idRegex.test(userId);
             }
 
             // Register function
@@ -1253,14 +1497,21 @@
                 
                 // Check if reached 20 friends
                 if (invitedFriends >= 20) {
+                    isVIP = true;
+                    localStorage.setItem('appleFortuneVIPStatus', 'true');
+                    
                     setTimeout(() => {
                         alert('🎉 Tabriklaymiz! 20 ta do\'stni taklif qildingiz. Endi VIP signalga ega bo\'ldingiz!');
+                        loadUserProfile();
                     }, 1000);
                 } else {
                     setTimeout(() => {
                         alert(`Tabriklaymiz! Siz ${invitedFriends}/20 do'stni taklif qildingiz.`);
                     }, 1000);
                 }
+                
+                // Update profile
+                loadUserProfile();
             }
 
             // Share with friends (for wait section)
@@ -1284,21 +1535,16 @@
 
             // Change user ID
             function changeUserId() {
-                localStorage.removeItem('appleFortuneUserId');
-                localStorage.removeItem('appleFortuneTimerEnd');
-                localStorage.removeItem('appleFortuneEndRound');
-                localStorage.removeItem('appleFortuneInvitedFriends');
+                const newUserId = prompt('Yangi ID raqamingizni kiriting:');
                 
-                currentUserId = '';
-                if (userIdInput) userIdInput.value = '';
-                invitedFriends = 0;
-                currentRound = 1;
-                
-                if (countdownInterval) {
-                    clearInterval(countdownInterval);
+                if (newUserId && validateUserId(newUserId)) {
+                    currentUserId = newUserId;
+                    localStorage.setItem('appleFortuneUserId', newUserId);
+                    loadUserProfile();
+                    alert('ID raqam muvaffaqiyatli o\'zgartirildi!');
+                } else if (newUserId) {
+                    alert('Noto\'g\'ri ID raqam formati!');
                 }
-                
-                showSection('mainMenuSection');
             }
 
             // Restart game
@@ -1307,22 +1553,27 @@
                 startGame();
             }
 
-            // Load saved data
-            function loadSavedData() {
-                const savedUserId = localStorage.getItem('appleFortuneUserId');
-                const savedInvitedFriends = localStorage.getItem('appleFortuneInvitedFriends');
+            // Clear user data
+            function clearUserData() {
+                localStorage.removeItem('appleFortuneUserId');
+                localStorage.removeItem('appleFortuneTimerEnd');
+                localStorage.removeItem('appleFortuneEndRound');
+                localStorage.removeItem('appleFortuneInvitedFriends');
+                localStorage.removeItem('appleFortuneSignalsUsed');
+                localStorage.removeItem('appleFortuneVIPStatus');
                 
-                if (savedUserId) {
-                    currentUserId = savedUserId;
-                    if (gameUserId) gameUserId.textContent = currentUserId;
+                currentUserId = '';
+                invitedFriends = 0;
+                signalsUsed = 0;
+                isVIP = false;
+                currentRound = 1;
+                
+                if (countdownInterval) {
+                    clearInterval(countdownInterval);
                 }
                 
-                if (savedInvitedFriends) {
-                    invitedFriends = parseInt(savedInvitedFriends);
-                    if (vipCounterValue) {
-                        vipCounterValue.textContent = invitedFriends;
-                    }
-                }
+                loadUserProfile();
+                alert('Barcha ma\'lumotlar tozalandi!');
             }
 
             // ==================== EVENT LISTENERS ====================
@@ -1335,39 +1586,70 @@
                 });
             });
 
-            // Start game button
-            if (startGameBtn) {
-                startGameBtn.addEventListener('click', () => {
-                    const savedUserId = localStorage.getItem('appleFortuneUserId');
-                    
-                    if (savedUserId) {
-                        currentUserId = savedUserId;
-                        currentRound = 1;
-                        startGame();
-                    } else {
-                        showSection('loginSection');
+            // Save ID button
+            if (saveIdBtn) {
+                saveIdBtn.addEventListener('click', () => {
+                    if (saveUserId()) {
+                        if (currentUserId) {
+                            // If ID exists, go to signal
+                            currentRound = 1;
+                            showSection('signalSection');
+                        }
                     }
                 });
             }
 
-            // Register button
-            if (registerBtn) {
-                registerBtn.addEventListener('click', register);
+            // Register from profile button
+            if (registerFromProfileBtn) {
+                registerFromProfileBtn.addEventListener('click', register);
             }
 
-            // Download button
-            if (downloadBtn) {
-                downloadBtn.addEventListener('click', downloadAPK);
+            // Change ID button
+            if (changeIdBtn) {
+                changeIdBtn.addEventListener('click', changeUserId);
             }
 
-            // Bonus register button
-            if (bonusRegisterBtn) {
-                bonusRegisterBtn.addEventListener('click', register);
+            // Go to signal button
+            if (goToSignalBtn) {
+                goToSignalBtn.addEventListener('click', () => {
+                    if (currentUserId) {
+                        currentRound = 1;
+                        showSection('signalSection');
+                    }
+                });
+            }
+
+            // Start game from menu button
+            if (startGameFromMenuBtn) {
+                startGameFromMenuBtn.addEventListener('click', () => {
+                    if (currentUserId) {
+                        currentRound = 1;
+                        showSection('signalSection');
+                    } else {
+                        alert('Iltimos, avval ID raqamingizni kiriting!');
+                        showSection('profileSection');
+                    }
+                });
+            }
+
+            // Register from menu button
+            if (registerFromMenuBtn) {
+                registerFromMenuBtn.addEventListener('click', register);
+            }
+
+            // Download from menu button
+            if (downloadFromMenuBtn) {
+                downloadFromMenuBtn.addEventListener('click', downloadAPK);
             }
 
             // VIP invite button
             if (vipInviteBtn) {
                 vipInviteBtn.addEventListener('click', shareVipMessage);
+            }
+
+            // Bonus register button
+            if (bonusRegisterBtn) {
+                bonusRegisterBtn.addEventListener('click', register);
             }
 
             // Reveal apples button
@@ -1384,48 +1666,32 @@
                 restartBtn.addEventListener('click', restartGame);
             }
 
-            // Start signal button
-            if (startSignalBtn) {
-                startSignalBtn.addEventListener('click', function() {
-                    const userId = userIdInput ? userIdInput.value.trim() : '';
-                    
-                    if (!validateUserId(userId)) {
-                        alert('Noto\'g\'ri ID raqam formati');
-                        return;
-                    }
-                    
-                    // Save user ID
-                    currentUserId = userId;
-                    localStorage.setItem('appleFortuneUserId', userId);
-                    
-                    // Start game
-                    currentRound = 1;
-                    startGame();
-                });
-            }
-
-            // Back to menu button
-            if (backToMenuBtn) {
-                backToMenuBtn.addEventListener('click', () => {
-                    showSection('mainMenuSection');
-                });
-            }
-
             // Share button in wait section
             if (shareBtn) {
                 shareBtn.addEventListener('click', shareWithFriends);
             }
 
-            // Change ID button
-            if (changeIdBtn) {
-                changeIdBtn.addEventListener('click', changeUserId);
+            // Change ID from wait section button
+            if (changeIdFromWaitBtn) {
+                changeIdFromWaitBtn.addEventListener('click', () => {
+                    showSection('profileSection');
+                });
             }
 
-            // Load saved data on page load
-            loadSavedData();
+            // Clear data button (for testing)
+            document.addEventListener('keypress', function(e) {
+                if (e.key === 'c' && e.ctrlKey) {
+                    if (confirm('Barcha ma\'lumotlarni tozalashni xohlaysizmi?')) {
+                        clearUserData();
+                    }
+                }
+            });
+
+            // Load user profile on page load
+            loadUserProfile();
             
-            // Show main menu by default
-            showSection('mainMenuSection');
+            // Show profile section by default
+            showSection('profileSection');
         });
     </script>
 </body>
