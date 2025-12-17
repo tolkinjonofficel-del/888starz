@@ -378,8 +378,8 @@
             -webkit-text-fill-color: transparent;
         }
 
-        /* ============ SIGNAL PAGE - APPLE GAME ============ */
-        .signal-game-container {
+        /* ============ PROFILE PAGE ============ */
+        .profile-section {
             border-radius: 20px;
             padding: 20px;
             margin-bottom: 20px;
@@ -389,160 +389,444 @@
             border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        .round-info {
+        .profile-header {
             display: flex;
-            justify-content: space-between;
             align-items: center;
+            gap: 15px;
             margin-bottom: 20px;
-            padding-bottom: 15px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        .round-label {
-            font-size: 0.9rem;
-            color: rgba(255, 255, 255, 0.6);
-        }
-
-        .round-number {
-            font-size: 1.3rem;
-            font-weight: 800;
-            color: #38ef7d;
-        }
-
-        .game-instruction {
-            font-size: 0.9rem;
-            color: rgba(255, 255, 255, 0.8);
-            margin-bottom: 20px;
-            text-align: center;
-            line-height: 1.5;
-            padding: 15px;
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 15px;
-        }
-
-        /* ============ FIXED APPLE CONTAINER ============ */
-        .apples-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 25px;
-            padding: 10px 5px;
-            flex-wrap: nowrap;
-            width: 100%;
-            overflow: hidden;
-        }
-
-        .apple-wrapper {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex: 1;
-            min-width: 0;
-            padding: 0 2px;
-        }
-
-        .apple {
-            width: 55px;
-            height: 55px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            border: 3px solid transparent;
-            position: relative;
-            overflow: hidden;
-            flex-shrink: 0;
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-        }
-
-        .apple:hover {
-            transform: scale(1.1);
-            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
-        }
-
-        /* Mystery Apple with question mark */
-        .mystery-apple {
+        .profile-avatar {
+            width: 70px;
+            height: 70px;
+            border-radius: 20px;
             background: linear-gradient(135deg, #667eea, #764ba2);
-            border: 3px solid rgba(102, 126, 234, 0.5);
-            animation: pulse 2s infinite;
             display: flex;
             align-items: center;
             justify-content: center;
-        }
-
-        .mystery-apple::after {
-            content: "?";
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             font-weight: bold;
             color: white;
         }
 
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.05); }
+        .profile-info {
+            flex: 1;
         }
 
-        /* Whole Apple with image */
-        .whole-apple {
-            background-image: url('https://images.unsplash.com/photo-1568702846914-96b305d2aaeb?w=200&h=200&fit=crop');
-            border: 3px solid rgba(56, 239, 125, 0.5);
-            background-size: cover;
+        .profile-name {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 5px;
         }
 
-        /* Bitten Apple with image */
-        .bitten-apple {
-            background-image: url('https://images.unsplash.com/photo-1570913199992-91d07c140e7a?w=200&h=200&fit=crop');
-            border: 3px solid rgba(255, 65, 108, 0.5);
-            background-size: cover;
+        .profile-id {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.6);
         }
 
-        .game-btn {
-            width: 100%;
-            padding: 18px;
-            border: none;
+        .status-badge {
+            display: inline-block;
+            padding: 5px 12px;
+            background: #38ef7d;
+            color: #000;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            margin-top: 5px;
+        }
+
+        .signal-stats {
+            background: rgba(255, 255, 255, 0.05);
             border-radius: 15px;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+
+        .stat-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .stat-row:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .stat-value {
+            font-size: 0.9rem;
+            font-weight: 700;
+        }
+
+        .signal-info-card {
+            background: linear-gradient(135deg, rgba(56, 239, 125, 0.1), rgba(17, 153, 142, 0.05));
+            border-radius: 15px;
+            padding: 15px;
+            border: 1px solid rgba(56, 239, 125, 0.3);
+            margin-top: 15px;
+        }
+
+        .signal-info-title {
             font-size: 1rem;
             font-weight: 700;
+            color: #38ef7d;
+            margin-bottom: 10px;
+        }
+
+        .signal-info-text {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.4;
+            margin-bottom: 8px;
+        }
+
+        .signal-info-text i {
+            color: #38ef7d;
+            margin-right: 8px;
+        }
+
+        .vip-promo-card {
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.1), rgba(255, 140, 0, 0.05));
+            border-radius: 15px;
+            padding: 15px;
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            margin-top: 15px;
+        }
+
+        .vip-promo-title {
+            font-size: 1rem;
+            font-weight: 700;
+            color: #ffd700;
+            margin-bottom: 10px;
+        }
+
+        .vip-promo-text {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.4;
+            margin-bottom: 15px;
+        }
+
+        .get-vip-btn {
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(135deg, #ffd700, #ff8c00);
+            border: none;
+            border-radius: 10px;
+            color: #000;
+            font-weight: 700;
             cursor: pointer;
-            margin-top: 10px;
-            transition: all 0.3s ease;
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 10px;
+            transition: all 0.3s ease;
         }
 
-        .game-btn:hover {
+        .get-vip-btn:hover {
             transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 10px 20px rgba(255, 215, 0, 0.3);
         }
 
-        .btn-reveal {
-            background: linear-gradient(135deg, #38ef7d, #11998e);
-            color: white;
-        }
-
-        .btn-restart {
-            background: linear-gradient(135deg, #ff416c, #ff4b2b);
-            color: white;
-        }
-
-        .result-message {
-            border-radius: 15px;
-            padding: 20px;
-            margin-top: 20px;
+        /* ============ VIP PAGE ============ */
+        .vip-hero {
+            border-radius: 20px;
+            padding: 25px;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.2), rgba(255, 140, 0, 0.1));
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 215, 0, 0.4);
             text-align: center;
+        }
+
+        .vip-icon {
+            font-size: 3rem;
+            color: #ffd700;
+            margin-bottom: 15px;
+        }
+
+        .vip-hero-title {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: #ffd700;
+            margin-bottom: 10px;
+        }
+
+        .vip-hero-desc {
             font-size: 0.9rem;
-            display: none;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 20px;
+            line-height: 1.4;
+        }
+
+        .vip-progress-container {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+            padding: 15px;
+            margin: 20px 0;
+        }
+
+        .vip-progress-label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .vip-progress-bar {
+            height: 12px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 6px;
+            overflow: hidden;
+        }
+
+        .vip-progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #ffd700, #ff8c00);
+            border-radius: 6px;
+            transition: width 0.5s ease;
+        }
+
+        .vip-benefits {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .benefit-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .benefit-item:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        .benefit-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            background: rgba(255, 215, 0, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ffd700;
+            font-size: 1.2rem;
+        }
+
+        .benefit-text {
+            flex: 1;
+        }
+
+        .benefit-title {
+            font-size: 0.95rem;
+            font-weight: 700;
+            margin-bottom: 3px;
+            color: #fff;
+        }
+
+        .benefit-desc {
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .vip-invite-btn {
+            width: 100%;
+            padding: 18px;
+            background: linear-gradient(135deg, #ffd700, #ff8c00);
+            border: none;
+            border-radius: 15px;
+            color: #000;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+            margin-top: 20px;
+        }
+
+        .vip-invite-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(255, 215, 0, 0.3);
+        }
+
+        /* ============ BONUSES PAGE ============ */
+        .bonus-hero {
+            border-radius: 20px;
+            padding: 25px;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, rgba(247, 151, 30, 0.2), rgba(255, 210, 0, 0.1));
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 2px solid rgba(247, 151, 30, 0.4);
+            text-align: center;
+        }
+
+        .bonus-icon {
+            font-size: 3rem;
+            color: #f7971e;
+            margin-bottom: 15px;
+        }
+
+        .bonus-hero-title {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: #f7971e;
+            margin-bottom: 10px;
+        }
+
+        .bonus-hero-desc {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 20px;
+            line-height: 1.4;
+        }
+
+        .bonus-card {
+            border-radius: 20px;
+            padding: 20px;
+            margin-bottom: 15px;
             background: rgba(255, 255, 255, 0.05);
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .bonus-card-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .bonus-card-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+
+        .bonus-card-1 .bonus-card-icon {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+        }
+
+        .bonus-card-2 .bonus-card-icon {
+            background: linear-gradient(135deg, #11998e, #38ef7d);
+        }
+
+        .bonus-card-3 .bonus-card-icon {
+            background: linear-gradient(135deg, #ff416c, #ff4b2b);
+        }
+
+        .bonus-card-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .bonus-card-desc {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.4;
+            margin-bottom: 15px;
+        }
+
+        .bonus-card-highlight {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 5px 10px;
+            border-radius: 8px;
+            font-size: 0.8rem;
+            color: #ffd700;
+            margin-bottom: 15px;
+        }
+
+        .bonus-btn {
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(135deg, #f7971e, #ffd200);
+            border: none;
+            border-radius: 10px;
+            color: #000;
+            font-weight: 700;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .bonus-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(247, 151, 30, 0.3);
+        }
+
+        .partner-section {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.05));
+            border-radius: 15px;
+            padding: 20px;
+            margin-top: 20px;
+            border: 1px solid rgba(102, 126, 234, 0.3);
+        }
+
+        .partner-title {
+            font-size: 1rem;
+            font-weight: 700;
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+
+        .partner-desc {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 15px;
+            line-height: 1.4;
+        }
+
+        .partner-btn {
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border: none;
+            border-radius: 10px;
+            color: white;
+            font-weight: 700;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .partner-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
         }
 
         /* ============ BOTTOM NAVIGATION ============ */
@@ -610,159 +894,6 @@
             background: rgba(255, 255, 255, 0.05);
         }
 
-        /* ============ RESPONSIVE ADJUSTMENTS FOR APPLES ============ */
-        
-        /* Kichik ekranlar uchun (280px - 320px) */
-        @media (max-width: 320px) {
-            .apple {
-                width: 48px;
-                height: 48px;
-            }
-            
-            .nav-item {
-                padding: 6px 8px;
-                max-width: 60px;
-            }
-            
-            .nav-icon {
-                font-size: 1.1rem;
-            }
-            
-            .nav-text {
-                font-size: 0.6rem;
-            }
-        }
-
-        /* O'rta ekranlar (321px - 375px) */
-        @media (min-width: 321px) and (max-width: 375px) {
-            .apple {
-                width: 52px;
-                height: 52px;
-            }
-        }
-
-        /* Katta telefonlar (376px - 414px) */
-        @media (min-width: 376px) and (max-width: 414px) {
-            .apple {
-                width: 54px;
-                height: 54px;
-            }
-        }
-
-        /* Planshetlar (415px - 768px) */
-        @media (min-width: 415px) and (max-width: 768px) {
-            .apple {
-                width: 60px;
-                height: 60px;
-            }
-            
-            .apples-container {
-                padding: 10px 15px;
-            }
-        }
-
-        /* Desktop (769px+) */
-        @media (min-width: 769px) {
-            .container, .page {
-                max-width: 500px;
-                margin: 0 auto;
-                left: 50%;
-                transform: translateX(-50%);
-            }
-            
-            .bottom-navigation {
-                max-width: 500px;
-                margin: 0 auto;
-                left: 50%;
-                transform: translateX(-50%);
-                border-radius: 20px 20px 0 0;
-            }
-            
-            .apple {
-                width: 65px;
-                height: 65px;
-            }
-        }
-
-        /* Portrait mode (balandlik kam) */
-        @media (max-height: 600px) {
-            .apple {
-                width: 50px;
-                height: 50px;
-            }
-            
-            .quick-action-card {
-                min-height: 100px;
-                padding: 15px;
-            }
-        }
-
-        /* Juda kichik ekranlar uchun */
-        @media (max-width: 280px) {
-            .apple {
-                width: 42px;
-                height: 42px;
-            }
-            
-            .nav-text {
-                font-size: 0.55rem;
-            }
-            
-            .nav-item {
-                padding: 4px 6px;
-            }
-        }
-
-        /* Landscape mode (gorizontal) */
-        @media (orientation: landscape) and (max-height: 500px) {
-            .apple {
-                width: 45px;
-                height: 45px;
-            }
-            
-            .quick-actions {
-                grid-template-columns: repeat(4, 1fr);
-                gap: 8px;
-            }
-            
-            .quick-action-card {
-                min-height: 80px;
-                padding: 12px;
-            }
-            
-            .action-icon {
-                font-size: 1.5rem;
-                margin-bottom: 5px;
-            }
-            
-            .action-title {
-                font-size: 0.8rem;
-            }
-            
-            .action-desc {
-                font-size: 0.7rem;
-            }
-        }
-
-        /* Apple hover effektini mobil uchun optimallashtirish */
-        @media (hover: none) {
-            .apple:hover {
-                transform: scale(1);
-            }
-            
-            .apple:active {
-                transform: scale(0.95);
-            }
-            
-            .quick-action-card:hover {
-                transform: translateY(0);
-            }
-            
-            .quick-action-card:active {
-                transform: translateY(-2px);
-            }
-        }
-
         /* ============ UTILITY CLASSES ============ */
         .hidden {
             display: none !important;
@@ -794,6 +925,45 @@
 
         .mb-20 {
             margin-bottom: 20px;
+        }
+
+        /* ============ RESPONSIVE ============ */
+        @media (min-width: 769px) {
+            .container, .page {
+                max-width: 500px;
+                margin: 0 auto;
+                left: 50%;
+                transform: translateX(-50%);
+            }
+            
+            .bottom-navigation {
+                max-width: 500px;
+                margin: 0 auto;
+                left: 50%;
+                transform: translateX(-50%);
+                border-radius: 20px 20px 0 0;
+            }
+        }
+
+        @media (max-width: 320px) {
+            .nav-item {
+                padding: 6px 8px;
+                max-width: 60px;
+            }
+            
+            .nav-icon {
+                font-size: 1.1rem;
+            }
+            
+            .nav-text {
+                font-size: 0.6rem;
+            }
+            
+            .profile-avatar {
+                width: 60px;
+                height: 60px;
+                font-size: 1.5rem;
+            }
         }
     </style>
 </head>
@@ -839,20 +1009,20 @@
                     <i class="fas fa-id-card"></i>
                     <span id="userLabel">ID RAQAM:</span>
                 </div>
-                <div class="user-id-value" id="userIDValue">123456789</div>
+                <div class="user-id-value" id="userIDValue">1987654321</div>
             </div>
             
             <div class="stats-row">
                 <div class="stat-item">
-                    <div class="stat-value" id="statSignals">15</div>
-                    <div class="stat-label" id="statLabelSignals">SIGNALLAR</div>
+                    <div class="stat-value" id="statSignals">3/5</div>
+                    <div class="stat-label" id="statLabelSignals">BUGUNGI SIGNALLAR</div>
                 </div>
                 <div class="stat-item">
-                    <div class="stat-value" id="statFriends">8</div>
-                    <div class="stat-label" id="statLabelFriends">DO'STLAR</div>
+                    <div class="stat-value success" id="statFriends">86%</div>
+                    <div class="stat-label" id="statLabelFriends">ANIQLIK</div>
                 </div>
                 <div class="stat-item">
-                    <div class="stat-value" id="statBonus">$120</div>
+                    <div class="stat-value warning" id="statBonus">$150</div>
                     <div class="stat-label" id="statLabelBonus">BONUS</div>
                 </div>
             </div>
@@ -869,13 +1039,13 @@
             <div class="quick-action-card gradient-bonus" id="quickBonus">
                 <div class="action-icon">🎁</div>
                 <div class="action-title" id="quickBonusTitle">BONUSLAR</div>
-                <div class="action-desc" id="quickBonusDesc">200% bonus va sovg'alar</div>
+                <div class="action-desc" id="quickBonusDesc">AIFUT promokodi bilan</div>
             </div>
             
             <div class="quick-action-card gradient-vip" id="quickVip">
                 <div class="action-icon">👑</div>
-                <div class="action-title" id="quickVipTitle">VIP</div>
-                <div class="action-desc" id="quickVipDesc">Ekskluziv signal</div>
+                <div class="action-title" id="quickVipTitle">VIP SIGNAL</div>
+                <div class="action-desc" id="quickVipDesc">Premium aniqlik</div>
             </div>
             
             <div class="quick-action-card gradient-download" id="quickDownload">
@@ -886,73 +1056,218 @@
         </div>
 
         <!-- VIP Status -->
-        <div class="signal-game-container">
-            <div class="vip-progress-container">
-                <div class="round-info" style="border-bottom: none; margin-bottom: 10px;">
-                    <div class="round-label" style="font-size: 1rem;">VIP STATUS</div>
-                    <div class="round-number">8/20</div>
+        <div class="profile-section">
+            <div class="vip-promo-card">
+                <div class="vip-promo-title">🎯 HOZIR ISHONCHLI SIGNAL OLING!</div>
+                <div class="vip-promo-text">
+                    VIP signal orqali 98.5% aniqlikdagi premium signallarni oling.
+                    20 ta do'st taklif qiling va hozir ishonchli signal oling!
                 </div>
-                <div class="vip-progress-bar" style="height: 8px; background: rgba(255,255,255,0.1); border-radius: 4px; overflow: hidden;">
-                    <div class="vip-progress-fill" style="width: 40%; height: 100%; background: linear-gradient(90deg, #ffd700, #ff8c00); border-radius: 4px;"></div>
-                </div>
-                <div style="display: flex; justify-content: space-between; margin-top: 8px; font-size: 0.8rem; color: rgba(255,255,255,0.6);">
-                    <span>Do'stlar: 8</span>
-                    <span>40%</span>
-                </div>
+                <button class="get-vip-btn" id="getVipBtn">
+                    <i class="fas fa-crown"></i>
+                    <span id="getVipBtnText">VIP SIGNAL OLISH</span>
+                </button>
             </div>
-            <button class="game-btn" style="background: linear-gradient(135deg, #ffd700, #ff8c00); color: #000; margin-top: 15px;">
-                <i class="fas fa-share-alt"></i>
-                <span id="vipInviteBtnText">DO'STLARNI TAKLIF QILISH</span>
-            </button>
         </div>
     </div>
 
-    <!-- Signal Page -->
-    <div class="page" id="signalPage">
+    <!-- Profile Page -->
+    <div class="page" id="profilePage">
         <div class="page-header">
-            <div class="page-back-btn" id="backFromSignal">
+            <div class="page-back-btn" id="backFromProfile">
                 <i class="fas fa-arrow-left"></i>
             </div>
-            <div class="page-title" id="signalPageTitle">SIGNAL OLISH</div>
+            <div class="page-title" id="profilePageTitle">PROFIL</div>
         </div>
         
-        <div class="signal-game-container">
-            <div class="round-info">
-                <div class="round-label" id="roundLabel">RAUND:</div>
-                <div class="round-number" id="roundCounter">1</div>
-            </div>
-            
-            <div class="game-instruction" id="gameInstruction">
-                Butun olmalarni tanlang. Tishlangan olma o'yinni tugatadi!
-                <br><small style="color: rgba(255,255,255,0.5)">5 ta olma ichidan butunlarini toping</small>
-            </div>
-            
-            <div class="apples-container" id="applesContainer">
-                <div class="apple-wrapper">
-                    <div class="apple mystery-apple" data-index="0"></div>
+        <div class="profile-section">
+            <div class="profile-header">
+                <div class="profile-avatar">
+                    <span>A</span>
                 </div>
-                <div class="apple-wrapper">
-                    <div class="apple mystery-apple" data-index="1"></div>
-                </div>
-                <div class="apple-wrapper">
-                    <div class="apple mystery-apple" data-index="2"></div>
-                </div>
-                <div class="apple-wrapper">
-                    <div class="apple mystery-apple" data-index="3"></div>
-                </div>
-                <div class="apple-wrapper">
-                    <div class="apple mystery-apple" data-index="4"></div>
+                <div class="profile-info">
+                    <div class="profile-name">Apple Fortune</div>
+                    <div class="profile-id" id="profileId">ID: 1987654321</div>
+                    <div class="status-badge" id="statusBadge">AKTIV</div>
                 </div>
             </div>
             
-            <button class="game-btn btn-reveal" id="revealBtn">
-                <i class="fas fa-eye"></i> <span id="revealText">OLMALARNI KORISH</span>
+            <div class="signal-stats">
+                <div class="stat-row">
+                    <div class="stat-label">Signallar uchun ID raqam:</div>
+                    <div class="stat-value" id="signalIdValue">1987654321</div>
+                </div>
+                <div class="stat-row">
+                    <div class="stat-label">Status:</div>
+                    <div class="stat-value success">AKTIV ✅</div>
+                </div>
+                <div class="stat-row">
+                    <div class="stat-label">Limit (1 kunda):</div>
+                    <div class="stat-value warning">5 ta signal</div>
+                </div>
+                <div class="stat-row">
+                    <div class="stat-label">Aniqlik:</div>
+                    <div class="stat-value">86%</div>
+                </div>
+            </div>
+            
+            <div class="signal-info-card">
+                <div class="signal-info-title">📢 OGOHLANTIRISH</div>
+                <div class="signal-info-text">
+                    <i class="fas fa-clock"></i> Signal olish oralig'ida <strong>2 soat</strong> vaqt o'tishi lozim. Shunda aniq signal olasiz.
+                </div>
+                <div class="signal-info-text">
+                    <i class="fas fa-money-bill-wave"></i> Agar sizning reja katta pul bilan o'ynasangiz, 1 kunda 1 marta <strong>100% signal</strong> olishingiz mumkin.
+                </div>
+                <div class="signal-info-text">
+                    <i class="fas fa-crown"></i> Hozir ishonchli signal olish uchun <strong>VIP signal</strong> olishingiz mumkin.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- VIP Page -->
+    <div class="page" id="vipPage">
+        <div class="page-header">
+            <div class="page-back-btn" id="backFromVip">
+                <i class="fas fa-arrow-left"></i>
+            </div>
+            <div class="page-title" id="vipPageTitle">VIP SIGNAL</div>
+        </div>
+        
+        <div class="vip-hero">
+            <div class="vip-icon">👑</div>
+            <div class="vip-hero-title" id="vipHeroTitle">PREMIUM ANIQLIKDAGI SIGNAL</div>
+            <div class="vip-hero-desc" id="vipHeroDesc">
+                VIP signalni olish uchun 20 ta odam taklif qiling va hozir ishonchli signal oling!
+            </div>
+        </div>
+        
+        <div class="vip-progress-container">
+            <div class="vip-progress-label">
+                <span id="vipProgressLabel">TAKLIF QILINGAN O'YINCHILAR</span>
+                <span id="vipProgressValue">8/20</span>
+            </div>
+            <div class="vip-progress-bar">
+                <div class="vip-progress-fill" id="vipProgressFill" style="width: 40%"></div>
+            </div>
+        </div>
+        
+        <div class="vip-benefits">
+            <div class="benefit-item">
+                <div class="benefit-icon">🎯</div>
+                <div class="benefit-text">
+                    <div class="benefit-title" id="benefit1Title">98.5% Aniqlik</div>
+                    <div class="benefit-desc" id="benefit1Desc">Premium savdo signallari</div>
+                </div>
+            </div>
+            
+            <div class="benefit-item">
+                <div class="benefit-icon">⚡</div>
+                <div class="benefit-text">
+                    <div class="benefit-title" id="benefit2Title">Darhol Signal</div>
+                    <div class="benefit-desc" id="benefit2Desc">Kutishsiz bepul signal</div>
+                </div>
+            </div>
+            
+            <div class="benefit-item">
+                <div class="benefit-icon">🛡️</div>
+                <div class="benefit-text">
+                    <div class="benefit-title" id="benefit3Title">Risk Himoyasi</div>
+                    <div class="benefit-desc" id="benefit3Desc">Avtomatik stop-loss</div>
+                </div>
+            </div>
+            
+            <div class="benefit-item">
+                <div class="benefit-icon">📊</div>
+                <div class="benefit-text">
+                    <div class="benefit-title" id="benefit4Title">Detal Tahlil</div>
+                    <div class="benefit-desc" id="benefit4Desc">AI tomonidan tahlil</div>
+                </div>
+            </div>
+        </div>
+        
+        <button class="vip-invite-btn" id="vipInviteBtn">
+            <i class="fas fa-share-alt"></i>
+            <span id="vipInviteBtnText">DO'STLARNI TAKLIF QILISH</span>
+        </button>
+    </div>
+
+    <!-- Bonuses Page -->
+    <div class="page" id="bonusesPage">
+        <div class="page-header">
+            <div class="page-back-btn" id="backFromBonuses">
+                <i class="fas fa-arrow-left"></i>
+            </div>
+            <div class="page-title" id="bonusesPageTitle">BONUSLAR</div>
+        </div>
+        
+        <div class="bonus-hero">
+            <div class="bonus-icon">🎁</div>
+            <div class="bonus-hero-title" id="bonusHeroTitle">AIFUT PROMOKOD BILAN</div>
+            <div class="bonus-hero-desc" id="bonusHeroDesc">
+                Kuchaytirilgan bonuslarni oling va savdolaringizni maksimal darajada oshiring!
+            </div>
+        </div>
+        
+        <div class="bonus-card bonus-card-1">
+            <div class="bonus-card-header">
+                <div class="bonus-card-icon">💰</div>
+                <div>
+                    <div class="bonus-card-title" id="bonus1Title">150% BONUS</div>
+                    <div class="bonus-card-desc" id="bonus1Desc">
+                        AIFUT promokodi orqali birinchi hisob to'ldirish uchun 150% bonus oling
+                    </div>
+                </div>
+            </div>
+            <div class="bonus-card-highlight">AIFUT promokodini kiriting</div>
+            <button class="bonus-btn" id="bonus1Btn">
+                <i class="fas fa-gift"></i>
+                <span id="bonus1BtnText">BONUS OLISH</span>
             </button>
-            
-            <div class="result-message" id="resultMessage"></div>
-            
-            <button class="game-btn btn-restart hidden" id="restartBtn">
-                <i class="fas fa-redo"></i> <span id="restartText">QAYTA URINISH</span>
+        </div>
+        
+        <div class="bonus-card bonus-card-2">
+            <div class="bonus-card-header">
+                <div class="bonus-card-icon">📅</div>
+                <div>
+                    <div class="bonus-card-title" id="bonus2Title">JUMA BONUSI</div>
+                    <div class="bonus-card-desc" id="bonus2Desc">
+                        Har hafta juma kuni uchun maxsus bonus. AIFUT o'yinchilariga har hafta 5% qo'shimcha cashback to'lanadi
+                    </div>
+                </div>
+            </div>
+            <div class="bonus-card-highlight">Har juma 5% cashback</div>
+            <button class="bonus-btn" id="bonus2Btn">
+                <i class="fas fa-calendar-alt"></i>
+                <span id="bonus2BtnText">JUMA BONUSI</span>
+            </button>
+        </div>
+        
+        <div class="bonus-card bonus-card-3">
+            <div class="bonus-card-header">
+                <div class="bonus-card-icon">🤝</div>
+                <div>
+                    <div class="bonus-card-title" id="bonus3Title">HAMKORLIK</div>
+                    <div class="bonus-card-desc" id="bonus3Desc">
+                        Bizning hamkorlarimizdan ro'yxatdan o'ting va qo'shimcha bonuslar oling
+                    </div>
+                </div>
+            </div>
+            <button class="bonus-btn" id="bonus3Btn">
+                <i class="fas fa-handshake"></i>
+                <span id="bonus3BtnText">HAMKORLIK</span>
+            </button>
+        </div>
+        
+        <div class="partner-section">
+            <div class="partner-title" id="partnerTitle">BIZNING HAMKORLARDAN RO'YXATDAN O'TING</div>
+            <div class="partner-desc" id="partnerDesc">
+                Hamkorlarimiz orqali ro'yxatdan o'ting va qo'shimcha bonuslar, chegirmalar va ekskluziv takliflarga ega bo'ling.
+            </div>
+            <button class="partner-btn" id="partnerBtn">
+                <i class="fas fa-user-plus"></i>
+                <span id="partnerBtnText">RO'YXATDAN O'TISH</span>
             </button>
         </div>
     </div>
@@ -964,14 +1279,9 @@
             <div class="nav-text" id="navHome">ASOSIY</div>
         </div>
         
-        <div class="nav-item" data-page="signal">
-            <div class="nav-icon">📡</div>
-            <div class="nav-text" id="navSignal">SIGNAL</div>
-        </div>
-        
-        <div class="nav-item" data-page="bonuses">
-            <div class="nav-icon">🎁</div>
-            <div class="nav-text" id="navBonuses">BONUSLAR</div>
+        <div class="nav-item" data-page="profile">
+            <div class="nav-icon">👤</div>
+            <div class="nav-text" id="navProfile">PROFIL</div>
         </div>
         
         <div class="nav-item" data-page="vip">
@@ -979,9 +1289,9 @@
             <div class="nav-text" id="navVip">VIP</div>
         </div>
         
-        <div class="nav-item" data-page="profile">
-            <div class="nav-icon">👤</div>
-            <div class="nav-text" id="navProfile">PROFIL</div>
+        <div class="nav-item" data-page="bonuses">
+            <div class="nav-icon">🎁</div>
+            <div class="nav-text" id="navBonuses">BONUSLAR</div>
         </div>
     </div>
 
@@ -991,86 +1301,155 @@
             uz: {
                 languagePrompt: "AI savdo signallari platformasi",
                 userLabel: "ID RAQAM:",
-                statLabelSignals: "SIGNALLAR",
-                statLabelFriends: "DO'STLAR",
+                statLabelSignals: "BUGUNGI SIGNALLAR",
+                statLabelFriends: "ANIQLIK",
                 statLabelBonus: "BONUS",
                 quickSignalTitle: "SIGNAL OLISH",
                 quickSignalDesc: "Real-vaqtda AI signallari",
                 quickBonusTitle: "BONUSLAR",
-                quickBonusDesc: "200% bonus va sovg'alar",
-                quickVipTitle: "VIP",
-                quickVipDesc: "Ekskluziv signal",
+                quickBonusDesc: "AIFUT promokodi bilan",
+                quickVipTitle: "VIP SIGNAL",
+                quickVipDesc: "Premium aniqlik",
                 quickDownloadTitle: "APK",
                 quickDownloadDesc: "Ilovani yuklab olish",
+                getVipBtnText: "VIP SIGNAL OLISH",
+                profilePageTitle: "PROFIL",
+                statusBadge: "AKTIV",
+                signalIdValue: "1987654321",
+                vipHeroTitle: "PREMIUM ANIQLIKDAGI SIGNAL",
+                vipHeroDesc: "VIP signalni olish uchun 20 ta odam taklif qiling va hozir ishonchli signal oling!",
+                vipProgressLabel: "TAKLIF QILINGAN O'YINCHILAR",
+                vipProgressValue: "8/20",
+                benefit1Title: "98.5% Aniqlik",
+                benefit1Desc: "Premium savdo signallari",
+                benefit2Title: "Darhol Signal",
+                benefit2Desc: "Kutishsiz bepul signal",
+                benefit3Title: "Risk Himoyasi",
+                benefit3Desc: "Avtomatik stop-loss",
+                benefit4Title: "Detal Tahlil",
+                benefit4Desc: "AI tomonidan tahlil",
                 vipInviteBtnText: "DO'STLARNI TAKLIF QILISH",
-                signalPageTitle: "SIGNAL OLISH",
-                roundLabel: "RAUND:",
-                gameInstruction: "Butun olmalarni tanlang. Tishlangan olma o'yinni tugatadi!<br><small style='color: rgba(255,255,255,0.5)'>5 ta olma ichidan butunlarini toping</small>",
-                revealText: "OLMALARNI KORISH",
-                restartText: "QAYTA URINISH",
-                successMessage: "✅ Butun olma! Keyingi bosqichga o'tilmoqda...",
-                failureMessage: "❌ Tishlangan olma! O'yin {round}-raundda tugadi.",
+                bonusesPageTitle: "BONUSLAR",
+                bonusHeroTitle: "AIFUT PROMOKOD BILAN",
+                bonusHeroDesc: "Kuchaytirilgan bonuslarni oling va savdolaringizni maksimal darajada oshiring!",
+                bonus1Title: "150% BONUS",
+                bonus1Desc: "AIFUT promokodi orqali birinchi hisob to'ldirish uchun 150% bonus oling",
+                bonus1BtnText: "BONUS OLISH",
+                bonus2Title: "JUMA BONUSI",
+                bonus2Desc: "Har hafta juma kuni uchun maxsus bonus. AIFUT o'yinchilariga har hafta 5% qo'shimcha cashback to'lanadi",
+                bonus2BtnText: "JUMA BONUSI",
+                bonus3Title: "HAMKORLIK",
+                bonus3Desc: "Bizning hamkorlarimizdan ro'yxatdan o'ting va qo'shimcha bonuslar oling",
+                bonus3BtnText: "HAMKORLIK",
+                partnerTitle: "BIZNING HAMKORLARDAN RO'YXATDAN O'TING",
+                partnerDesc: "Hamkorlarimiz orqali ro'yxatdan o'ting va qo'shimcha bonuslar, chegirmalar va ekskluziv takliflarga ega bo'ling.",
+                partnerBtnText: "RO'YXATDAN O'TISH",
                 navHome: "ASOSIY",
-                navSignal: "SIGNAL",
-                navBonuses: "BONUSLAR",
+                navProfile: "PROFIL",
                 navVip: "VIP",
-                navProfile: "PROFIL"
+                navBonuses: "BONUSLAR"
             },
             ru: {
                 languagePrompt: "Платформа AI торговых сигналов",
                 userLabel: "ID НОМЕР:",
-                statLabelSignals: "СИГНАЛЫ",
-                statLabelFriends: "ДРУЗЬЯ",
+                statLabelSignals: "СЕГОДНЯ СИГНАЛЫ",
+                statLabelFriends: "ТОЧНОСТЬ",
                 statLabelBonus: "БОНУС",
                 quickSignalTitle: "ПОЛУЧИТЬ СИГНАЛ",
                 quickSignalDesc: "Сигналы AI в реальном времени",
                 quickBonusTitle: "БОНУСЫ",
-                quickBonusDesc: "200% бонус и подарки",
-                quickVipTitle: "VIP",
-                quickVipDesc: "Эксклюзивный сигнал",
+                quickBonusDesc: "С промокодом AIFUT",
+                quickVipTitle: "VIP СИГНАЛ",
+                quickVipDesc: "Премиум точность",
                 quickDownloadTitle: "APK",
                 quickDownloadDesc: "Скачать приложение",
+                getVipBtnText: "ПОЛУЧИТЬ VIP СИГНАЛ",
+                profilePageTitle: "ПРОФИЛЬ",
+                statusBadge: "АКТИВНЫЙ",
+                signalIdValue: "1987654321",
+                vipHeroTitle: "СИГНАЛ ПРЕМИУМ ТОЧНОСТИ",
+                vipHeroDesc: "Пригласите 20 человек для получения VIP сигнала и получите надежный сигнал сейчас!",
+                vipProgressLabel: "ПРИГЛАШЕННЫЕ ИГРОКИ",
+                vipProgressValue: "8/20",
+                benefit1Title: "98.5% Точность",
+                benefit1Desc: "Премиум торговые сигналы",
+                benefit2Title: "Мгновенный Сигнал",
+                benefit2Desc: "Бесплатный сигнал без ожидания",
+                benefit3Title: "Защита Рисков",
+                benefit3Desc: "Автоматический stop-loss",
+                benefit4Title: "Детальный Анализ",
+                benefit4Desc: "Анализ от AI",
                 vipInviteBtnText: "ПРИГЛАСИТЬ ДРУЗЕЙ",
-                signalPageTitle: "ПОЛУЧИТЬ СИГНАЛ",
-                roundLabel: "РАУНД:",
-                gameInstruction: "Выбирайте целые яблоки. Надкушенное яблоко закончит игру!<br><small style='color: rgba(255,255,255,0.5)'>Найдите целые среди 5 яблок</small>",
-                revealText: "ПОКАЗАТЬ ЯБЛОКИ",
-                restartText: "ПОПРОБОВАТЬ СНОВА",
-                successMessage: "✅ Целое яблоко! Переходим на следующий уровень...",
-                failureMessage: "❌ Надкушенное яблоко! Игра завершена на раунде {round}.",
+                bonusesPageTitle: "БОНУСЫ",
+                bonusHeroTitle: "С ПРОМОКОДОМ AIFUT",
+                bonusHeroDesc: "Получите усиленные бонусы и максимизируйте свои сделки!",
+                bonus1Title: "150% БОНУС",
+                bonus1Desc: "Получите 150% бонус на первый депозит с промокодом AIFUT",
+                bonus1BtnText: "ПОЛУЧИТЬ БОНУС",
+                bonus2Title: "ПЯТНИЧНЫЙ БОНУС",
+                bonus2Desc: "Специальный бонус на каждую пятницу. Игрокам AIFUT каждую неделю начисляется 5% дополнительного кешбека",
+                bonus2BtnText: "ПЯТНИЧНЫЙ БОНУС",
+                bonus3Title: "ПАРТНЕРСТВО",
+                bonus3Desc: "Зарегистрируйтесь у наших партнеров и получите дополнительные бонусы",
+                bonus3BtnText: "ПАРТНЕРСТВО",
+                partnerTitle: "ЗАРЕГИСТРИРУЙТЕСЬ У НАШИХ ПАРТНЕРОВ",
+                partnerDesc: "Зарегистрируйтесь у наших партнеров и получите дополнительные бонусы, скидки и эксклюзивные предложения.",
+                partnerBtnText: "РЕГИСТРАЦИЯ",
                 navHome: "ГЛАВНАЯ",
-                navSignal: "СИГНАЛ",
-                navBonuses: "БОНУСЫ",
+                navProfile: "ПРОФИЛЬ",
                 navVip: "VIP",
-                navProfile: "ПРОФИЛЬ"
+                navBonuses: "БОНУСЫ"
             },
             en: {
                 languagePrompt: "AI trading signals platform",
                 userLabel: "ID NUMBER:",
-                statLabelSignals: "SIGNALS",
-                statLabelFriends: "FRIENDS",
+                statLabelSignals: "TODAY'S SIGNALS",
+                statLabelFriends: "ACCURACY",
                 statLabelBonus: "BONUS",
                 quickSignalTitle: "GET SIGNAL",
                 quickSignalDesc: "Real-time AI signals",
                 quickBonusTitle: "BONUSES",
-                quickBonusDesc: "200% bonus and gifts",
-                quickVipTitle: "VIP",
-                quickVipDesc: "Exclusive signal",
+                quickBonusDesc: "With AIFUT promo code",
+                quickVipTitle: "VIP SIGNAL",
+                quickVipDesc: "Premium accuracy",
                 quickDownloadTitle: "APK",
                 quickDownloadDesc: "Download application",
+                getVipBtnText: "GET VIP SIGNAL",
+                profilePageTitle: "PROFILE",
+                statusBadge: "ACTIVE",
+                signalIdValue: "1987654321",
+                vipHeroTitle: "PREMIUM ACCURACY SIGNAL",
+                vipHeroDesc: "Invite 20 people to get VIP signal and get reliable signal now!",
+                vipProgressLabel: "INVITED PLAYERS",
+                vipProgressValue: "8/20",
+                benefit1Title: "98.5% Accuracy",
+                benefit1Desc: "Premium trading signals",
+                benefit2Title: "Instant Signal",
+                benefit2Desc: "Free signal without waiting",
+                benefit3Title: "Risk Protection",
+                benefit3Desc: "Automatic stop-loss",
+                benefit4Title: "Detailed Analysis",
+                benefit4Desc: "AI analysis",
                 vipInviteBtnText: "INVITE FRIENDS",
-                signalPageTitle: "GET SIGNAL",
-                roundLabel: "ROUND:",
-                gameInstruction: "Select whole apples. Bitten apple will end the game!<br><small style='color: rgba(255,255,255,0.5)'>Find whole ones among 5 apples</small>",
-                revealText: "REVEAL APPLES",
-                restartText: "TRY AGAIN",
-                successMessage: "✅ Whole apple! Moving to next level...",
-                failureMessage: "❌ Bitten apple! Game ended at round {round}.",
+                bonusesPageTitle: "BONUSES",
+                bonusHeroTitle: "WITH AIFUT PROMO CODE",
+                bonusHeroDesc: "Get enhanced bonuses and maximize your trades!",
+                bonus1Title: "150% BONUS",
+                bonus1Desc: "Get 150% bonus on first deposit with AIFUT promo code",
+                bonus1BtnText: "GET BONUS",
+                bonus2Title: "FRIDAY BONUS",
+                bonus2Desc: "Special bonus for every Friday. AIFUT players get 5% extra cashback weekly",
+                bonus2BtnText: "FRIDAY BONUS",
+                bonus3Title: "PARTNERSHIP",
+                bonus3Desc: "Register with our partners and get additional bonuses",
+                bonus3BtnText: "PARTNERSHIP",
+                partnerTitle: "REGISTER WITH OUR PARTNERS",
+                partnerDesc: "Register with our partners and get additional bonuses, discounts and exclusive offers.",
+                partnerBtnText: "REGISTER",
                 navHome: "HOME",
-                navSignal: "SIGNAL",
-                navBonuses: "BONUSES",
+                navProfile: "PROFILE",
                 navVip: "VIP",
-                navProfile: "PROFILE"
+                navBonuses: "BONUSES"
             }
         };
 
@@ -1082,24 +1461,21 @@
             // Get elements
             const languageSelector = document.getElementById('languageSelector');
             const mainPage = document.getElementById('mainPage');
+            const profilePage = document.getElementById('profilePage');
+            const vipPage = document.getElementById('vipPage');
+            const bonusesPage = document.getElementById('bonusesPage');
             const bottomNav = document.getElementById('bottomNav');
-            const signalPage = document.getElementById('signalPage');
             
             // Navigation items
             const navItems = document.querySelectorAll('.nav-item');
             
-            // Apple game elements
-            const applesContainer = document.getElementById('applesContainer');
-            const revealBtn = document.getElementById('revealBtn');
-            const resultMessage = document.getElementById('resultMessage');
-            const restartBtn = document.getElementById('restartBtn');
-            const roundCounter = document.getElementById('roundCounter');
-            
-            // Game variables
-            let currentRound = 1;
-            let gameActive = false;
-            let applesRevealed = false;
-            let appleElements = [];
+            // Pages
+            const pages = {
+                main: mainPage,
+                profile: profilePage,
+                vip: vipPage,
+                bonuses: bonusesPage
+            };
             
             // ==================== FUNCTIONS ====================
 
@@ -1111,11 +1487,7 @@
                 for (const [key, value] of Object.entries(t)) {
                     const element = document.getElementById(key);
                     if (element) {
-                        if (key === 'gameInstruction') {
-                            element.innerHTML = value;
-                        } else {
-                            element.textContent = value;
-                        }
+                        element.textContent = value;
                     }
                 }
                 
@@ -1134,21 +1506,16 @@
             // Show page
             function showPage(pageName) {
                 // Hide all pages
-                document.querySelectorAll('.page').forEach(page => {
-                    page.classList.remove('active');
+                Object.values(pages).forEach(page => {
+                    if (page) page.classList.remove('active');
                 });
                 
                 // Hide main container
                 if (mainPage) mainPage.classList.remove('active');
                 
                 // Show selected page
-                if (pageName === 'main') {
-                    if (mainPage) mainPage.classList.add('active');
-                } else if (pageName === 'signal') {
-                    if (signalPage) {
-                        signalPage.classList.add('active');
-                        startGame();
-                    }
+                if (pages[pageName]) {
+                    pages[pageName].classList.add('active');
                 }
                 
                 // Update navigation
@@ -1159,171 +1526,10 @@
                         item.classList.remove('active');
                     }
                 });
-            }
-
-            // Start game
-            function startGame() {
-                if (roundCounter) roundCounter.textContent = currentRound;
-                if (resultMessage) {
-                    resultMessage.style.display = 'none';
-                    resultMessage.textContent = '';
-                }
-                if (restartBtn) restartBtn.classList.add('hidden');
-                if (revealBtn) {
-                    revealBtn.disabled = false;
-                    revealBtn.innerHTML = `<i class="fas fa-eye"></i> ${translations[currentLang]?.revealText || 'OLMALARNI KORISH'}`;
-                }
                 
-                gameActive = false;
-                applesRevealed = false;
-                
-                // Reset apples to mystery state
-                if (applesContainer) {
-                    appleElements = applesContainer.querySelectorAll('.apple');
-                    appleElements.forEach((apple, index) => {
-                        apple.className = 'apple mystery-apple';
-                        apple.dataset.index = index;
-                        apple.dataset.type = 'mystery';
-                        
-                        // Remove old click events and add new one
-                        apple.replaceWith(apple.cloneNode(true));
-                    });
-                    
-                    // Re-get elements after cloning
-                    appleElements = applesContainer.querySelectorAll('.apple');
-                    
-                    // Add click event for mystery apples
-                    appleElements.forEach(apple => {
-                        apple.addEventListener('click', function() {
-                            if (!applesRevealed) {
-                                revealApples();
-                            }
-                        });
-                    });
-                }
-            }
-
-            // Reveal apples
-            function revealApples() {
-                if (!appleElements.length || !revealBtn) return;
-                
-                applesRevealed = true;
-                gameActive = true;
-                revealBtn.disabled = true;
-                
-                // Round configuration
-                const roundConfig = {
-                    1: { whole: 4, bitten: 1 },
-                    2: { whole: 4, bitten: 1 },
-                    3: { whole: 3, bitten: 2 },
-                    4: { whole: 3, bitten: 2 },
-                    5: { whole: 3, bitten: 2 },
-                    6: { whole: 2, bitten: 3 }
-                };
-                
-                const config = roundConfig[currentRound] || { whole: 2, bitten: 3 };
-                const totalApples = 5;
-                
-                let apples = [];
-                for (let i = 0; i < config.whole; i++) {
-                    apples.push('whole');
-                }
-                for (let i = 0; i < config.bitten; i++) {
-                    apples.push('bitten');
-                }
-                
-                // Shuffle
-                for (let i = apples.length - 1; i > 0; i--) {
-                    const j = Math.floor(Math.random() * (i + 1));
-                    [apples[i], apples[j]] = [apples[j], apples[i]];
-                }
-                
-                // Update apples
-                appleElements.forEach((apple, index) => {
-                    const appleType = apples[index];
-                    apple.className = `apple ${appleType === 'whole' ? 'whole-apple' : 'bitten-apple'}`;
-                    apple.dataset.type = appleType;
-                    
-                    // Remove old click events
-                    apple.replaceWith(apple.cloneNode(true));
-                });
-                
-                // Re-get elements after cloning
-                appleElements = applesContainer.querySelectorAll('.apple');
-                
-                // Add click event for revealed apples
-                appleElements.forEach(apple => {
-                    apple.addEventListener('click', function() {
-                        if (!gameActive) return;
-                        selectApple(this);
-                    });
-                });
-            }
-
-            // Select apple
-            function selectApple(appleElement) {
-                const appleType = appleElement.dataset.type;
-                const t = translations[currentLang] || translations.uz;
-                
-                gameActive = false;
-                
-                if (appleType === 'bitten') {
-                    if (resultMessage) {
-                        resultMessage.textContent = t.failureMessage.replace('{round}', currentRound);
-                        resultMessage.style.color = '#ff416c';
-                        resultMessage.style.display = 'block';
-                    }
-                    if (restartBtn) restartBtn.classList.remove('hidden');
-                } else {
-                    if (resultMessage) {
-                        resultMessage.innerHTML = '<span class="success">✅ Butun olma! Signal tahlil qilinmoqda...</span>';
-                        resultMessage.style.display = 'block';
-                    }
-                    
-                    // Simulate loading
-                    setTimeout(() => {
-                        // Game end probabilities
-                        const roundEndProbabilities = {
-                            1: 0.05,
-                            2: 0.15,
-                            3: 0.45,
-                            4: 0.75,
-                            5: 0.92,
-                            6: 1.00
-                        };
-                        
-                        const endProbability = roundEndProbabilities[currentRound] || 0;
-                        
-                        if (Math.random() < endProbability) {
-                            const message = currentLang === 'uz'
-                                ? `Tabriklaymiz! Siz ${currentRound} raundni muvaffaqiyatli yakunladingiz!`
-                                : currentLang === 'ru'
-                                ? `Поздравляем! Вы успешно завершили ${currentRound} раунд!`
-                                : `Congratulations! You successfully completed round ${currentRound}!`;
-                            
-                            showPage('main');
-                            
-                            setTimeout(() => {
-                                alert(message);
-                            }, 500);
-                        } else if (currentRound < 6) {
-                            currentRound++;
-                            startGame();
-                        } else {
-                            const message = currentLang === 'uz'
-                                ? "Tabriklaymiz! Siz barcha 6 raundni muvaffaqiyatli yakunladingiz!"
-                                : currentLang === 'ru'
-                                ? "Поздравляем! Вы успешно завершили все 6 раундов!"
-                                : "Congratulations! You successfully completed all 6 rounds!";
-                            
-                            currentRound = 1;
-                            showPage('main');
-                            
-                            setTimeout(() => {
-                                alert(message);
-                            }, 500);
-                        }
-                    }, 2000);
+                // If main page, show main container
+                if (pageName === 'main') {
+                    if (mainPage) mainPage.classList.add('active');
                 }
             }
 
@@ -1336,23 +1542,72 @@
                                    `💰 98.5% Aniq savdo signallari\n` +
                                    `⚡ Real-vaqtda bildirishnomalar\n` +
                                    `📊 AI tahlil asosida\n\n` +
-                                   `Mening ID: 123456789\n` +
+                                   `Mening ID: 1987654321\n` +
                                    `#AppleFortune #VIPSignal #Trading`;
                 
-                const telegramShareUrl = `https://t.me/share/url?url=https://t.me/Strategioyinlar_bot?start=123456789&text=${encodeURIComponent(shareMessage)}`;
+                const telegramShareUrl = `https://t.me/share/url?url=https://t.me/Strategioyinlar_bot?start=1987654321&text=${encodeURIComponent(shareMessage)}`;
                 
                 window.open(telegramShareUrl, '_blank', 'width=600,height=700');
                 
                 // Show message
                 setTimeout(() => {
                     const message = currentLang === 'uz'
-                        ? "Do'stlaringiz taklif qilindi!"
+                        ? "Do'stlaringiz taklif qilindi! VIP signalga yaqinlashdingiz!"
                         : currentLang === 'ru'
-                        ? "Друзья приглашены!"
-                        : "Friends invited!";
+                        ? "Друзья приглашены! Вы приблизились к VIP сигналу!"
+                        : "Friends invited! You're closer to VIP signal!";
                     
                     alert(message);
                 }, 1000);
+            }
+
+            // Get bonus
+            function getBonus(bonusNumber) {
+                const messages = {
+                    1: currentLang === 'uz' 
+                        ? "AIFUT promokodi bilan ro'yxatdan o'ting va 150% bonus oling! Promokod: AIFUT"
+                        : currentLang === 'ru'
+                        ? "Зарегистрируйтесь с промокодом AIFUT и получите 150% бонус! Промокод: AIFUT"
+                        : "Register with AIFUT promo code and get 150% bonus! Promo code: AIFUT",
+                    2: currentLang === 'uz'
+                        ? "Har juma 5% cashback bonus muvaffaqiyatli aktivlashtirildi!"
+                        : currentLang === 'ru'
+                        ? "5% кешбэк бонус на каждую пятницу успешно активирован!"
+                        : "5% cashback bonus for every Friday successfully activated!",
+                    3: currentLang === 'uz'
+                        ? "Bizning hamkorlarimiz orqali ro'yxatdan o'ting va qo'shimcha bonuslar oling!"
+                        : currentLang === 'ru'
+                        ? "Зарегистрируйтесь через наших партнеров и получите дополнительные бонусы!"
+                        : "Register through our partners and get additional bonuses!"
+                };
+                
+                alert(messages[bonusNumber]);
+            }
+
+            // Register partner
+            function registerPartner() {
+                window.open('https://superlative-twilight-47ef34.netlify.app/', '_blank');
+                
+                const message = currentLang === 'uz'
+                    ? "Hamkorlarimiz orqali ro'yxatdan o'ting va qo'shimcha bonuslar oling!"
+                    : currentLang === 'ru'
+                    ? "Зарегистрируйтесь через наших партнеров и получите дополнительные бонусы!"
+                    : "Register through our partners and get additional bonuses!";
+                
+                alert(message);
+            }
+
+            // Download APK
+            function downloadAPK() {
+                window.open('https://t.me/BonusAPKxbetbot', '_blank');
+                
+                const message = currentLang === 'uz'
+                    ? "APK yuklash uchun Telegram kanaliga yo'naltirildi!"
+                    : currentLang === 'ru'
+                    ? "Вы перенаправлены в Telegram канал для загрузки APK!"
+                    : "Redirected to Telegram channel for APK download!";
+                
+                alert(message);
             }
 
             // ==================== EVENT LISTENERS ====================
@@ -1380,38 +1635,50 @@
             const quickVip = document.getElementById('quickVip');
             const quickDownload = document.getElementById('quickDownload');
             
-            if (quickSignal) quickSignal.addEventListener('click', () => showPage('signal'));
-            if (quickBonus) quickBonus.addEventListener('click', () => showPage('signal'));
-            if (quickVip) quickVip.addEventListener('click', () => showPage('signal'));
-            if (quickDownload) quickDownload.addEventListener('click', () => {
-                window.open('https://t.me/BonusAPKxbetbot', '_blank');
+            if (quickSignal) quickSignal.addEventListener('click', () => {
+                const message = currentLang === 'uz'
+                    ? "Signal olish uchun 2 soat kutish kerak. Hozir ishonchli signal olish uchun VIP signal oling!"
+                    : currentLang === 'ru'
+                    ? "Для получения сигнала нужно ждать 2 часа. Получите VIP сигнал для мгновенного надежного сигнала!"
+                    : "Need to wait 2 hours for signal. Get VIP signal for instant reliable signal!";
+                alert(message);
             });
+            
+            if (quickBonus) quickBonus.addEventListener('click', () => showPage('bonuses'));
+            if (quickVip) quickVip.addEventListener('click', () => showPage('vip'));
+            if (quickDownload) quickDownload.addEventListener('click', downloadAPK);
 
             // User avatar
             const userAvatar = document.getElementById('userAvatar');
-            if (userAvatar) userAvatar.addEventListener('click', () => showPage('signal'));
+            if (userAvatar) userAvatar.addEventListener('click', () => showPage('profile'));
 
-            // Back button from signal
-            const backFromSignal = document.getElementById('backFromSignal');
-            if (backFromSignal) backFromSignal.addEventListener('click', () => showPage('main'));
+            // Get VIP button
+            const getVipBtn = document.getElementById('getVipBtn');
+            if (getVipBtn) getVipBtn.addEventListener('click', () => showPage('vip'));
 
-            // Game buttons
-            if (revealBtn) revealBtn.addEventListener('click', function() {
-                if (!applesRevealed) {
-                    revealApples();
-                }
-            });
+            // Back buttons
+            const backFromProfile = document.getElementById('backFromProfile');
+            const backFromVip = document.getElementById('backFromVip');
+            const backFromBonuses = document.getElementById('backFromBonuses');
             
-            if (restartBtn) restartBtn.addEventListener('click', function() {
-                currentRound = 1;
-                startGame();
-            });
+            if (backFromProfile) backFromProfile.addEventListener('click', () => showPage('main'));
+            if (backFromVip) backFromVip.addEventListener('click', () => showPage('main'));
+            if (backFromBonuses) backFromBonuses.addEventListener('click', () => showPage('main'));
 
             // VIP invite button
-            const vipInviteBtn = document.getElementById('vipInviteBtnText');
-            if (vipInviteBtn) {
-                vipInviteBtn.addEventListener('click', shareForVIP);
-            }
+            const vipInviteBtn = document.getElementById('vipInviteBtn');
+            if (vipInviteBtn) vipInviteBtn.addEventListener('click', shareForVIP);
+
+            // Bonus buttons
+            const bonus1Btn = document.getElementById('bonus1Btn');
+            const bonus2Btn = document.getElementById('bonus2Btn');
+            const bonus3Btn = document.getElementById('bonus3Btn');
+            const partnerBtn = document.getElementById('partnerBtn');
+            
+            if (bonus1Btn) bonus1Btn.addEventListener('click', () => getBonus(1));
+            if (bonus2Btn) bonus2Btn.addEventListener('click', () => getBonus(2));
+            if (bonus3Btn) bonus3Btn.addEventListener('click', () => getBonus(3));
+            if (partnerBtn) partnerBtn.addEventListener('click', registerPartner);
 
             // ==================== INITIALIZE ====================
             
