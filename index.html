@@ -1,1184 +1,280 @@
-<!DOCTYPE html>
-<html lang="uz">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Apple Fortune | AI Trading VIP</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <style>
-        /* ============ CSS RESET & VARIABLES ============ */
-        :root {
-            --primary: #2563eb;
-            --primary-dark: #1d4ed8;
-            --secondary: #8b5cf6;
-            --success: #10b981;
-            --danger: #ef4444;
-            --warning: #f59e0b;
-            --gradient: linear-gradient(135deg, #2563eb 0%, #8b5cf6 100%);
-            --gradient-dark: linear-gradient(135deg, #1d4ed8 0%, #7c3aed 100%);
-            --bg-dark: #0f172a;
-            --bg-card: #1e293b;
-            --text: #f8fafc;
-            --text-light: #cbd5e1;
-            --shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
-            --radius: 16px;
-            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-        }
-
-        body {
-            background: var(--bg-dark);
-            color: var(--text);
-            min-height: 100vh;
-            overflow-x: hidden;
-            position: relative;
-            -webkit-tap-highlight-color: transparent;
-        }
-
-        /* ============ ANIMATIONS ============ */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        @keyframes slideIn {
-            from { transform: translateX(-100%); }
-            to { transform: translateX(0); }
-        }
-
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.7; }
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-        }
-
-        @keyframes shimmer {
-            0% { background-position: -1000px 0; }
-            100% { background-position: 1000px 0; }
-        }
-
-        @keyframes confetti {
-            0% { transform: translateY(-100px) rotate(0deg); }
-            100% { transform: translateY(500px) rotate(360deg); }
-        }
-
-        /* ============ BACKGROUND EFFECTS ============ */
-        .bg-pattern {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: 
-                radial-gradient(circle at 20% 80%, rgba(37, 99, 235, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 80% 20%, rgba(139, 92, 246, 0.1) 0%, transparent 50%);
-            z-index: -2;
-        }
-
-        .bg-grid {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: 
-                linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px);
-            background-size: 50px 50px;
-            z-index: -1;
-            opacity: 0.3;
-        }
-
-        /* ============ MAIN CONTAINER ============ */
-        .container {
-            max-width: 100%;
-            min-height: 100vh;
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            animation: fadeIn 0.5s ease-out;
-        }
-
-        /* ============ HEADER ============ */
-        .header {
-            text-align: center;
-            margin-bottom: 30px;
-            padding-top: 10px;
-        }
-
-        .logo {
-            display: inline-flex;
-            align-items: center;
-            gap: 12px;
-            background: var(--gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .logo-icon {
-            font-size: 2.5rem;
-            animation: float 3s ease-in-out infinite;
-        }
-
-        .logo-text {
-            font-size: 1.8rem;
-            font-weight: 900;
-            letter-spacing: -0.5px;
-        }
-
-        .logo-subtitle {
-            font-size: 0.9rem;
-            color: var(--text-light);
-            margin-top: 5px;
-            font-weight: 400;
-        }
-
-        /* ============ CARD STYLES ============ */
-        .card {
-            background: var(--bg-card);
-            border-radius: var(--radius);
-            padding: 24px;
-            margin-bottom: 20px;
-            box-shadow: var(--shadow);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            transition: var(--transition);
-        }
-
-        .card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
-        }
-
-        .card-title {
-            font-size: 1.3rem;
-            font-weight: 700;
-            margin-bottom: 16px;
-            color: var(--text);
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .card-title i {
-            color: var(--primary);
-            font-size: 1.2rem;
-        }
-
-        /* ============ FORM STYLES ============ */
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        .form-label {
-            display: block;
-            margin-bottom: 8px;
-            color: var(--text-light);
-            font-size: 0.9rem;
-            font-weight: 500;
-        }
-
-        .form-input {
-            width: 100%;
-            padding: 16px;
-            background: rgba(30, 41, 59, 0.7);
-            border: 2px solid rgba(255, 255, 255, 0.1);
-            border-radius: 12px;
-            color: var(--text);
-            font-size: 1rem;
-            font-weight: 500;
-            transition: var(--transition);
-        }
-
-        .form-input:focus {
-            outline: none;
-            border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
-        }
-
-        .form-input::placeholder {
-            color: rgba(203, 213, 225, 0.5);
-        }
-
-        .input-hint {
-            font-size: 0.8rem;
-            color: var(--text-light);
-            margin-top: 6px;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-        }
-
-        /* ============ BUTTON STYLES ============ */
-        .btn {
-            width: 100%;
-            padding: 18px;
-            border: none;
-            border-radius: 12px;
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: var(--transition);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .btn::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
-            transition: 0.5s;
-        }
-
-        .btn:hover::after {
-            left: 100%;
-        }
-
-        .btn-primary {
-            background: var(--gradient);
-            color: white;
-        }
-
-        .btn-primary:hover {
-            background: var(--gradient-dark);
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(37, 99, 235, 0.3);
-        }
-
-        .btn-secondary {
-            background: rgba(30, 41, 59, 0.8);
-            color: var(--text);
-            border: 2px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .btn-secondary:hover {
-            background: rgba(30, 41, 59, 1);
-            border-color: var(--primary);
-            transform: translateY(-2px);
-        }
-
-        .btn-success {
-            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
-            color: white;
-        }
-
-        .btn-success:hover {
-            background: linear-gradient(135deg, #059669 0%, #047857 100%);
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(16, 185, 129, 0.3);
-        }
-
-        .btn-warning {
-            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
-            color: white;
-        }
-
-        .btn-warning:hover {
-            background: linear-gradient(135deg, #d97706 0%, #b45309 100%);
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(245, 158, 11, 0.3);
-        }
-
-        .btn:disabled {
-            opacity: 0.6;
-            cursor: not-allowed;
-            transform: none !important;
-        }
-
-        /* ============ SECTION MANAGEMENT ============ */
-        .section {
-            display: none;
-            animation: fadeIn 0.4s ease-out;
-        }
-
-        .section.active {
-            display: block;
-        }
-
-        /* ============ WELCOME SECTION ============ */
-        .welcome-card {
-            text-align: center;
-            padding: 40px 24px;
-        }
-
-        .welcome-icon {
-            font-size: 4rem;
-            margin-bottom: 20px;
-            background: var(--gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            animation: float 3s ease-in-out infinite;
-        }
-
-        .welcome-title {
-            font-size: 1.8rem;
-            font-weight: 800;
-            margin-bottom: 12px;
-            background: var(--gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .welcome-text {
-            color: var(--text-light);
-            line-height: 1.6;
-            margin-bottom: 30px;
-            font-size: 1rem;
-        }
-
-        .features {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 15px;
-            margin: 25px 0;
-        }
-
-        .feature {
-            background: rgba(30, 41, 59, 0.5);
-            padding: 15px;
-            border-radius: 12px;
-            text-align: center;
-            transition: var(--transition);
-        }
-
-        .feature:hover {
-            background: rgba(37, 99, 235, 0.1);
-            transform: translateY(-3px);
-        }
-
-        .feature i {
-            font-size: 1.5rem;
-            color: var(--primary);
-            margin-bottom: 10px;
-        }
-
-        .feature span {
-            font-size: 0.85rem;
-            font-weight: 500;
-        }
-
-        /* ============ REGISTER SECTION ============ */
-        .promo-note {
-            background: linear-gradient(135deg, rgba(245, 158, 11, 0.1) 0%, rgba(245, 158, 11, 0.05) 100%);
-            border: 1px solid rgba(245, 158, 11, 0.2);
-            border-radius: 12px;
-            padding: 16px;
-            margin: 20px 0;
-            text-align: center;
-        }
-
-        .promo-note i {
-            color: var(--warning);
-            margin-right: 8px;
-        }
-
-        .promo-code {
-            display: inline-block;
-            background: rgba(245, 158, 11, 0.15);
-            border: 2px dashed var(--warning);
-            border-radius: 8px;
-            padding: 8px 16px;
-            margin: 10px 0;
-            font-weight: 800;
-            font-size: 1.2rem;
-            color: var(--warning);
-            letter-spacing: 2px;
-            animation: pulse 2s infinite;
-        }
-
-        /* ============ MAIN DASHBOARD ============ */
-        .user-profile {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-            margin-bottom: 24px;
-        }
-
-        .user-avatar {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            background: var(--gradient);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            flex-shrink: 0;
-        }
-
-        .user-info h2 {
-            font-size: 1.2rem;
-            font-weight: 700;
-            margin-bottom: 4px;
-        }
-
-        .user-info p {
-            font-size: 0.9rem;
-            color: var(--text-light);
-        }
-
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 12px;
-            margin: 20px 0;
-        }
-
-        .stat-card {
-            background: rgba(30, 41, 59, 0.7);
-            border-radius: 12px;
-            padding: 16px;
-            text-align: center;
-            transition: var(--transition);
-        }
-
-        .stat-card:hover {
-            background: rgba(37, 99, 235, 0.1);
-            transform: translateY(-3px);
-        }
-
-        .stat-value {
-            font-size: 1.5rem;
-            font-weight: 800;
-            margin-bottom: 4px;
-            background: var(--gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .stat-label {
-            font-size: 0.8rem;
-            color: var(--text-light);
-        }
-
-        .id-display {
-            background: rgba(16, 185, 129, 0.1);
-            border: 1px solid rgba(16, 185, 129, 0.2);
-            border-radius: 12px;
-            padding: 16px;
-            margin: 20px 0;
-            text-align: center;
-        }
-
-        .id-label {
-            font-size: 0.9rem;
-            color: var(--text-light);
-            margin-bottom: 8px;
-        }
-
-        .id-value {
-            font-size: 1.3rem;
-            font-weight: 800;
-            color: #10b981;
-            font-family: monospace;
-            letter-spacing: 1px;
-        }
-
-        /* ============ UTILITY CLASSES ============ */
-        .hidden {
-            display: none !important;
-        }
-
-        .text-center {
-            text-align: center;
-        }
-
-        .mt-10 { margin-top: 10px; }
-        .mt-20 { margin-top: 20px; }
-        .mt-30 { margin-top: 30px; }
-        .mb-10 { margin-bottom: 10px; }
-        .mb-20 { margin-bottom: 20px; }
-        .mb-30 { margin-bottom: 30px; }
-
-        /* ============ RESPONSIVE DESIGN ============ */
-        @media (max-width: 480px) {
-            .container {
-                padding: 15px;
-            }
-            
-            .card {
-                padding: 20px;
-            }
-            
-            .logo-text {
-                font-size: 1.5rem;
-            }
-            
-            .features {
-                grid-template-columns: 1fr;
-                gap: 10px;
-            }
-            
-            .stats-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        @media (min-width: 768px) {
-            .container {
-                max-width: 500px;
-                margin: 0 auto;
-                padding: 40px 20px;
-            }
-            
-            .features {
-                grid-template-columns: repeat(4, 1fr);
-            }
-        }
-
-        /* ============ LOADING STATES ============ */
-        .loading {
-            position: relative;
-            overflow: hidden;
-        }
-
-        .loading::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.05), transparent);
-            animation: shimmer 1.5s infinite;
-        }
-
-        /* ============ CONFETTI EFFECT ============ */
-        .confetti-piece {
-            position: fixed;
-            width: 10px;
-            height: 20px;
-            opacity: 0;
-            z-index: 1000;
-            pointer-events: none;
-        }
-
-        /* ============ MODAL ============ */
-        .modal-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(15, 23, 42, 0.9);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 1000;
-            opacity: 0;
-            visibility: hidden;
-            transition: var(--transition);
-            backdrop-filter: blur(10px);
-        }
-
-        .modal-overlay.active {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        .modal {
-            background: var(--bg-card);
-            border-radius: var(--radius);
-            padding: 30px;
-            max-width: 400px;
-            width: 90%;
-            transform: scale(0.9);
-            transition: var(--transition);
-            box-shadow: var(--shadow);
-        }
-
-        .modal-overlay.active .modal {
-            transform: scale(1);
-        }
-
-        .modal-title {
-            font-size: 1.3rem;
-            font-weight: 700;
-            margin-bottom: 16px;
-            color: var(--text);
-        }
-
-        .modal-text {
-            color: var(--text-light);
-            margin-bottom: 24px;
-            line-height: 1.6;
-        }
-
-        .modal-buttons {
-            display: flex;
-            gap: 12px;
-            margin-top: 24px;
-        }
-
-        .modal-buttons .btn {
-            flex: 1;
-        }
-    </style>
-</head>
-<body>
-    <!-- Background Effects -->
-    <div class="bg-pattern"></div>
-    <div class="bg-grid"></div>
-
-    <!-- Confetti Container -->
-    <div id="confettiContainer"></div>
-
-    <!-- Main Container -->
-    <div class="container">
-        
-        <!-- Header -->
-        <div class="header">
-            <div class="logo">
-                <div class="logo-icon">🍎</div>
-                <div>
-                    <div class="logo-text">Apple Fortune</div>
-                    <div class="logo-subtitle">AI Trading Platform</div>
-                </div>
-            </div>
-        </div>
-
-        <!-- ============ WELCOME SECTION ============ -->
-        <div class="section active" id="welcomeSection">
-            <div class="card welcome-card">
-                <div class="welcome-icon">📈</div>
-                <h1 class="welcome-title">Apple Fortune ga Xush kelibsiz!</h1>
-                <p class="welcome-text">
-                    94.7% aniqlikdagi AI savdo signallari bilan daromadingizni oshiring.
-                    VIP status orqali 98.5% aniqlikka erishing.
-                </p>
-                
-                <div class="features">
-                    <div class="feature">
-                        <i class="fas fa-robot"></i>
-                        <span>AI Tahlil</span>
-                    </div>
-                    <div class="feature">
-                        <i class="fas fa-bolt"></i>
-                        <span>Tez Signallar</span>
-                    </div>
-                    <div class="feature">
-                        <i class="fas fa-chart-line"></i>
-                        <span>94.7% Aniqlik</span>
-                    </div>
-                    <div class="feature">
-                        <i class="fas fa-crown"></i>
-                        <span>VIP Imkoniyat</span>
-                    </div>
-                </div>
-
-                <button class="btn btn-primary" id="startRegisterBtn">
-                    <i class="fas fa-user-plus"></i> RO'YXATDAN O'TISH
-                </button>
-            </div>
-        </div>
-
-        <!-- ============ REGISTER SECTION ============ -->
-        <div class="section" id="registerSection">
-            <div class="card">
-                <h2 class="card-title">
-                    <i class="fas fa-user-edit"></i>
-                    Ro'yxatdan o'tish
-                </h2>
-                
-                <div class="promo-note">
-                    <i class="fas fa-gift"></i>
-                    <strong>AIFUT</strong> promokodi orqali <strong>200% bonus</strong> oling!
-                </div>
-
-                <div class="form-group">
-                    <label class="form-label" for="promoCode">Promokod (Ixtiyoriy)</label>
-                    <input type="text" class="form-input" id="promoCode" placeholder="AIFUT" value="AIFUT">
-                    <div class="input-hint">
-                        <i class="fas fa-info-circle"></i>
-                        Promokodsiz ro'yxatdan o'tsangiz, cheklangan imkoniyatlar
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label class="form-label" for="userId">ID Raqamingiz</label>
-                    <input type="text" class="form-input" id="userId" 
-                           placeholder="1 bilan boshlansin (Masalan: 1987654321)" 
-                           maxlength="11">
-                    <div class="input-hint">
-                        <i class="fas fa-key"></i>
-                        Trading platformangizdagi ID raqamingizni kiriting
-                    </div>
-                    <div class="input-hint" id="idError" style="color: #ef4444; display: none;">
-                        <i class="fas fa-exclamation-circle"></i>
-                        Noto'g'ri ID formati
-                    </div>
-                </div>
-
-                <button class="btn btn-success mt-20" id="registerBtn">
-                    <i class="fas fa-check-circle"></i>
-                    TASDIQLASH VA KIRISH
-                </button>
-
-                <button class="btn btn-secondary mt-10" id="backToWelcomeBtn">
-                    <i class="fas fa-arrow-left"></i>
-                    ORQAGA
-                </button>
-            </div>
-        </div>
-
-        <!-- ============ MAIN DASHBOARD ============ -->
-        <div class="section" id="dashboardSection">
-            <div class="card">
-                <div class="user-profile">
-                    <div class="user-avatar">
-                        <i class="fas fa-user"></i>
-                    </div>
-                    <div class="user-info">
-                        <h2 id="displayName">Apple Fortune Foydalanuvchisi</h2>
-                        <p id="userLevel">Standart Hisob</p>
-                    </div>
-                </div>
-
-                <div class="id-display">
-                    <div class="id-label">SIZNING ID RAQAMINGIZ:</div>
-                    <div class="id-value" id="savedUserId">-</div>
-                </div>
-
-                <div class="stats-grid">
-                    <div class="stat-card">
-                        <div class="stat-value" id="statSignals">0</div>
-                        <div class="stat-label">SIGNALLAR</div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-value" id="statFriends">0</div>
-                        <div class="stat-label">DO'STLAR</div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-value" id="statAccuracy">94.7%</div>
-                        <div class="stat-label">ANIQLIK</div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-value" id="statBonus">200%</div>
-                        <div class="stat-label">BONUS</div>
-                    </div>
-                </div>
-
-                <div class="mt-30">
-                    <button class="btn btn-primary mb-10" id="startTradingBtn">
-                        <i class="fas fa-satellite-dish"></i>
-                        SIGNAL OLISHNI BOSHLASH
-                    </button>
-                    
-                    <button class="btn btn-secondary mb-10" id="changeIdBtn">
-                        <i class="fas fa-sync-alt"></i>
-                        ID RAQAMNI O'ZGARTIRISH
-                    </button>
-                    
-                    <button class="btn btn-warning" id="newRegisterBtn">
-                        <i class="fas fa-user-plus"></i>
-                        YANGI RO'YXATDAN O'TISH
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Success Modal -->
-    <div class="modal-overlay" id="successModal">
-        <div class="modal">
-            <div class="welcome-icon" style="font-size: 3rem; margin-bottom: 20px;">🎉</div>
-            <h2 class="modal-title">Tabriklaymiz!</h2>
-            <p class="modal-text">
-                Ro'yxatdan muvaffaqiyatli o'tdingiz!<br>
-                <strong>AIFUT</strong> promokodi bilan <strong>200% bonus</strong> faollashtirildi.
-            </p>
-            <div class="modal-buttons">
-                <button class="btn btn-primary" id="goToDashboardBtn">
-                    <i class="fas fa-tachometer-alt"></i>
-                    ASOSIY MENYUGA O'TISH
-                </button>
-            </div>
-        </div>
-    </div>
-
-    <script>
-        // ==================== APPLICATION INITIALIZATION ====================
-        document.addEventListener('DOMContentLoaded', function() {
-            // DOM Elements
-            const sections = {
-                welcome: document.getElementById('welcomeSection'),
-                register: document.getElementById('registerSection'),
-                dashboard: document.getElementById('dashboardSection')
-            };
-
-            const buttons = {
-                startRegister: document.getElementById('startRegisterBtn'),
-                backToWelcome: document.getElementById('backToWelcomeBtn'),
-                register: document.getElementById('registerBtn'),
-                goToDashboard: document.getElementById('goToDashboardBtn'),
-                changeId: document.getElementById('changeIdBtn'),
-                newRegister: document.getElementById('newRegisterBtn'),
-                startTrading: document.getElementById('startTradingBtn')
-            };
-
-            const inputs = {
-                promoCode: document.getElementById('promoCode'),
-                userId: document.getElementById('userId')
-            };
-
-            const displays = {
-                savedUserId: document.getElementById('savedUserId'),
-                displayName: document.getElementById('displayName'),
-                userLevel: document.getElementById('userLevel'),
-                stats: {
-                    signals: document.getElementById('statSignals'),
-                    friends: document.getElementById('statFriends'),
-                    accuracy: document.getElementById('statAccuracy'),
-                    bonus: document.getElementById('statBonus')
-                }
-            };
-
-            const errorDisplay = document.getElementById('idError');
-            const successModal = document.getElementById('successModal');
-            const confettiContainer = document.getElementById('confettiContainer');
-
-            // Application State
-            const state = {
-                currentUserId: '',
-                promoCodeUsed: false,
-                isVIP: false,
-                invitedFriends: 0,
-                signalsUsed: 0,
-                userData: null
-            };
-
-            // ==================== CORE FUNCTIONS ====================
-
-            // Switch between sections
-            function showSection(sectionId) {
-                Object.values(sections).forEach(section => {
-                    section.classList.remove('active');
-                });
-                
-                if (sections[sectionId]) {
-                    sections[sectionId].classList.add('active');
-                    
-                    // Scroll to top when changing sections
-                    window.scrollTo({ top: 0, behavior: 'smooth' });
-                }
-            }
-
-            // Validate user ID
-            function validateUserId(userId) {
-                // ID should start with 1 and be 9-12 digits
-                const idRegex = /^1\d{8,10}$/;
-                return idRegex.test(userId);
-            }
-
-            // Save user data to localStorage
-            function saveUserData(userId, promoCode = '') {
-                state.currentUserId = userId;
-                state.promoCodeUsed = promoCode === 'AIFUT';
-                
-                const userData = {
-                    userId,
-                    promoCode,
-                    registeredAt: new Date().toISOString(),
-                    isVIP: state.isVIP,
-                    invitedFriends: state.invitedFriends,
-                    signalsUsed: state.signalsUsed,
-                    lastActive: new Date().toISOString()
-                };
-                
-                localStorage.setItem('appleFortuneUser', JSON.stringify(userData));
-                state.userData = userData;
-                
-                updateDashboard();
-                return userData;
-            }
-
-            // Load user data from localStorage
-            function loadUserData() {
-                const savedData = localStorage.getItem('appleFortuneUser');
-                
-                if (savedData) {
-                    try {
-                        state.userData = JSON.parse(savedData);
-                        state.currentUserId = state.userData.userId;
-                        state.promoCodeUsed = state.userData.promoCode === 'AIFUT';
-                        state.isVIP = state.userData.isVIP || false;
-                        state.invitedFriends = state.userData.invitedFriends || 0;
-                        state.signalsUsed = state.userData.signalsUsed || 0;
-                        
-                        updateDashboard();
-                        return true;
-                    } catch (e) {
-                        console.error('Error loading user data:', e);
-                        return false;
-                    }
-                }
-                return false;
-            }
-
-            // Update dashboard display
-            function updateDashboard() {
-                if (!state.userData) return;
-                
-                displays.savedUserId.textContent = state.currentUserId;
-                displays.displayName.textContent = `ID: ${state.currentUserId}`;
-                displays.userLevel.textContent = state.isVIP ? 'VIP Hisob' : 'Standart Hisob';
-                
-                displays.stats.signals.textContent = state.signalsUsed;
-                displays.stats.friends.textContent = state.invitedFriends;
-                displays.stats.accuracy.textContent = state.isVIP ? '98.5%' : 
-                                                    state.promoCodeUsed ? '94.7%' : '70-75%';
-                displays.stats.bonus.textContent = state.promoCodeUsed ? '200%' : '0%';
-            }
-
-            // Create confetti animation
-            function createConfetti() {
-                const colors = ['#2563eb', '#8b5cf6', '#10b981', '#f59e0b', '#ef4444'];
-                const confettiCount = 100;
-                
-                // Clear existing confetti
-                confettiContainer.innerHTML = '';
-                
-                for (let i = 0; i < confettiCount; i++) {
-                    const confetti = document.createElement('div');
-                    confetti.className = 'confetti-piece';
-                    
-                    // Random position
-                    confetti.style.left = Math.random() * 100 + 'vw';
-                    
-                    // Random color
-                    confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-                    
-                    // Random size and shape
-                    const size = Math.random() * 10 + 5;
-                    confetti.style.width = size + 'px';
-                    confetti.style.height = size + 'px';
-                    confetti.style.borderRadius = Math.random() > 0.5 ? '50%' : '0';
-                    
-                    // Random rotation
-                    confetti.style.transform = `rotate(${Math.random() * 360}deg)`;
-                    
-                    confettiContainer.appendChild(confetti);
-                    
-                    // Animation
-                    const duration = Math.random() * 3 + 2;
-                    confetti.style.animation = `confetti ${duration}s ease-out forwards`;
-                    confetti.style.animationDelay = Math.random() * 0.5 + 's';
-                    
-                    // Remove after animation
-                    setTimeout(() => {
-                        if (confetti.parentNode) {
-                            confetti.parentNode.removeChild(confetti);
-                        }
-                    }, (duration + 0.5) * 1000);
-                }
-            }
-
-            // Show success modal with confetti
-            function showSuccessModal() {
-                createConfetti();
-                successModal.classList.add('active');
-                
-                // Play success sound if available
-                try {
-                    const audio = new Audio('data:audio/wav;base64,UklGRigAAABXQVZFZm10IBIAAAABAAEARKwAAIhYAQACABAAZGF0YQQ=');
-                    audio.volume = 0.3;
-                    audio.play();
-                } catch (e) {
-                    // Audio not supported, continue silently
-                }
-            }
-
-            // Register user
-            function registerUser() {
-                const userId = inputs.userId.value.trim();
-                const promoCode = inputs.promoCode.value.trim();
-                
-                // Validate ID
-                if (!validateUserId(userId)) {
-                    errorDisplay.style.display = 'block';
-                    inputs.userId.focus();
-                    return false;
-                }
-                
-                errorDisplay.style.display = 'none';
-                
-                // Show loading state
-                buttons.register.innerHTML = '<i class="fas fa-spinner fa-spin"></i> ISHLANMOQDA...';
-                buttons.register.disabled = true;
-                
-                // Simulate API call
-                setTimeout(() => {
-                    // Save user data
-                    saveUserData(userId, promoCode);
-                    
-                    // Reset button state
-                    buttons.register.innerHTML = '<i class="fas fa-check-circle"></i> TASDIQLASH VA KIRISH';
-                    buttons.register.disabled = false;
-                    
-                    // Clear form
-                    inputs.userId.value = '';
-                    inputs.promoCode.value = 'AIFUT';
-                    
-                    // Show success modal
-                    showSuccessModal();
-                    
-                }, 1500);
-                
-                return true;
-            }
-
-            // Change user ID
-            function changeUserId() {
-                const newUserId = prompt('Yangi ID raqamingizni kiriting:', state.currentUserId);
-                
-                if (newUserId && validateUserId(newUserId)) {
-                    state.currentUserId = newUserId;
-                    state.userData.userId = newUserId;
-                    state.userData.lastActive = new Date().toISOString();
-                    
-                    localStorage.setItem('appleFortuneUser', JSON.stringify(state.userData));
-                    updateDashboard();
-                    
-                    // Show confirmation
-                    alert('ID raqam muvaffaqiyatli o\'zgartirildi!');
-                } else if (newUserId) {
-                    alert('Noto\'g\'ri ID formati! ID 1 bilan boshlanishi va 9-12 raqamdan iborat bo\'lishi kerak.');
-                }
-            }
-
-            // Clear all data (for testing)
-            function clearAllData() {
-                if (confirm('Barcha ma\'lumotlarni tozalashni xohlaysizmi?')) {
-                    localStorage.removeItem('appleFortuneUser');
-                    state.currentUserId = '';
-                    state.userData = null;
-                    
-                    showSection('welcome');
-                    alert('Barcha ma\'lumotlar tozalandi!');
-                }
-            }
-
-            // Initialize trading section
-            function startTrading() {
-                if (!state.currentUserId) {
-                    alert('Iltimos, avval ID raqamingizni kiriting!');
-                    showSection('register');
-                    return;
-                }
-                
-                // Here you would navigate to the trading/signal section
-                alert('Signal olish tizimi ishga tushadi! (Bu demo versiya)');
-                // In a real app, you would show the trading interface here
-            }
-
-            // ==================== EVENT LISTENERS ====================
-
-            // Welcome section → Register
-            buttons.startRegister.addEventListener('click', () => {
-                showSection('register');
-                inputs.userId.focus();
-            });
-
-            // Register section → Welcome
-            buttons.backToWelcome.addEventListener('click', () => {
-                showSection('welcome');
-            });
-
-            // Register button
-            buttons.register.addEventListener('click', registerUser);
-
-            // Enter key in user ID field
-            inputs.userId.addEventListener('keypress', (e) => {
-                if (e.key === 'Enter') {
-                    registerUser();
-                }
-            });
-
-            // Success modal → Dashboard
-            buttons.goToDashboard.addEventListener('click', () => {
-                successModal.classList.remove('active');
-                showSection('dashboard');
-            });
-
-            // Change ID button
-            buttons.changeId.addEventListener('click', changeUserId);
-
-            // New register button
-            buttons.newRegister.addEventListener('click', () => {
-                if (confirm('Yangi ro\'yxatdan o\'tish uchun joriy hisob o\'chiriladi. Davom ettirishni xohlaysizmi?')) {
-                    localStorage.removeItem('appleFortuneUser');
-                    state.currentUserId = '';
-                    state.userData = null;
-                    
-                    showSection('register');
-                    inputs.userId.value = '';
-                    inputs.promoCode.value = 'AIFUT';
-                    inputs.userId.focus();
-                }
-            });
-
-            // Start trading button
-            buttons.startTrading.addEventListener('click', startTrading);
-
-            // Clear data with Ctrl+C (for testing)
-            document.addEventListener('keydown', (e) => {
-                if (e.ctrlKey && e.key === 'c') {
-                    clearAllData();
-                }
-            });
-
-            // Close modal on overlay click
-            successModal.addEventListener('click', (e) => {
-                if (e.target === successModal) {
-                    successModal.classList.remove('active');
-                }
-            });
-
-            // ==================== INITIALIZATION ====================
-
-            // Check if user is already registered
-            if (loadUserData()) {
-                // User is registered, show dashboard
-                showSection('dashboard');
-            } else {
-                // New user, show welcome
-                showSection('welcome');
-            }
-
-            // Initialize promo code field
-            inputs.promoCode.value = 'AIFUT';
-
-            // Add input validation
-            inputs.userId.addEventListener('input', () => {
-                if (errorDisplay.style.display === 'block') {
-                    errorDisplay.style.display = 'none';
-                }
-            });
-        });
-    </script>
-</body>
-</html>
+/* ============ GAME SECTION ============ */
+.game-section {
+    background: rgba(20, 25, 60, 0.5);
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 20px;
+    border: 1px solid rgba(0, 150, 255, 0.2);
+}
+
+.apples-container {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.apple {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background-size: cover;
+    background-position: center;
+    border: 2px solid transparent;
+    position: relative;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.apple:hover {
+    transform: scale(1.1);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.mystery-apple {
+    background-image: url('https://i.ibb.co/Gf3NcMDQ/maxresdefault.jpg');
+    border: 2px solid rgba(0, 150, 255, 0.6);
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-8px); }
+}
+
+.whole-apple {
+    background-image: url('https://i.pinimg.com/736x/6a/aa/19/6aaa196961f40afd21cf9d21824f137e.jpg');
+    border: 2px solid #ffcc00;
+}
+
+.bitten-apple {
+    background-image: url('https://i.ibb.co/m5sNvNPK/62cd09ea-de08-49b9-9fea-d0100c747423-2.jpg');
+    border: 2px solid #00ff00;
+}
+
+/* ============ RESPONSIVE ============ */
+
+/* 280px - 320px (kichik ekranlar uchun) */
+@media (max-width: 320px) {
+    .apple {
+        width: 42px;
+        height: 42px;
+    }
+    
+    .apples-container {
+        gap: 6px;
+        justify-content: space-around;
+    }
+}
+
+/* 321px - 375px (iPhone SE, kichik telefonlar) */
+@media (min-width: 321px) and (max-width: 375px) {
+    .apple {
+        width: 45px;
+        height: 45px;
+    }
+    
+    .apples-container {
+        gap: 7px;
+    }
+}
+
+/* 376px - 414px (iPhone 6/7/8 Plus, o'rta telefonlar) */
+@media (min-width: 376px) and (max-width: 414px) {
+    .apple {
+        width: 48px;
+        height: 48px;
+    }
+    
+    .apples-container {
+        gap: 8px;
+    }
+}
+
+/* 415px - 480px (katta telefonlar) */
+@media (min-width: 415px) and (max-width: 480px) {
+    .apple {
+        width: 52px;
+        height: 52px;
+    }
+    
+    .apples-container {
+        gap: 9px;
+    }
+}
+
+/* 481px - 600px (planşetlar va katta telefonlar) */
+@media (min-width: 481px) and (max-width: 600px) {
+    .apple {
+        width: 58px;
+        height: 58px;
+    }
+    
+    .apples-container {
+        gap: 10px;
+    }
+}
+
+/* 601px - 767px (kichik planşetlar) */
+@media (min-width: 601px) and (max-width: 767px) {
+    .apple {
+        width: 65px;
+        height: 65px;
+    }
+    
+    .apples-container {
+        gap: 12px;
+    }
+}
+
+/* 768px va undan katta (planshetlar, noutbuklar) */
+@media (min-width: 768px) {
+    .apple {
+        width: 70px;
+        height: 70px;
+    }
+    
+    .apples-container {
+        gap: 15px;
+        max-width: 400px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+/* 1024px va undan katta (noutbuklar, planshetlar) */
+@media (min-width: 1024px) {
+    .apple {
+        width: 75px;
+        height: 75px;
+    }
+    
+    .apples-container {
+        gap: 18px;
+        max-width: 450px;
+    }
+}
+
+/* ============ HORIZONTAL ORIENTATION ============ */
+@media (max-height: 500px) and (orientation: landscape) {
+    .apple {
+        width: 40px;
+        height: 40px;
+    }
+    
+    .apples-container {
+        gap: 5px;
+        margin-bottom: 10px;
+    }
+    
+    .game-section {
+        padding: 15px;
+    }
+}
+
+/* ============ VERY LARGE SCREENS ============ */
+@media (min-width: 1200px) {
+    .apple {
+        width: 80px;
+        height: 80px;
+    }
+    
+    .apples-container {
+        gap: 20px;
+        max-width: 500px;
+    }
+}
+
+/* ============ 2-QATORLIK HOLAT UCHUN (250px DAN KICHIK EKRANLAR) ============ */
+@media (max-width: 250px) {
+    .apple {
+        width: 35px;
+        height: 35px;
+    }
+    
+    .apples-container {
+        gap: 4px;
+        /* 3 ta olma bir qatorda, 2 ta ikkinchi qatorda */
+        justify-content: center;
+    }
+    
+    /* 5 ta olma 3+2 qatorga joylashishi uchun */
+    .apple:nth-child(4),
+    .apple:nth-child(5) {
+        margin-top: 5px;
+    }
+}
+
+/* ============ 1-QATORLIK HOLAT UCHUN (ENG KICHIK EKRANLAR) ============ */
+@media (max-width: 200px) {
+    .apple {
+        width: 30px;
+        height: 30px;
+    }
+    
+    .apples-container {
+        gap: 3px;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    /* Har bir olma yangi qatorga */
+    .apple {
+        margin-bottom: 4px;
+    }
+}
+
+/* ============ ADAPTIVE GAP ============ */
+/* Ekran eniga qarab oralig'ni moslashtirish */
+@media (max-width: 350px) {
+    .apples-container {
+        gap: calc(100vw / 70); /* Ekran eniga nisbatan dynamic gap */
+    }
+}
+
+@media (min-width: 351px) and (max-width: 480px) {
+    .apples-container {
+        gap: calc(100vw / 60);
+    }
+}
+
+/* ============ FLEX WRAP CONTROL ============ */
+/* Kichik ekranlarda olmalar joylashishini nazorat qilish */
+@media (max-width: 280px) {
+    .apples-container {
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 8px;
+        justify-items: center;
+    }
+    
+    .apple {
+        width: 40px;
+        height: 40px;
+    }
+}
+
+/* ============ TOUCH FRIENDLY SIZES ============ */
+/* Qo'l bilan bosish uchun minimal o'lcham */
+.apple {
+    min-width: 40px;
+    min-height: 40px;
+}
+
+/* Touch devices uchun hover effektini optimallashtirish */
+@media (hover: none) and (pointer: coarse) {
+    .apple:hover {
+        transform: none;
+    }
+    
+    .apple:active {
+        transform: scale(0.95);
+    }
+}
