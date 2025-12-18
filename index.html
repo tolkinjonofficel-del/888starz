@@ -3,57 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Apple Fortune | AI Trading VIP</title>
+    <title>Apple Fortune | AI Trading</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* ============ GLOBAL STYLES ============ */
+        /* ============ VARIABLES ============ */
         :root {
-            --primary: #00d4ff;
-            --primary-dark: #0099cc;
-            --secondary: #ff6b35;
-            --accent: #ffd700;
-            --success: #00ff88;
-            --danger: #ff4757;
-            --dark: #000000;
+            --primary: #00bcd4;
+            --primary-dark: #008ba3;
+            --secondary: #ff4081;
+            --accent: #ff9800;
+            --success: #4caf50;
+            --danger: #f44336;
+            --dark: #121212;
             --darker: #0a0a0a;
-            --card-bg: rgba(30, 30, 30, 0.8);
-            --glass: rgba(255, 255, 255, 0.1);
-            --glass-border: rgba(255, 255, 255, 0.2);
+            --light: #ffffff;
+            --gray: #666666;
+            --card-bg: rgba(30, 30, 30, 0.7);
+            --glass: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
         }
 
+        /* ============ RESET ============ */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
         }
-        
+
         body {
-            background: linear-gradient(135deg, #000000 0%, #0a0a0a 50%, #001a00 100%);
-            color: #ffffff;
+            background: var(--darker);
+            color: var(--light);
             min-height: 100vh;
-            position: relative;
-            line-height: 1.4;
-            padding-bottom: 80px;
-        }
-
-        body::before {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: 
-                radial-gradient(circle at 20% 30%, rgba(0, 212, 255, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 80% 70%, rgba(255, 107, 53, 0.1) 0%, transparent 50%);
-            z-index: -1;
-            animation: bgPulse 10s infinite alternate;
-        }
-
-        @keyframes bgPulse {
-            0% { opacity: 0.3; }
-            100% { opacity: 0.6; }
+            line-height: 1.5;
+            padding-bottom: 70px;
+            overflow-x: hidden;
         }
 
         /* ============ LANGUAGE SELECTOR ============ */
@@ -73,92 +58,73 @@
         }
 
         .language-logo {
-            width: 120px;
-            height: 120px;
+            width: 80px;
+            height: 80px;
             background: linear-gradient(135deg, var(--primary), var(--secondary));
-            border-radius: 30px;
+            border-radius: 20px;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 30px;
-            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.4);
-            animation: logoFloat 3s infinite ease-in-out;
-        }
-
-        @keyframes logoFloat {
-            0%, 100% { transform: translateY(0px) rotate(0deg); }
-            50% { transform: translateY(-10px) rotate(5deg); }
+            margin-bottom: 25px;
         }
 
         .language-logo i {
-            font-size: 60px;
+            font-size: 36px;
             color: white;
         }
 
-        .language-selector h1 {
-            font-size: 2.2rem;
-            margin-bottom: 15px;
-            background: linear-gradient(to right, var(--primary), var(--accent));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            font-weight: 800;
-            text-shadow: 0 0 20px rgba(0, 212, 255, 0.5);
+        .language-title {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 10px;
         }
 
-        .language-prompt {
-            font-size: 1rem;
-            color: var(--primary);
-            margin-bottom: 40px;
-            max-width: 300px;
+        .language-subtitle {
+            font-size: 14px;
+            color: var(--gray);
+            margin-bottom: 30px;
             text-align: center;
-            opacity: 0.9;
         }
 
         .language-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 15px;
+            gap: 12px;
             width: 100%;
-            max-width: 320px;
+            max-width: 280px;
         }
 
         .lang-card {
             background: var(--card-bg);
-            backdrop-filter: blur(10px);
             border: 1px solid var(--glass-border);
-            border-radius: 15px;
-            padding: 20px;
-            color: white;
+            border-radius: 12px;
+            padding: 16px;
+            text-align: center;
             cursor: pointer;
-            transition: all 0.3s ease;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 12px;
+            transition: all 0.2s ease;
         }
 
         .lang-card:hover {
-            transform: translateY(-5px);
-            background: rgba(0, 212, 255, 0.15);
             border-color: var(--primary);
-            box-shadow: 0 10px 20px rgba(0, 212, 255, 0.2);
+            transform: translateY(-2px);
         }
 
         .lang-card .flag {
-            font-size: 2.5rem;
+            font-size: 24px;
+            margin-bottom: 8px;
         }
 
         .lang-card .name {
-            font-size: 1rem;
+            font-size: 12px;
             font-weight: 600;
-            text-align: center;
+            color: var(--light);
         }
 
         /* ============ MAIN CONTAINER ============ */
         .main-container {
-            max-width: 100%;
-            min-height: 100vh;
             display: none;
+            max-width: 100%;
         }
 
         .main-container.active {
@@ -166,184 +132,160 @@
         }
 
         /* ============ HEADER ============ */
-        .main-header {
-            background: rgba(0, 0, 0, 0.8);
-            backdrop-filter: blur(20px);
-            border-bottom: 1px solid var(--glass-border);
-            padding: 15px 20px;
+        .app-header {
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 16px 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             position: sticky;
             top: 0;
             z-index: 100;
-        }
-
-        .logo-section {
-            display: flex;
-            align-items: center;
-            gap: 15px;
+            border-bottom: 1px solid var(--glass-border);
         }
 
         .logo {
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 10px;
         }
 
         .logo-icon {
-            width: 45px;
-            height: 45px;
+            width: 36px;
+            height: 36px;
             background: linear-gradient(135deg, var(--primary), var(--secondary));
-            border-radius: 12px;
+            border-radius: 10px;
             display: flex;
             align-items: center;
             justify-content: center;
         }
 
         .logo-icon i {
-            font-size: 1.8rem;
+            font-size: 18px;
             color: white;
         }
 
         .logo-text {
-            font-size: 1.4rem;
-            font-weight: 800;
-            background: linear-gradient(to right, var(--primary), var(--accent));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--light);
         }
 
         .header-controls {
             display: flex;
-            align-items: center;
-            gap: 15px;
+            gap: 10px;
         }
 
-        .control-btn {
+        .header-btn {
+            width: 36px;
+            height: 36px;
+            border-radius: 10px;
             background: var(--glass);
             border: 1px solid var(--glass-border);
-            border-radius: 12px;
-            width: 45px;
-            height: 45px;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: white;
+            color: var(--light);
             cursor: pointer;
-            transition: all 0.3s ease;
-            position: relative;
+            transition: all 0.2s ease;
         }
 
-        .control-btn:hover {
+        .header-btn:hover {
             background: var(--primary);
-            transform: scale(1.1);
+            border-color: var(--primary);
         }
 
         .notification-badge {
             position: absolute;
-            top: -5px;
-            right: -5px;
+            top: -4px;
+            right: -4px;
             background: var(--danger);
             color: white;
-            font-size: 0.7rem;
-            width: 20px;
-            height: 20px;
+            font-size: 10px;
+            width: 16px;
+            height: 16px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-weight: bold;
         }
 
-        /* ============ USER PROFILE SECTION ============ */
-        .user-profile-card {
-            background: linear-gradient(135deg, rgba(0, 212, 255, 0.15), rgba(255, 107, 53, 0.1));
-            backdrop-filter: blur(10px);
+        /* ============ USER STATS ============ */
+        .user-stats {
+            padding: 20px;
+        }
+
+        .user-card {
+            background: var(--card-bg);
             border: 1px solid var(--glass-border);
-            border-radius: 20px;
-            margin: 20px;
-            padding: 25px;
+            border-radius: 16px;
+            padding: 20px;
             position: relative;
-            overflow: hidden;
-        }
-
-        .user-profile-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: linear-gradient(90deg, var(--primary), var(--secondary));
         }
 
         .user-info {
             display: flex;
             align-items: center;
-            gap: 20px;
-            margin-bottom: 25px;
+            gap: 12px;
+            margin-bottom: 20px;
         }
 
         .user-avatar {
-            width: 70px;
-            height: 70px;
-            border-radius: 50%;
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
             background: linear-gradient(135deg, var(--primary), var(--secondary));
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 2rem;
+        }
+
+        .user-avatar i {
+            font-size: 20px;
             color: white;
-            border: 3px solid var(--accent);
         }
 
         .user-details h3 {
-            font-size: 1.3rem;
-            color: white;
-            margin-bottom: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--light);
+            margin-bottom: 4px;
         }
 
         .user-level {
             display: inline-block;
+            padding: 4px 12px;
             background: var(--accent);
-            color: black;
-            padding: 6px 15px;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: 800;
-            text-transform: uppercase;
+            color: var(--dark);
+            border-radius: 12px;
+            font-size: 11px;
+            font-weight: 700;
         }
 
-        .user-stats {
+        .stats-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 15px;
+            gap: 12px;
         }
 
         .stat-item {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 15px;
-            padding: 20px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 12px;
+            padding: 16px;
             text-align: center;
-            transition: all 0.3s ease;
-        }
-
-        .stat-item:hover {
-            background: rgba(255, 255, 255, 0.1);
-            transform: translateY(-3px);
         }
 
         .stat-value {
-            font-size: 1.8rem;
-            font-weight: 800;
+            font-size: 20px;
+            font-weight: 700;
             color: var(--primary);
-            margin-bottom: 8px;
+            margin-bottom: 4px;
         }
 
         .stat-label {
-            font-size: 0.85rem;
-            color: rgba(255, 255, 255, 0.8);
+            font-size: 11px;
+            color: var(--gray);
             font-weight: 600;
         }
 
@@ -351,174 +293,132 @@
         .quick-actions {
             padding: 0 20px 20px;
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 15px;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
         }
 
         .action-card {
             background: var(--card-bg);
-            backdrop-filter: blur(10px);
             border: 1px solid var(--glass-border);
-            border-radius: 18px;
-            padding: 25px 15px;
+            border-radius: 12px;
+            padding: 16px 8px;
             text-align: center;
             cursor: pointer;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
+            transition: all 0.2s ease;
         }
 
         .action-card:hover {
-            transform: translateY(-5px);
             border-color: var(--primary);
-            box-shadow: 0 15px 30px rgba(0, 212, 255, 0.2);
-        }
-
-        .action-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.1) 50%, transparent 70%);
-            transform: translateX(-100%);
-            transition: transform 0.6s;
-        }
-
-        .action-card:hover::before {
-            transform: translateX(100%);
+            transform: translateY(-2px);
         }
 
         .action-icon {
-            width: 65px;
-            height: 65px;
-            margin: 0 auto 15px;
-            border-radius: 50%;
+            width: 36px;
+            height: 36px;
+            margin: 0 auto 8px;
+            border-radius: 10px;
             background: linear-gradient(135deg, var(--primary), var(--secondary));
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 2rem;
+        }
+
+        .action-icon i {
+            font-size: 16px;
             color: white;
-            box-shadow: 0 5px 15px rgba(0, 212, 255, 0.3);
         }
 
         .action-title {
-            font-size: 1.1rem;
-            font-weight: 700;
-            color: white;
-            margin-bottom: 8px;
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--light);
+            margin-bottom: 4px;
         }
 
         .action-desc {
-            font-size: 0.9rem;
-            color: rgba(255, 255, 255, 0.7);
-            line-height: 1.4;
+            font-size: 10px;
+            color: var(--gray);
+            line-height: 1.3;
         }
 
         /* ============ VIP BANNER ============ */
         .vip-banner {
-            background: linear-gradient(135deg, #ffd700, #ff8c00, var(--secondary));
-            border-radius: 20px;
-            margin: 20px;
-            padding: 25px;
+            margin: 0 20px 20px;
+            background: linear-gradient(135deg, var(--accent), var(--secondary));
+            border-radius: 16px;
+            padding: 16px;
             position: relative;
             overflow: hidden;
             cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .vip-banner:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 20px 40px rgba(255, 107, 53, 0.3);
-        }
-
-        .vip-banner::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.3) 50%, transparent 70%);
-            animation: shine 3s infinite;
-        }
-
-        @keyframes shine {
-            0% { transform: translateX(-100%); }
-            100% { transform: translateX(100%); }
         }
 
         .vip-content {
-            position: relative;
-            z-index: 1;
             display: flex;
             align-items: center;
-            gap: 20px;
+            gap: 12px;
         }
 
         .vip-icon {
-            font-size: 3.5rem;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .vip-icon i {
+            font-size: 20px;
             color: white;
-            filter: drop-shadow(0 5px 10px rgba(0, 0, 0, 0.3));
         }
 
         .vip-text h3 {
-            font-size: 1.4rem;
+            font-size: 14px;
+            font-weight: 700;
             color: white;
-            margin-bottom: 8px;
-            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+            margin-bottom: 4px;
         }
 
         .vip-text p {
+            font-size: 11px;
             color: rgba(255, 255, 255, 0.9);
-            font-size: 0.95rem;
         }
 
         .vip-badge {
             position: absolute;
-            top: 15px;
-            right: 15px;
-            background: rgba(0, 0, 0, 0.4);
+            top: 12px;
+            right: 12px;
+            background: rgba(0, 0, 0, 0.3);
             color: white;
-            padding: 8px 20px;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            font-weight: 800;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+            padding: 4px 10px;
+            border-radius: 10px;
+            font-size: 10px;
+            font-weight: 700;
         }
 
         /* ============ SIGNALS SECTION ============ */
         .section-header {
+            padding: 0 20px 16px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 0 20px;
-            margin-bottom: 20px;
         }
 
         .section-title {
-            font-size: 1.4rem;
+            font-size: 16px;
             font-weight: 700;
-            color: white;
+            color: var(--light);
         }
 
         .section-link {
+            font-size: 12px;
             color: var(--primary);
-            font-size: 0.95rem;
             font-weight: 600;
             text-decoration: none;
             display: flex;
             align-items: center;
-            gap: 8px;
-            transition: all 0.3s ease;
-        }
-
-        .section-link:hover {
-            color: var(--accent);
-            transform: translateX(5px);
+            gap: 4px;
         }
 
         .signals-container {
@@ -528,71 +428,61 @@
         .signals-grid {
             display: grid;
             grid-template-columns: 1fr;
-            gap: 15px;
+            gap: 12px;
         }
 
         .signal-card {
             background: var(--card-bg);
-            backdrop-filter: blur(10px);
             border: 1px solid var(--glass-border);
-            border-radius: 18px;
-            padding: 20px;
-            transition: all 0.3s ease;
-            cursor: pointer;
-        }
-
-        .signal-card:hover {
-            border-color: var(--primary);
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(0, 212, 255, 0.1);
+            border-radius: 12px;
+            padding: 16px;
         }
 
         .signal-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 15px;
+            margin-bottom: 12px;
         }
 
         .signal-type {
-            display: inline-block;
-            padding: 6px 15px;
-            background: rgba(0, 212, 255, 0.2);
+            padding: 4px 10px;
+            background: rgba(0, 188, 212, 0.1);
             color: var(--primary);
-            border-radius: 20px;
-            font-size: 0.85rem;
+            border-radius: 10px;
+            font-size: 10px;
             font-weight: 700;
         }
 
         .signal-type.vip {
-            background: rgba(255, 215, 0, 0.2);
+            background: rgba(255, 152, 0, 0.1);
             color: var(--accent);
         }
 
         .signal-time {
-            font-size: 0.85rem;
-            color: rgba(255, 255, 255, 0.6);
+            font-size: 11px;
+            color: var(--gray);
         }
 
         .signal-price {
-            font-size: 1.8rem;
-            font-weight: 800;
-            margin-bottom: 10px;
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 8px;
         }
 
-        .signal-profit {
+        .profit {
             color: var(--success);
         }
 
-        .signal-loss {
+        .loss {
             color: var(--danger);
         }
 
         .signal-info {
             display: flex;
             justify-content: space-between;
-            font-size: 0.9rem;
-            color: rgba(255, 255, 255, 0.7);
+            font-size: 11px;
+            color: var(--gray);
         }
 
         /* ============ BOTTOM NAVIGATION ============ */
@@ -601,10 +491,10 @@
             bottom: 0;
             left: 0;
             width: 100%;
-            background: rgba(0, 0, 0, 0.9);
-            backdrop-filter: blur(20px);
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
             border-top: 1px solid var(--glass-border);
-            padding: 12px 0;
+            padding: 8px 0;
             display: flex;
             justify-content: space-around;
             align-items: center;
@@ -615,50 +505,32 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 5px;
-            color: rgba(255, 255, 255, 0.6);
+            gap: 4px;
+            color: var(--gray);
             text-decoration: none;
-            transition: all 0.3s ease;
-            cursor: pointer;
             flex: 1;
-            padding: 8px 0;
+            padding: 6px 0;
+            transition: all 0.2s ease;
+            cursor: pointer;
         }
 
         .nav-item.active {
             color: var(--primary);
-            transform: translateY(-5px);
-        }
-
-        .nav-item.active .nav-icon {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            box-shadow: 0 5px 15px rgba(0, 212, 255, 0.3);
-        }
-
-        .nav-item:hover {
-            color: var(--primary);
         }
 
         .nav-icon {
-            width: 45px;
-            height: 45px;
-            border-radius: 12px;
-            background: rgba(255, 255, 255, 0.1);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.4rem;
-            margin-bottom: 5px;
-            transition: all 0.3s ease;
+            font-size: 18px;
+            margin-bottom: 2px;
         }
 
         .nav-text {
-            font-size: 0.75rem;
+            font-size: 10px;
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 0.5px;
         }
 
-        /* ============ MODAL STYLES ============ */
+        /* ============ MODALS ============ */
         .modal-overlay {
             position: fixed;
             top: 0;
@@ -666,7 +538,6 @@
             width: 100%;
             height: 100%;
             background: rgba(0, 0, 0, 0.9);
-            backdrop-filter: blur(10px);
             display: none;
             align-items: center;
             justify-content: center;
@@ -680,23 +551,16 @@
 
         .modal-content {
             background: var(--card-bg);
-            backdrop-filter: blur(20px);
             border: 1px solid var(--glass-border);
-            border-radius: 25px;
+            border-radius: 16px;
             width: 100%;
-            max-width: 450px;
+            max-width: 400px;
             max-height: 90vh;
             overflow-y: auto;
-            animation: modalSlide 0.4s ease;
-        }
-
-        @keyframes modalSlide {
-            from { transform: translateY(50px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
         }
 
         .modal-header {
-            padding: 25px;
+            padding: 16px;
             border-bottom: 1px solid var(--glass-border);
             display: flex;
             justify-content: space-between;
@@ -704,153 +568,124 @@
         }
 
         .modal-title {
-            font-size: 1.4rem;
+            font-size: 16px;
             font-weight: 700;
-            color: white;
+            color: var(--light);
         }
 
         .modal-close {
-            width: 45px;
-            height: 45px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.1);
+            width: 32px;
+            height: 32px;
+            border-radius: 10px;
+            background: var(--glass);
             border: 1px solid var(--glass-border);
-            color: white;
             display: flex;
             align-items: center;
             justify-content: center;
+            color: var(--light);
             cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .modal-close:hover {
-            background: var(--danger);
-            border-color: var(--danger);
-            transform: rotate(90deg);
         }
 
         .modal-body {
-            padding: 25px;
+            padding: 20px;
         }
 
         /* ============ GAME MODAL ============ */
-        .game-modal .modal-content {
-            max-width: 400px;
-        }
-
         .game-header {
             text-align: center;
-            margin-bottom: 30px;
+            margin-bottom: 20px;
         }
 
         .game-title {
-            font-size: 1.8rem;
-            font-weight: 800;
-            background: linear-gradient(to right, var(--primary), var(--accent));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 15px;
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 8px;
         }
 
         .game-subtitle {
-            color: rgba(255, 255, 255, 0.8);
-            font-size: 1rem;
-            line-height: 1.4;
+            font-size: 12px;
+            color: var(--gray);
         }
 
-        .game-apples-container {
+        .game-apples {
             display: flex;
             justify-content: center;
-            gap: 20px;
-            margin: 30px 0;
+            gap: 12px;
+            margin: 24px 0;
             flex-wrap: wrap;
         }
 
         .game-apple {
-            width: 75px;
-            height: 75px;
+            width: 60px;
+            height: 60px;
             border-radius: 50%;
             background-size: cover;
             background-position: center;
             cursor: pointer;
-            transition: all 0.3s ease;
-            position: relative;
-            border: 3px solid transparent;
-            animation: appleFloat 3s infinite ease-in-out;
-        }
-
-        @keyframes appleFloat {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
+            border: 2px solid transparent;
+            transition: all 0.2s ease;
         }
 
         .apple-mystery {
-            background-image: url('https://images.unsplash.com/photo-1568702846914-96b305d2aaeb?w=200&h=200&fit=crop&crop=center');
+            background-image: url('https://images.unsplash.com/photo-1568702846914-96b305d2aaeb?w=200&h=200&fit=crop');
             border-color: var(--primary);
-            box-shadow: 0 0 20px rgba(0, 212, 255, 0.5);
         }
 
         .apple-whole {
-            background-image: url('https://images.unsplash.com/photo-1568702846914-96b305d2aaeb?w=200&h=200&fit=crop&crop=center');
+            background-image: url('https://images.unsplash.com/photo-1568702846914-96b305d2aaeb?w=200&h=200&fit=crop');
             border-color: var(--success);
-            box-shadow: 0 0 20px rgba(0, 255, 136, 0.5);
         }
 
         .apple-bitten {
             background-image: url('https://images.unsplash.com/photo-1568702846914-96b305d2aaeb?w=200&h=200&fit=crop&crop=face');
             border-color: var(--danger);
-            box-shadow: 0 0 20px rgba(255, 71, 87, 0.5);
         }
 
-        .game-apple:hover {
-            transform: scale(1.1) rotate(10deg);
-        }
-
-        .game-stats {
-            background: rgba(0, 212, 255, 0.1);
-            border-radius: 20px;
-            padding: 20px;
-            margin: 20px 0;
+        .game-info {
+            background: rgba(0, 188, 212, 0.1);
+            border-radius: 12px;
+            padding: 16px;
+            margin: 16px 0;
             text-align: center;
         }
 
         .game-round {
-            font-size: 1.2rem;
-            color: white;
-            margin-bottom: 10px;
+            font-size: 14px;
+            color: var(--light);
+            margin-bottom: 8px;
         }
 
         .game-round span {
             color: var(--accent);
-            font-weight: 800;
-            font-size: 1.4rem;
+            font-weight: 700;
         }
 
         .game-instruction {
-            color: rgba(255, 255, 255, 0.8);
-            font-size: 0.95rem;
+            font-size: 12px;
+            color: var(--gray);
             line-height: 1.4;
         }
 
         .game-actions {
             display: flex;
-            gap: 15px;
-            margin-top: 25px;
+            gap: 10px;
+            margin-top: 20px;
         }
 
         .btn {
             flex: 1;
-            padding: 18px;
+            padding: 14px;
             border: none;
-            border-radius: 15px;
-            font-weight: 700;
-            font-size: 1rem;
+            border-radius: 12px;
+            font-size: 14px;
+            font-weight: 600;
             cursor: pointer;
-            transition: all 0.3s ease;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 10px;
+            gap: 8px;
+            transition: all 0.2s ease;
         }
 
         .btn-primary {
@@ -859,207 +694,201 @@
         }
 
         .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(0, 212, 255, 0.3);
+            transform: translateY(-2px);
         }
 
         .btn-secondary {
-            background: rgba(255, 255, 255, 0.1);
+            background: var(--glass);
             border: 1px solid var(--glass-border);
-            color: white;
-        }
-
-        .btn-secondary:hover {
-            background: rgba(255, 255, 255, 0.2);
-            transform: translateY(-3px);
+            color: var(--light);
         }
 
         /* ============ VIP MODAL ============ */
-        .vip-modal .modal-content {
-            max-width: 450px;
-        }
-
         .vip-features {
-            margin: 25px 0;
+            margin: 20px 0;
         }
 
         .vip-feature-item {
             display: flex;
             align-items: center;
-            gap: 15px;
-            padding: 15px;
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 15px;
-            margin-bottom: 12px;
-        }
-
-        .vip-feature-item:last-child {
-            margin-bottom: 0;
+            gap: 12px;
+            padding: 12px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 12px;
+            margin-bottom: 10px;
         }
 
         .feature-icon {
-            width: 50px;
-            height: 50px;
-            border-radius: 12px;
+            width: 36px;
+            height: 36px;
+            border-radius: 10px;
             background: linear-gradient(135deg, var(--primary), var(--secondary));
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.4rem;
-            color: white;
         }
 
-        .feature-text {
-            flex: 1;
+        .feature-icon i {
+            font-size: 16px;
+            color: white;
         }
 
         .feature-text h4 {
-            font-size: 1rem;
-            color: white;
-            margin-bottom: 5px;
+            font-size: 14px;
+            color: var(--light);
+            margin-bottom: 4px;
         }
 
         .feature-text p {
-            font-size: 0.85rem;
-            color: rgba(255, 255, 255, 0.7);
-            line-height: 1.4;
+            font-size: 11px;
+            color: var(--gray);
         }
 
-        /* ============ BONUS PAGE ============ */
-        .bonus-page {
+        /* ============ OTHER PAGES ============ */
+        .page-container {
             display: none;
         }
 
-        .bonus-page.active {
+        .page-container.active {
             display: block;
         }
 
-        .bonus-container {
-            padding: 20px;
-        }
-
-        .bonus-card {
-            background: linear-gradient(135deg, rgba(255, 215, 0, 0.15), rgba(255, 140, 0, 0.1));
-            border: 1px solid var(--glass-border);
-            border-radius: 20px;
-            padding: 25px;
-            margin-bottom: 20px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .bonus-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: linear-gradient(90deg, #ffd700, #ff8c00);
-        }
-
-        .bonus-header {
+        .page-header {
+            padding: 16px 20px;
             display: flex;
             align-items: center;
-            gap: 15px;
-            margin-bottom: 20px;
+            gap: 12px;
         }
 
-        .bonus-icon {
-            width: 60px;
-            height: 60px;
-            border-radius: 15px;
-            background: linear-gradient(135deg, #ffd700, #ff8c00);
+        .page-back {
+            width: 36px;
+            height: 36px;
+            border-radius: 10px;
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.8rem;
-            color: black;
+            color: var(--light);
+            cursor: pointer;
         }
 
-        .bonus-header h3 {
-            font-size: 1.3rem;
+        .page-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--light);
+        }
+
+        .page-content {
+            padding: 20px;
+        }
+
+        .page-card {
+            background: var(--card-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            padding: 20px;
+            margin-bottom: 16px;
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+
+        .card-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .card-icon i {
+            font-size: 20px;
             color: white;
-            flex: 1;
         }
 
-        .bonus-value {
-            font-size: 2rem;
-            font-weight: 800;
-            color: #ffd700;
-            margin-bottom: 15px;
+        .card-title {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--light);
+        }
+
+        .card-value {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--accent);
             text-align: center;
+            margin: 16px 0;
         }
 
-        .bonus-description {
-            color: rgba(255, 255, 255, 0.9);
-            font-size: 0.95rem;
+        .card-desc {
+            font-size: 13px;
+            color: var(--gray);
             line-height: 1.5;
             margin-bottom: 20px;
         }
 
-        .bonus-code {
-            background: rgba(255, 215, 0, 0.2);
-            border: 2px dashed #ffd700;
-            border-radius: 15px;
-            padding: 15px;
+        .promo-code {
+            background: rgba(255, 152, 0, 0.1);
+            border: 1px dashed var(--accent);
+            border-radius: 12px;
+            padding: 16px;
             text-align: center;
             margin: 20px 0;
         }
 
-        .bonus-code .code {
-            font-size: 1.8rem;
-            font-weight: 800;
-            color: #ffd700;
-            letter-spacing: 3px;
+        .promo-code .code {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--accent);
+            letter-spacing: 2px;
         }
 
-        .bonus-code .label {
-            font-size: 0.9rem;
-            color: rgba(255, 255, 255, 0.8);
+        .promo-code .label {
+            font-size: 11px;
+            color: var(--gray);
             margin-top: 8px;
         }
 
-        /* ============ RESPONSIVE DESIGN ============ */
+        /* ============ RESPONSIVE ============ */
         @media (min-width: 768px) {
-            .main-container {
-                max-width: 500px;
+            .main-container, .page-container {
+                max-width: 480px;
                 margin: 0 auto;
             }
             
-            .quick-actions {
-                grid-template-columns: repeat(4, 1fr);
-            }
-            
-            .user-stats {
+            .stats-grid {
                 grid-template-columns: repeat(4, 1fr);
             }
             
             .signals-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
-            
-            .language-grid {
-                grid-template-columns: repeat(3, 1fr);
-            }
         }
 
-        @media (max-width: 480px) {
-            .user-stats {
-                grid-template-columns: 1fr;
+        @media (max-width: 380px) {
+            .quick-actions {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 8px;
             }
             
-            .quick-actions {
-                grid-template-columns: 1fr;
+            .action-card {
+                padding: 12px 6px;
             }
             
             .game-apple {
-                width: 65px;
-                height: 65px;
+                width: 52px;
+                height: 52px;
             }
         }
 
-        /* ============ UTILITY CLASSES ============ */
+        /* ============ UTILITIES ============ */
         .hidden {
             display: none !important;
         }
@@ -1068,52 +897,28 @@
             text-align: center;
         }
 
-        .mb-10 {
-            margin-bottom: 10px;
+        .mb-16 {
+            margin-bottom: 16px;
         }
 
-        .mb-20 {
-            margin-bottom: 20px;
-        }
-
-        .mb-30 {
-            margin-bottom: 30px;
-        }
-
-        .mt-20 {
-            margin-top: 20px;
-        }
-
-        /* Loading spinner */
-        .loading {
-            width: 50px;
-            height: 50px;
-            border: 3px solid rgba(255, 255, 255, 0.3);
-            border-radius: 50%;
-            border-top-color: var(--primary);
-            animation: spin 1s ease-in-out infinite;
-            margin: 20px auto;
-        }
-
-        @keyframes spin {
-            to { transform: rotate(360deg); }
+        .mt-16 {
+            margin-top: 16px;
         }
 
         /* Toast notifications */
         .toast {
             position: fixed;
-            top: 20px;
+            top: 80px;
             right: 20px;
-            background: rgba(30, 30, 30, 0.95);
-            backdrop-filter: blur(10px);
+            background: var(--card-bg);
             border: 1px solid var(--glass-border);
-            border-radius: 15px;
-            padding: 15px 25px;
-            color: white;
+            border-radius: 12px;
+            padding: 12px 16px;
+            color: var(--light);
+            font-size: 13px;
             z-index: 10000;
             animation: slideIn 0.3s ease;
-            max-width: 300px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            max-width: 280px;
         }
 
         @keyframes slideIn {
@@ -1128,10 +933,6 @@
         .toast.error {
             border-left: 4px solid var(--danger);
         }
-
-        .toast.info {
-            border-left: 4px solid var(--primary);
-        }
     </style>
 </head>
 <body>
@@ -1140,8 +941,8 @@
         <div class="language-logo">
             <i class="fas fa-apple-alt"></i>
         </div>
-        <h1>Apple Fortune</h1>
-        <p class="language-prompt" id="languagePrompt">AI Trading Platform</p>
+        <h2 class="language-title">Apple Fortune</h2>
+        <p class="language-subtitle" id="languageSubtitle">AI Trading Platform</p>
         
         <div class="language-grid">
             <div class="lang-card" data-lang="uz">
@@ -1163,124 +964,124 @@
         </div>
     </div>
 
-    <!-- Main Container -->
+    <!-- Main Home Page -->
     <div class="main-container" id="mainContainer">
         <!-- Header -->
-        <header class="main-header">
-            <div class="logo-section">
-                <div class="logo">
-                    <div class="logo-icon">
-                        <i class="fas fa-apple-alt"></i>
-                    </div>
-                    <div class="logo-text">Apple Fortune</div>
+        <header class="app-header">
+            <div class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-apple-alt"></i>
                 </div>
+                <div class="logo-text">Apple Fortune</div>
             </div>
             
             <div class="header-controls">
-                <div class="control-btn" id="notificationBtn">
+                <div class="header-btn" id="notificationBtn">
                     <i class="fas fa-bell"></i>
                     <span class="notification-badge">3</span>
                 </div>
-                <div class="control-btn" id="languageBtn">
+                <div class="header-btn" id="languageBtn">
                     <i class="fas fa-globe"></i>
                 </div>
             </div>
         </header>
 
-        <!-- User Profile Card -->
-        <div class="user-profile-card">
-            <div class="user-info">
-                <div class="user-avatar">
-                    <i class="fas fa-user"></i>
+        <!-- User Stats -->
+        <section class="user-stats">
+            <div class="user-card">
+                <div class="user-info">
+                    <div class="user-avatar">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="user-details">
+                        <h3 id="userName">Foydalanuvchi</h3>
+                        <span class="user-level" id="userLevel">BOSHLANG'ICH</span>
+                    </div>
                 </div>
-                <div class="user-details">
-                    <h3 id="userName">Foydalanuvchi</h3>
-                    <span class="user-level" id="userLevel">BOSHLANG'ICH</span>
+                
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <div class="stat-value" id="balance">$0</div>
+                        <div class="stat-label" id="balanceLabel">BALANS</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value" id="signals">0</div>
+                        <div class="stat-label" id="signalsLabel">SIGNALLAR</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value" id="accuracy">0%</div>
+                        <div class="stat-label" id="accuracyLabel">ANIQLIK</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value" id="friends">0</div>
+                        <div class="stat-label" id="friendsLabel">DO'STLAR</div>
+                    </div>
                 </div>
             </div>
-            
-            <div class="user-stats">
-                <div class="stat-item">
-                    <div class="stat-value" id="balance">$0</div>
-                    <div class="stat-label" id="balanceLabel">BALANS</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-value" id="signals">0</div>
-                    <div class="stat-label" id="signalsLabel">SIGNALLAR</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-value" id="accuracy">0%</div>
-                    <div class="stat-label" id="accuracyLabel">ANIQLIK</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-value" id="friends">0</div>
-                    <div class="stat-label" id="friendsLabel">DO'STLAR</div>
-                </div>
-            </div>
-        </div>
+        </section>
 
         <!-- Quick Actions -->
-        <div class="quick-actions">
-            <div class="action-card" id="signalAction">
+        <section class="quick-actions">
+            <div class="action-card" id="signalBtn">
                 <div class="action-icon">
                     <i class="fas fa-bolt"></i>
                 </div>
-                <div class="action-title" id="signalActionTitle">SIGNAL OLISH</div>
-                <div class="action-desc" id="signalActionDesc">Yuqori aniqlikdagi AI signallari</div>
+                <div class="action-title" id="signalTitle">SIGNAL</div>
+                <div class="action-desc" id="signalDesc">Yuqori aniqlik</div>
             </div>
             
-            <div class="action-card" id="vipAction">
+            <div class="action-card" id="vipBtn">
                 <div class="action-icon">
                     <i class="fas fa-crown"></i>
                 </div>
-                <div class="action-title" id="vipActionTitle">VIP SIGNAL</div>
-                <div class="action-desc" id="vipActionDesc">Ekskluziv signallar va imtiyozlar</div>
+                <div class="action-title" id="vipTitle">VIP</div>
+                <div class="action-desc" id="vipDesc">Ekskluziv</div>
             </div>
             
-            <div class="action-card" id="apkAction">
+            <div class="action-card" id="apkBtn">
                 <div class="action-icon">
                     <i class="fas fa-download"></i>
                 </div>
-                <div class="action-title" id="apkActionTitle">APK YUKLASH</div>
-                <div class="action-desc" id="apkActionDesc">Mobil ilovani o'rnating</div>
+                <div class="action-title" id="apkTitle">APK</div>
+                <div class="action-desc" id="apkDesc">Yuklab olish</div>
             </div>
             
-            <div class="action-card" id="bonusAction">
+            <div class="action-card" id="bonusBtn">
                 <div class="action-icon">
                     <i class="fas fa-gift"></i>
                 </div>
-                <div class="action-title" id="bonusActionTitle">BONUSLAR</div>
-                <div class="action-desc" id="bonusActionDesc">Promokodlar va bonuslar</div>
+                <div class="action-title" id="bonusTitle">BONUS</div>
+                <div class="action-desc" id="bonusDesc">Promokodlar</div>
             </div>
-        </div>
+        </section>
 
         <!-- VIP Banner -->
-        <div class="vip-banner" id="vipBanner">
+        <section class="vip-banner" id="vipBanner">
             <div class="vip-content">
                 <div class="vip-icon">
                     <i class="fas fa-gem"></i>
                 </div>
                 <div class="vip-text">
                     <h3 id="vipBannerTitle">VIP A'ZO BO'LING</h3>
-                    <p id="vipBannerDesc">98.5% aniq signallar va ekskluziv imtiyozlar</p>
+                    <p id="vipBannerDesc">98.5% aniq signallar</p>
                 </div>
             </div>
             <div class="vip-badge">VIP</div>
-        </div>
+        </section>
 
         <!-- Latest Signals -->
         <div class="section-header">
-            <h2 class="section-title" id="latestSignalsTitle">OXIRGI SIGNALLAR</h2>
+            <h2 class="section-title" id="signalsTitle">OXIRGI SIGNALLAR</h2>
             <a href="#" class="section-link" id="viewAllLink">
                 BARCHASI <i class="fas fa-arrow-right"></i>
             </a>
         </div>
         
-        <div class="signals-container">
+        <section class="signals-container">
             <div class="signals-grid" id="signalsGrid">
-                <!-- Signals will be dynamically added -->
+                <!-- Signals will be added here -->
             </div>
-        </div>
+        </section>
 
         <!-- Bottom Navigation -->
         <nav class="bottom-nav">
@@ -1288,42 +1089,216 @@
                 <div class="nav-icon">
                     <i class="fas fa-home"></i>
                 </div>
-                <div class="nav-text" id="navHomeText">BOSH SAHIFA</div>
+                <div class="nav-text">ASOSIY</div>
             </div>
             
             <div class="nav-item" id="navSignal">
                 <div class="nav-icon">
                     <i class="fas fa-chart-line"></i>
                 </div>
-                <div class="nav-text" id="navSignalText">SIGNAL OLISH</div>
+                <div class="nav-text">SIGNAL</div>
             </div>
             
             <div class="nav-item" id="navVip">
                 <div class="nav-icon">
                     <i class="fas fa-crown"></i>
                 </div>
-                <div class="nav-text" id="navVipText">VIP SIGNAL</div>
+                <div class="nav-text">VIP</div>
             </div>
             
             <div class="nav-item" id="navApk">
                 <div class="nav-icon">
                     <i class="fas fa-download"></i>
                 </div>
-                <div class="nav-text" id="navApkText">APK YUKLASH</div>
+                <div class="nav-text">APK</div>
             </div>
             
             <div class="nav-item" id="navBonus">
                 <div class="nav-icon">
                     <i class="fas fa-gift"></i>
                 </div>
-                <div class="nav-text" id="navBonusText">BONUSLAR</div>
+                <div class="nav-text">BONUS</div>
             </div>
         </nav>
     </div>
 
-    <!-- Game Modal -->
+    <!-- APK Page -->
+    <div class="page-container" id="apkPage">
+        <header class="page-header">
+            <div class="page-back" id="backFromApk">
+                <i class="fas fa-arrow-left"></i>
+            </div>
+            <div class="page-title">APK YUKLASH</div>
+        </header>
+        
+        <div class="page-content">
+            <div class="page-card">
+                <div class="card-header">
+                    <div class="card-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <div class="card-title">MOBIL ILOVA</div>
+                </div>
+                
+                <div class="card-value">
+                    APK YUKLASH
+                </div>
+                
+                <p class="card-desc" id="apkDescText">
+                    Apple Fortune mobil ilovasini yuklab oling va istalgan joydan signallar oling.
+                    To'liq funksionallik va qulay interfeys.
+                </p>
+                
+                <button class="btn btn-primary" id="downloadApkBtn">
+                    <i class="fas fa-download"></i> <span id="downloadApkText">YUKLASH</span>
+                </button>
+                
+                <div class="promo-code">
+                    <div class="code">AIFUT</div>
+                    <div class="label">Promokod bilan ro'yxatdan o'ting</div>
+                </div>
+            </div>
+        </div>
+        
+        <nav class="bottom-nav">
+            <div class="nav-item" id="navHome2">
+                <div class="nav-icon">
+                    <i class="fas fa-home"></i>
+                </div>
+                <div class="nav-text">ASOSIY</div>
+            </div>
+            
+            <div class="nav-item" id="navSignal2">
+                <div class="nav-icon">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <div class="nav-text">SIGNAL</div>
+            </div>
+            
+            <div class="nav-item" id="navVip2">
+                <div class="nav-icon">
+                    <i class="fas fa-crown"></i>
+                </div>
+                <div class="nav-text">VIP</div>
+            </div>
+            
+            <div class="nav-item active" id="navApk2">
+                <div class="nav-icon">
+                    <i class="fas fa-download"></i>
+                </div>
+                <div class="nav-text">APK</div>
+            </div>
+            
+            <div class="nav-item" id="navBonus2">
+                <div class="nav-icon">
+                    <i class="fas fa-gift"></i>
+                </div>
+                <div class="nav-text">BONUS</div>
+            </div>
+        </nav>
+    </div>
+
+    <!-- Bonus Page -->
+    <div class="page-container" id="bonusPage">
+        <header class="page-header">
+            <div class="page-back" id="backFromBonus">
+                <i class="fas fa-arrow-left"></i>
+            </div>
+            <div class="page-title">BONUSLAR</div>
+        </header>
+        
+        <div class="page-content">
+            <div class="page-card">
+                <div class="card-header">
+                    <div class="card-icon">
+                        <i class="fas fa-gift"></i>
+                    </div>
+                    <div class="card-title">AIFUT BONUSI</div>
+                </div>
+                
+                <div class="card-value">
+                    200% BONUS
+                </div>
+                
+                <p class="card-desc" id="bonusDescText">
+                    AIFUT promokodi bilan ro'yxatdan o'ting va darhol 200% bonus oling.
+                    Bonus birinchi depozitingizga qo'shiladi.
+                </p>
+                
+                <button class="btn btn-primary" id="getBonusBtn">
+                    <i class="fas fa-gift"></i> <span id="getBonusText">BONUS OLISH</span>
+                </button>
+                
+                <div class="promo-code">
+                    <div class="code">AIFUT</div>
+                    <div class="label">Promokod bilan ro'yxatdan o'ting</div>
+                </div>
+            </div>
+            
+            <div class="page-card">
+                <div class="card-header">
+                    <div class="card-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="card-title">DO'STLARNI TAKLIF QILISH</div>
+                </div>
+                
+                <div class="card-value">
+                    $10 HAR BIR DO'ST
+                </div>
+                
+                <p class="card-desc">
+                    Har bir taklif qilingan do'st uchun $10 bonus oling.
+                    5 ta do'st taklif qilsangiz, VIP signalga ega bo'lasiz!
+                </p>
+                
+                <button class="btn btn-secondary" id="inviteFriendsBtn">
+                    <i class="fas fa-share-alt"></i> <span id="inviteFriendsText">TAKLIF QILISH</span>
+                </button>
+            </div>
+        </div>
+        
+        <nav class="bottom-nav">
+            <div class="nav-item" id="navHome3">
+                <div class="nav-icon">
+                    <i class="fas fa-home"></i>
+                </div>
+                <div class="nav-text">ASOSIY</div>
+            </div>
+            
+            <div class="nav-item" id="navSignal3">
+                <div class="nav-icon">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <div class="nav-text">SIGNAL</div>
+            </div>
+            
+            <div class="nav-item" id="navVip3">
+                <div class="nav-icon">
+                    <i class="fas fa-crown"></i>
+                </div>
+                <div class="nav-text">VIP</div>
+            </div>
+            
+            <div class="nav-item" id="navApk3">
+                <div class="nav-icon">
+                    <i class="fas fa-download"></i>
+                </div>
+                <div class="nav-text">APK</div>
+            </div>
+            
+            <div class="nav-item active" id="navBonus3">
+                <div class="nav-icon">
+                    <i class="fas fa-gift"></i>
+                </div>
+                <div class="nav-text">BONUS</div>
+            </div>
+        </nav>
+    </div>
+
+    <!-- Modals -->
     <div class="modal-overlay" id="gameModal">
-        <div class="modal-content game-modal">
+        <div class="modal-content">
             <div class="modal-header">
                 <h3 class="modal-title" id="gameModalTitle">SIGNAL OLISH</h3>
                 <div class="modal-close" id="closeGameModal">
@@ -1334,19 +1309,19 @@
             <div class="modal-body">
                 <div class="game-header">
                     <h2 class="game-title">OLMA O'YINI</h2>
-                    <p class="game-subtitle" id="gameSubtitle">Butun olmalarni tanlang, signal oling!</p>
+                    <p class="game-subtitle" id="gameSubtitle">Butun olmalarni tanlang</p>
                 </div>
                 
-                <div class="game-apples-container" id="gameApples">
+                <div class="game-apples" id="gameApples">
                     <!-- Apples will be added here -->
                 </div>
                 
-                <div class="game-stats">
+                <div class="game-info">
                     <div class="game-round">
                         Raund: <span id="currentRound">1</span>/6
                     </div>
                     <p class="game-instruction" id="gameInstruction">
-                        Butun olmalarni tanlang. Tishlangan olma o'yinni tugatadi!
+                        Butun olmalarni tanlang. Tishlangan olma o'yinni tugatadi.
                     </p>
                 </div>
                 
@@ -1362,9 +1337,8 @@
         </div>
     </div>
 
-    <!-- VIP Modal -->
     <div class="modal-overlay" id="vipModal">
-        <div class="modal-content vip-modal">
+        <div class="modal-content">
             <div class="modal-header">
                 <h3 class="modal-title" id="vipModalTitle">VIP SIGNAL</h3>
                 <div class="modal-close" id="closeVipModal">
@@ -1373,14 +1347,12 @@
             </div>
             
             <div class="modal-body">
-                <div style="text-align: center; margin-bottom: 30px;">
-                    <div style="font-size: 4rem; color: #ffd700; margin-bottom: 15px;">
+                <div class="text-center mb-16">
+                    <div style="font-size: 48px; color: #ff9800; margin-bottom: 12px;">
                         <i class="fas fa-gem"></i>
                     </div>
-                    <h3 style="font-size: 1.5rem; margin-bottom: 10px; color: white;">VIP A'ZO BO'LING</h3>
-                    <p style="color: rgba(255, 255, 255, 0.8);" id="vipModalDesc">
-                        98.5% aniq signallar, ekskluziv tahlillar va VIP qo'llab-quvvatlash
-                    </p>
+                    <h3 style="font-size: 18px; color: var(--light); margin-bottom: 8px;">VIP A'ZO BO'LING</h3>
+                    <p style="color: var(--gray); font-size: 13px;">98.5% aniq signallar va ekskluziv imtiyozlar</p>
                 </div>
                 
                 <div class="vip-features">
@@ -1399,8 +1371,8 @@
                             <i class="fas fa-bolt"></i>
                         </div>
                         <div class="feature-text">
-                            <h4>Real-vaqtda bildirishnomalar</h4>
-                            <p>Har qanday tizim imkoniyati haqida darhol xabar oling</p>
+                            <h4>Real-vaqtda</h4>
+                            <p>Darhol bildirishnomalar va yangilanishlar</p>
                         </div>
                     </div>
                     
@@ -1410,509 +1382,356 @@
                         </div>
                         <div class="feature-text">
                             <h4>Detal tahlillar</h4>
-                            <p>Oldindan ko'rish imkoniyati va chuqur tahlillar</p>
+                            <p>Chuqur tahlillar va oldindan ko'rish imkoniyati</p>
                         </div>
                     </div>
                 </div>
                 
-                <button class="btn btn-primary" style="width: 100%; margin-top: 20px;" id="getVipBtn">
+                <button class="btn btn-primary" id="getVipBtn" style="width: 100%; margin-top: 20px;">
                     <i class="fas fa-crown"></i> <span id="getVipText">VIP SIGNAL OLISH</span>
                 </button>
             </div>
         </div>
     </div>
 
-    <!-- APK Download Page -->
-    <div class="main-container" id="apkPage" style="display: none;">
-        <header class="main-header">
-            <div class="logo-section">
-                <div class="logo">
-                    <div class="logo-icon">
-                        <i class="fas fa-apple-alt"></i>
-                    </div>
-                    <div class="logo-text">APK YUKLASH</div>
-                </div>
-            </div>
-            
-            <div class="header-controls">
-                <div class="control-btn" id="backToMain">
-                    <i class="fas fa-arrow-left"></i>
-                </div>
-            </div>
-        </header>
-        
-        <div class="bonus-container">
-            <div class="bonus-card">
-                <div class="bonus-header">
-                    <div class="bonus-icon">
-                        <i class="fas fa-download"></i>
-                    </div>
-                    <h3>MOBIL ILOVA</h3>
-                </div>
-                
-                <div class="bonus-value">
-                    APK YUKLASH
-                </div>
-                
-                <p class="bonus-description" id="apkDescription">
-                    Apple Fortune mobil ilovasini yuklab oling va har qanday joydan signallar oling.
-                    Ilova sizga to'liq funksionallikni taklif qiladi.
-                </p>
-                
-                <button class="btn btn-primary" style="width: 100%;" id="downloadApkBtn">
-                    <i class="fas fa-download"></i> <span id="downloadApkText">APK YUKLASH</span>
-                </button>
-                
-                <div class="bonus-code">
-                    <div class="code">AIFUT</div>
-                    <div class="label">Promokod bilan ro'yxatdan o'ting</div>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Bottom Navigation for APK Page -->
-        <nav class="bottom-nav">
-            <div class="nav-item" id="navHomeApk">
-                <div class="nav-icon">
-                    <i class="fas fa-home"></i>
-                </div>
-                <div class="nav-text">BOSH SAHIFA</div>
-            </div>
-            
-            <div class="nav-item" id="navSignalApk">
-                <div class="nav-icon">
-                    <i class="fas fa-chart-line"></i>
-                </div>
-                <div class="nav-text">SIGNAL OLISH</div>
-            </div>
-            
-            <div class="nav-item" id="navVipApk">
-                <div class="nav-icon">
-                    <i class="fas fa-crown"></i>
-                </div>
-                <div class="nav-text">VIP SIGNAL</div>
-            </div>
-            
-            <div class="nav-item active" id="navApkApk">
-                <div class="nav-icon">
-                    <i class="fas fa-download"></i>
-                </div>
-                <div class="nav-text">APK YUKLASH</div>
-            </div>
-            
-            <div class="nav-item" id="navBonusApk">
-                <div class="nav-icon">
-                    <i class="fas fa-gift"></i>
-                </div>
-                <div class="nav-text">BONUSLAR</div>
-            </div>
-        </nav>
-    </div>
-
-    <!-- Bonus Page -->
-    <div class="main-container" id="bonusPage" style="display: none;">
-        <header class="main-header">
-            <div class="logo-section">
-                <div class="logo">
-                    <div class="logo-icon">
-                        <i class="fas fa-apple-alt"></i>
-                    </div>
-                    <div class="logo-text">BONUSLAR</div>
-                </div>
-            </div>
-            
-            <div class="header-controls">
-                <div class="control-btn" id="backToMainBonus">
-                    <i class="fas fa-arrow-left"></i>
-                </div>
-            </div>
-        </header>
-        
-        <div class="bonus-container">
-            <div class="bonus-card">
-                <div class="bonus-header">
-                    <div class="bonus-icon">
-                        <i class="fas fa-gift"></i>
-                    </div>
-                    <h3 id="bonusCardTitle">AIFUT BONUSI</h3>
-                </div>
-                
-                <div class="bonus-value">
-                    200% BONUS
-                </div>
-                
-                <p class="bonus-description" id="bonusDescription">
-                    AIFUT promokodi bilan ro'yxatdan o'ting va darhol 200% bonus oling.
-                    Bonus sizning birinchi depozitingizga qo'shiladi.
-                </p>
-                
-                <button class="btn btn-primary" style="width: 100%;" id="getBonusBtn">
-                    <i class="fas fa-gift"></i> <span id="getBonusText">BONUS OLISH</span>
-                </button>
-                
-                <div class="bonus-code">
-                    <div class="code">AIFUT</div>
-                    <div class="label">Promokod bilan ro'yxatdan o'ting</div>
-                </div>
-            </div>
-            
-            <div class="bonus-card">
-                <div class="bonus-header">
-                    <div class="bonus-icon">
-                        <i class="fas fa-users"></i>
-                    </div>
-                    <h3>DO'STLARNI TAKLIF QILISH</h3>
-                </div>
-                
-                <div class="bonus-value">
-                    $10 HAR BIR DO'ST
-                </div>
-                
-                <p class="bonus-description">
-                    Har bir taklif qilingan do'st uchun $10 bonus oling.
-                    5 ta do'st taklif qilsangiz, VIP signalga ega bo'lasiz!
-                </p>
-                
-                <button class="btn btn-secondary" style="width: 100%;" id="inviteFriendsBtn">
-                    <i class="fas fa-share-alt"></i> <span id="inviteFriendsText">DO'STLARNI TAKLIF QILISH</span>
-                </button>
-            </div>
-        </div>
-        
-        <!-- Bottom Navigation for Bonus Page -->
-        <nav class="bottom-nav">
-            <div class="nav-item" id="navHomeBonus">
-                <div class="nav-icon">
-                    <i class="fas fa-home"></i>
-                </div>
-                <div class="nav-text">BOSH SAHIFA</div>
-            </div>
-            
-            <div class="nav-item" id="navSignalBonus">
-                <div class="nav-icon">
-                    <i class="fas fa-chart-line"></i>
-                </div>
-                <div class="nav-text">SIGNAL OLISH</div>
-            </div>
-            
-            <div class="nav-item" id="navVipBonus">
-                <div class="nav-icon">
-                    <i class="fas fa-crown"></i>
-                </div>
-                <div class="nav-text">VIP SIGNAL</div>
-            </div>
-            
-            <div class="nav-item" id="navApkBonus">
-                <div class="nav-icon">
-                    <i class="fas fa-download"></i>
-                </div>
-                <div class="nav-text">APK YUKLASH</div>
-            </div>
-            
-            <div class="nav-item active" id="navBonusBonus">
-                <div class="nav-icon">
-                    <i class="fas fa-gift"></i>
-                </div>
-                <div class="nav-text">BONUSLAR</div>
-            </div>
-        </nav>
-    </div>
-
     <script>
         // ==================== TRANSLATIONS ====================
         const translations = {
             uz: {
-                languagePrompt: "AI Savdo Platformasi",
+                languageSubtitle: "AI Savdo Platformasi",
                 userName: "Foydalanuvchi",
                 userLevel: "BOSHLANG'ICH",
                 balanceLabel: "BALANS",
                 signalsLabel: "SIGNALLAR",
                 accuracyLabel: "ANIQLIK",
                 friendsLabel: "DO'STLAR",
-                signalActionTitle: "SIGNAL OLISH",
-                signalActionDesc: "Yuqori aniqlikdagi AI signallari",
-                vipActionTitle: "VIP SIGNAL",
-                vipActionDesc: "Ekskluziv signallar va imtiyozlar",
-                apkActionTitle: "APK YUKLASH",
-                apkActionDesc: "Mobil ilovani o'rnating",
-                bonusActionTitle: "BONUSLAR",
-                bonusActionDesc: "Promokodlar va bonuslar",
+                signalTitle: "SIGNAL",
+                signalDesc: "Yuqori aniqlik",
+                vipTitle: "VIP",
+                vipDesc: "Ekskluziv",
+                apkTitle: "APK",
+                apkDesc: "Yuklab olish",
+                bonusTitle: "BONUS",
+                bonusDesc: "Promokodlar",
                 vipBannerTitle: "VIP A'ZO BO'LING",
-                vipBannerDesc: "98.5% aniq signallar va ekskluziv imtiyozlar",
-                latestSignalsTitle: "OXIRGI SIGNALLAR",
+                vipBannerDesc: "98.5% aniq signallar",
+                signalsTitle: "OXIRGI SIGNALLAR",
                 viewAllLink: "BARCHASI",
-                navHomeText: "BOSH SAHIFA",
-                navSignalText: "SIGNAL OLISH",
-                navVipText: "VIP SIGNAL",
-                navApkText: "APK YUKLASH",
-                navBonusText: "BONUSLAR",
                 gameModalTitle: "SIGNAL OLISH",
-                gameSubtitle: "Butun olmalarni tanlang, signal oling!",
-                gameInstruction: "Butun olmalarni tanlang. Tishlangan olma o'yinni tugatadi!",
+                gameSubtitle: "Butun olmalarni tanlang",
+                gameInstruction: "Butun olmalarni tanlang. Tishlangan olma o'yinni tugatadi.",
                 revealText: "KORISH",
                 startGameText: "BOSHLASH",
                 vipModalTitle: "VIP SIGNAL",
-                vipModalDesc: "98.5% aniq signallar, ekskluziv tahlillar va VIP qo'llab-quvvatlash",
                 getVipText: "VIP SIGNAL OLISH",
-                apkDescription: "Apple Fortune mobil ilovasini yuklab oling va har qanday joydan signallar oling. Ilova sizga to'liq funksionallikni taklif qiladi.",
-                downloadApkText: "APK YUKLASH",
-                bonusCardTitle: "AIFUT BONUSI",
-                bonusDescription: "AIFUT promokodi bilan ro'yxatdan o'ting va darhol 200% bonus oling. Bonus sizning birinchi depozitingizga qo'shiladi.",
+                apkDescText: "Apple Fortune mobil ilovasini yuklab oling va istalgan joydan signallar oling. To'liq funksionallik va qulay interfeys.",
+                downloadApkText: "YUKLASH",
+                bonusDescText: "AIFUT promokodi bilan ro'yxatdan o'ting va darhol 200% bonus oling. Bonus birinchi depozitingizga qo'shiladi.",
                 getBonusText: "BONUS OLISH",
-                inviteFriendsText: "DO'STLARNI TAKLIF QILISH",
-                successMessage: "✅ Muvaffaqiyat! Signal olindi.",
-                errorMessage: "❌ Xatolik yuz berdi.",
-                loadingMessage: "⏳ Yuklanmoqda..."
+                inviteFriendsText: "TAKLIF QILISH",
+                successSignal: "✅ Signal olindi! +$100",
+                errorSignal: "❌ O'yin tugadi.",
+                successBonus: "✅ Bonus olindi!",
+                successInvite: "✅ Do'st taklif qilindi!",
+                loading: "⏳ Yuklanmoqda..."
             },
             ru: {
-                languagePrompt: "Платформа AI Трейдинга",
+                languageSubtitle: "Платформа AI Трейдинга",
                 userName: "Пользователь",
                 userLevel: "НАЧИНАЮЩИЙ",
                 balanceLabel: "БАЛАНС",
                 signalsLabel: "СИГНАЛЫ",
                 accuracyLabel: "ТОЧНОСТЬ",
                 friendsLabel: "ДРУЗЬЯ",
-                signalActionTitle: "ПОЛУЧИТЬ СИГНАЛ",
-                signalActionDesc: "Высокоточные AI сигналы",
-                vipActionTitle: "VIP СИГНАЛ",
-                vipActionDesc: "Эксклюзивные сигналы и привилегии",
-                apkActionTitle: "СКАЧАТЬ APK",
-                apkActionDesc: "Установите мобильное приложение",
-                bonusActionTitle: "БОНУСЫ",
-                bonusActionDesc: "Промокоды и бонусы",
+                signalTitle: "СИГНАЛ",
+                signalDesc: "Высокая точность",
+                vipTitle: "VIP",
+                vipDesc: "Эксклюзив",
+                apkTitle: "APK",
+                apkDesc: "Скачать",
+                bonusTitle: "БОНУС",
+                bonusDesc: "Промокоды",
                 vipBannerTitle: "СТАНЬТЕ VIP",
-                vipBannerDesc: "98.5% точные сигналы и эксклюзивные привилегии",
-                latestSignalsTitle: "ПОСЛЕДНИЕ СИГНАЛЫ",
+                vipBannerDesc: "98.5% точные сигналы",
+                signalsTitle: "ПОСЛЕДНИЕ СИГНАЛЫ",
                 viewAllLink: "ВСЕ",
-                navHomeText: "ГЛАВНАЯ",
-                navSignalText: "ПОЛУЧИТЬ СИГНАЛ",
-                navVipText: "VIP СИГНАЛ",
-                navApkText: "СКАЧАТЬ APK",
-                navBonusText: "БОНУСЫ",
                 gameModalTitle: "ПОЛУЧИТЬ СИГНАЛ",
-                gameSubtitle: "Выбирайте целые яблоки, получайте сигналы!",
-                gameInstruction: "Выбирайте целые яблоки. Надкушенное яблоко закончит игру!",
+                gameSubtitle: "Выбирайте целые яблоки",
+                gameInstruction: "Выбирайте целые яблоки. Надкушенное яблоко закончит игру.",
                 revealText: "ПОКАЗАТЬ",
                 startGameText: "НАЧАТЬ",
                 vipModalTitle: "VIP СИГНАЛ",
-                vipModalDesc: "98.5% точные сигналы, эксклюзивный анализ и VIP поддержка",
                 getVipText: "ПОЛУЧИТЬ VIP",
-                apkDescription: "Скачайте мобильное приложение Apple Fortune и получайте сигналы из любого места. Приложение предлагает полную функциональность.",
-                downloadApkText: "СКАЧАТЬ APK",
-                bonusCardTitle: "БОНУС AIFUT",
-                bonusDescription: "Зарегистрируйтесь с промокодом AIFUT и получите 200% бонус сразу. Бонус будет добавлен к вашему первому депозиту.",
+                apkDescText: "Скачайте мобильное приложение Apple Fortune и получайте сигналы из любого места. Полная функциональность и удобный интерфейс.",
+                downloadApkText: "СКАЧАТЬ",
+                bonusDescText: "Зарегистрируйтесь с промокодом AIFUT и получите 200% бонус сразу. Бонус будет добавлен к вашему первому депозиту.",
                 getBonusText: "ПОЛУЧИТЬ БОНУС",
-                inviteFriendsText: "ПРИГЛАСИТЬ ДРУЗЕЙ",
-                successMessage: "✅ Успех! Сигнал получен.",
-                errorMessage: "❌ Произошла ошибка.",
-                loadingMessage: "⏳ Загрузка..."
+                inviteFriendsText: "ПРИГЛАСИТЬ",
+                successSignal: "✅ Сигнал получен! +$100",
+                errorSignal: "❌ Игра окончена.",
+                successBonus: "✅ Бонус получен!",
+                successInvite: "✅ Друг приглашен!",
+                loading: "⏳ Загрузка..."
             },
             en: {
-                languagePrompt: "AI Trading Platform",
+                languageSubtitle: "AI Trading Platform",
                 userName: "User",
                 userLevel: "BEGINNER",
                 balanceLabel: "BALANCE",
                 signalsLabel: "SIGNALS",
                 accuracyLabel: "ACCURACY",
                 friendsLabel: "FRIENDS",
-                signalActionTitle: "GET SIGNAL",
-                signalActionDesc: "High accuracy AI signals",
-                vipActionTitle: "VIP SIGNAL",
-                vipActionDesc: "Exclusive signals and privileges",
-                apkActionTitle: "DOWNLOAD APK",
-                apkActionDesc: "Install mobile app",
-                bonusActionTitle: "BONUSES",
-                bonusActionDesc: "Promo codes and bonuses",
+                signalTitle: "SIGNAL",
+                signalDesc: "High accuracy",
+                vipTitle: "VIP",
+                vipDesc: "Exclusive",
+                apkTitle: "APK",
+                apkDesc: "Download",
+                bonusTitle: "BONUS",
+                bonusDesc: "Promo codes",
                 vipBannerTitle: "BECOME VIP",
-                vipBannerDesc: "98.5% accurate signals and exclusive privileges",
-                latestSignalsTitle: "LATEST SIGNALS",
+                vipBannerDesc: "98.5% accurate signals",
+                signalsTitle: "LATEST SIGNALS",
                 viewAllLink: "VIEW ALL",
-                navHomeText: "HOME",
-                navSignalText: "GET SIGNAL",
-                navVipText: "VIP SIGNAL",
-                navApkText: "DOWNLOAD APK",
-                navBonusText: "BONUSES",
                 gameModalTitle: "GET SIGNAL",
-                gameSubtitle: "Choose whole apples, get signals!",
-                gameInstruction: "Choose whole apples. Bitten apple will end the game!",
-                revealText: "REVEAL",
+                gameSubtitle: "Choose whole apples",
+                gameInstruction: "Choose whole apples. Bitten apple will end the game.",
+                revealText: "SHOW",
                 startGameText: "START",
                 vipModalTitle: "VIP SIGNAL",
-                vipModalDesc: "98.5% accurate signals, exclusive analysis and VIP support",
                 getVipText: "GET VIP SIGNAL",
-                apkDescription: "Download Apple Fortune mobile app and get signals from anywhere. The app offers full functionality.",
-                downloadApkText: "DOWNLOAD APK",
-                bonusCardTitle: "AIFUT BONUS",
-                bonusDescription: "Register with AIFUT promo code and get 200% bonus immediately. Bonus will be added to your first deposit.",
+                apkDescText: "Download Apple Fortune mobile app and get signals from anywhere. Full functionality and convenient interface.",
+                downloadApkText: "DOWNLOAD",
+                bonusDescText: "Register with AIFUT promo code and get 200% bonus immediately. Bonus will be added to your first deposit.",
                 getBonusText: "GET BONUS",
-                inviteFriendsText: "INVITE FRIENDS",
-                successMessage: "✅ Success! Signal received.",
-                errorMessage: "❌ An error occurred.",
-                loadingMessage: "⏳ Loading..."
+                inviteFriendsText: "INVITE",
+                successSignal: "✅ Signal received! +$100",
+                errorSignal: "❌ Game over.",
+                successBonus: "✅ Bonus received!",
+                successInvite: "✅ Friend invited!",
+                loading: "⏳ Loading..."
             },
             ar: {
-                languagePrompt: "منصة التداول بالذكاء الاصطناعي",
+                languageSubtitle: "منصة التداول بالذكاء الاصطناعي",
                 userName: "المستخدم",
                 userLevel: "مبتدئ",
                 balanceLabel: "الرصيد",
                 signalsLabel: "الإشارات",
                 accuracyLabel: "الدقة",
                 friendsLabel: "الأصدقاء",
-                signalActionTitle: "الحصول على إشارة",
-                signalActionDesc: "إشارات ذكاء اصطناعي عالية الدقة",
-                vipActionTitle: "إشارة VIP",
-                vipActionDesc: "إشارات حصرية وامتيازات",
-                apkActionTitle: "تحميل APK",
-                apkActionDesc: "تثبيت التطبيق المحمول",
-                bonusActionTitle: "المكافآت",
-                bonusActionDesc: "رموز ترويجية ومكافآت",
+                signalTitle: "إشارة",
+                signalDesc: "دقة عالية",
+                vipTitle: "VIP",
+                vipDesc: "حصري",
+                apkTitle: "APK",
+                apkDesc: "تحميل",
+                bonusTitle: "مكافأة",
+                bonusDesc: "رموز ترويجية",
                 vipBannerTitle: "كن VIP",
-                vipBannerDesc: "إشارات دقيقة 98.5٪ وامتيازات حصرية",
-                latestSignalsTitle: "آخر الإشارات",
+                vipBannerDesc: "98.5٪ إشارات دقيقة",
+                signalsTitle: "آخر الإشارات",
                 viewAllLink: "عرض الكل",
-                navHomeText: "الرئيسية",
-                navSignalText: "الحصول على إشارة",
-                navVipText: "إشارة VIP",
-                navApkText: "تحميل APK",
-                navBonusText: "المكافآت",
                 gameModalTitle: "الحصول على إشارة",
-                gameSubtitle: "اختر التفاح الكامل واحصل على إشارات!",
-                gameInstruction: "اختر التفاح الكامل. التفاحة المقطوعة ستنهي اللعبة!",
-                revealText: "كشف",
+                gameSubtitle: "اختر التفاح الكامل",
+                gameInstruction: "اختر التفاح الكامل. التفاحة المقطوعة ستنهي اللعبة.",
+                revealText: "عرض",
                 startGameText: "ابدأ",
                 vipModalTitle: "إشارة VIP",
-                vipModalDesc: "إشارات دقيقة 98.5٪ وتحليل حصري ودعم VIP",
                 getVipText: "الحصول على إشارة VIP",
-                apkDescription: "قم بتنزيل تطبيق Apple Fortune المحمول واحصل على إشارات من أي مكان. يوفر التطبيق وظائف كاملة.",
-                downloadApkText: "تحميل APK",
-                bonusCardTitle: "مكافأة AIFUT",
-                bonusDescription: "سجل باستخدام الرمز الترويجي AIFUT واحصل على مكافأة 200٪ على الفور. ستتم إضافة المكافأة إلى إيداعك الأول.",
+                apkDescText: "قم بتنزيل تطبيق Apple Fortune المحمول واحصل على إشارات من أي مكان. وظائف كاملة وواجهة مريحة.",
+                downloadApkText: "تحميل",
+                bonusDescText: "سجل باستخدام الرمز الترويجي AIFUT واحصل على مكافأة 200٪ على الفور. ستتم إضافة المكافأة إلى إيداعك الأول.",
                 getBonusText: "الحصول على مكافأة",
-                inviteFriendsText: "دعوة الأصدقاء",
-                successMessage: "✅ نجاح! تم استلام الإشارة.",
-                errorMessage: "❌ حدث خطأ.",
-                loadingMessage: "⏳ جاري التحميل..."
+                inviteFriendsText: "دعوة",
+                successSignal: "✅ تم استلام الإشارة! +$100",
+                errorSignal: "❌ انتهت اللعبة.",
+                successBonus: "✅ تم استلام المكافأة!",
+                successInvite: "✅ تمت دعوة الصديق!",
+                loading: "⏳ جاري التحميل..."
             }
         };
 
-        // ==================== APPLICATION STATE ====================
-        let currentLanguage = localStorage.getItem('appleFortuneLanguage') || 'uz';
+        // ==================== APP STATE ====================
+        let currentLang = localStorage.getItem('appleFortuneLang') || 'uz';
         let userData = {
-            name: "Foydalanuvchi",
             balance: 1500,
             signals: 24,
             accuracy: 92.5,
             friends: 8,
-            level: 1,
-            vip: false,
-            invitedFriends: 0
+            level: 1
         };
         let currentRound = 1;
         let gameActive = false;
-        let apples = [];
 
         // ==================== INITIALIZATION ====================
         document.addEventListener('DOMContentLoaded', function() {
-            initializeApp();
+            initApp();
         });
 
-        function initializeApp() {
+        function initApp() {
             // Load saved data
             const savedData = localStorage.getItem('appleFortuneData');
             if (savedData) {
-                userData = { ...userData, ...JSON.parse(savedData) };
+                userData = JSON.parse(savedData);
             }
 
-            // Initialize UI
-            setupLanguage();
-            setupEventListeners();
-            updateUI();
-            generateSampleSignals();
-
-            // Check if language is already selected
-            if (localStorage.getItem('appleFortuneLanguage')) {
-                selectLanguage(currentLanguage);
+            // Setup event listeners
+            setupListeners();
+            
+            // Check if language is selected
+            if (localStorage.getItem('appleFortuneLang')) {
+                selectLanguage(currentLang);
+            } else {
+                // Show language selector
+                document.getElementById('languageSelector').style.display = 'flex';
             }
         }
 
         // ==================== LANGUAGE FUNCTIONS ====================
-        function setupLanguage() {
-            const langCards = document.querySelectorAll('.lang-card');
-            langCards.forEach(card => {
+        function setupListeners() {
+            // Language selection
+            document.querySelectorAll('.lang-card').forEach(card => {
                 card.addEventListener('click', () => {
                     const lang = card.dataset.lang;
                     selectLanguage(lang);
                 });
             });
+
+            // Language button
+            document.getElementById('languageBtn').addEventListener('click', () => {
+                showLanguageSelector();
+            });
+
+            // Navigation
+            setupNavigation();
+
+            // Quick actions
+            document.getElementById('signalBtn').addEventListener('click', () => showGameModal());
+            document.getElementById('vipBtn').addEventListener('click', () => showVipModal());
+            document.getElementById('vipBanner').addEventListener('click', () => showVipModal());
+            document.getElementById('apkBtn').addEventListener('click', () => showPage('apkPage'));
+            document.getElementById('bonusBtn').addEventListener('click', () => showPage('bonusPage'));
+
+            // Back buttons
+            document.getElementById('backFromApk').addEventListener('click', () => showPage('mainContainer'));
+            document.getElementById('backFromBonus').addEventListener('click', () => showPage('mainContainer'));
+
+            // Modal close buttons
+            document.getElementById('closeGameModal').addEventListener('click', () => closeModal('gameModal'));
+            document.getElementById('closeVipModal').addEventListener('click', () => closeModal('vipModal'));
+
+            // Game buttons
+            document.getElementById('startGameBtn').addEventListener('click', startGame);
+            document.getElementById('revealBtn').addEventListener('click', revealApples);
+
+            // Action buttons
+            document.getElementById('getVipBtn').addEventListener('click', getVip);
+            document.getElementById('downloadApkBtn').addEventListener('click', downloadApk);
+            document.getElementById('getBonusBtn').addEventListener('click', getBonus);
+            document.getElementById('inviteFriendsBtn').addEventListener('click', inviteFriends);
+
+            // Generate signals
+            generateSignals();
+        }
+
+        function setupNavigation() {
+            const navItems = [
+                { id: 'navHome', page: 'mainContainer' },
+                { id: 'navSignal', action: showGameModal },
+                { id: 'navVip', action: showVipModal },
+                { id: 'navApk', page: 'apkPage' },
+                { id: 'navBonus', page: 'bonusPage' },
+                { id: 'navHome2', page: 'mainContainer' },
+                { id: 'navSignal2', action: showGameModal },
+                { id: 'navVip2', action: showVipModal },
+                { id: 'navApk2', page: 'apkPage' },
+                { id: 'navBonus2', page: 'bonusPage' },
+                { id: 'navHome3', page: 'mainContainer' },
+                { id: 'navSignal3', action: showGameModal },
+                { id: 'navVip3', action: showVipModal },
+                { id: 'navApk3', page: 'apkPage' },
+                { id: 'navBonus3', page: 'bonusPage' }
+            ];
+
+            navItems.forEach(item => {
+                const element = document.getElementById(item.id);
+                if (element) {
+                    element.addEventListener('click', () => {
+                        if (item.page) {
+                            showPage(item.page);
+                        } else if (item.action) {
+                            item.action();
+                        }
+                    });
+                }
+            });
         }
 
         function selectLanguage(lang) {
-            currentLanguage = lang;
-            localStorage.setItem('appleFortuneLanguage', lang);
+            currentLang = lang;
+            localStorage.setItem('appleFortuneLang', lang);
+            
+            // Update translations
             updateTranslations(lang);
             
-            // Hide language selector
+            // Hide language selector and show main container
             document.getElementById('languageSelector').style.display = 'none';
-            
-            // Show main container
-            document.getElementById('mainContainer').classList.add('active');
+            showPage('mainContainer');
+        }
+
+        function showLanguageSelector() {
+            document.getElementById('languageSelector').style.display = 'flex';
+            document.querySelectorAll('.main-container, .page-container').forEach(el => {
+                el.style.display = 'none';
+            });
         }
 
         function updateTranslations(lang) {
             const t = translations[lang];
-            if (!t) return;
-
-            // Update all translatable elements
-            document.querySelectorAll('[id]').forEach(element => {
-                const id = element.id;
-                if (t[id]) {
-                    element.textContent = t[id];
+            
+            // Update all elements with IDs
+            Object.keys(t).forEach(key => {
+                const element = document.getElementById(key);
+                if (element) {
+                    element.textContent = t[key];
                 }
             });
-
-            // Update navigation items
-            updateNavItems();
+            
+            // Update UI with current data
+            updateUI();
         }
 
         // ==================== UI FUNCTIONS ====================
         function updateUI() {
-            // Update user data
-            document.getElementById('userName').textContent = userData.name;
+            // Update user stats
             document.getElementById('balance').textContent = `$${userData.balance.toLocaleString()}`;
             document.getElementById('signals').textContent = userData.signals;
             document.getElementById('accuracy').textContent = `${userData.accuracy}%`;
             document.getElementById('friends').textContent = userData.friends;
-            
-            // Update user level
-            const levelText = currentLanguage === 'uz' ? 'BOSHLANG\'ICH' :
-                            currentLanguage === 'ru' ? 'НАЧИНАЮЩИЙ' :
-                            currentLanguage === 'en' ? 'BEGINNER' : 'مبتدئ';
-            document.getElementById('userLevel').textContent = levelText;
         }
 
-        function generateSampleSignals() {
+        function generateSignals() {
             const signals = [
-                { type: 'VIP', price: '+$450', time: '5 min ago', profit: true },
-                { type: 'STANDARD', price: '+$120', time: '15 min ago', profit: true },
-                { type: 'VIP', price: '+$890', time: '30 min ago', profit: true },
-                { type: 'STANDARD', price: '-$45', time: '1 hour ago', profit: false }
+                { type: 'VIP', price: '+$450', time: '5 min', profit: true },
+                { type: 'STANDARD', price: '+$120', time: '15 min', profit: true },
+                { type: 'VIP', price: '+$890', time: '30 min', profit: true },
+                { type: 'STANDARD', price: '-$45', time: '1 hour', profit: false }
             ];
 
-            const signalsGrid = document.getElementById('signalsGrid');
-            if (!signalsGrid) return;
+            const grid = document.getElementById('signalsGrid');
+            grid.innerHTML = '';
 
-            signalsGrid.innerHTML = '';
             signals.forEach(signal => {
-                const signalCard = document.createElement('div');
-                signalCard.className = 'signal-card';
-                signalCard.innerHTML = `
+                const card = document.createElement('div');
+                card.className = 'signal-card';
+                card.innerHTML = `
                     <div class="signal-header">
                         <span class="signal-type ${signal.type === 'VIP' ? 'vip' : ''}">
-                            ${signal.type === 'VIP' ? 'VIP' : 'STANDARD'}
+                            ${signal.type}
                         </span>
                         <span class="signal-time">${signal.time}</span>
                     </div>
-                    <div class="signal-price ${signal.profit ? 'signal-profit' : 'signal-loss'}">
+                    <div class="signal-price ${signal.profit ? 'profit' : 'loss'}">
                         ${signal.price}
                     </div>
                     <div class="signal-info">
@@ -1920,165 +1739,15 @@
                         <span>${signal.profit ? 'Profit' : 'Loss'}</span>
                     </div>
                 `;
-                signalsGrid.appendChild(signalCard);
+                grid.appendChild(card);
             });
-        }
-
-        function updateNavItems() {
-            // Update all navigation items based on current page
-            const pages = ['mainContainer', 'apkPage', 'bonusPage'];
-            const currentPage = pages.find(page => 
-                document.getElementById(page)?.style.display !== 'none'
-            ) || 'mainContainer';
-            
-            // Reset all nav items
-            document.querySelectorAll('.nav-item').forEach(item => {
-                item.classList.remove('active');
-            });
-            
-            // Set active nav item based on current page
-            switch(currentPage) {
-                case 'mainContainer':
-                    document.getElementById('navHome').classList.add('active');
-                    break;
-                case 'apkPage':
-                    document.getElementById('navApkApk').classList.add('active');
-                    break;
-                case 'bonusPage':
-                    document.getElementById('navBonusBonus').classList.add('active');
-                    break;
-            }
-        }
-
-        // ==================== GAME FUNCTIONS ====================
-        function createGameApples() {
-            const gameApples = document.getElementById('gameApples');
-            if (!gameApples) return;
-
-            gameApples.innerHTML = '';
-            apples = [];
-
-            // Create 5 apples (3 whole, 2 bitten for round 1)
-            const wholeCount = Math.max(1, 6 - currentRound);
-            const bittenCount = 5 - wholeCount;
-
-            for (let i = 0; i < wholeCount; i++) {
-                apples.push('whole');
-            }
-            for (let i = 0; i < bittenCount; i++) {
-                apples.push('bitten');
-            }
-
-            // Shuffle apples
-            apples.sort(() => Math.random() - 0.5);
-
-            // Create apple elements
-            apples.forEach((type, index) => {
-                const apple = document.createElement('div');
-                apple.className = `game-apple apple-mystery`;
-                apple.dataset.index = index;
-                apple.dataset.type = type;
-                
-                apple.addEventListener('click', () => selectApple(index));
-                
-                gameApples.appendChild(apple);
-            });
-
-            // Update round display
-            document.getElementById('currentRound').textContent = currentRound;
-        }
-
-        function selectApple(index) {
-            if (!gameActive) return;
-
-            const apple = document.querySelector(`.game-apple[data-index="${index}"]`);
-            if (!apple) return;
-
-            const type = apple.dataset.type;
-            apple.className = `game-apple apple-${type}`;
-
-            gameActive = false;
-
-            const t = translations[currentLanguage];
-            
-            if (type === 'bitten') {
-                showToast(t.errorMessage, 'error');
-                setTimeout(() => {
-                    closeModal('gameModal');
-                    currentRound = 1;
-                }, 2000);
-            } else {
-                userData.balance += 100;
-                userData.signals++;
-                updateUI();
-                saveUserData();
-                
-                showToast(t.successMessage, 'success');
-                
-                setTimeout(() => {
-                    if (currentRound < 6) {
-                        currentRound++;
-                        createGameApples();
-                        gameActive = true;
-                    } else {
-                        closeModal('gameModal');
-                        currentRound = 1;
-                    }
-                }, 1500);
-            }
-        }
-
-        // ==================== MODAL FUNCTIONS ====================
-        function showModal(modalId) {
-            const modal = document.getElementById(modalId);
-            if (modal) {
-                modal.classList.add('active');
-                document.body.style.overflow = 'hidden';
-                
-                if (modalId === 'gameModal') {
-                    createGameApples();
-                }
-            }
-        }
-
-        function closeModal(modalId) {
-            const modal = document.getElementById(modalId);
-            if (modal) {
-                modal.classList.remove('active');
-                document.body.style.overflow = 'auto';
-                
-                if (modalId === 'gameModal') {
-                    gameActive = false;
-                }
-            }
-        }
-
-        function showToast(message, type = 'info') {
-            const toast = document.createElement('div');
-            toast.className = `toast ${type}`;
-            toast.innerHTML = `
-                <div style="display: flex; align-items: center; gap: 10px;">
-                    <i class="fas fa-${type === 'success' ? 'check-circle' : type === 'error' ? 'exclamation-circle' : 'info-circle'}"></i>
-                    <span>${message}</span>
-                </div>
-            `;
-            
-            document.body.appendChild(toast);
-            
-            setTimeout(() => {
-                toast.style.animation = 'slideIn 0.3s ease reverse';
-                setTimeout(() => {
-                    document.body.removeChild(toast);
-                }, 300);
-            }, 3000);
         }
 
         // ==================== PAGE NAVIGATION ====================
         function showPage(pageId) {
             // Hide all pages
-            document.querySelectorAll('.main-container').forEach(page => {
-                page.style.display = 'none';
-                page.classList.remove('active');
+            document.querySelectorAll('.main-container, .page-container').forEach(el => {
+                el.style.display = 'none';
             });
             
             // Show selected page
@@ -2088,115 +1757,191 @@
                 page.classList.add('active');
             }
             
-            // Update navigation
-            updateNavItems();
+            // Update navigation active state
+            updateNavState(pageId);
         }
 
-        // ==================== EVENT LISTENERS ====================
-        function setupEventListeners() {
-            // Language button
-            document.getElementById('languageBtn').addEventListener('click', () => {
-                document.getElementById('languageSelector').style.display = 'flex';
-                document.getElementById('mainContainer').classList.remove('active');
+        function updateNavState(pageId) {
+            // Reset all nav items
+            document.querySelectorAll('.nav-item').forEach(item => {
+                item.classList.remove('active');
             });
-
-            // Back buttons
-            document.getElementById('backToMain')?.addEventListener('click', () => showPage('mainContainer'));
-            document.getElementById('backToMainBonus')?.addEventListener('click', () => showPage('mainContainer'));
-
-            // Quick action cards
-            document.getElementById('signalAction').addEventListener('click', () => {
-                showModal('gameModal');
-                setTimeout(() => {
-                    gameActive = true;
-                }, 500);
-            });
-
-            document.getElementById('vipAction').addEventListener('click', () => showModal('vipModal'));
-            document.getElementById('vipBanner').addEventListener('click', () => showModal('vipModal'));
-
-            document.getElementById('apkAction').addEventListener('click', () => showPage('apkPage'));
-            document.getElementById('bonusAction').addEventListener('click', () => showPage('bonusPage'));
-
-            // Modal close buttons
-            document.getElementById('closeGameModal').addEventListener('click', () => closeModal('gameModal'));
-            document.getElementById('closeVipModal').addEventListener('click', () => closeModal('vipModal'));
-
-            // Game buttons
-            document.getElementById('startGameBtn').addEventListener('click', () => {
-                gameActive = true;
-                document.getElementById('startGameBtn').style.display = 'none';
-                document.getElementById('revealBtn').style.display = 'none';
-            });
-
-            // VIP button
-            document.getElementById('getVipBtn').addEventListener('click', () => {
-                const t = translations[currentLanguage];
-                showToast(t.successMessage, 'success');
-                closeModal('vipModal');
-            });
-
-            // APK download button
-            document.getElementById('downloadApkBtn').addEventListener('click', () => {
-                window.open('https://t.me/BonusAPKxbetbot', '_blank');
-                const t = translations[currentLanguage];
-                showToast(`${t.downloadApkText} - Telegram kanaliga yo'naltirildi!`, 'success');
-            });
-
-            // Bonus buttons
-            document.getElementById('getBonusBtn').addEventListener('click', () => {
-                window.open('https://superlative-twilight-47ef34.netlify.app/', '_blank');
-                const t = translations[currentLanguage];
-                showToast(`${t.getBonusText} - AIFUT promokodi bilan!`, 'success');
-            });
-
-            document.getElementById('inviteFriendsBtn').addEventListener('click', () => {
-                const t = translations[currentLanguage];
-                const shareMessage = `🎯 ${t.signalActionTitle} | Apple Fortune\n\n${t.inviteFriendsText}\n👉 t.me/Strategioyinlar_bot\n\nID: 1234567890\n\n#AppleFortune`;
-                const shareUrl = `https://t.me/share/url?url=https://t.me/Strategioyinlar_bot?start=1234567890&text=${encodeURIComponent(shareMessage)}`;
-                window.open(shareUrl, '_blank');
-                showToast(t.successMessage, 'success');
-            });
-
-            // Bottom navigation
-            document.getElementById('navHome').addEventListener('click', () => showPage('mainContainer'));
-            document.getElementById('navSignal').addEventListener('click', () => {
-                showModal('gameModal');
-                setTimeout(() => {
-                    gameActive = true;
-                }, 500);
-            });
-            document.getElementById('navVip').addEventListener('click', () => showModal('vipModal'));
-            document.getElementById('navApk').addEventListener('click', () => showPage('apkPage'));
-            document.getElementById('navBonus').addEventListener('click', () => showPage('bonusPage'));
-
-            // APK page navigation
-            document.getElementById('navHomeApk')?.addEventListener('click', () => showPage('mainContainer'));
-            document.getElementById('navSignalApk')?.addEventListener('click', () => {
-                showModal('gameModal');
-                setTimeout(() => {
-                    gameActive = true;
-                }, 500);
-            });
-            document.getElementById('navVipApk')?.addEventListener('click', () => showModal('vipModal'));
-            document.getElementById('navApkApk')?.addEventListener('click', () => showPage('apkPage'));
-            document.getElementById('navBonusApk')?.addEventListener('click', () => showPage('bonusPage'));
-
-            // Bonus page navigation
-            document.getElementById('navHomeBonus')?.addEventListener('click', () => showPage('mainContainer'));
-            document.getElementById('navSignalBonus')?.addEventListener('click', () => {
-                showModal('gameModal');
-                setTimeout(() => {
-                    gameActive = true;
-                }, 500);
-            });
-            document.getElementById('navVipBonus')?.addEventListener('click', () => showModal('vipModal'));
-            document.getElementById('navApkBonus')?.addEventListener('click', () => showPage('apkPage'));
-            document.getElementById('navBonusBonus')?.addEventListener('click', () => showPage('bonusPage'));
+            
+            // Set active based on page
+            let activeNavId;
+            switch(pageId) {
+                case 'mainContainer':
+                    activeNavId = 'navHome';
+                    break;
+                case 'apkPage':
+                    activeNavId = 'navApk2';
+                    break;
+                case 'bonusPage':
+                    activeNavId = 'navBonus3';
+                    break;
+            }
+            
+            if (activeNavId) {
+                const elements = document.querySelectorAll(`#${activeNavId}`);
+                elements.forEach(el => el.classList.add('active'));
+            }
         }
 
-        // ==================== DATA MANAGEMENT ====================
-        function saveUserData() {
+        // ==================== MODAL FUNCTIONS ====================
+        function showGameModal() {
+            const modal = document.getElementById('gameModal');
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+            
+            // Reset game state
+            currentRound = 1;
+            gameActive = false;
+            createApples();
+        }
+
+        function showVipModal() {
+            const modal = document.getElementById('vipModal');
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal(modalId) {
+            const modal = document.getElementById(modalId);
+            modal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        // ==================== GAME FUNCTIONS ====================
+        function createApples() {
+            const container = document.getElementById('gameApples');
+            container.innerHTML = '';
+            
+            const wholeCount = Math.max(1, 6 - currentRound);
+            const bittenCount = 5 - wholeCount;
+            
+            let apples = [];
+            for (let i = 0; i < wholeCount; i++) apples.push('whole');
+            for (let i = 0; i < bittenCount; i++) apples.push('bitten');
+            
+            // Shuffle
+            apples.sort(() => Math.random() - 0.5);
+            
+            // Create apple elements
+            apples.forEach((type, index) => {
+                const apple = document.createElement('div');
+                apple.className = 'game-apple apple-mystery';
+                apple.dataset.type = type;
+                apple.dataset.index = index;
+                apple.addEventListener('click', () => selectApple(index));
+                container.appendChild(apple);
+            });
+            
+            // Update round display
+            document.getElementById('currentRound').textContent = currentRound;
+            
+            // Show start button
+            document.getElementById('startGameBtn').style.display = 'flex';
+            document.getElementById('revealBtn').style.display = 'flex';
+        }
+
+        function startGame() {
+            gameActive = true;
+            document.getElementById('startGameBtn').style.display = 'none';
+            document.getElementById('revealBtn').style.display = 'none';
+            
+            // Show apples
+            const apples = document.querySelectorAll('.game-apple');
+            apples.forEach(apple => {
+                const type = apple.dataset.type;
+                apple.className = `game-apple apple-${type}`;
+            });
+        }
+
+        function revealApples() {
+            const apples = document.querySelectorAll('.game-apple');
+            apples.forEach(apple => {
+                const type = apple.dataset.type;
+                apple.className = `game-apple apple-${type}`;
+            });
+            
+            gameActive = true;
+            document.getElementById('startGameBtn').style.display = 'none';
+            document.getElementById('revealBtn').style.display = 'none';
+        }
+
+        function selectApple(index) {
+            if (!gameActive) return;
+            
+            const apple = document.querySelector(`.game-apple[data-index="${${index}}"]`);
+            if (!apple) return;
+            
+            const type = apple.dataset.type;
+            gameActive = false;
+            
+            if (type === 'bitten') {
+                showToast(translations[currentLang].errorSignal, 'error');
+                setTimeout(() => {
+                    closeModal('gameModal');
+                }, 1500);
+            } else {
+                // Win
+                userData.balance += 100;
+                userData.signals++;
+                updateUI();
+                saveData();
+                
+                showToast(translations[currentLang].successSignal, 'success');
+                
+                setTimeout(() => {
+                    if (currentRound < 6) {
+                        currentRound++;
+                        createApples();
+                        gameActive = true;
+                    } else {
+                        closeModal('gameModal');
+                        currentRound = 1;
+                    }
+                }, 1500);
+            }
+        }
+
+        // ==================== ACTION FUNCTIONS ====================
+        function getVip() {
+            showToast(translations[currentLang].getVipText + ' - ' + translations[currentLang].loading);
+            closeModal('vipModal');
+        }
+
+        function downloadApk() {
+            window.open('https://t.me/BonusAPKxbetbot', '_blank');
+            showToast(translations[currentLang].downloadApkText + ' - Telegram');
+        }
+
+        function getBonus() {
+            window.open('https://superlative-twilight-47ef34.netlify.app/', '_blank');
+            showToast(translations[currentLang].successBonus, 'success');
+        }
+
+        function inviteFriends() {
+            const shareMessage = `🎯 ${translations[currentLang].signalTitle} | Apple Fortune\n\n${translations[currentLang].inviteFriendsText}\n👉 t.me/Strategioyinlar_bot\n\nID: 1234567890\n\n#AppleFortune`;
+            const shareUrl = `https://t.me/share/url?url=https://t.me/Strategioyinlar_bot?start=1234567890&text=${encodeURIComponent(shareMessage)}`;
+            window.open(shareUrl, '_blank');
+            showToast(translations[currentLang].successInvite, 'success');
+        }
+
+        // ==================== UTILITY FUNCTIONS ====================
+        function showToast(message, type = 'info') {
+            const toast = document.createElement('div');
+            toast.className = `toast ${type}`;
+            toast.textContent = message;
+            
+            document.body.appendChild(toast);
+            
+            setTimeout(() => {
+                toast.remove();
+            }, 3000);
+        }
+
+        function saveData() {
             localStorage.setItem('appleFortuneData', JSON.stringify(userData));
         }
     </script>
