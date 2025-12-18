@@ -1074,7 +1074,7 @@
             padding: 14px;
         }
 
-        /* ============ VIP MODAL ============ */
+        /* ============ VIP MODAL - YANGILANGAN ============ */
         .vip-features {
             margin: 20px 0;
         }
@@ -1113,6 +1113,63 @@
         .feature-text p {
             font-size: 11px;
             color: var(--gray);
+        }
+
+        /* YANGI: Taklif qilish bo'limi */
+        .invite-section {
+            background: rgba(255, 152, 0, 0.1);
+            border: 1px dashed var(--accent);
+            border-radius: 12px;
+            padding: 16px;
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        .invite-title {
+            font-size: 14px;
+            color: var(--accent);
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .invite-description {
+            font-size: 12px;
+            color: var(--light);
+            margin-bottom: 12px;
+            line-height: 1.4;
+        }
+
+        .invite-progress {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+
+        .invite-progress-item {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            font-weight: 700;
+        }
+
+        .invite-progress-item.active {
+            background: var(--accent);
+            border-color: var(--accent);
+            color: var(--dark);
+        }
+
+        .invite-progress-item.completed {
+            background: var(--success);
+            border-color: var(--success);
+            color: white;
         }
 
         /* ============ OTHER PAGES ============ */
@@ -1909,6 +1966,7 @@
         </div>
     </div>
 
+    <!-- YANGI: VIP MODAL - TAKLIF QILISH BILAN -->
     <div class="modal-overlay" id="vipModal">
         <div class="modal-content">
             <div class="modal-header">
@@ -1923,8 +1981,32 @@
                     <div style="font-size: 48px; color: #ff9800; margin-bottom: 12px;">
                         <i class="fas fa-gem"></i>
                     </div>
-                    <h3 style="font-size: 18px; color: var(--light); margin-bottom: 8px;">VIP A'ZO BO'LING</h3>
-                    <p style="color: var(--gray); font-size: 13px;">98.5% aniq signallar va ekskluziv imtiyozlar</p>
+                    <h3 style="font-size: 18px; color: var(--light); margin-bottom: 8px;" id="vipMainTitle">VIP A'ZO BO'LING</h3>
+                    <p style="color: var(--gray); font-size: 13px;" id="vipMainDesc">98.5% aniq signallar va ekskluziv imtiyozlar</p>
+                </div>
+                
+                <!-- YANGI: Taklif qilish bo'limi -->
+                <div class="invite-section">
+                    <div class="invite-title" id="inviteForVipTitle">VIP SIGNAL OLISH UCHUN</div>
+                    <div class="invite-description" id="inviteForVipDesc">
+                        VIP signal olish uchun 3 ta do'stingizni taklif qiling.
+                        Har bir taklif qilingan do'st uchun 1 ball olasiz.
+                        3 ball to'plaganingizdan so'ng VIP signal olishingiz mumkin.
+                    </div>
+                    
+                    <div class="invite-progress">
+                        <div class="invite-progress-item completed">1</div>
+                        <div class="invite-progress-item active">2</div>
+                        <div class="invite-progress-item">3</div>
+                    </div>
+                    
+                    <button class="btn btn-vip" id="inviteForVipBtn" style="width: 100%;">
+                        <i class="fas fa-share-alt"></i> <span id="inviteForVipBtnText">DO'STLARNI TAKLIF QILISH</span>
+                    </button>
+                    
+                    <div class="timer-note" id="inviteNote">
+                        Taklif qilingan do'stlar: <span id="invitedCount">1</span>/3
+                    </div>
                 </div>
                 
                 <div class="vip-features">
@@ -1933,8 +2015,8 @@
                             <i class="fas fa-check-circle"></i>
                         </div>
                         <div class="feature-text">
-                            <h4>98.5% Aniqlik</h4>
-                            <p>AI tomonidan tasdiqlangan yuqori aniqlikdagi signallar</p>
+                            <h4 id="vipFeature1Title">98.5% Aniqlik</h4>
+                            <p id="vipFeature1Desc">AI tomonidan tasdiqlangan yuqori aniqlikdagi signallar</p>
                         </div>
                     </div>
                     
@@ -1943,8 +2025,8 @@
                             <i class="fas fa-bolt"></i>
                         </div>
                         <div class="feature-text">
-                            <h4>Real-vaqtda</h4>
-                            <p>Darhol bildirishnomalar va yangilanishlar</p>
+                            <h4 id="vipFeature2Title">Real-vaqtda</h4>
+                            <p id="vipFeature2Desc">Darhol bildirishnomalar va yangilanishlar</p>
                         </div>
                     </div>
                     
@@ -1953,20 +2035,20 @@
                             <i class="fas fa-chart-line"></i>
                         </div>
                         <div class="feature-text">
-                            <h4>Detal tahlillar</h4>
-                            <p>Chuqur tahlillar va oldindan ko'rish imkoniyati</p>
+                            <h4 id="vipFeature3Title">Detal tahlillar</h4>
+                            <p id="vipFeature3Desc">Chuqur tahlillar va oldindan ko'rish imkoniyati</p>
                         </div>
                     </div>
                 </div>
                 
-                <button class="btn btn-primary" id="getVipBtn" style="width: 100%; margin-top: 20px;">
+                <button class="btn btn-primary" id="getVipBtn" style="width: 100%; margin-top: 20px;" disabled>
                     <i class="fas fa-crown"></i> <span id="getVipText">VIP SIGNAL OLISH</span>
                 </button>
             </div>
         </div>
     </div>
 
-    <!-- YANGI: ID o'zgartirish modali -->
+    <!-- ID o'zgartirish modali -->
     <div class="modal-overlay" id="changeIdModal">
         <div class="modal-content">
             <div class="modal-header">
@@ -2032,9 +2114,20 @@
                 revealText: "OLMALARNI KO'RISH",
                 nextStageText: "KEYINGI BOSQICH",
                 vipModalTitle: "VIP SIGNAL",
+                vipMainTitle: "VIP A'ZO BO'LING",
+                vipMainDesc: "98.5% aniq signallar va ekskluziv imtiyozlar",
+                vipFeature1Title: "98.5% Aniqlik",
+                vipFeature1Desc: "AI tomonidan tasdiqlangan yuqori aniqlikdagi signallar",
+                vipFeature2Title: "Real-vaqtda",
+                vipFeature2Desc: "Darhol bildirishnomalar va yangilanishlar",
+                vipFeature3Title: "Detal tahlillar",
+                vipFeature3Desc: "Chuqur tahlillar va oldindan ko'rish imkoniyati",
                 getVipText: "VIP SIGNAL OLISH",
                 getVipSignalText: "VIP SIGNAL OLISH",
                 getVipSignalEarlyText: "VIP SIGNAL OLISH",
+                inviteForVipTitle: "VIP SIGNAL OLISH UCHUN",
+                inviteForVipDesc: "VIP signal olish uchun 3 ta do'stingizni taklif qiling. Har bir taklif qilingan do'st uchun 1 ball olasiz. 3 ball to'plaganingizdan so'ng VIP signal olishingiz mumkin.",
+                inviteForVipBtnText: "DO'STLARNI TAKLIF QILISH",
                 apkDescText: "Apple Fortune mobil ilovasini yuklab oling va istalgan joydan signallar oling. To'liq funksionallik va qulay interfeys.",
                 downloadApkText: "YUKLASH",
                 bonusDescText: "AIFUT promokodi bilan ro'yxatdan o'ting va darhol 200% bonus oling. Bonus birinchi depozitingizga qo'shiladi.",
@@ -2074,7 +2167,11 @@
                 registerSuccess: "✅ Ro'yxatdan muvaffaqiyatli o'tdingiz!",
                 vipTimerActionMessage: "Vaqtdan oldin signal olish",
                 vipTimerActionSubmessage: "VIP signal bilan kutish vaqtini o'tkazib yuboring",
-                getVipSignalEarlyText: "VIP SIGNAL OLISH"
+                getVipSignalEarlyText: "VIP SIGNAL OLISH",
+                inviteForVipSuccess: "✅ Taklif xabari yuborildi! Do'stlaringizni taklif qiling.",
+                vipSignalUnavailable: "❌ VIP signal olish uchun 3 ta do'st taklif qilishingiz kerak",
+                vipSignalAvailable: "✅ VIP signal olish mumkin!",
+                registerLinkOpened: "✅ Ro'yxatdan o'tish sahifasi ochildi"
             },
             ru: {
                 languageTitle: "Apple Fortune",
@@ -2103,9 +2200,20 @@
                 revealText: "ПОКАЗАТЬ ЯБЛОКИ",
                 nextStageText: "СЛЕДУЮЩИЙ ЭТАП",
                 vipModalTitle: "VIP СИГНАЛ",
+                vipMainTitle: "СТАНЬТЕ VIP",
+                vipMainDesc: "98.5% точные сигналы и эксклюзивные привилегии",
+                vipFeature1Title: "98.5% Точность",
+                vipFeature1Desc: "Сигналы высокой точности, подтвержденные AI",
+                vipFeature2Title: "Реальное время",
+                vipFeature2Desc: "Мгновенные уведомления и обновления",
+                vipFeature3Title: "Детальный анализ",
+                vipFeature3Desc: "Глубокий анализ и возможность предварительного просмотра",
                 getVipText: "ПОЛУЧИТЬ VIP",
                 getVipSignalText: "ПОЛУЧИТЬ VIP СИГНАЛ",
                 getVipSignalEarlyText: "ПОЛУЧИТЬ VIP СИГНАЛ",
+                inviteForVipTitle: "ДЛЯ ПОЛУЧЕНИЯ VIP СИГНАЛА",
+                inviteForVipDesc: "Пригласите 3 друзей для получения VIP сигнала. За каждого приглашенного друга вы получаете 1 балл. После набора 3 баллов вы можете получить VIP сигнал.",
+                inviteForVipBtnText: "ПРИГЛАСИТЬ ДРУЗЕЙ",
                 apkDescText: "Скачайте мобильное приложение Apple Fortune и получайте сигналы из любого места. Полная функциональность и удобный интерфейс.",
                 downloadApkText: "СКАЧАТЬ",
                 bonusDescText: "Зарегистрируйтесь с промокодом AIFUT и получите 200% бонус сразу. Бонус будет добавлен к вашему первому депозиту.",
@@ -2145,7 +2253,11 @@
                 registerSuccess: "✅ Вы успешно зарегистрировались!",
                 vipTimerActionMessage: "Получить сигнал раньше времени",
                 vipTimerActionSubmessage: "Пропустите время ожидания с VIP сигналом",
-                getVipSignalEarlyText: "ПОЛУЧИТЬ VIP СИГНАЛ"
+                getVipSignalEarlyText: "ПОЛУЧИТЬ VIP СИГНАЛ",
+                inviteForVipSuccess: "✅ Сообщение приглашения отправлено! Пригласите своих друзей.",
+                vipSignalUnavailable: "❌ Для получения VIP сигнала нужно пригласить 3 друзей",
+                vipSignalAvailable: "✅ VIP сигнал доступен!",
+                registerLinkOpened: "✅ Страница регистрации открыта"
             },
             en: {
                 languageTitle: "Apple Fortune",
@@ -2174,9 +2286,20 @@
                 revealText: "SHOW APPLES",
                 nextStageText: "NEXT STAGE",
                 vipModalTitle: "VIP SIGNAL",
+                vipMainTitle: "BECOME VIP",
+                vipMainDesc: "98.5% accurate signals and exclusive privileges",
+                vipFeature1Title: "98.5% Accuracy",
+                vipFeature1Desc: "High accuracy signals confirmed by AI",
+                vipFeature2Title: "Real-time",
+                vipFeature2Desc: "Instant notifications and updates",
+                vipFeature3Title: "Detailed Analysis",
+                vipFeature3Desc: "Deep analysis and preview capability",
                 getVipText: "GET VIP SIGNAL",
                 getVipSignalText: "GET VIP SIGNAL",
                 getVipSignalEarlyText: "GET VIP SIGNAL",
+                inviteForVipTitle: "TO GET VIP SIGNAL",
+                inviteForVipDesc: "Invite 3 friends to get VIP signal. You get 1 point for each invited friend. After collecting 3 points, you can get VIP signal.",
+                inviteForVipBtnText: "INVITE FRIENDS",
                 apkDescText: "Download Apple Fortune mobile app and get signals from anywhere. Full functionality and convenient interface.",
                 downloadApkText: "DOWNLOAD",
                 bonusDescText: "Register with AIFUT promo code and get 200% bonus immediately. Bonus will be added to your first deposit.",
@@ -2216,7 +2339,11 @@
                 registerSuccess: "✅ Registration successful!",
                 vipTimerActionMessage: "Get signal before time",
                 vipTimerActionSubmessage: "Skip waiting time with VIP signal",
-                getVipSignalEarlyText: "GET VIP SIGNAL"
+                getVipSignalEarlyText: "GET VIP SIGNAL",
+                inviteForVipSuccess: "✅ Invitation message sent! Invite your friends.",
+                vipSignalUnavailable: "❌ To get VIP signal, you need to invite 3 friends",
+                vipSignalAvailable: "✅ VIP signal available!",
+                registerLinkOpened: "✅ Registration page opened"
             },
             ar: {
                 languageTitle: "Apple Fortune",
@@ -2245,9 +2372,20 @@
                 revealText: "عرض التفاح",
                 nextStageText: "المرحلة التالية",
                 vipModalTitle: "إشارة VIP",
+                vipMainTitle: "كن VIP",
+                vipMainDesc: "98.5٪ إشارات دقيقة وامتيازات حصرية",
+                vipFeature1Title: "98.5٪ دقة",
+                vipFeature1Desc: "إشارات عالية الدقة مؤكدة بواسطة الذكاء الاصطناعي",
+                vipFeature2Title: "الوقت الحقيقي",
+                vipFeature2Desc: "إشعارات وتحديثات فورية",
+                vipFeature3Title: "تحليل مفصل",
+                vipFeature3Desc: "تحليل عميق وإمكانية المعاينة",
                 getVipText: "الحصول على إشارة VIP",
                 getVipSignalText: "الحصول على إشارة VIP",
                 getVipSignalEarlyText: "الحصول على إشارة VIP",
+                inviteForVipTitle: "للحصول على إشارة VIP",
+                inviteForVipDesc: "قم بدعوة 3 أصدقاء للحصول على إشارة VIP. تحصل على نقطة واحدة لكل صديق مدعو. بعد جمع 3 نقاط، يمكنك الحصول على إشارة VIP.",
+                inviteForVipBtnText: "دعوة الأصدقاء",
                 apkDescText: "قم بتنزيل تطبيق Apple Fortune المحمول واحصل على إشارات من أي مكان. وظائف كاملة وواجهة مريحة.",
                 downloadApkText: "تحميل",
                 bonusDescText: "سجل باستخدام الرمز الترويجي AIFUT واحصل على مكافأة 200٪ على الفور. ستتم إضافة المكافأة إلى إيداعك الأول.",
@@ -2287,7 +2425,11 @@
                 registerSuccess: "✅ تم التسجيل بنجاح!",
                 vipTimerActionMessage: "احصل على إشارة قبل الوقت",
                 vipTimerActionSubmessage: "تخطى وقت الانتظار مع إشارة VIP",
-                getVipSignalEarlyText: "الحصول على إشارة VIP"
+                getVipSignalEarlyText: "الحصول على إشارة VIP",
+                inviteForVipSuccess: "✅ تم إرسال رسالة الدعوة! قم بدعوة أصدقائك.",
+                vipSignalUnavailable: "❌ للحصول على إشارة VIP، تحتاج إلى دعوة 3 أصدقاء",
+                vipSignalAvailable: "✅ إشارة VIP متاحة!",
+                registerLinkOpened: "✅ تم فتح صفحة التسجيل"
             }
         };
 
@@ -2298,7 +2440,9 @@
             signals: 24,
             accuracy: 92.5,
             friends: 8,
-            level: 1
+            level: 1,
+            invitedFriends: 1, // YANGI: Taklif qilingan do'stlar soni
+            vipAvailable: false // YANGI: VIP signal mavjudligi
         };
         let currentStage = 1;
         let gameState = {
@@ -2435,6 +2579,10 @@
             document.getElementById('getVipSignalBtn').addEventListener('click', getVipSignal);
             document.getElementById('getVipSignalEarlyBtn').addEventListener('click', getVipSignalEarly);
 
+            // YANGI: VIP modal uchun yangi tugmalar
+            document.getElementById('inviteForVipBtn').addEventListener('click', inviteForVip);
+            document.getElementById('getVipBtn').addEventListener('click', getVip);
+
             // ID input validation
             document.getElementById('userIdInput').addEventListener('input', validateIdInput);
             document.getElementById('userIdInput').addEventListener('keypress', function(e) {
@@ -2446,13 +2594,15 @@
             document.getElementById('newUserIdInput').addEventListener('input', validateNewIdInput);
 
             // Action buttons
-            document.getElementById('getVipBtn').addEventListener('click', getVip);
             document.getElementById('downloadApkBtn').addEventListener('click', downloadApk);
             document.getElementById('getBonusBtn').addEventListener('click', getBonus);
             document.getElementById('inviteFriendsBtn').addEventListener('click', inviteFriends);
 
             // Generate signals
             generateSignals();
+            
+            // Update VIP button state
+            updateVipButtonState();
         }
 
         // ==================== LANGUAGE FUNCTIONS ====================
@@ -2481,6 +2631,9 @@
                 }
             }
             
+            // Update VIP progress
+            updateVipProgress();
+            
             // Update UI with current data
             updateUI();
         }
@@ -2495,6 +2648,9 @@
             
             // Update user ID display
             updateUserIdDisplay();
+            
+            // Update VIP progress
+            updateVipProgress();
         }
 
         function updateUserIdDisplay() {
@@ -2541,6 +2697,46 @@
                 `;
                 grid.appendChild(card);
             });
+        }
+
+        // YANGI: VIP progressni yangilash
+        function updateVipProgress() {
+            const invitedCount = document.getElementById('invitedCount');
+            if (invitedCount) {
+                invitedCount.textContent = userData.invitedFriends;
+            }
+            
+            // Progress itemlarni yangilash
+            const progressItems = document.querySelectorAll('.invite-progress-item');
+            progressItems.forEach((item, index) => {
+                const itemNumber = parseInt(item.textContent);
+                if (itemNumber <= userData.invitedFriends) {
+                    item.classList.add('completed');
+                    item.classList.remove('active');
+                } else if (itemNumber === userData.invitedFriends + 1) {
+                    item.classList.add('active');
+                    item.classList.remove('completed');
+                } else {
+                    item.classList.remove('active', 'completed');
+                }
+            });
+            
+            // VIP tugma holatini yangilash
+            updateVipButtonState();
+        }
+
+        // YANGI: VIP tugma holatini yangilash
+        function updateVipButtonState() {
+            const getVipBtn = document.getElementById('getVipBtn');
+            if (getVipBtn) {
+                if (userData.invitedFriends >= 3) {
+                    getVipBtn.disabled = false;
+                    getVipBtn.innerHTML = '<i class="fas fa-crown"></i> <span id="getVipText">VIP SIGNAL OLISH</span>';
+                } else {
+                    getVipBtn.disabled = true;
+                    getVipBtn.innerHTML = `<i class="fas fa-lock"></i> <span id="getVipText">${userData.invitedFriends}/3 TAKLIF</span>`;
+                }
+            }
         }
 
         // ==================== PAGE NAVIGATION ====================
@@ -2673,6 +2869,9 @@
         function showVipModal() {
             const modal = document.getElementById('vipModal');
             modal.classList.add('active');
+            
+            // Update progress display
+            updateVipProgress();
         }
 
         // YANGI: ID o'zgartirish modali
@@ -2804,27 +3003,11 @@
             showToast(translations[currentLang].idChangeSuccess, 'success');
         }
 
-        // YANGI: Ro'yxatdan o'tish funksiyasi
+        // YANGI: Ro'yxatdan o'tish funksiyasi - TASHQI HAVOLA
         function registerUser() {
-            if (!gameState.userId) {
-                // Agar ID mavjud bo'lmasa, ID kiritish modalini ochish
-                showGameModal();
-                showToast("Iltimos, avval ID raqamingizni kiriting", 'info');
-                return;
-            }
-            
-            // Ro'yxatdan o'tish logikasi
-            showToast(translations[currentLang].registerSuccess, 'success');
-            
-            // Foydalanuvchi darajasini oshirish
-            userData.level = 2;
-            document.getElementById('userLevel').textContent = "RO'YXATDAN O'TGAN";
-            document.getElementById('userLevel').style.background = "linear-gradient(135deg, var(--success), #2e7d32)";
-            
-            // Kichik bonus berish
-            userData.balance += 100;
-            updateUI();
-            saveData();
+            // Ro'yxatdan o'tish uchun tashqi havola
+            window.open('https://t.me/Strategioyinlar_bot?start=register', '_blank');
+            showToast(translations[currentLang].registerLinkOpened, 'success');
         }
 
         // ==================== GAME FUNCTIONS ====================
@@ -3204,16 +3387,53 @@
             }, 500);
         }
 
+        // ==================== YANGI: VIP TAKLIF QILISH FUNKSIYALARI ====================
+        function inviteForVip() {
+            // Maxsus Telegram xabarini yaratish
+            const shareMessage = `🎯 ${translations[currentLang].vipTitle} | Apple Fortune\n\n${translations[currentLang].inviteForVipDesc}\n\n👉 https://t.me/Strategioyinlar_bot?start=invite_${gameState.userId || '1234567890'}\n\nSizning taklif kodingiz: ${gameState.userId || '1234567890'}\n\n#AppleFortune #VIPSignal`;
+            
+            // Telegram share link
+            const shareUrl = `https://t.me/share/url?url=https://t.me/Strategioyinlar_bot?start=invite_${gameState.userId || '1234567890'}&text=${encodeURIComponent(shareMessage)}`;
+            
+            // Yangi oyna ochish
+            window.open(shareUrl, '_blank');
+            
+            // Taklif qilish hisobini yangilash (demo uchun)
+            if (userData.invitedFriends < 3) {
+                userData.invitedFriends++;
+                updateUI();
+                saveData();
+                
+                if (userData.invitedFriends === 3) {
+                    showToast(translations[currentLang].vipSignalAvailable, 'success');
+                } else {
+                    showToast(translations[currentLang].inviteForVipSuccess, 'info');
+                }
+            }
+        }
+
         // ==================== ACTION FUNCTIONS ====================
         function getVip() {
-            showToast(translations[currentLang].getVipText + ' - ' + translations[currentLang].loading);
-            closeModal('vipModal');
+            if (userData.invitedFriends >= 3) {
+                showToast(translations[currentLang].getVipText + ' - ' + translations[currentLang].loading);
+                closeModal('vipModal');
+                
+                // VIP signal olindi
+                userData.vipAvailable = true;
+                saveData();
+            } else {
+                showToast(translations[currentLang].vipSignalUnavailable, 'warning');
+            }
         }
 
         function getVipSignal() {
-            showToast(translations[currentLang].getVipSignalText + ' - ' + translations[currentLang].loading);
-            closeModal('gameModal');
-            showVipModal();
+            if (userData.invitedFriends >= 3) {
+                showToast(translations[currentLang].getVipSignalText + ' - ' + translations[currentLang].loading);
+                closeModal('gameModal');
+                showVipModal();
+            } else {
+                showToast(translations[currentLang].vipSignalUnavailable, 'warning');
+            }
         }
 
         function downloadApk() {
@@ -3222,12 +3442,13 @@
         }
 
         function getBonus() {
+            // YANGI: Bonus olish uchun tashqi havola
             window.open('https://superlative-twilight-47ef34.netlify.app/', '_blank');
             showToast(translations[currentLang].successBonus, 'success');
         }
 
         function inviteFriends() {
-            const shareMessage = `🎯 ${translations[currentLang].signalTitle} | Apple Fortune\n\n${translations[currentLang].inviteFriendsText}\n👉 t.me/Strategioyinlar_bot\n\nID: ${gameState.userId || '1234567890'}\n\n#AppleFortune`;
+            const shareMessage = `🎯 ${translations[currentLang].signalTitle} | Apple Fortune\n\n${translations[currentLang].inviteFriendsText}\n👉 t.me/Strategioyinlar_bot?start=${gameState.userId || '1234567890'}\n\nID: ${gameState.userId || '1234567890'}\n\n#AppleFortune`;
             const shareUrl = `https://t.me/share/url?url=https://t.me/Strategioyinlar_bot?start=${gameState.userId || '1234567890'}&text=${encodeURIComponent(shareMessage)}`;
             window.open(shareUrl, '_blank');
             showToast(translations[currentLang].successInvite, 'success');
