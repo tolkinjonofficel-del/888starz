@@ -42,7 +42,7 @@
         }
 
         /* ============ LANGUAGE SELECTOR ============ */
-        .language-selector {
+        #languageSelector {
             position: fixed;
             top: 0;
             left: 0;
@@ -73,14 +73,14 @@
             color: white;
         }
 
-        .language-title {
+        #languageTitle {
             font-size: 24px;
             font-weight: 700;
             color: var(--primary);
             margin-bottom: 10px;
         }
 
-        .language-subtitle {
+        #languageSubtitle {
             font-size: 14px;
             color: var(--gray);
             margin-bottom: 30px;
@@ -937,12 +937,12 @@
 </head>
 <body>
     <!-- Language Selector -->
-    <div class="language-selector" id="languageSelector">
+    <div id="languageSelector">
         <div class="language-logo">
             <i class="fas fa-apple-alt"></i>
         </div>
-        <h2 class="language-title">Apple Fortune</h2>
-        <p class="language-subtitle" id="languageSubtitle">AI Trading Platform</p>
+        <h2 id="languageTitle">Apple Fortune</h2>
+        <p id="languageSubtitle">AI Trading Platform</p>
         
         <div class="language-grid">
             <div class="lang-card" data-lang="uz">
@@ -1398,6 +1398,7 @@
         // ==================== TRANSLATIONS ====================
         const translations = {
             uz: {
+                languageTitle: "Apple Fortune",
                 languageSubtitle: "AI Savdo Platformasi",
                 userName: "Foydalanuvchi",
                 userLevel: "BOSHLANG'ICH",
@@ -1436,6 +1437,7 @@
                 loading: "⏳ Yuklanmoqda..."
             },
             ru: {
+                languageTitle: "Apple Fortune",
                 languageSubtitle: "Платформа AI Трейдинга",
                 userName: "Пользователь",
                 userLevel: "НАЧИНАЮЩИЙ",
@@ -1474,6 +1476,7 @@
                 loading: "⏳ Загрузка..."
             },
             en: {
+                languageTitle: "Apple Fortune",
                 languageSubtitle: "AI Trading Platform",
                 userName: "User",
                 userLevel: "BEGINNER",
@@ -1512,6 +1515,7 @@
                 loading: "⏳ Loading..."
             },
             ar: {
+                languageTitle: "Apple Fortune",
                 languageSubtitle: "منصة التداول بالذكاء الاصطناعي",
                 userName: "المستخدم",
                 userLevel: "مبتدئ",
@@ -1582,28 +1586,49 @@
             if (localStorage.getItem('appleFortuneLang')) {
                 selectLanguage(currentLang);
             } else {
-                // Show language selector
+                // Show language selector by default
                 document.getElementById('languageSelector').style.display = 'flex';
             }
         }
 
-        // ==================== LANGUAGE FUNCTIONS ====================
+        // ==================== EVENT LISTENERS ====================
         function setupListeners() {
             // Language selection
             document.querySelectorAll('.lang-card').forEach(card => {
-                card.addEventListener('click', () => {
-                    const lang = card.dataset.lang;
+                card.addEventListener('click', function() {
+                    const lang = this.getAttribute('data-lang');
                     selectLanguage(lang);
                 });
             });
 
             // Language button
-            document.getElementById('languageBtn').addEventListener('click', () => {
-                showLanguageSelector();
+            document.getElementById('languageBtn').addEventListener('click', function() {
+                document.getElementById('languageSelector').style.display = 'flex';
+                document.getElementById('mainContainer').classList.remove('active');
+                document.getElementById('apkPage').classList.remove('active');
+                document.getElementById('bonusPage').classList.remove('active');
             });
 
             // Navigation
-            setupNavigation();
+            document.getElementById('navHome').addEventListener('click', () => showPage('mainContainer'));
+            document.getElementById('navSignal').addEventListener('click', () => showGameModal());
+            document.getElementById('navVip').addEventListener('click', () => showVipModal());
+            document.getElementById('navApk').addEventListener('click', () => showPage('apkPage'));
+            document.getElementById('navBonus').addEventListener('click', () => showPage('bonusPage'));
+
+            // Second nav
+            document.getElementById('navHome2').addEventListener('click', () => showPage('mainContainer'));
+            document.getElementById('navSignal2').addEventListener('click', () => showGameModal());
+            document.getElementById('navVip2').addEventListener('click', () => showVipModal());
+            document.getElementById('navApk2').addEventListener('click', () => showPage('apkPage'));
+            document.getElementById('navBonus2').addEventListener('click', () => showPage('bonusPage'));
+
+            // Third nav
+            document.getElementById('navHome3').addEventListener('click', () => showPage('mainContainer'));
+            document.getElementById('navSignal3').addEventListener('click', () => showGameModal());
+            document.getElementById('navVip3').addEventListener('click', () => showVipModal());
+            document.getElementById('navApk3').addEventListener('click', () => showPage('apkPage'));
+            document.getElementById('navBonus3').addEventListener('click', () => showPage('bonusPage'));
 
             // Quick actions
             document.getElementById('signalBtn').addEventListener('click', () => showGameModal());
@@ -1634,68 +1659,31 @@
             generateSignals();
         }
 
-        function setupNavigation() {
-            const navItems = [
-                { id: 'navHome', page: 'mainContainer' },
-                { id: 'navSignal', action: showGameModal },
-                { id: 'navVip', action: showVipModal },
-                { id: 'navApk', page: 'apkPage' },
-                { id: 'navBonus', page: 'bonusPage' },
-                { id: 'navHome2', page: 'mainContainer' },
-                { id: 'navSignal2', action: showGameModal },
-                { id: 'navVip2', action: showVipModal },
-                { id: 'navApk2', page: 'apkPage' },
-                { id: 'navBonus2', page: 'bonusPage' },
-                { id: 'navHome3', page: 'mainContainer' },
-                { id: 'navSignal3', action: showGameModal },
-                { id: 'navVip3', action: showVipModal },
-                { id: 'navApk3', page: 'apkPage' },
-                { id: 'navBonus3', page: 'bonusPage' }
-            ];
-
-            navItems.forEach(item => {
-                const element = document.getElementById(item.id);
-                if (element) {
-                    element.addEventListener('click', () => {
-                        if (item.page) {
-                            showPage(item.page);
-                        } else if (item.action) {
-                            item.action();
-                        }
-                    });
-                }
-            });
-        }
-
+        // ==================== LANGUAGE FUNCTIONS ====================
         function selectLanguage(lang) {
             currentLang = lang;
             localStorage.setItem('appleFortuneLang', lang);
             
+            // Hide language selector
+            document.getElementById('languageSelector').style.display = 'none';
+            
             // Update translations
             updateTranslations(lang);
             
-            // Hide language selector and show main container
-            document.getElementById('languageSelector').style.display = 'none';
+            // Show main container
             showPage('mainContainer');
-        }
-
-        function showLanguageSelector() {
-            document.getElementById('languageSelector').style.display = 'flex';
-            document.querySelectorAll('.main-container, .page-container').forEach(el => {
-                el.style.display = 'none';
-            });
         }
 
         function updateTranslations(lang) {
             const t = translations[lang];
             
             // Update all elements with IDs
-            Object.keys(t).forEach(key => {
+            for (const key in t) {
                 const element = document.getElementById(key);
                 if (element) {
                     element.textContent = t[key];
                 }
-            });
+            }
             
             // Update UI with current data
             updateUI();
@@ -1719,6 +1707,8 @@
             ];
 
             const grid = document.getElementById('signalsGrid');
+            if (!grid) return;
+            
             grid.innerHTML = '';
 
             signals.forEach(signal => {
@@ -1746,14 +1736,17 @@
         // ==================== PAGE NAVIGATION ====================
         function showPage(pageId) {
             // Hide all pages
-            document.querySelectorAll('.main-container, .page-container').forEach(el => {
-                el.style.display = 'none';
-            });
+            document.getElementById('mainContainer').classList.remove('active');
+            document.getElementById('apkPage').classList.remove('active');
+            document.getElementById('bonusPage').classList.remove('active');
+            
+            // Hide modals
+            document.getElementById('gameModal').classList.remove('active');
+            document.getElementById('vipModal').classList.remove('active');
             
             // Show selected page
             const page = document.getElementById(pageId);
             if (page) {
-                page.style.display = 'block';
                 page.classList.add('active');
             }
             
@@ -1768,30 +1761,31 @@
             });
             
             // Set active based on page
-            let activeNavId;
+            let activeNavIds = [];
             switch(pageId) {
                 case 'mainContainer':
-                    activeNavId = 'navHome';
+                    activeNavIds = ['navHome', 'navHome2', 'navHome3'];
                     break;
                 case 'apkPage':
-                    activeNavId = 'navApk2';
+                    activeNavIds = ['navApk', 'navApk2', 'navApk3'];
                     break;
                 case 'bonusPage':
-                    activeNavId = 'navBonus3';
+                    activeNavIds = ['navBonus', 'navBonus2', 'navBonus3'];
                     break;
             }
             
-            if (activeNavId) {
-                const elements = document.querySelectorAll(`#${activeNavId}`);
-                elements.forEach(el => el.classList.add('active'));
-            }
+            activeNavIds.forEach(id => {
+                const element = document.getElementById(id);
+                if (element) {
+                    element.classList.add('active');
+                }
+            });
         }
 
         // ==================== MODAL FUNCTIONS ====================
         function showGameModal() {
             const modal = document.getElementById('gameModal');
             modal.classList.add('active');
-            document.body.style.overflow = 'hidden';
             
             // Reset game state
             currentRound = 1;
@@ -1802,18 +1796,18 @@
         function showVipModal() {
             const modal = document.getElementById('vipModal');
             modal.classList.add('active');
-            document.body.style.overflow = 'hidden';
         }
 
         function closeModal(modalId) {
             const modal = document.getElementById(modalId);
             modal.classList.remove('active');
-            document.body.style.overflow = 'auto';
         }
 
         // ==================== GAME FUNCTIONS ====================
         function createApples() {
             const container = document.getElementById('gameApples');
+            if (!container) return;
+            
             container.innerHTML = '';
             
             const wholeCount = Math.max(1, 6 - currentRound);
@@ -1872,7 +1866,7 @@
         function selectApple(index) {
             if (!gameActive) return;
             
-            const apple = document.querySelector(`.game-apple[data-index="${${index}}"]`);
+            const apple = document.querySelector(`.game-apple[data-index="${index}"]`);
             if (!apple) return;
             
             const type = apple.dataset.type;
