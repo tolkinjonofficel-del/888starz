@@ -590,7 +590,7 @@
             padding: 20px;
         }
 
-        /* ============ GAME MODAL ============ */
+        /* ============ YANGILANGAN GAME MODAL ============ */
         .game-header {
             text-align: center;
             margin-bottom: 20px;
@@ -608,12 +608,14 @@
             color: var(--gray);
         }
 
-        .game-apples {
+        /* Yangilangan olmalar konteyneri */
+        .game-apples-container {
             display: flex;
             justify-content: center;
-            gap: 12px;
-            margin: 24px 0;
+            gap: 8px;
+            margin: 20px 0;
             flex-wrap: wrap;
+            max-width: 100%;
         }
 
         .game-apple {
@@ -622,9 +624,25 @@
             border-radius: 50%;
             background-size: cover;
             background-position: center;
+            background-repeat: no-repeat;
             cursor: pointer;
             border: 2px solid transparent;
-            transition: all 0.2s ease;
+            transition: all 0.3s ease;
+            flex-shrink: 0;
+        }
+
+        @media (max-width: 380px) {
+            .game-apple {
+                width: 52px;
+                height: 52px;
+            }
+        }
+
+        @media (max-width: 320px) {
+            .game-apple {
+                width: 48px;
+                height: 48px;
+            }
         }
 
         .apple-mystery {
@@ -635,11 +653,13 @@
         .apple-whole {
             background-image: url('https://images.unsplash.com/photo-1568702846914-96b305d2aaeb?w=200&h=200&fit=crop');
             border-color: var(--success);
+            box-shadow: 0 0 10px rgba(76, 175, 80, 0.5);
         }
 
         .apple-bitten {
             background-image: url('https://images.unsplash.com/photo-1568702846914-96b305d2aaeb?w=200&h=200&fit=crop&crop=face');
             border-color: var(--danger);
+            box-shadow: 0 0 10px rgba(244, 67, 54, 0.5);
         }
 
         .game-info {
@@ -667,14 +687,17 @@
             line-height: 1.4;
         }
 
+        /* Yangilangan game actions */
         .game-actions {
             display: flex;
             gap: 10px;
             margin-top: 20px;
+            flex-wrap: wrap;
         }
 
-        .btn {
+        .game-actions .btn {
             flex: 1;
+            min-width: 120px;
             padding: 14px;
             border: none;
             border-radius: 12px;
@@ -693,14 +716,59 @@
             color: white;
         }
 
-        .btn-primary:hover {
+        .btn-primary:hover:not(:disabled) {
             transform: translateY(-2px);
+        }
+
+        .btn-primary:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
         }
 
         .btn-secondary {
             background: var(--glass);
             border: 1px solid var(--glass-border);
             color: var(--light);
+        }
+
+        .btn-secondary:hover:not(:disabled) {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .btn-secondary:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        /* Animatsiya klassi */
+        .apple-slide-out {
+            animation: slideOut 0.5s ease forwards;
+        }
+
+        .apple-slide-in {
+            animation: slideIn 0.5s ease forwards;
+        }
+
+        @keyframes slideOut {
+            from {
+                transform: translateX(0);
+                opacity: 1;
+            }
+            to {
+                transform: translateX(-100%);
+                opacity: 0;
+            }
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
         }
 
         /* ============ VIP MODAL ============ */
@@ -881,11 +949,6 @@
             .action-card {
                 padding: 12px 6px;
             }
-            
-            .game-apple {
-                width: 52px;
-                height: 52px;
-            }
         }
 
         /* ============ UTILITIES ============ */
@@ -917,11 +980,11 @@
             color: var(--light);
             font-size: 13px;
             z-index: 10000;
-            animation: slideIn 0.3s ease;
+            animation: toastSlideIn 0.3s ease;
             max-width: 280px;
         }
 
-        @keyframes slideIn {
+        @keyframes toastSlideIn {
             from { transform: translateX(100%); opacity: 0; }
             to { transform: translateX(0); opacity: 1; }
         }
@@ -932,6 +995,10 @@
 
         .toast.error {
             border-left: 4px solid var(--danger);
+        }
+
+        .toast.info {
+            border-left: 4px solid var(--primary);
         }
     </style>
 </head>
@@ -1312,25 +1379,26 @@
                     <p class="game-subtitle" id="gameSubtitle">Butun olmalarni tanlang</p>
                 </div>
                 
-                <div class="game-apples" id="gameApples">
-                    <!-- Apples will be added here -->
+                <div class="game-apples-container" id="gameApplesContainer">
+                    <!-- 5 ta olma bu yerga qo'shiladi -->
                 </div>
                 
                 <div class="game-info">
                     <div class="game-round">
-                        Raund: <span id="currentRound">1</span>/6
+                        Bosqich: <span id="currentStage">1</span>/7
                     </div>
                     <p class="game-instruction" id="gameInstruction">
-                        Butun olmalarni tanlang. Tishlangan olma o'yinni tugatadi.
+                        Olmalarni ko'rish tugmasini bosing va butun olmalarni tanlang.
+                        Har bir bosqichda 5 ta olma bor.
                     </p>
                 </div>
                 
                 <div class="game-actions">
-                    <button class="btn btn-secondary" id="revealBtn">
-                        <i class="fas fa-eye"></i> <span id="revealText">KORISH</span>
+                    <button class="btn btn-secondary" id="revealApplesBtn">
+                        <i class="fas fa-eye"></i> <span id="revealText">OLMALARNI KO'RISH</span>
                     </button>
-                    <button class="btn btn-primary" id="startGameBtn">
-                        <i class="fas fa-play"></i> <span id="startGameText">BOSHLASH</span>
+                    <button class="btn btn-primary" id="nextStageBtn" disabled>
+                        <i class="fas fa-arrow-right"></i> <span id="nextStageText">KEYINGI BOSQICH</span>
                     </button>
                 </div>
             </div>
@@ -1420,9 +1488,9 @@
                 viewAllLink: "BARCHASI",
                 gameModalTitle: "SIGNAL OLISH",
                 gameSubtitle: "Butun olmalarni tanlang",
-                gameInstruction: "Butun olmalarni tanlang. Tishlangan olma o'yinni tugatadi.",
-                revealText: "KORISH",
-                startGameText: "BOSHLASH",
+                gameInstruction: "Olmalarni ko'rish tugmasini bosing va butun olmalarni tanlang. Har bir bosqichda 5 ta olma bor.",
+                revealText: "OLMALARNI KO'RISH",
+                nextStageText: "KEYINGI BOSQICH",
                 vipModalTitle: "VIP SIGNAL",
                 getVipText: "VIP SIGNAL OLISH",
                 apkDescText: "Apple Fortune mobil ilovasini yuklab oling va istalgan joydan signallar oling. To'liq funksionallik va qulay interfeys.",
@@ -1434,7 +1502,11 @@
                 errorSignal: "❌ O'yin tugadi.",
                 successBonus: "✅ Bonus olindi!",
                 successInvite: "✅ Do'st taklif qilindi!",
-                loading: "⏳ Yuklanmoqda..."
+                loading: "⏳ Yuklanmoqda...",
+                winGame: "🎉 Tabriklaymiz! Yutuqni oling!",
+                chooseApple: "🫱 Iltimos, olma tanlang",
+                applesRevealed: "👁️ Olmalar ko'rsatildi",
+                nextStageReady: "👉 Keyingi bosqichga o'tish mumkin"
             },
             ru: {
                 languageTitle: "Apple Fortune",
@@ -1459,9 +1531,9 @@
                 viewAllLink: "ВСЕ",
                 gameModalTitle: "ПОЛУЧИТЬ СИГНАЛ",
                 gameSubtitle: "Выбирайте целые яблоки",
-                gameInstruction: "Выбирайте целые яблоки. Надкушенное яблоко закончит игру.",
-                revealText: "ПОКАЗАТЬ",
-                startGameText: "НАЧАТЬ",
+                gameInstruction: "Нажмите кнопку показать яблоки и выберите целые яблоки. На каждом этапе 5 яблок.",
+                revealText: "ПОКАЗАТЬ ЯБЛОКИ",
+                nextStageText: "СЛЕДУЮЩИЙ ЭТАП",
                 vipModalTitle: "VIP СИГНАЛ",
                 getVipText: "ПОЛУЧИТЬ VIP",
                 apkDescText: "Скачайте мобильное приложение Apple Fortune и получайте сигналы из любого места. Полная функциональность и удобный интерфейс.",
@@ -1473,7 +1545,11 @@
                 errorSignal: "❌ Игра окончена.",
                 successBonus: "✅ Бонус получен!",
                 successInvite: "✅ Друг приглашен!",
-                loading: "⏳ Загрузка..."
+                loading: "⏳ Загрузка...",
+                winGame: "🎉 Поздравляем! Получите приз!",
+                chooseApple: "🫱 Пожалуйста, выберите яблоко",
+                applesRevealed: "👁️ Яблоки показаны",
+                nextStageReady: "👉 Можно перейти на следующий этап"
             },
             en: {
                 languageTitle: "Apple Fortune",
@@ -1498,9 +1574,9 @@
                 viewAllLink: "VIEW ALL",
                 gameModalTitle: "GET SIGNAL",
                 gameSubtitle: "Choose whole apples",
-                gameInstruction: "Choose whole apples. Bitten apple will end the game.",
-                revealText: "SHOW",
-                startGameText: "START",
+                gameInstruction: "Click show apples button and choose whole apples. There are 5 apples at each stage.",
+                revealText: "SHOW APPLES",
+                nextStageText: "NEXT STAGE",
                 vipModalTitle: "VIP SIGNAL",
                 getVipText: "GET VIP SIGNAL",
                 apkDescText: "Download Apple Fortune mobile app and get signals from anywhere. Full functionality and convenient interface.",
@@ -1512,7 +1588,11 @@
                 errorSignal: "❌ Game over.",
                 successBonus: "✅ Bonus received!",
                 successInvite: "✅ Friend invited!",
-                loading: "⏳ Loading..."
+                loading: "⏳ Loading...",
+                winGame: "🎉 Congratulations! Get your prize!",
+                chooseApple: "🫱 Please choose an apple",
+                applesRevealed: "👁️ Apples revealed",
+                nextStageReady: "👉 Can go to next stage"
             },
             ar: {
                 languageTitle: "Apple Fortune",
@@ -1537,9 +1617,9 @@
                 viewAllLink: "عرض الكل",
                 gameModalTitle: "الحصول على إشارة",
                 gameSubtitle: "اختر التفاح الكامل",
-                gameInstruction: "اختر التفاح الكامل. التفاحة المقطوعة ستنهي اللعبة.",
-                revealText: "عرض",
-                startGameText: "ابدأ",
+                gameInstruction: "انقر على زر عرض التفاح واختر التفاح الكامل. هناك 5 تفاحات في كل مرحلة.",
+                revealText: "عرض التفاح",
+                nextStageText: "المرحلة التالية",
                 vipModalTitle: "إشارة VIP",
                 getVipText: "الحصول على إشارة VIP",
                 apkDescText: "قم بتنزيل تطبيق Apple Fortune المحمول واحصل على إشارات من أي مكان. وظائف كاملة وواجهة مريحة.",
@@ -1551,7 +1631,11 @@
                 errorSignal: "❌ انتهت اللعبة.",
                 successBonus: "✅ تم استلام المكافأة!",
                 successInvite: "✅ تمت دعوة الصديق!",
-                loading: "⏳ جاري التحميل..."
+                loading: "⏳ جاري التحميل...",
+                winGame: "🎉 مبروك! احصل على جائزتك!",
+                chooseApple: "🫱 الرجاء اختيار تفاحة",
+                applesRevealed: "👁️ تم عرض التفاح",
+                nextStageReady: "👉 يمكن الانتقال إلى المرحلة التالية"
             }
         };
 
@@ -1564,8 +1648,15 @@
             friends: 8,
             level: 1
         };
-        let currentRound = 1;
-        let gameActive = false;
+        let currentStage = 1;
+        let gameState = {
+            applesRevealed: false,
+            canProceed: false,
+            gameOver: false,
+            selectedApple: null,
+            apples: [],
+            stageWon: false
+        };
 
         // ==================== INITIALIZATION ====================
         document.addEventListener('DOMContentLoaded', function() {
@@ -1646,8 +1737,8 @@
             document.getElementById('closeVipModal').addEventListener('click', () => closeModal('vipModal'));
 
             // Game buttons
-            document.getElementById('startGameBtn').addEventListener('click', startGame);
-            document.getElementById('revealBtn').addEventListener('click', revealApples);
+            document.getElementById('revealApplesBtn').addEventListener('click', revealApples);
+            document.getElementById('nextStageBtn').addEventListener('click', nextStage);
 
             // Action buttons
             document.getElementById('getVipBtn').addEventListener('click', getVip);
@@ -1788,9 +1879,18 @@
             modal.classList.add('active');
             
             // Reset game state
-            currentRound = 1;
-            gameActive = false;
+            currentStage = 1;
+            gameState = {
+                applesRevealed: false,
+                canProceed: false,
+                gameOver: false,
+                selectedApple: null,
+                apples: [],
+                stageWon: false
+            };
+            
             createApples();
+            updateGameUI();
         }
 
         function showVipModal() {
@@ -1805,97 +1905,228 @@
 
         // ==================== GAME FUNCTIONS ====================
         function createApples() {
-            const container = document.getElementById('gameApples');
+            // Bosqichga qarab olmalar soni
+            let wholeApples, bittenApples;
+            
+            if (currentStage <= 2) {
+                // 1-2 bosqich: 4 butun, 1 tishlangan
+                wholeApples = 4;
+                bittenApples = 1;
+            } else if (currentStage <= 4) {
+                // 3-4 bosqich: 3 butun, 2 tishlangan
+                wholeApples = 3;
+                bittenApples = 2;
+            } else {
+                // 5-7 bosqich: 2 butun, 3 tishlangan
+                wholeApples = 2;
+                bittenApples = 3;
+            }
+            
+            // Olmalar massivini yaratish
+            let apples = [];
+            for (let i = 0; i < wholeApples; i++) apples.push('whole');
+            for (let i = 0; i < bittenApples; i++) apples.push('bitten');
+            
+            // Tasodifiy tartibda aralashtirish
+            apples = shuffleArray(apples);
+            
+            // O'yin holatini yangilash
+            gameState.apples = apples;
+            gameState.applesRevealed = false;
+            gameState.canProceed = false;
+            gameState.selectedApple = null;
+            gameState.stageWon = false;
+            
+            // Olmalarni ekranga chiqarish
+            renderApples();
+            
+            // UI ni yangilash
+            updateGameUI();
+        }
+
+        function renderApples() {
+            const container = document.getElementById('gameApplesContainer');
             if (!container) return;
             
             container.innerHTML = '';
             
-            const wholeCount = Math.max(1, 6 - currentRound);
-            const bittenCount = 5 - wholeCount;
-            
-            let apples = [];
-            for (let i = 0; i < wholeCount; i++) apples.push('whole');
-            for (let i = 0; i < bittenCount; i++) apples.push('bitten');
-            
-            // Shuffle
-            apples.sort(() => Math.random() - 0.5);
-            
-            // Create apple elements
-            apples.forEach((type, index) => {
+            gameState.apples.forEach((appleType, index) => {
                 const apple = document.createElement('div');
                 apple.className = 'game-apple apple-mystery';
-                apple.dataset.type = type;
                 apple.dataset.index = index;
+                apple.dataset.type = appleType;
+                
+                // Agar olmalar ko'rsatilgan bo'lsa
+                if (gameState.applesRevealed) {
+                    apple.classList.remove('apple-mystery');
+                    apple.classList.add(`apple-${appleType}`);
+                }
+                
+                // Tanlangan olmani belgilash
+                if (gameState.selectedApple === index) {
+                    apple.style.transform = 'scale(1.1)';
+                    apple.style.boxShadow = '0 0 15px rgba(0, 188, 212, 0.7)';
+                }
+                
                 apple.addEventListener('click', () => selectApple(index));
                 container.appendChild(apple);
             });
-            
-            // Update round display
-            document.getElementById('currentRound').textContent = currentRound;
-            
-            // Show start button
-            document.getElementById('startGameBtn').style.display = 'flex';
-            document.getElementById('revealBtn').style.display = 'flex';
         }
 
-        function startGame() {
-            gameActive = true;
-            document.getElementById('startGameBtn').style.display = 'none';
-            document.getElementById('revealBtn').style.display = 'none';
-            
-            // Show apples
-            const apples = document.querySelectorAll('.game-apple');
-            apples.forEach(apple => {
-                const type = apple.dataset.type;
-                apple.className = `game-apple apple-${type}`;
-            });
+        function shuffleArray(array) {
+            const newArray = [...array];
+            for (let i = newArray.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [newArray[i], newArray[j]] = [newArray[j], newArray[i]];
+            }
+            return newArray;
         }
 
         function revealApples() {
-            const apples = document.querySelectorAll('.game-apple');
-            apples.forEach(apple => {
-                const type = apple.dataset.type;
-                apple.className = `game-apple apple-${type}`;
-            });
+            if (gameState.applesRevealed || gameState.gameOver) return;
             
-            gameActive = true;
-            document.getElementById('startGameBtn').style.display = 'none';
-            document.getElementById('revealBtn').style.display = 'none';
+            gameState.applesRevealed = true;
+            renderApples();
+            
+            // Butun olmalarni avtomatik tanlash
+            setTimeout(() => {
+                const wholeAppleIndex = gameState.apples.findIndex(apple => apple === 'whole');
+                if (wholeAppleIndex !== -1) {
+                    selectApple(wholeAppleIndex);
+                }
+            }, 500);
+            
+            updateGameUI();
+            showToast(translations[currentLang].applesRevealed, 'info');
         }
 
         function selectApple(index) {
-            if (!gameActive) return;
+            if (!gameState.applesRevealed || gameState.gameOver || gameState.stageWon) return;
             
-            const apple = document.querySelector(`.game-apple[data-index="${index}"]`);
-            if (!apple) return;
+            const appleType = gameState.apples[index];
+            gameState.selectedApple = index;
             
-            const type = apple.dataset.type;
-            gameActive = false;
+            // Olmani qayta chizish
+            renderApples();
             
-            if (type === 'bitten') {
+            if (appleType === 'whole') {
+                // Butun olma tanlandi - bosqich yutildi
+                gameState.stageWon = true;
+                gameState.canProceed = true;
+                
+                // Agar 2-7 bosqich oralig'ida tasodifiy o'yin yakunlansa
+                if (currentStage >= 2 && currentStage <= 7) {
+                    const randomChance = Math.random();
+                    if (randomChance < 0.3) { // 30% ehtimollik bilan o'yin yakunlansin
+                        winGame();
+                        return;
+                    }
+                }
+                
+                showToast(translations[currentLang].nextStageReady, 'success');
+            } else {
+                // Tishlangan olma tanlandi - o'yin tugadi
+                gameState.gameOver = true;
+                gameState.canProceed = false;
+                
                 showToast(translations[currentLang].errorSignal, 'error');
+                
+                // 2 soniyadan keyin modalni yopish
                 setTimeout(() => {
                     closeModal('gameModal');
-                }, 1500);
-            } else {
-                // Win
-                userData.balance += 100;
-                userData.signals++;
-                updateUI();
-                saveData();
-                
-                showToast(translations[currentLang].successSignal, 'success');
-                
-                setTimeout(() => {
-                    if (currentRound < 6) {
-                        currentRound++;
-                        createApples();
-                        gameActive = true;
-                    } else {
-                        closeModal('gameModal');
-                        currentRound = 1;
+                }, 2000);
+            }
+            
+            updateGameUI();
+        }
+
+        function winGame() {
+            gameState.gameOver = true;
+            gameState.canProceed = false;
+            
+            // Yutuq berish
+            const prize = 100 * currentStage; // Bosqichga qarab mukofot
+            userData.balance += prize;
+            userData.signals++;
+            updateUI();
+            saveData();
+            
+            showToast(translations[currentLang].winGame + ` +$${prize}`, 'success');
+            
+            // 2 soniyadan keyin modalni yopish
+            setTimeout(() => {
+                closeModal('gameModal');
+            }, 3000);
+        }
+
+        function nextStage() {
+            if (!gameState.canProceed || gameState.gameOver) return;
+            
+            // Animatsiya bilan keyingi bosqichga o'tish
+            const container = document.getElementById('gameApplesContainer');
+            if (container) {
+                container.classList.add('apple-slide-out');
+            }
+            
+            setTimeout(() => {
+                if (currentStage < 7) {
+                    currentStage++;
+                    
+                    if (container) {
+                        container.classList.remove('apple-slide-out');
+                        container.classList.add('apple-slide-in');
                     }
-                }, 1500);
+                    
+                    createApples();
+                    
+                    setTimeout(() => {
+                        if (container) {
+                            container.classList.remove('apple-slide-in');
+                        }
+                    }, 500);
+                } else {
+                    // 7-bosqich tugadi
+                    winGame();
+                }
+                
+                updateGameUI();
+            }, 500);
+        }
+
+        function updateGameUI() {
+            // Bosqich raqamini yangilash
+            document.getElementById('currentStage').textContent = currentStage;
+            
+            // Tugmalarni yangilash
+            const revealBtn = document.getElementById('revealApplesBtn');
+            const nextBtn = document.getElementById('nextStageBtn');
+            
+            if (revealBtn) {
+                if (gameState.applesRevealed || gameState.gameOver) {
+                    revealBtn.disabled = true;
+                } else {
+                    revealBtn.disabled = false;
+                }
+            }
+            
+            if (nextBtn) {
+                if (gameState.canProceed && !gameState.gameOver) {
+                    nextBtn.disabled = false;
+                } else {
+                    nextBtn.disabled = true;
+                }
+            }
+            
+            // Ko'rsatma matnini yangilash
+            const instruction = document.getElementById('gameInstruction');
+            if (instruction) {
+                if (!gameState.applesRevealed) {
+                    instruction.textContent = translations[currentLang].gameInstruction;
+                } else if (!gameState.selectedApple && !gameState.gameOver) {
+                    instruction.textContent = translations[currentLang].chooseApple;
+                } else if (gameState.stageWon) {
+                    instruction.textContent = translations[currentLang].nextStageReady;
+                }
             }
         }
 
