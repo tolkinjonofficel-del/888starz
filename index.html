@@ -608,19 +608,28 @@
             color: var(--gray);
         }
 
-        /* Yangilangan olmalar konteyneri */
+        /* YANGI: Bir qatorga sig'adigan olmalar konteyneri */
         .game-apples-container {
             display: flex;
             justify-content: center;
+            align-items: center;
             gap: 8px;
             margin: 20px 0;
-            flex-wrap: wrap;
-            max-width: 100%;
+            width: 100%;
+            overflow-x: auto;
+            padding: 10px 0;
+            scrollbar-width: none; /* Firefox */
+            -ms-overflow-style: none; /* IE/Edge */
+        }
+
+        .game-apples-container::-webkit-scrollbar {
+            display: none; /* Chrome/Safari */
         }
 
         .game-apple {
             width: 60px;
             height: 60px;
+            min-width: 60px;
             border-radius: 50%;
             background-size: cover;
             background-position: center;
@@ -631,17 +640,29 @@
             flex-shrink: 0;
         }
 
+        /* Kichik ekranlar uchun moslashuvchan o'lcham */
         @media (max-width: 380px) {
             .game-apple {
-                width: 52px;
-                height: 52px;
+                width: 50px;
+                height: 50px;
+                min-width: 50px;
             }
         }
 
         @media (max-width: 320px) {
             .game-apple {
-                width: 48px;
-                height: 48px;
+                width: 45px;
+                height: 45px;
+                min-width: 45px;
+            }
+        }
+
+        /* Juda kichik ekranlar uchun */
+        @media (max-width: 280px) {
+            .game-apple {
+                width: 40px;
+                height: 40px;
+                min-width: 40px;
             }
         }
 
@@ -685,6 +706,59 @@
             font-size: 12px;
             color: var(--gray);
             line-height: 1.4;
+        }
+
+        /* YANGI: O'yin tugaganidagi markaziy xabar */
+        .game-result-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(5px);
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 10;
+            border-radius: 16px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .game-result-overlay.active {
+            display: flex;
+        }
+
+        .result-icon {
+            font-size: 60px;
+            margin-bottom: 20px;
+            animation: bounce 1s ease infinite;
+        }
+
+        .result-title {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--light);
+            margin-bottom: 10px;
+        }
+
+        .result-message {
+            font-size: 16px;
+            color: var(--accent);
+            margin-bottom: 20px;
+        }
+
+        .result-prize {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--success);
+            margin-bottom: 30px;
+            background: rgba(76, 175, 80, 0.1);
+            padding: 12px 24px;
+            border-radius: 12px;
+            border: 1px solid var(--success);
         }
 
         /* Yangilangan game actions */
@@ -740,13 +814,24 @@
             cursor: not-allowed;
         }
 
-        /* Animatsiya klassi */
-        .apple-slide-out {
-            animation: slideOut 0.5s ease forwards;
+        .btn-success {
+            background: linear-gradient(135deg, var(--success), #2e7d32);
+            color: white;
+            margin-top: 10px;
         }
 
-        .apple-slide-in {
-            animation: slideIn 0.5s ease forwards;
+        .btn-success:hover {
+            transform: translateY(-2px);
+        }
+
+        /* Animatsiyalar */
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
         }
 
         @keyframes slideOut {
@@ -769,6 +854,21 @@
                 transform: translateX(0);
                 opacity: 1;
             }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.5s ease forwards;
         }
 
         /* ============ VIP MODAL ============ */
@@ -948,6 +1048,11 @@
             
             .action-card {
                 padding: 12px 6px;
+            }
+            
+            .game-actions .btn {
+                min-width: 100px;
+                padding: 12px;
             }
         }
 
@@ -1379,6 +1484,21 @@
                     <p class="game-subtitle" id="gameSubtitle">Butun olmalarni tanlang</p>
                 </div>
                 
+                <!-- YANGI: O'yin tugaganidagi markaziy xabar -->
+                <div class="game-result-overlay" id="gameResultOverlay">
+                    <div class="result-icon" id="resultIcon">🎉</div>
+                    <h2 class="result-title" id="resultTitle">TABRIKLAYMIZ!</h2>
+                    <div class="result-message" id="resultMessage">Yutuqni oling!</div>
+                    <div class="result-prize" id="resultPrize">+$100</div>
+                    <button class="btn btn-success" id="restartGameBtn">
+                        <i class="fas fa-redo"></i> <span id="restartGameText">QAYTA BOSHLASH</span>
+                    </button>
+                    <button class="btn btn-secondary" id="closeGameBtn" style="margin-top: 10px;">
+                        <i class="fas fa-times"></i> <span id="closeGameText">YOPISH</span>
+                    </button>
+                </div>
+                
+                <!-- O'lchamga qarab bir qatorga sig'adigan olmalar -->
                 <div class="game-apples-container" id="gameApplesContainer">
                     <!-- 5 ta olma bu yerga qo'shiladi -->
                 </div>
@@ -1503,7 +1623,12 @@
                 successBonus: "✅ Bonus olindi!",
                 successInvite: "✅ Do'st taklif qilindi!",
                 loading: "⏳ Yuklanmoqda...",
-                winGame: "🎉 Tabriklaymiz! Yutuqni oling!",
+                winGame: "TABRIKLAYMIZ!",
+                winMessage: "Yutuqni oling!",
+                loseGame: "O'YIN TUGADI",
+                loseMessage: "Keyinroq urinib ko'ring",
+                restartGameText: "QAYTA BOSHLASH",
+                closeGameText: "YOPISH",
                 chooseApple: "🫱 Iltimos, olma tanlang",
                 applesRevealed: "👁️ Olmalar ko'rsatildi",
                 nextStageReady: "👉 Keyingi bosqichga o'tish mumkin"
@@ -1546,7 +1671,12 @@
                 successBonus: "✅ Бонус получен!",
                 successInvite: "✅ Друг приглашен!",
                 loading: "⏳ Загрузка...",
-                winGame: "🎉 Поздравляем! Получите приз!",
+                winGame: "ПОЗДРАВЛЯЕМ!",
+                winMessage: "Получите приз!",
+                loseGame: "ИГРА ОКОНЧЕНА",
+                loseMessage: "Попробуйте позже",
+                restartGameText: "ПЕРЕЗАПУСТИТЬ",
+                closeGameText: "ЗАКРЫТЬ",
                 chooseApple: "🫱 Пожалуйста, выберите яблоко",
                 applesRevealed: "👁️ Яблоки показаны",
                 nextStageReady: "👉 Можно перейти на следующий этап"
@@ -1589,7 +1719,12 @@
                 successBonus: "✅ Bonus received!",
                 successInvite: "✅ Friend invited!",
                 loading: "⏳ Loading...",
-                winGame: "🎉 Congratulations! Get your prize!",
+                winGame: "CONGRATULATIONS!",
+                winMessage: "Get your prize!",
+                loseGame: "GAME OVER",
+                loseMessage: "Try again later",
+                restartGameText: "RESTART GAME",
+                closeGameText: "CLOSE",
                 chooseApple: "🫱 Please choose an apple",
                 applesRevealed: "👁️ Apples revealed",
                 nextStageReady: "👉 Can go to next stage"
@@ -1632,7 +1767,12 @@
                 successBonus: "✅ تم استلام المكافأة!",
                 successInvite: "✅ تمت دعوة الصديق!",
                 loading: "⏳ جاري التحميل...",
-                winGame: "🎉 مبروك! احصل على جائزتك!",
+                winGame: "مبروك!",
+                winMessage: "احصل على جائزتك!",
+                loseGame: "انتهت اللعبة",
+                loseMessage: "حاول مرة أخرى لاحقًا",
+                restartGameText: "إعادة التشغيل",
+                closeGameText: "إغلاق",
                 chooseApple: "🫱 الرجاء اختيار تفاحة",
                 applesRevealed: "👁️ تم عرض التفاح",
                 nextStageReady: "👉 يمكن الانتقال إلى المرحلة التالية"
@@ -1655,7 +1795,8 @@
             gameOver: false,
             selectedApple: null,
             apples: [],
-            stageWon: false
+            stageWon: false,
+            resultType: null // 'win' or 'lose'
         };
 
         // ==================== INITIALIZATION ====================
@@ -1739,6 +1880,8 @@
             // Game buttons
             document.getElementById('revealApplesBtn').addEventListener('click', revealApples);
             document.getElementById('nextStageBtn').addEventListener('click', nextStage);
+            document.getElementById('restartGameBtn').addEventListener('click', restartGame);
+            document.getElementById('closeGameBtn').addEventListener('click', () => closeModal('gameModal'));
 
             // Action buttons
             document.getElementById('getVipBtn').addEventListener('click', getVip);
@@ -1886,8 +2029,12 @@
                 gameOver: false,
                 selectedApple: null,
                 apples: [],
-                stageWon: false
+                stageWon: false,
+                resultType: null
             };
+            
+            // Hide result overlay
+            document.getElementById('gameResultOverlay').classList.remove('active');
             
             createApples();
             updateGameUI();
@@ -1936,6 +2083,7 @@
             gameState.canProceed = false;
             gameState.selectedApple = null;
             gameState.stageWon = false;
+            gameState.resultType = null;
             
             // Olmalarni ekranga chiqarish
             renderApples();
@@ -1950,10 +2098,12 @@
             
             container.innerHTML = '';
             
-            gameState.apples.forEach((appleType, index) => {
+            // Har doim 5 ta olma
+            for (let i = 0; i < 5; i++) {
+                const appleType = gameState.apples[i];
                 const apple = document.createElement('div');
                 apple.className = 'game-apple apple-mystery';
-                apple.dataset.index = index;
+                apple.dataset.index = i;
                 apple.dataset.type = appleType;
                 
                 // Agar olmalar ko'rsatilgan bo'lsa
@@ -1963,14 +2113,14 @@
                 }
                 
                 // Tanlangan olmani belgilash
-                if (gameState.selectedApple === index) {
+                if (gameState.selectedApple === i) {
                     apple.style.transform = 'scale(1.1)';
                     apple.style.boxShadow = '0 0 15px rgba(0, 188, 212, 0.7)';
                 }
                 
-                apple.addEventListener('click', () => selectApple(index));
+                apple.addEventListener('click', () => selectApple(i));
                 container.appendChild(apple);
-            });
+            }
         }
 
         function shuffleArray(array) {
@@ -2018,7 +2168,7 @@
                 if (currentStage >= 2 && currentStage <= 7) {
                     const randomChance = Math.random();
                     if (randomChance < 0.3) { // 30% ehtimollik bilan o'yin yakunlansin
-                        winGame();
+                        showGameResult('win');
                         return;
                     }
                 }
@@ -2026,71 +2176,82 @@
                 showToast(translations[currentLang].nextStageReady, 'success');
             } else {
                 // Tishlangan olma tanlandi - o'yin tugadi
-                gameState.gameOver = true;
-                gameState.canProceed = false;
-                
-                showToast(translations[currentLang].errorSignal, 'error');
-                
-                // 2 soniyadan keyin modalni yopish
-                setTimeout(() => {
-                    closeModal('gameModal');
-                }, 2000);
+                showGameResult('lose');
             }
             
             updateGameUI();
         }
 
-        function winGame() {
+        function showGameResult(resultType) {
             gameState.gameOver = true;
             gameState.canProceed = false;
+            gameState.resultType = resultType;
             
-            // Yutuq berish
-            const prize = 100 * currentStage; // Bosqichga qarab mukofot
-            userData.balance += prize;
-            userData.signals++;
-            updateUI();
-            saveData();
+            const overlay = document.getElementById('gameResultOverlay');
+            const resultIcon = document.getElementById('resultIcon');
+            const resultTitle = document.getElementById('resultTitle');
+            const resultMessage = document.getElementById('resultMessage');
+            const resultPrize = document.getElementById('resultPrize');
             
-            showToast(translations[currentLang].winGame + ` +$${prize}`, 'success');
+            if (resultType === 'win') {
+                // Yutuq berish
+                const prize = 100 * currentStage; // Bosqichga qarab mukofot
+                userData.balance += prize;
+                userData.signals++;
+                updateUI();
+                saveData();
+                
+                resultIcon.textContent = '🎉';
+                resultIcon.style.color = '#4caf50';
+                resultTitle.textContent = translations[currentLang].winGame;
+                resultMessage.textContent = translations[currentLang].winMessage;
+                resultPrize.textContent = `+$${prize}`;
+                resultPrize.style.display = 'block';
+            } else {
+                resultIcon.textContent = '😔';
+                resultIcon.style.color = '#f44336';
+                resultTitle.textContent = translations[currentLang].loseGame;
+                resultMessage.textContent = translations[currentLang].loseMessage;
+                resultPrize.style.display = 'none';
+            }
             
-            // 2 soniyadan keyin modalni yopish
-            setTimeout(() => {
-                closeModal('gameModal');
-            }, 3000);
+            // Markaziy xabarni ko'rsatish
+            overlay.classList.add('active');
+            overlay.classList.add('fade-in');
+        }
+
+        function restartGame() {
+            // O'yinni qayta boshlash
+            currentStage = 1;
+            gameState = {
+                applesRevealed: false,
+                canProceed: false,
+                gameOver: false,
+                selectedApple: null,
+                apples: [],
+                stageWon: false,
+                resultType: null
+            };
+            
+            // Result overlayni yopish
+            document.getElementById('gameResultOverlay').classList.remove('active');
+            
+            createApples();
+            updateGameUI();
         }
 
         function nextStage() {
             if (!gameState.canProceed || gameState.gameOver) return;
             
-            // Animatsiya bilan keyingi bosqichga o'tish
-            const container = document.getElementById('gameApplesContainer');
-            if (container) {
-                container.classList.add('apple-slide-out');
+            if (currentStage < 7) {
+                currentStage++;
+                createApples();
+            } else {
+                // 7-bosqich tugadi
+                showGameResult('win');
             }
             
-            setTimeout(() => {
-                if (currentStage < 7) {
-                    currentStage++;
-                    
-                    if (container) {
-                        container.classList.remove('apple-slide-out');
-                        container.classList.add('apple-slide-in');
-                    }
-                    
-                    createApples();
-                    
-                    setTimeout(() => {
-                        if (container) {
-                            container.classList.remove('apple-slide-in');
-                        }
-                    }, 500);
-                } else {
-                    // 7-bosqich tugadi
-                    winGame();
-                }
-                
-                updateGameUI();
-            }, 500);
+            updateGameUI();
         }
 
         function updateGameUI() {
