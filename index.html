@@ -252,6 +252,20 @@
             margin-bottom: 4px;
         }
 
+        /* YANGI: ID raqami ko'rsatish uchun */
+        .user-id {
+            display: inline-block;
+            padding: 4px 12px;
+            background: rgba(0, 188, 212, 0.2);
+            color: var(--primary);
+            border-radius: 12px;
+            font-size: 11px;
+            font-weight: 700;
+            font-family: 'Courier New', monospace;
+            letter-spacing: 1px;
+            border: 1px solid rgba(0, 188, 212, 0.3);
+        }
+
         .user-level {
             display: inline-block;
             padding: 4px 12px;
@@ -260,6 +274,7 @@
             border-radius: 12px;
             font-size: 11px;
             font-weight: 700;
+            margin-top: 4px;
         }
 
         .stats-grid {
@@ -667,6 +682,38 @@
             margin-top: 8px;
         }
 
+        /* YANGI: Taymer sanalayotganda olmalar o'rniga xabar */
+        .timer-active-message {
+            background: rgba(255, 152, 0, 0.1);
+            border: 1px solid var(--accent);
+            border-radius: 12px;
+            padding: 20px;
+            margin: 20px 0;
+            text-align: center;
+            display: none;
+        }
+
+        .timer-active-message.active {
+            display: block;
+        }
+
+        .timer-icon {
+            font-size: 40px;
+            color: var(--accent);
+            margin-bottom: 12px;
+        }
+
+        .timer-message {
+            font-size: 14px;
+            color: var(--light);
+            margin-bottom: 8px;
+        }
+
+        .timer-submessage {
+            font-size: 12px;
+            color: var(--gray);
+        }
+
         /* Bir qatorga sig'adigan olmalar konteyneri */
         .game-apples-container {
             display: flex;
@@ -828,7 +875,8 @@
             margin-bottom: 20px;
         }
 
-        .result-prize {
+        /* YANGI: Yutuq miqdori o'chirildi */
+        /* .result-prize {
             font-size: 20px;
             font-weight: 700;
             color: var(--success);
@@ -837,7 +885,7 @@
             padding: 12px 24px;
             border-radius: 12px;
             border: 1px solid var(--success);
-        }
+        } */
 
         /* YANGI: HACKING animatsiyasi - yorqin yashil rangda */
         .stage-transition {
@@ -1388,7 +1436,9 @@
                     </div>
                     <div class="user-details">
                         <h3 id="userName">Foydalanuvchi</h3>
-                        <span class="user-level" id="userLevel">BOSHLANG'ICH</span>
+                        <!-- YANGI: ID raqami ko'rsatish -->
+                        <div class="user-id" id="userIdDisplay">ID: 12345678901</div>
+                        <div class="user-level" id="userLevel">BOSHLANG'ICH</div>
                     </div>
                 </div>
                 
@@ -1725,7 +1775,7 @@
                     <div class="result-icon" id="resultIcon">🎉</div>
                     <h2 class="result-title" id="resultTitle">TABRIKLAYMIZ!</h2>
                     <div class="result-message" id="resultMessage">Yutuqni oling!</div>
-                    <div class="result-prize" id="resultPrize">+$100</div>
+                    <!-- YANGI: Yutuq miqdori o'chirildi -->
                     
                     <!-- VIP signal olish tugmasi -->
                     <button class="btn btn-vip" id="getVipSignalBtn">
@@ -1768,6 +1818,15 @@
                         <p class="game-subtitle" id="gameSubtitle">Butun olmalarni tanlang</p>
                     </div>
                     
+                    <!-- YANGI: Taymer sanalayotganda xabar -->
+                    <div class="timer-active-message" id="timerActiveMessage">
+                        <div class="timer-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="timer-message">Keyingi signalni kutmoqdasiz</div>
+                        <div class="timer-submessage" id="timerSubmessage">Taymer tugagandan so'ng signal olish mumkin</div>
+                    </div>
+                    
                     <!-- Taymer uchun qism -->
                     <div class="next-signal-timer" id="nextSignalTimer">
                         <div class="timer-title">KEYINGI SIGNAL</div>
@@ -1775,7 +1834,7 @@
                         <div class="timer-note">VIP signal olish uchun yuqoridagi tugmani bosing</div>
                     </div>
                     
-                    <!-- O'lchamga qarab bir qatorga sig'adigan olmalar -->
+                    <!-- YANGI: Taymer sanalayotganda olmalar ko'rsatilmaydi -->
                     <div class="game-apples-container" id="gameApplesContainer">
                         <!-- 5 ta olma bu yerga qo'shiladi -->
                     </div>
@@ -1894,7 +1953,7 @@
                 bonusDescText: "AIFUT promokodi bilan ro'yxatdan o'ting va darhol 200% bonus oling. Bonus birinchi depozitingizga qo'shiladi.",
                 getBonusText: "BONUS OLISH",
                 inviteFriendsText: "TAKLIF QILISH",
-                successSignal: "✅ Signal olindi! +$100",
+                successSignal: "✅ Signal olindi!",
                 errorSignal: "❌ O'yin tugadi.",
                 successBonus: "✅ Bonus olindi!",
                 successInvite: "✅ Do'st taklif qilindi!",
@@ -1916,7 +1975,9 @@
                 idRequired: "⚠️ Iltimos, ID raqamingizni kiriting",
                 idInvalid: "❌ Noto'g'ri ID raqam. 1 dan boshlangan 9-11 xonali son kiriting",
                 idVerified: "✅ ID raqam tasdiqlandi! Signal olish mumkin",
-                idExample: "Misol: 12345678901"
+                idExample: "Misol: 12345678901",
+                timerActiveMessage: "Keyingi signalni kutmoqdasiz",
+                timerSubmessage: "Taymer tugagandan so'ng signal olish mumkin"
             },
             ru: {
                 languageTitle: "Apple Fortune",
@@ -1952,7 +2013,7 @@
                 bonusDescText: "Зарегистрируйтесь с промокодом AIFUT и получите 200% бонус сразу. Бонус будет добавлен к вашему первому депозиту.",
                 getBonusText: "ПОЛУЧИТЬ БОНУС",
                 inviteFriendsText: "ПРИГЛАСИТЬ",
-                successSignal: "✅ Сигнал получен! +$100",
+                successSignal: "✅ Сигнал получен!",
                 errorSignal: "❌ Игра окончена.",
                 successBonus: "✅ Бонус получен!",
                 successInvite: "✅ Друг приглашен!",
@@ -1974,7 +2035,9 @@
                 idRequired: "⚠️ Пожалуйста, введите ваш ID номер",
                 idInvalid: "❌ Неверный ID номер. Введите число от 9 до 11 цифр, начинающееся с 1",
                 idVerified: "✅ ID номер подтвержден! Можно получать сигналы",
-                idExample: "Пример: 12345678901"
+                idExample: "Пример: 12345678901",
+                timerActiveMessage: "Вы ждете следующий сигнал",
+                timerSubmessage: "Можно получить сигнал после завершения таймера"
             },
             en: {
                 languageTitle: "Apple Fortune",
@@ -2010,7 +2073,7 @@
                 bonusDescText: "Register with AIFUT promo code and get 200% bonus immediately. Bonus will be added to your first deposit.",
                 getBonusText: "GET BONUS",
                 inviteFriendsText: "INVITE",
-                successSignal: "✅ Signal received! +$100",
+                successSignal: "✅ Signal received!",
                 errorSignal: "❌ Game over.",
                 successBonus: "✅ Bonus received!",
                 successInvite: "✅ Friend invited!",
@@ -2032,7 +2095,9 @@
                 idRequired: "⚠️ Please enter your ID number",
                 idInvalid: "❌ Invalid ID number. Enter a 9-11 digit number starting with 1",
                 idVerified: "✅ ID number verified! Can get signals now",
-                idExample: "Example: 12345678901"
+                idExample: "Example: 12345678901",
+                timerActiveMessage: "Waiting for next signal",
+                timerSubmessage: "You can get signal after timer ends"
             },
             ar: {
                 languageTitle: "Apple Fortune",
@@ -2068,7 +2133,7 @@
                 bonusDescText: "سجل باستخدام الرمز الترويجي AIFUT واحصل على مكافأة 200٪ على الفور. ستتم إضافة المكافأة إلى إيداعك الأول.",
                 getBonusText: "الحصول على مكافأة",
                 inviteFriendsText: "دعوة",
-                successSignal: "✅ تم استلام الإشارة! +$100",
+                successSignal: "✅ تم استلام الإشارة!",
                 errorSignal: "❌ انتهت اللعبة.",
                 successBonus: "✅ تم استلام المكافأة!",
                 successInvite: "✅ تمت دعوة الصديق!",
@@ -2090,7 +2155,9 @@
                 idRequired: "⚠️ يرجى إدخال رقم المعرف الخاص بك",
                 idInvalid: "❌ رقم معرف غير صالح. أدخل رقمًا مكونًا من 9-11 رقمًا يبدأ بـ 1",
                 idVerified: "✅ تم التحقق من رقم المعرف! يمكنك الحصول على الإشارات الآن",
-                idExample: "مثال: 12345678901"
+                idExample: "مثال: 12345678901",
+                timerActiveMessage: "في انتظار الإشارة التالية",
+                timerSubmessage: "يمكنك الحصول على إشارة بعد انتهاء المؤقت"
             }
         };
 
@@ -2114,7 +2181,8 @@
             resultType: null,
             timerRunning: false,
             timerEndTime: null,
-            idVerified: false
+            idVerified: false,
+            userId: null
         };
 
         // ==================== INITIALIZATION ====================
@@ -2141,9 +2209,16 @@
             }
 
             // Check if ID is already verified
-            const savedId = localStorage.getItem('appleFortuneIdVerified');
-            if (savedId === 'true') {
+            const savedIdVerified = localStorage.getItem('appleFortuneIdVerified');
+            if (savedIdVerified === 'true') {
                 gameState.idVerified = true;
+            }
+
+            // Load saved user ID
+            const savedUserId = localStorage.getItem('appleFortuneUserId');
+            if (savedUserId) {
+                gameState.userId = savedUserId;
+                updateUserIdDisplay();
             }
 
             // Setup event listeners
@@ -2275,6 +2350,20 @@
             document.getElementById('signals').textContent = userData.signals;
             document.getElementById('accuracy').textContent = `${userData.accuracy}%`;
             document.getElementById('friends').textContent = userData.friends;
+            
+            // Update user ID display
+            updateUserIdDisplay();
+        }
+
+        function updateUserIdDisplay() {
+            const idDisplay = document.getElementById('userIdDisplay');
+            if (idDisplay && gameState.userId) {
+                // Format ID for display (add spaces for readability)
+                const formattedId = gameState.userId.replace(/(\d{4})(?=\d)/g, '$1 ');
+                idDisplay.textContent = `ID: ${formattedId}`;
+            } else if (idDisplay) {
+                idDisplay.textContent = `ID: 12345678901`;
+            }
         }
 
         function generateSignals() {
@@ -2378,7 +2467,8 @@
                 resultType: null,
                 timerRunning: gameState.timerRunning,
                 timerEndTime: gameState.timerEndTime,
-                idVerified: gameState.idVerified
+                idVerified: gameState.idVerified,
+                userId: gameState.userId
             };
             
             // Hide result overlay and transition
@@ -2388,23 +2478,41 @@
             // Show/hide ID input or game section
             const idInputSection = document.getElementById('idInputSection');
             const gameSection = document.getElementById('gameSection');
+            const timerActiveMessage = document.getElementById('timerActiveMessage');
+            const applesContainer = document.getElementById('gameApplesContainer');
             
             if (gameState.idVerified) {
-                // ID already verified, show game
+                // ID already verified, show game or timer message
                 idInputSection.style.display = 'none';
                 gameSection.style.display = 'block';
                 
-                // Show/hide timer
-                const timerElement = document.getElementById('nextSignalTimer');
-                if (timerElement) {
-                    if (gameState.timerRunning) {
+                if (gameState.timerRunning) {
+                    // Taymer sanalayotganda
+                    timerActiveMessage.style.display = 'block';
+                    applesContainer.style.display = 'none';
+                    
+                    // Show timer
+                    const timerElement = document.getElementById('nextSignalTimer');
+                    if (timerElement) {
                         timerElement.style.display = 'block';
-                    } else {
+                    }
+                    
+                    // Disable game buttons
+                    document.getElementById('revealApplesBtn').disabled = true;
+                    document.getElementById('nextStageBtn').disabled = true;
+                } else {
+                    // Taymer sanalmayotganda
+                    timerActiveMessage.style.display = 'none';
+                    applesContainer.style.display = 'flex';
+                    
+                    // Hide timer
+                    const timerElement = document.getElementById('nextSignalTimer');
+                    if (timerElement) {
                         timerElement.style.display = 'none';
                     }
+                    
+                    createApples();
                 }
-                
-                createApples();
             } else {
                 // ID not verified, show input
                 idInputSection.style.display = 'block';
@@ -2466,7 +2574,12 @@
             
             // ID is valid
             gameState.idVerified = true;
+            gameState.userId = value;
             localStorage.setItem('appleFortuneIdVerified', 'true');
+            localStorage.setItem('appleFortuneUserId', value);
+            
+            // Update ID display
+            updateUserIdDisplay();
             
             // Hide ID input, show game
             document.getElementById('idInputSection').style.display = 'none';
@@ -2561,7 +2674,7 @@
         }
 
         function revealApples() {
-            if (gameState.applesRevealed || gameState.gameOver) return;
+            if (gameState.applesRevealed || gameState.gameOver || gameState.timerRunning) return;
             
             gameState.applesRevealed = true;
             renderApples();
@@ -2579,7 +2692,7 @@
         }
 
         function selectApple(index) {
-            if (!gameState.applesRevealed || gameState.gameOver || gameState.stageWon) return;
+            if (!gameState.applesRevealed || gameState.gameOver || gameState.stageWon || gameState.timerRunning) return;
             
             const appleType = gameState.apples[index];
             gameState.selectedApple = index;
@@ -2610,10 +2723,9 @@
             const resultIcon = document.getElementById('resultIcon');
             const resultTitle = document.getElementById('resultTitle');
             const resultMessage = document.getElementById('resultMessage');
-            const resultPrize = document.getElementById('resultPrize');
             
             if (resultType === 'win') {
-                // Yutuq berish
+                // YANGI: Yutuq miqdori ko'rsatilmaydi
                 const prize = 100 * currentStage; // Bosqichga qarab mukofot
                 userData.balance += prize;
                 userData.signals++;
@@ -2627,14 +2739,15 @@
                 resultIcon.style.color = '#4caf50';
                 resultTitle.textContent = translations[currentLang].winGame;
                 resultMessage.textContent = translations[currentLang].winMessage;
-                resultPrize.textContent = `+$${prize}`;
-                resultPrize.style.display = 'block';
+                
+                showToast(translations[currentLang].successSignal, 'success');
             } else {
                 resultIcon.textContent = '😔';
                 resultIcon.style.color = '#f44336';
                 resultTitle.textContent = translations[currentLang].loseGame;
                 resultMessage.textContent = translations[currentLang].loseMessage;
-                resultPrize.style.display = 'none';
+                
+                showToast(translations[currentLang].errorSignal, 'error');
             }
             
             // Markaziy xabarni ko'rsatish
@@ -2716,7 +2829,8 @@
                 resultType: null,
                 timerRunning: gameState.timerRunning,
                 timerEndTime: gameState.timerEndTime,
-                idVerified: gameState.idVerified
+                idVerified: gameState.idVerified,
+                userId: gameState.userId
             };
             
             // Result overlayni yopish
@@ -2727,7 +2841,7 @@
         }
 
         function nextStage() {
-            if (!gameState.canProceed || gameState.gameOver) return;
+            if (!gameState.canProceed || gameState.gameOver || gameState.timerRunning) return;
             
             if (currentStage < 7) {
                 currentStage++;
@@ -2759,7 +2873,7 @@
             const nextBtn = document.getElementById('nextStageBtn');
             
             if (revealBtn) {
-                if (gameState.applesRevealed || gameState.gameOver) {
+                if (gameState.applesRevealed || gameState.gameOver || gameState.timerRunning) {
                     revealBtn.disabled = true;
                 } else {
                     revealBtn.disabled = false;
@@ -2767,7 +2881,7 @@
             }
             
             if (nextBtn) {
-                if (gameState.canProceed && !gameState.gameOver) {
+                if (gameState.canProceed && !gameState.gameOver && !gameState.timerRunning) {
                     nextBtn.disabled = false;
                 } else {
                     nextBtn.disabled = true;
@@ -2800,11 +2914,8 @@
             // Taymerni boshlash
             startTimer();
             
-            // Taymer elementini ko'rsatish
-            const timerElement = document.getElementById('nextSignalTimer');
-            if (timerElement) {
-                timerElement.style.display = 'block';
-            }
+            // UI ni yangilash
+            updateTimerUI();
         }
 
         function startTimer() {
@@ -2821,10 +2932,8 @@
                     gameState.timerRunning = false;
                     localStorage.removeItem('appleFortuneTimer');
                     
-                    const timerElement = document.getElementById('nextSignalTimer');
-                    if (timerElement) {
-                        timerElement.style.display = 'none';
-                    }
+                    // UI ni yangilash
+                    updateTimerUI();
                     return;
                 }
                 
@@ -2844,6 +2953,32 @@
             }
             
             updateTimer();
+        }
+
+        function updateTimerUI() {
+            const timerActiveMessage = document.getElementById('timerActiveMessage');
+            const timerElement = document.getElementById('nextSignalTimer');
+            const applesContainer = document.getElementById('gameApplesContainer');
+            const revealBtn = document.getElementById('revealApplesBtn');
+            const nextBtn = document.getElementById('nextStageBtn');
+            
+            if (gameState.timerRunning) {
+                // Taymer sanalayotganda
+                if (timerActiveMessage) timerActiveMessage.style.display = 'block';
+                if (timerElement) timerElement.style.display = 'block';
+                if (applesContainer) applesContainer.style.display = 'none';
+                if (revealBtn) revealBtn.disabled = true;
+                if (nextBtn) nextBtn.disabled = true;
+            } else {
+                // Taymer sanalmayotganda
+                if (timerActiveMessage) timerActiveMessage.style.display = 'none';
+                if (timerElement) timerElement.style.display = 'none';
+                if (applesContainer) applesContainer.style.display = 'flex';
+                if (revealBtn) revealBtn.disabled = false;
+                if (nextBtn && gameState.canProceed && !gameState.gameOver) {
+                    nextBtn.disabled = false;
+                }
+            }
         }
 
         // ==================== ACTION FUNCTIONS ====================
@@ -2869,8 +3004,8 @@
         }
 
         function inviteFriends() {
-            const shareMessage = `🎯 ${translations[currentLang].signalTitle} | Apple Fortune\n\n${translations[currentLang].inviteFriendsText}\n👉 t.me/Strategioyinlar_bot\n\nID: 1234567890\n\n#AppleFortune`;
-            const shareUrl = `https://t.me/share/url?url=https://t.me/Strategioyinlar_bot?start=1234567890&text=${encodeURIComponent(shareMessage)}`;
+            const shareMessage = `🎯 ${translations[currentLang].signalTitle} | Apple Fortune\n\n${translations[currentLang].inviteFriendsText}\n👉 t.me/Strategioyinlar_bot\n\nID: ${gameState.userId || '1234567890'}\n\n#AppleFortune`;
+            const shareUrl = `https://t.me/share/url?url=https://t.me/Strategioyinlar_bot?start=${gameState.userId || '1234567890'}&text=${encodeURIComponent(shareMessage)}`;
             window.open(shareUrl, '_blank');
             showToast(translations[currentLang].successInvite, 'success');
         }
