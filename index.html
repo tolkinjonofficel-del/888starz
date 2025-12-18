@@ -41,6 +41,85 @@
             overflow-x: hidden;
         }
 
+        /* ============ BUTTON STYLES ============ */
+        .btn {
+            padding: 12px 20px;
+            border: none;
+            border-radius: 12px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: all 0.2s ease;
+            text-decoration: none;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+        }
+
+        .btn-primary:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 188, 212, 0.3);
+        }
+
+        .btn-secondary {
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            color: var(--light);
+        }
+
+        .btn-secondary:hover:not(:disabled) {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .btn-success {
+            background: linear-gradient(135deg, var(--success), #2e7d32);
+            color: white;
+        }
+
+        .btn-success:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(76, 175, 80, 0.3);
+        }
+
+        .btn-danger {
+            background: linear-gradient(135deg, var(--danger), #c62828);
+            color: white;
+        }
+
+        .btn-danger:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(244, 67, 54, 0.3);
+        }
+
+        .btn-vip {
+            background: linear-gradient(135deg, #ff9800, #ff5722);
+            color: white;
+        }
+
+        .btn-vip:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(255, 152, 0, 0.3);
+        }
+
+        .btn-small {
+            padding: 6px 12px;
+            font-size: 11px;
+            border-radius: 8px;
+        }
+
+        .btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none !important;
+        }
+
         /* ============ LANGUAGE SELECTOR ============ */
         #languageSelector {
             position: fixed;
@@ -210,6 +289,14 @@
             justify-content: center;
         }
 
+        /* ============ YANGI: USER ACTIONS ============ */
+        .user-actions {
+            display: flex;
+            gap: 8px;
+            margin-top: 12px;
+            flex-wrap: wrap;
+        }
+
         /* ============ USER STATS ============ */
         .user-stats {
             padding: 20px;
@@ -224,9 +311,6 @@
         }
 
         .user-info {
-            display: flex;
-            align-items: center;
-            gap: 12px;
             margin-bottom: 20px;
         }
 
@@ -238,6 +322,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            margin-bottom: 12px;
         }
 
         .user-avatar i {
@@ -249,10 +334,9 @@
             font-size: 16px;
             font-weight: 600;
             color: var(--light);
-            margin-bottom: 4px;
+            margin-bottom: 8px;
         }
 
-        /* YANGI: ID raqami ko'rsatish uchun */
         .user-id {
             display: inline-block;
             padding: 4px 12px;
@@ -264,6 +348,7 @@
             font-family: 'Courier New', monospace;
             letter-spacing: 1px;
             border: 1px solid rgba(0, 188, 212, 0.3);
+            margin-bottom: 8px;
         }
 
         .user-level {
@@ -274,7 +359,7 @@
             border-radius: 12px;
             font-size: 11px;
             font-weight: 700;
-            margin-top: 4px;
+            margin-left: 8px;
         }
 
         .stats-grid {
@@ -604,7 +689,7 @@
             padding: 20px;
         }
 
-        /* ============ YANGILANGAN GAME MODAL ============ */
+        /* ============ GAME MODAL ============ */
         .game-header {
             text-align: center;
             margin-bottom: 20px;
@@ -622,7 +707,7 @@
             color: var(--gray);
         }
 
-        /* YANGI: ID kiritish formasi */
+        /* ID kiritish formasi */
         .id-input-section {
             margin: 20px 0;
             display: none;
@@ -682,7 +767,21 @@
             margin-top: 8px;
         }
 
-        /* YANGI: Taymer sanalayotganda olmalar o'rniga xabar */
+        /* YANGI: Taymer sanalayotganda VIP signal olish uchun qo'shimcha tugma */
+        .vip-timer-action {
+            background: rgba(255, 152, 0, 0.1);
+            border: 1px solid var(--accent);
+            border-radius: 12px;
+            padding: 20px;
+            margin: 20px 0;
+            text-align: center;
+            display: none;
+        }
+
+        .vip-timer-action.active {
+            display: block;
+        }
+
         .timer-active-message {
             background: rgba(255, 152, 0, 0.1);
             border: 1px solid var(--accent);
@@ -875,18 +974,6 @@
             margin-bottom: 20px;
         }
 
-        /* YANGI: Yutuq miqdori o'chirildi */
-        /* .result-prize {
-            font-size: 20px;
-            font-weight: 700;
-            color: var(--success);
-            margin-bottom: 30px;
-            background: rgba(76, 175, 80, 0.1);
-            padding: 12px 24px;
-            border-radius: 12px;
-            border: 1px solid var(--success);
-        } */
-
         /* YANGI: HACKING animatsiyasi - yorqin yashil rangda */
         .stage-transition {
             position: absolute;
@@ -985,151 +1072,6 @@
             flex: 1;
             min-width: 120px;
             padding: 14px;
-            border: none;
-            border-radius: 12px;
-            font-size: 14px;
-            font-weight: 600;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            transition: all 0.2s ease;
-        }
-
-        .btn-primary {
-            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-            color: white;
-        }
-
-        .btn-primary:hover:not(:disabled) {
-            transform: translateY(-2px);
-        }
-
-        .btn-primary:disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-        }
-
-        .btn-secondary {
-            background: var(--glass);
-            border: 1px solid var(--glass-border);
-            color: var(--light);
-        }
-
-        .btn-secondary:hover:not(:disabled) {
-            background: rgba(255, 255, 255, 0.1);
-        }
-
-        .btn-secondary:disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-        }
-
-        .btn-success {
-            background: linear-gradient(135deg, var(--success), #2e7d32);
-            color: white;
-            margin-top: 10px;
-        }
-
-        .btn-success:hover {
-            transform: translateY(-2px);
-        }
-
-        .btn-vip {
-            background: linear-gradient(135deg, #ff9800, #ff5722);
-            color: white;
-            margin-top: 10px;
-        }
-
-        .btn-vip:hover {
-            transform: translateY(-2px);
-        }
-
-        /* Animatsiyalar */
-        @keyframes bounce {
-            0%, 100% {
-                transform: translateY(0);
-            }
-            50% {
-                transform: translateY(-10px);
-            }
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: scale(0.9);
-            }
-            to {
-                opacity: 1;
-                transform: scale(1);
-            }
-        }
-
-        @keyframes scanLine {
-            0% {
-                top: 0%;
-                opacity: 0;
-            }
-            10% {
-                opacity: 1;
-            }
-            90% {
-                opacity: 1;
-            }
-            100% {
-                top: 100%;
-                opacity: 0;
-            }
-        }
-
-        @keyframes glitch {
-            0% {
-                transform: translate(0);
-                text-shadow: 0 0 10px #00ff00;
-            }
-            20% {
-                transform: translate(-2px, 2px);
-                text-shadow: 2px -2px 10px #00ff00, -2px 2px 10px #00ff00;
-            }
-            40% {
-                transform: translate(-2px, -2px);
-                text-shadow: -2px 2px 10px #00ff00, 2px -2px 10px #00ff00;
-            }
-            60% {
-                transform: translate(2px, 2px);
-                text-shadow: 2px 2px 10px #00ff00, -2px -2px 10px #00ff00;
-            }
-            80% {
-                transform: translate(2px, -2px);
-                text-shadow: -2px -2px 10px #00ff00, 2px 2px 10px #00ff00;
-            }
-            100% {
-                transform: translate(0);
-                text-shadow: 0 0 10px #00ff00;
-            }
-        }
-
-        @keyframes binaryRain {
-            0% {
-                transform: translateY(-100%);
-                opacity: 0;
-            }
-            10% {
-                opacity: 1;
-            }
-            90% {
-                opacity: 1;
-            }
-            100% {
-                transform: translateY(1000%);
-                opacity: 0;
-            }
-        }
-
-        .fade-in {
-            animation: fadeIn 0.5s ease forwards;
         }
 
         /* ============ VIP MODAL ============ */
@@ -1323,6 +1265,10 @@
             .hacking-percentage {
                 font-size: 36px;
             }
+            
+            .user-actions {
+                flex-direction: column;
+            }
         }
 
         /* ============ UTILITIES ============ */
@@ -1373,6 +1319,96 @@
 
         .toast.info {
             border-left: 4px solid var(--primary);
+        }
+
+        .toast.warning {
+            border-left: 4px solid var(--accent);
+        }
+
+        /* Animatsiyalar */
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes scanLine {
+            0% {
+                top: 0%;
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                top: 100%;
+                opacity: 0;
+            }
+        }
+
+        @keyframes glitch {
+            0% {
+                transform: translate(0);
+                text-shadow: 0 0 10px #00ff00;
+            }
+            20% {
+                transform: translate(-2px, 2px);
+                text-shadow: 2px -2px 10px #00ff00, -2px 2px 10px #00ff00;
+            }
+            40% {
+                transform: translate(-2px, -2px);
+                text-shadow: -2px 2px 10px #00ff00, 2px -2px 10px #00ff00;
+            }
+            60% {
+                transform: translate(2px, 2px);
+                text-shadow: 2px 2px 10px #00ff00, -2px -2px 10px #00ff00;
+            }
+            80% {
+                transform: translate(2px, -2px);
+                text-shadow: -2px -2px 10px #00ff00, 2px 2px 10px #00ff00;
+            }
+            100% {
+                transform: translate(0);
+                text-shadow: 0 0 10px #00ff00;
+            }
+        }
+
+        @keyframes binaryRain {
+            0% {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(1000%);
+                opacity: 0;
+            }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.5s ease forwards;
         }
     </style>
 </head>
@@ -1436,9 +1472,18 @@
                     </div>
                     <div class="user-details">
                         <h3 id="userName">Foydalanuvchi</h3>
-                        <!-- YANGI: ID raqami ko'rsatish -->
                         <div class="user-id" id="userIdDisplay">ID: 12345678901</div>
                         <div class="user-level" id="userLevel">BOSHLANG'ICH</div>
+                        
+                        <!-- YANGI: ID o'zgartirish va ro'yxatdan o'tish tugmalari -->
+                        <div class="user-actions">
+                            <button class="btn btn-secondary btn-small" id="changeIdBtn">
+                                <i class="fas fa-id-card"></i> <span id="changeIdText">ID o'zgartirish</span>
+                            </button>
+                            <button class="btn btn-primary btn-small" id="registerBtn">
+                                <i class="fas fa-user-plus"></i> <span id="registerText">Ro'yxatdan o'tish</span>
+                            </button>
+                        </div>
                     </div>
                 </div>
                 
@@ -1750,7 +1795,7 @@
             </div>
             
             <div class="modal-body">
-                <!-- YANGI: HACKING animatsiyasi - yorqin yashil rangda -->
+                <!-- HACKING animatsiyasi -->
                 <div class="stage-transition" id="stageTransition">
                     <div class="hacking-container">
                         <div class="hacking-line"></div>
@@ -1761,12 +1806,6 @@
                             AI tizimiga kirish...<br>
                             Ma'lumotlar tahlili jarayoni...
                         </div>
-                        <!-- Binary rain effect -->
-                        <div class="hacking-binary" style="top: 10%; left: 5%">10101010</div>
-                        <div class="hacking-binary" style="top: 20%; right: 10%">11001100</div>
-                        <div class="hacking-binary" style="top: 40%; left: 15%">11110000</div>
-                        <div class="hacking-binary" style="top: 60%; right: 20%">01010101</div>
-                        <div class="hacking-binary" style="top: 80%; left: 25%">00110011</div>
                     </div>
                 </div>
                 
@@ -1775,7 +1814,6 @@
                     <div class="result-icon" id="resultIcon">🎉</div>
                     <h2 class="result-title" id="resultTitle">TABRIKLAYMIZ!</h2>
                     <div class="result-message" id="resultMessage">Yutuqni oling!</div>
-                    <!-- YANGI: Yutuq miqdori o'chirildi -->
                     
                     <!-- VIP signal olish tugmasi -->
                     <button class="btn btn-vip" id="getVipSignalBtn">
@@ -1790,8 +1828,8 @@
                     </button>
                 </div>
                 
-                <!-- YANGI: ID kiritish formasi -->
-                <div class="id-input-section active" id="idInputSection">
+                <!-- ID kiritish formasi -->
+                <div class="id-input-section" id="idInputSection">
                     <div class="id-input-label" id="idInputLabel">ID RAQAMINGIZNI KIRITING</div>
                     <div class="id-input-wrapper">
                         <input type="text" 
@@ -1811,14 +1849,26 @@
                     </div>
                 </div>
                 
-                <!-- Asosiy o'yin qismi (ID tasdiqlangandan keyin ko'rinadi) -->
+                <!-- Asosiy o'yin qismi -->
                 <div class="game-section" id="gameSection" style="display: none;">
                     <div class="game-header">
                         <h2 class="game-title">OLMA O'YINI</h2>
                         <p class="game-subtitle" id="gameSubtitle">Butun olmalarni tanlang</p>
                     </div>
                     
-                    <!-- YANGI: Taymer sanalayotganda xabar -->
+                    <!-- YANGI: Taymer sanalayotganda VIP signal olish uchun qo'shimcha harakat -->
+                    <div class="vip-timer-action" id="vipTimerAction">
+                        <div class="timer-icon">
+                            <i class="fas fa-bolt"></i>
+                        </div>
+                        <div class="timer-message">Vaqtdan oldin signal olish</div>
+                        <div class="timer-submessage">VIP signal bilan kutish vaqtini o'tkazib yuboring</div>
+                        <button class="btn btn-vip" id="getVipSignalEarlyBtn" style="margin-top: 12px;">
+                            <i class="fas fa-crown"></i> <span id="getVipSignalEarlyText">VIP SIGNAL OLISH</span>
+                        </button>
+                    </div>
+                    
+                    <!-- Taymer sanalayotganda xabar -->
                     <div class="timer-active-message" id="timerActiveMessage">
                         <div class="timer-icon">
                             <i class="fas fa-clock"></i>
@@ -1834,7 +1884,7 @@
                         <div class="timer-note">VIP signal olish uchun yuqoridagi tugmani bosing</div>
                     </div>
                     
-                    <!-- YANGI: Taymer sanalayotganda olmalar ko'rsatilmaydi -->
+                    <!-- Olmalar konteyneri -->
                     <div class="game-apples-container" id="gameApplesContainer">
                         <!-- 5 ta olma bu yerga qo'shiladi -->
                     </div>
@@ -1916,6 +1966,42 @@
         </div>
     </div>
 
+    <!-- YANGI: ID o'zgartirish modali -->
+    <div class="modal-overlay" id="changeIdModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title" id="changeIdModalTitle">ID O'ZGARTIRISH</h3>
+                <div class="modal-close" id="closeChangeIdModal">
+                    <i class="fas fa-times"></i>
+                </div>
+            </div>
+            
+            <div class="modal-body">
+                <div class="id-input-label">YANGI ID RAQAMNI KIRITING</div>
+                <div class="id-input-wrapper">
+                    <input type="text" 
+                           class="id-input" 
+                           id="newUserIdInput" 
+                           placeholder="1XXXXXXXXXX" 
+                           maxlength="11"
+                           inputmode="numeric">
+                </div>
+                <div class="id-input-hint">
+                    1 dan boshlangan 9-11 xonali son kiriting
+                </div>
+                
+                <div class="game-actions">
+                    <button class="btn btn-primary" id="saveNewIdBtn">
+                        <i class="fas fa-save"></i> <span id="saveNewIdText">SAQLASH</span>
+                    </button>
+                    <button class="btn btn-secondary" id="cancelChangeIdBtn">
+                        <i class="fas fa-times"></i> <span id="cancelChangeIdText">BEKOR QILISH</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script>
         // ==================== TRANSLATIONS ====================
         const translations = {
@@ -1948,6 +2034,7 @@
                 vipModalTitle: "VIP SIGNAL",
                 getVipText: "VIP SIGNAL OLISH",
                 getVipSignalText: "VIP SIGNAL OLISH",
+                getVipSignalEarlyText: "VIP SIGNAL OLISH",
                 apkDescText: "Apple Fortune mobil ilovasini yuklab oling va istalgan joydan signallar oling. To'liq funksionallik va qulay interfeys.",
                 downloadApkText: "YUKLASH",
                 bonusDescText: "AIFUT promokodi bilan ro'yxatdan o'ting va darhol 200% bonus oling. Bonus birinchi depozitingizga qo'shiladi.",
@@ -1977,7 +2064,17 @@
                 idVerified: "✅ ID raqam tasdiqlandi! Signal olish mumkin",
                 idExample: "Misol: 12345678901",
                 timerActiveMessage: "Keyingi signalni kutmoqdasiz",
-                timerSubmessage: "Taymer tugagandan so'ng signal olish mumkin"
+                timerSubmessage: "Taymer tugagandan so'ng signal olish mumkin",
+                changeIdText: "ID o'zgartirish",
+                registerText: "Ro'yxatdan o'tish",
+                changeIdModalTitle: "ID O'ZGARTIRISH",
+                saveNewIdText: "SAQLASH",
+                cancelChangeIdText: "BEKOR QILISH",
+                idChangeSuccess: "✅ ID raqam muvaffaqiyatli o'zgartirildi!",
+                registerSuccess: "✅ Ro'yxatdan muvaffaqiyatli o'tdingiz!",
+                vipTimerActionMessage: "Vaqtdan oldin signal olish",
+                vipTimerActionSubmessage: "VIP signal bilan kutish vaqtini o'tkazib yuboring",
+                getVipSignalEarlyText: "VIP SIGNAL OLISH"
             },
             ru: {
                 languageTitle: "Apple Fortune",
@@ -2008,6 +2105,7 @@
                 vipModalTitle: "VIP СИГНАЛ",
                 getVipText: "ПОЛУЧИТЬ VIP",
                 getVipSignalText: "ПОЛУЧИТЬ VIP СИГНАЛ",
+                getVipSignalEarlyText: "ПОЛУЧИТЬ VIP СИГНАЛ",
                 apkDescText: "Скачайте мобильное приложение Apple Fortune и получайте сигналы из любого места. Полная функциональность и удобный интерфейс.",
                 downloadApkText: "СКАЧАТЬ",
                 bonusDescText: "Зарегистрируйтесь с промокодом AIFUT и получите 200% бонус сразу. Бонус будет добавлен к вашему первому депозиту.",
@@ -2037,7 +2135,17 @@
                 idVerified: "✅ ID номер подтвержден! Можно получать сигналы",
                 idExample: "Пример: 12345678901",
                 timerActiveMessage: "Вы ждете следующий сигнал",
-                timerSubmessage: "Можно получить сигнал после завершения таймера"
+                timerSubmessage: "Можно получить сигнал после завершения таймера",
+                changeIdText: "Изменить ID",
+                registerText: "Регистрация",
+                changeIdModalTitle: "ИЗМЕНИТЬ ID",
+                saveNewIdText: "СОХРАНИТЬ",
+                cancelChangeIdText: "ОТМЕНА",
+                idChangeSuccess: "✅ ID номер успешно изменен!",
+                registerSuccess: "✅ Вы успешно зарегистрировались!",
+                vipTimerActionMessage: "Получить сигнал раньше времени",
+                vipTimerActionSubmessage: "Пропустите время ожидания с VIP сигналом",
+                getVipSignalEarlyText: "ПОЛУЧИТЬ VIP СИГНАЛ"
             },
             en: {
                 languageTitle: "Apple Fortune",
@@ -2068,6 +2176,7 @@
                 vipModalTitle: "VIP SIGNAL",
                 getVipText: "GET VIP SIGNAL",
                 getVipSignalText: "GET VIP SIGNAL",
+                getVipSignalEarlyText: "GET VIP SIGNAL",
                 apkDescText: "Download Apple Fortune mobile app and get signals from anywhere. Full functionality and convenient interface.",
                 downloadApkText: "DOWNLOAD",
                 bonusDescText: "Register with AIFUT promo code and get 200% bonus immediately. Bonus will be added to your first deposit.",
@@ -2097,7 +2206,17 @@
                 idVerified: "✅ ID number verified! Can get signals now",
                 idExample: "Example: 12345678901",
                 timerActiveMessage: "Waiting for next signal",
-                timerSubmessage: "You can get signal after timer ends"
+                timerSubmessage: "You can get signal after timer ends",
+                changeIdText: "Change ID",
+                registerText: "Register",
+                changeIdModalTitle: "CHANGE ID",
+                saveNewIdText: "SAVE",
+                cancelChangeIdText: "CANCEL",
+                idChangeSuccess: "✅ ID number changed successfully!",
+                registerSuccess: "✅ Registration successful!",
+                vipTimerActionMessage: "Get signal before time",
+                vipTimerActionSubmessage: "Skip waiting time with VIP signal",
+                getVipSignalEarlyText: "GET VIP SIGNAL"
             },
             ar: {
                 languageTitle: "Apple Fortune",
@@ -2128,6 +2247,7 @@
                 vipModalTitle: "إشارة VIP",
                 getVipText: "الحصول على إشارة VIP",
                 getVipSignalText: "الحصول على إشارة VIP",
+                getVipSignalEarlyText: "الحصول على إشارة VIP",
                 apkDescText: "قم بتنزيل تطبيق Apple Fortune المحمول واحصل على إشارات من أي مكان. وظائف كاملة وواجهة مريحة.",
                 downloadApkText: "تحميل",
                 bonusDescText: "سجل باستخدام الرمز الترويجي AIFUT واحصل على مكافأة 200٪ على الفور. ستتم إضافة المكافأة إلى إيداعك الأول.",
@@ -2157,7 +2277,17 @@
                 idVerified: "✅ تم التحقق من رقم المعرف! يمكنك الحصول على الإشارات الآن",
                 idExample: "مثال: 12345678901",
                 timerActiveMessage: "في انتظار الإشارة التالية",
-                timerSubmessage: "يمكنك الحصول على إشارة بعد انتهاء المؤقت"
+                timerSubmessage: "يمكنك الحصول على إشارة بعد انتهاء المؤقت",
+                changeIdText: "تغيير المعرف",
+                registerText: "تسجيل",
+                changeIdModalTitle: "تغيير المعرف",
+                saveNewIdText: "حفظ",
+                cancelChangeIdText: "إلغاء",
+                idChangeSuccess: "✅ تم تغيير رقم المعرف بنجاح!",
+                registerSuccess: "✅ تم التسجيل بنجاح!",
+                vipTimerActionMessage: "احصل على إشارة قبل الوقت",
+                vipTimerActionSubmessage: "تخطى وقت الانتظار مع إشارة VIP",
+                getVipSignalEarlyText: "الحصول على إشارة VIP"
             }
         };
 
@@ -2286,6 +2416,15 @@
             // Modal close buttons
             document.getElementById('closeGameModal').addEventListener('click', () => closeModal('gameModal'));
             document.getElementById('closeVipModal').addEventListener('click', () => closeModal('vipModal'));
+            document.getElementById('closeChangeIdModal').addEventListener('click', () => closeModal('changeIdModal'));
+
+            // YANGI: ID o'zgartirish va ro'yxatdan o'tish tugmalari
+            document.getElementById('changeIdBtn').addEventListener('click', showChangeIdModal);
+            document.getElementById('registerBtn').addEventListener('click', registerUser);
+
+            // ID o'zgartirish modali
+            document.getElementById('saveNewIdBtn').addEventListener('click', saveNewId);
+            document.getElementById('cancelChangeIdBtn').addEventListener('click', () => closeModal('changeIdModal'));
 
             // Game buttons
             document.getElementById('verifyIdBtn').addEventListener('click', verifyId);
@@ -2294,6 +2433,7 @@
             document.getElementById('restartGameBtn').addEventListener('click', restartGame);
             document.getElementById('closeGameBtn').addEventListener('click', () => closeModal('gameModal'));
             document.getElementById('getVipSignalBtn').addEventListener('click', getVipSignal);
+            document.getElementById('getVipSignalEarlyBtn').addEventListener('click', getVipSignalEarly);
 
             // ID input validation
             document.getElementById('userIdInput').addEventListener('input', validateIdInput);
@@ -2302,6 +2442,8 @@
                     verifyId();
                 }
             });
+
+            document.getElementById('newUserIdInput').addEventListener('input', validateNewIdInput);
 
             // Action buttons
             document.getElementById('getVipBtn').addEventListener('click', getVip);
@@ -2411,6 +2553,7 @@
             // Hide modals
             document.getElementById('gameModal').classList.remove('active');
             document.getElementById('vipModal').classList.remove('active');
+            document.getElementById('changeIdModal').classList.remove('active');
             
             // Show selected page
             const page = document.getElementById(pageId);
@@ -2475,20 +2618,22 @@
             document.getElementById('gameResultOverlay').classList.remove('active');
             document.getElementById('stageTransition').classList.remove('active');
             
-            // Show/hide ID input or game section
+            // Show/hide sections based on state
             const idInputSection = document.getElementById('idInputSection');
             const gameSection = document.getElementById('gameSection');
             const timerActiveMessage = document.getElementById('timerActiveMessage');
+            const vipTimerAction = document.getElementById('vipTimerAction');
             const applesContainer = document.getElementById('gameApplesContainer');
             
             if (gameState.idVerified) {
-                // ID already verified, show game or timer message
+                // ID already verified
                 idInputSection.style.display = 'none';
                 gameSection.style.display = 'block';
                 
                 if (gameState.timerRunning) {
-                    // Taymer sanalayotganda
+                    // Taymer sanalayotganda - VIP signal olish imkoniyati
                     timerActiveMessage.style.display = 'block';
+                    vipTimerAction.style.display = 'block';
                     applesContainer.style.display = 'none';
                     
                     // Show timer
@@ -2501,8 +2646,9 @@
                     document.getElementById('revealApplesBtn').disabled = true;
                     document.getElementById('nextStageBtn').disabled = true;
                 } else {
-                    // Taymer sanalmayotganda
+                    // Taymer sanalmayotganda - oddiy o'yin
                     timerActiveMessage.style.display = 'none';
+                    vipTimerAction.style.display = 'none';
                     applesContainer.style.display = 'flex';
                     
                     // Hide timer
@@ -2529,14 +2675,42 @@
             modal.classList.add('active');
         }
 
+        // YANGI: ID o'zgartirish modali
+        function showChangeIdModal() {
+            const modal = document.getElementById('changeIdModal');
+            modal.classList.add('active');
+            document.getElementById('newUserIdInput').value = gameState.userId || '';
+            document.getElementById('newUserIdInput').focus();
+        }
+
         function closeModal(modalId) {
             const modal = document.getElementById(modalId);
             modal.classList.remove('active');
         }
 
-        // ==================== ID VERIFICATION FUNCTIONS ====================
+        // ==================== ID FUNCTIONS ====================
         function validateIdInput() {
             const input = document.getElementById('userIdInput');
+            const value = input.value.trim();
+            
+            // Remove non-numeric characters
+            const numericValue = value.replace(/\D/g, '');
+            input.value = numericValue;
+            
+            // Validate format
+            if (numericValue.length >= 9 && numericValue.length <= 11 && numericValue.startsWith('1')) {
+                input.classList.remove('invalid');
+                input.classList.add('valid');
+                return true;
+            } else {
+                input.classList.remove('valid');
+                input.classList.add('invalid');
+                return false;
+            }
+        }
+
+        function validateNewIdInput() {
+            const input = document.getElementById('newUserIdInput');
             const value = input.value.trim();
             
             // Remove non-numeric characters
@@ -2585,10 +2759,72 @@
             document.getElementById('idInputSection').style.display = 'none';
             document.getElementById('gameSection').style.display = 'block';
             
-            // Create apples for the game
-            createApples();
+            // Check if timer is running
+            if (gameState.timerRunning) {
+                // Show VIP timer action
+                document.getElementById('vipTimerAction').style.display = 'block';
+                document.getElementById('timerActiveMessage').style.display = 'block';
+                document.getElementById('gameApplesContainer').style.display = 'none';
+            } else {
+                // Create apples for the game
+                createApples();
+            }
             
             showToast(translations[currentLang].idVerified, 'success');
+        }
+
+        // YANGI: ID o'zgartirish funksiyasi
+        function saveNewId() {
+            const input = document.getElementById('newUserIdInput');
+            const value = input.value.trim();
+            
+            if (!value) {
+                showToast(translations[currentLang].idRequired, 'error');
+                input.classList.add('invalid');
+                input.focus();
+                return;
+            }
+            
+            if (!validateNewIdInput()) {
+                showToast(translations[currentLang].idInvalid, 'error');
+                input.focus();
+                return;
+            }
+            
+            // Save new ID
+            gameState.userId = value;
+            localStorage.setItem('appleFortuneUserId', value);
+            
+            // Update display
+            updateUserIdDisplay();
+            
+            // Close modal
+            closeModal('changeIdModal');
+            
+            showToast(translations[currentLang].idChangeSuccess, 'success');
+        }
+
+        // YANGI: Ro'yxatdan o'tish funksiyasi
+        function registerUser() {
+            if (!gameState.userId) {
+                // Agar ID mavjud bo'lmasa, ID kiritish modalini ochish
+                showGameModal();
+                showToast("Iltimos, avval ID raqamingizni kiriting", 'info');
+                return;
+            }
+            
+            // Ro'yxatdan o'tish logikasi
+            showToast(translations[currentLang].registerSuccess, 'success');
+            
+            // Foydalanuvchi darajasini oshirish
+            userData.level = 2;
+            document.getElementById('userLevel').textContent = "RO'YXATDAN O'TGAN";
+            document.getElementById('userLevel').style.background = "linear-gradient(135deg, var(--success), #2e7d32)";
+            
+            // Kichik bonus berish
+            userData.balance += 100;
+            updateUI();
+            saveData();
         }
 
         // ==================== GAME FUNCTIONS ====================
@@ -2725,8 +2961,7 @@
             const resultMessage = document.getElementById('resultMessage');
             
             if (resultType === 'win') {
-                // YANGI: Yutuq miqdori ko'rsatilmaydi
-                const prize = 100 * currentStage; // Bosqichga qarab mukofot
+                const prize = 100 * currentStage;
                 userData.balance += prize;
                 userData.signals++;
                 updateUI();
@@ -2755,24 +2990,17 @@
             overlay.classList.add('fade-in');
         }
 
-        // YANGI: HACKING animatsiyasi - yorqin yashil rangda
         function showStageTransition() {
             const transition = document.getElementById('stageTransition');
             const percentage = document.getElementById('hackingPercentage');
             
             transition.classList.add('active');
             
-            // Create binary rain
-            createBinaryRain();
-            
             let progress = 0;
             const interval = setInterval(() => {
                 progress += Math.random() * 8 + 7;
                 if (progress > 100) progress = 100;
                 percentage.textContent = Math.floor(progress) + '%';
-                
-                // Update binary positions
-                updateBinaryRain();
                 
                 if (progress >= 100) {
                     clearInterval(interval);
@@ -2782,38 +3010,6 @@
                     }, 1000);
                 }
             }, 120);
-        }
-
-        function createBinaryRain() {
-            const container = document.querySelector('.hacking-container');
-            // Remove existing binary elements
-            const existing = container.querySelectorAll('.hacking-binary');
-            existing.forEach(el => el.remove());
-            
-            // Create new binary rain
-            for (let i = 0; i < 15; i++) {
-                const binary = document.createElement('div');
-                binary.className = 'hacking-binary';
-                binary.textContent = Math.random() > 0.5 ? '10101010' : '11001100';
-                binary.style.left = Math.random() * 90 + '%';
-                binary.style.top = '-20px';
-                binary.style.animation = `binaryRain ${2 + Math.random() * 3}s linear infinite`;
-                binary.style.animationDelay = Math.random() * 2 + 's';
-                container.appendChild(binary);
-            }
-        }
-
-        function updateBinaryRain() {
-            const binaries = document.querySelectorAll('.hacking-binary');
-            binaries.forEach(binary => {
-                const currentTop = parseFloat(binary.style.top);
-                if (currentTop > 100) {
-                    binary.style.top = '-20px';
-                    binary.style.left = Math.random() * 90 + '%';
-                } else {
-                    binary.style.top = (currentTop + 5) + '%';
-                }
-            });
         }
 
         function restartGame() {
@@ -2836,7 +3032,11 @@
             // Result overlayni yopish
             document.getElementById('gameResultOverlay').classList.remove('active');
             
-            createApples();
+            // Agar taymer ishlamayotgan bo'lsa, olmalarni yaratish
+            if (!gameState.timerRunning) {
+                createApples();
+            }
+            
             updateGameUI();
         }
 
@@ -2904,7 +3104,7 @@
         // ==================== TAYMER FUNKSIYALARI ====================
         function startSignalTimer() {
             const now = Date.now();
-            const twoHours = 2 * 60 * 60 * 1000; // 2 soat millisekundlarda
+            const twoHours = 2 * 60 * 60 * 1000;
             gameState.timerEndTime = now + twoHours;
             gameState.timerRunning = true;
             
@@ -2934,6 +3134,11 @@
                     
                     // UI ni yangilash
                     updateTimerUI();
+                    
+                    // Agar o'yin modali ochiq bo'lsa, yangilash
+                    if (document.getElementById('gameModal').classList.contains('active')) {
+                        showGameModal();
+                    }
                     return;
                 }
                 
@@ -2957,6 +3162,7 @@
 
         function updateTimerUI() {
             const timerActiveMessage = document.getElementById('timerActiveMessage');
+            const vipTimerAction = document.getElementById('vipTimerAction');
             const timerElement = document.getElementById('nextSignalTimer');
             const applesContainer = document.getElementById('gameApplesContainer');
             const revealBtn = document.getElementById('revealApplesBtn');
@@ -2965,6 +3171,7 @@
             if (gameState.timerRunning) {
                 // Taymer sanalayotganda
                 if (timerActiveMessage) timerActiveMessage.style.display = 'block';
+                if (vipTimerAction) vipTimerAction.style.display = 'block';
                 if (timerElement) timerElement.style.display = 'block';
                 if (applesContainer) applesContainer.style.display = 'none';
                 if (revealBtn) revealBtn.disabled = true;
@@ -2972,6 +3179,7 @@
             } else {
                 // Taymer sanalmayotganda
                 if (timerActiveMessage) timerActiveMessage.style.display = 'none';
+                if (vipTimerAction) vipTimerAction.style.display = 'none';
                 if (timerElement) timerElement.style.display = 'none';
                 if (applesContainer) applesContainer.style.display = 'flex';
                 if (revealBtn) revealBtn.disabled = false;
@@ -2979,6 +3187,21 @@
                     nextBtn.disabled = false;
                 }
             }
+        }
+
+        // YANGI: VIP signal olish (taymer vaqtini o'tkazib yuborish)
+        function getVipSignalEarly() {
+            showToast(translations[currentLang].getVipSignalEarlyText + ' - ' + translations[currentLang].loading, 'info');
+            
+            // Taymerni to'xtatish
+            gameState.timerRunning = false;
+            localStorage.removeItem('appleFortuneTimer');
+            
+            // VIP modalini ochish
+            closeModal('gameModal');
+            setTimeout(() => {
+                showVipModal();
+            }, 500);
         }
 
         // ==================== ACTION FUNCTIONS ====================
